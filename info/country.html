@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">                
+    <link rel='icon' type="image/png" href="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png">
+    
+    <title>Access Restricted - SangJeongInside</title>
+    
+    <meta name="description" content="SJ Inside is a community service designated for operation within South Korea.">
+    <meta name="author" content="anion15">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SJ Inside">
+    <meta property="og:description" content="Access is restricted as this service is officially designated for use within South Korea.">
+    <meta property="og:url" content="https://commu.world">
+    <meta property="og:image" content="https://img.commu.world/og?type=page&page=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0f1014;
+            color: #e2e2e2;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .container {
+            padding: 20px;
+            max-width: 500px;
+        }
+        h1 { font-size: 48px; margin-bottom: 20px; color: #fff; }
+        p { font-size: 16px; margin: 5px 0; opacity: 0.8; }
+        .highlight { color: #58a6ff; font-weight: bold; }
+        .footer-link {
+            font-size: 14px;
+            color: #8b949e;
+            text-decoration: none;
+            margin-top: 40px;
+            display: inline-block;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sorry..</h1>
+        <p style="font-size: 18px; margin-bottom: 15px;">
+            <span class="highlight">SangJeongInside</span> is a service officially designated for <br>
+            operation and access within <span class="highlight">South Korea</span>.
+        </p>
+    
+    </div>
+<script>
+    async function checkCountryAndReload() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+
+            if (data.country === 'KR') {
+                console.log("대한민국 접속 확인! 메인 페이지로 이동합니다.");
+                window.location.href = 'https://commu.world/?nocache=' + new Date().getTime();
+            }
+        } catch (error) {
+            console.error("IP 확인 중 오류 발생:", error);
+        }
+    }
+
+    setInterval(checkCountryAndReload, 2000);
+</script>
+</body>
+</html>
