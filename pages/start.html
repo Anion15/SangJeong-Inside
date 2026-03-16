@@ -1,0 +1,3683 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='icon' type="images/png" href="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png">
+  
+  <title>상정인사이드 - 자유로운 토론 커뮤니티</title>
+  
+  <meta name="description" content="상정인사이드 커뮤니티는 '정상의 반대'라는 개념을 바탕으로 자유롭고 창의적인 토론을 나누는 공간입니다.">
+  <meta name="keywords" content="커뮤니티, 상정인사이드, 시작하기, 가이드">
+  <meta name="author" content="anion15">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="상정인사이드 - 자유로운 토론 커뮤니티">
+  <meta property="og:description" content="자유로운 토론의 시작, 상정인사이드와 함께하세요.">
+  <meta property="og:url" content="https://commu.world">
+  
+  <meta property="og:image" content="https://img.commu.world/og?type=page&page=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="상정인사이드 - 자유로운 토론 커뮤니티">
+  <meta name="twitter:description" content="자유로운 토론의 시작, 상정인사이드와 함께하세요.">
+  <meta name="twitter:image" content="https://img.commu.world/og?type=page&page=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C%20%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">
+  <meta name="theme-color" content="#0a0b0f"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "tnlirpxyjr");
+  </script>
+<script>
+(function () {
+  const url = new URL(window.location.href);
+
+  if (url.searchParams.has("stpg")) {
+    url.searchParams.delete("stpg");
+    history.replaceState(null, "", url.toString());
+  }
+})();
+</script>
+  <script>
+    function startSite() {
+      const expires = new Date(9999, 11, 31).toUTCString();
+      document.cookie = "visited=true; expires=" + expires + "; path=/";
+
+      const url = new URL(window.location.origin + "/");
+      url.searchParams.delete("sec");
+
+      window.location.href = url.toString();
+    }
+  </script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  const lenis = new Lenis({
+    duration: 1.6,
+    smoothWheel: true,
+    smoothTouch: false
+  })
+
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
+
+  requestAnimationFrame(raf)
+</script>
+<script>
+history.scrollRestoration = "manual";
+
+let sections = [];
+let currentSection = null;
+
+function goToSectionFromURL() {
+    const params = new URLSearchParams(location.search);
+    const sec = params.get("sec");
+    if (!sec) return;
+
+    let targetEl = null;
+    let offset = -50;
+
+    if (sec === "fvSection") {
+        targetEl = document.getElementById("fvmainview");
+        if (!targetEl) return;
+
+        const rect = targetEl.getBoundingClientRect();
+        const elementCenter = rect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+
+        offset = -(viewportCenter - elementCenter);
+    } else {
+        targetEl = document.getElementById(sec);
+        if (!targetEl) return;
+    }
+
+    isScrollingToSection = true;
+
+    lenis.scrollTo(targetEl, {
+        offset: offset,
+        duration: 1.2,
+        lerp: 0.08,
+        immediate: false,
+        onComplete: () => {
+            currentSection = sec;
+            isScrollingToSection = false;
+            detectSection();
+        }
+    });
+}
+
+function detectSection() {
+
+    const center = window.innerHeight * 0.5;
+
+    sections.forEach(section => {
+
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= center && rect.bottom >= center) {
+
+            if (currentSection !== section.id) {
+
+                currentSection = section.id;
+
+                const url = new URL(location);
+                url.searchParams.set("sec", section.id);
+
+                history.replaceState(null, "", url);
+
+            }
+
+        }
+
+    });
+
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    sections = document.querySelectorAll("section[id]");
+});
+
+window.addEventListener("load", () => {
+
+    const waitForLoader = setInterval(() => {
+
+        if (!document.documentElement.classList.contains("__no_scroll")) {
+
+            clearInterval(waitForLoader);
+
+            setTimeout(() => {
+                goToSectionFromURL();
+                detectSection();
+            }, 100);
+
+        }
+
+    }, 50);
+
+});
+
+lenis.on("scroll", () => {
+    detectSection();
+});
+
+window.addEventListener("popstate", goToSectionFromURL);
+</script>
+  <script>
+    (function () {
+      var bgColor = "rgba(10,11,15,0.96)";
+      var spinnerSize = 40;
+      var brandText = "Loading…";
+      var minShowMs = 300;
+      var safetyTimeoutMs = 10000;
+
+      var css = `
+        #__page_loader {
+          position: fixed; inset: 0; z-index: 2147483647;
+          display: grid; place-items: center;
+          background: ${bgColor}; color: #fff;
+          opacity: 1; transition: opacity .25s ease;
+        }
+        #__page_loader.__hide { opacity: 0; }
+        #__loader_inner { display: grid; gap: 14px; place-items: center; }
+        /* 스피너 */
+        #__spinner {
+          width: ${spinnerSize}px; height: ${spinnerSize}px;
+          border-radius: 50%;
+          border: 3px solid #ffffff22; border-top-color: #fff;
+          animation: __spin 1s linear infinite;
+        }
+        /* 감속 모션 환경 배려 */
+        @media (prefers-reduced-motion: reduce) {
+          #__spinner { animation: none; border-top-color: #ffffffcc; }
+        }
+        #__brand { font: 600 14px/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Apple SD Gothic Neo", "맑은 고딕", sans-serif; opacity:.9; letter-spacing:.2px;}
+        @keyframes __spin { to { transform: rotate(360deg); } }
+      `;
+      var styleEl = document.createElement("style");
+      styleEl.setAttribute("data-loader-style", "");
+      styleEl.textContent = css;
+      document.head.appendChild(styleEl);
+
+      var overlay = document.createElement("div");
+      overlay.id = "__page_loader";
+      overlay.setAttribute("role", "status");
+      overlay.setAttribute("aria-live", "polite");
+      overlay.innerHTML =
+        '<div id="__loader_inner" aria-label="페이지 로딩 중">' +
+        '<div id="__spinner" aria-hidden="true"></div>' +
+        (brandText ? '<div id="__brand">' + brandText + "</div>" : "") +
+        "</div>";
+
+      function mount() {
+        if (!document.body) { requestAnimationFrame(mount); return; }
+        document.documentElement.classList.add("__no_scroll");
+        document.body.appendChild(overlay);
+      }
+      mount();
+
+      var shownAt = Date.now();
+      var hidden = false;
+
+      function cleanup() {
+        if (hidden) return;
+        hidden = true;
+        overlay.classList.add("__hide");
+        overlay.addEventListener("transitionend", function () {
+          overlay.remove();
+          styleEl.remove();
+          document.documentElement.classList.remove("__no_scroll");
+        }, { once: true });
+      }
+
+      window.hidePageLoader = function () {
+        var elapsed = Date.now() - shownAt;
+        var delay = Math.max(0, minShowMs - elapsed);
+        setTimeout(cleanup, delay);
+      };
+
+      window.addEventListener("load", function () {
+        window.hidePageLoader();
+      });
+
+      setTimeout(function () {
+        if (document.getElementById("__page_loader")) window.hidePageLoader();
+      }, safetyTimeoutMs);
+    })();
+  </script>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; -ms-overflow-style: none; }
+    ::-webkit-scrollbar { display: none;}
+  </style>
+</head>
+<style>
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      letter-spacing: -0.02em;
+      overflow-x: hidden;
+      background-color: #171717 !important; 
+    }
+
+    html, body {
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    #about {
+      overflow: clip;
+    }
+
+    #Anonymous {
+      contain: paint;
+    }
+
+    #faq h2 {
+      color: #ffffff;
+    }
+
+    #faq details summary {
+      color: #757575;
+    }
+
+    #faq h3 {
+      color: #cbcbcb;
+    }
+
+    #faq .space-y-4 details summary {
+      color: #949494;
+    }
+
+    #faq .space-y-4 details .group summary span {
+      color: #ededed;
+    }
+
+    #faq details div p{
+      color:#bdbdbd;
+    }
+    
+    #faq details div ul li {
+      color: #acacac;
+    }
+
+    #faq details {
+      border-color: #d1d5db;
+    }
+
+    #faq a {
+      color: #2563eb;
+    }
+
+    
+    #sksdbswndnjsdlekz span {
+        display: inline-block;
+        white-space: nowrap; 
+        letter-spacing: -0.05em;
+        word-spacing: 0; 
+        -webkit-text-size-adjust: none; 
+    }
+
+</style>
+<script>
+      const defaultSettings = {
+        theme: 'system'
+      };
+
+      function loadSettings() {
+        const saved = localStorage.getItem('sjinside_settings');
+        return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+      }
+
+      function applyTheme(theme) {
+        const body = document.body;
+        body.classList.remove('dark-theme');
+        
+        if (theme === 'dark') {
+          body.classList.add('dark-theme');
+        } else if (theme === 'system') {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add('dark-theme');
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const settings = loadSettings();
+        applyTheme(settings.theme);
+        
+        if (window.matchMedia) {
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (loadSettings().theme === 'system') {
+              applyTheme('system');
+            }
+          });
+        }
+      });
+</script>
+
+
+<body class="bg-gray-100 min-h-screen">
+  <style>
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      border-radius: 0.375rem;
+      overflow: hidden;
+    }
+
+    .list-group-item {
+      position: relative;
+      display: block;
+      padding: 0.75rem 1.25rem;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      color: #212529;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out, transform 0.2s ease;
+    }
+
+    .list-group-item + .list-group-item {
+      border-top: none;
+    }
+
+    .header-glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+
+    .list-group-item:hover {
+      z-index: 1;
+      background-color: #f8f9fa;
+      font-weight: bold;
+      transform: scale(1.01);
+    }
+
+    .list-group-item:active {
+      background-color: #e9ecef;
+    }
+
+    #popMenu {
+      position: absolute;
+      display: none;
+      width: 280px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border-radius: 0.5rem;
+      z-index: 9999;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      animation: fadeInSlide 0.3s ease forwards;
+    }
+
+
+
+    .break-keep {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+
+
+#scrollNav {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    z-index: 50;
+    transition: all 0.3s ease;
+}
+
+#scrollNav span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: font-size 0.3s ease, color 0.3s ease;
+}
+
+#scrollNav .w-3.h-3 {
+    width: 0.9rem;
+    height: 0.9rem;
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
+}
+
+#scrollNav .active div {
+    background-color: white;
+    transform: scale(1.6);
+}
+
+#scrollNav .active span {
+    color: white;
+    font-size: 1.2rem; 
+    font-weight: 600;
+}
+
+@media (max-width: 1180px) {
+    #scrollNav {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0.8rem 0;
+        background: linear-gradient(to top, rgba(23,23,23,0.95), rgba(23,23,23,0));
+        backdrop-filter: blur(12px);
+    }
+
+    #scrollNav > div {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    #scrollNav span {
+        font-size: 0.8rem;
+    }
+
+    #scrollNav .w-3.h-3 {
+        width: 0.7rem;
+        height: 0.7rem;
+    }
+
+    #scrollNav .active div {
+        transform: scale(1.4);
+    }
+
+    #scrollNav .active span {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 640px) {
+        #scrollNav span {
+            font-size: 0.7rem;
+        }
+        #scrollNav .w-3.h-3 {
+            width: 0.55rem;
+            height: 0.55rem;
+        }
+
+        #scrollNav .active div {
+            transform: scale(1.25);
+        }
+
+        #scrollNav .active span {
+            font-size: 0.85rem;
+        }
+    }
+}
+
+  </style>
+
+  <div id="popMenu" class="list-group">
+    <div class="list-group-item" data-action="reload">🔄 새로고침</div>
+    <hr style="margin: 0">
+    <a href="/" class="list-group-item list-group-item-action">🏠 홈으로 가기</a>
+    <a href="/info" class="list-group-item list-group-item-action">📘 소개 및 이용규칙</a>
+    <a href="/history" class="list-group-item list-group-item-action">📊 통계 및 정보</a>
+    <a href="https://buymeacoffee.com/sjinside" class="list-group-item list-group-item-action">☕ 후원하기</a>
+  </div>
+
+  <script>
+    const popMenu = document.getElementById('popMenu');
+
+    document.addEventListener('contextmenu', e => {
+      const settings = JSON.parse(localStorage.getItem('sjinside_settings') || '{}');
+      if (settings.rightClickEnabled === false) {
+        return;
+      }
+
+      e.preventDefault();
+
+      popMenu.style.display = 'block';
+      popMenu.style.visibility = 'hidden';
+
+      const menuWidth = popMenu.offsetWidth;
+      const menuHeight = popMenu.offsetHeight;
+
+      let left = e.pageX + 5;
+      let top = e.pageY + 5;
+
+      const maxLeft = window.scrollX + window.innerWidth - menuWidth - 10;
+      const maxTop = window.scrollY + window.innerHeight - menuHeight - 10;
+
+      if (left > maxLeft) left = maxLeft;
+      if (top > maxTop) top = maxTop;
+
+      popMenu.style.left = `${left}px`;
+      popMenu.style.top = `${top}px`;
+
+      popMenu.style.visibility = 'visible';
+      popMenu.style.animation = 'none';
+      void popMenu.offsetHeight;
+      popMenu.style.animation = 'fadeInSlide 0.3s ease forwards';
+    });
+
+    popMenu.addEventListener('click', async e => {
+      const action = e.target.dataset.action;
+      if (!action) return;
+
+      try {
+        if (action === 'reload') {
+          location.reload();
+        } else if (action === 'settings') {
+          openSettingsModal();
+        }
+      } catch (err) {
+        console.error(err);
+        alert('작업을 수행할 수 없습니다. 브라우저 보안 정책 또는 HTTPS 확인 필요.');
+      } finally {
+        popMenu.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (!popMenu.contains(e.target)) {
+        popMenu.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      popMenu.style.display = 'none';
+    });
+
+    window.addEventListener('scroll', () => {
+      popMenu.style.display = 'none';
+    });
+  </script>
+
+
+<header id="mainHeader"
+  class="fixed top-0 left-0 w-full z-50
+         header-glass
+         py-4 px-6
+         flex items-center justify-between
+         transition-all duration-500
+         -translate-y-full opacity-0">
+
+
+    <div class="flex items-center space-x-4">
+      <a href="https://commu.world">
+        <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
+      </a>
+    </div>
+  </header>
+<div id="scrollNav" class="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-4 z-50">
+  <div class="flex items-center gap-2 cursor-pointer" data-target="hero">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">Hero</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="about">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">About</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="guidelines">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">Guideline</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="faq">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">FAQ</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="fvSection">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">시작하기</span>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navItems = document.querySelectorAll('#scrollNav > div');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetEl = document.getElementById(item.dataset.target);
+      if (!targetEl) return;
+
+      const rect = targetEl.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetY = rect.top + scrollTop - window.innerHeight / 2 + rect.height / 2;
+
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.25 };
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const navItem = document.querySelector(`#scrollNav > div[data-target="${entry.target.id}"]`);
+      if (!navItem) return;
+
+      if (entry.isIntersecting) {
+        navItems.forEach(i => i.classList.remove('active'));
+        navItem.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  navItems.forEach(item => {
+    const section = document.getElementById(item.dataset.target);
+    if (section) observer.observe(section);
+  });
+});
+
+</script>
+<section id="hero"
+  class="h-screen flex flex-col items-center justify-center
+         text-center bg-neutral-900 break-keep">
+
+  <h1 id="sksdbswndnjsdlekz"
+    class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-100">
+
+<span class="relative inline-block align-bottom">
+  <span id="rotate-wrapper"
+        class="inline-flex duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden items-center justify-center">
+    <span id="rotate-word" class="inline-block whitespace-nowrap">
+      로그인
+    </span>
+  </span>
+</span>
+
+<span id="line-break-point"> 없이, 바로 익명.</span>
+
+
+    <br class="desktop-break" />
+
+<span class="text-gray-300 mt-3 block">
+  <span class="animate-flip">상정</span>인사이드.
+</span>
+
+  </h1>
+<div class="mt-14 shine">
+<a
+  href="javascript:startSite()"
+  class="
+    inline-flex items-center gap-2
+    px-8 py-3
+    rounded-full
+    text-sm sm:text-base
+    font-medium
+    border border-neutral-700
+    bg-neutral-800/60
+    backdrop-blur
+    transition-all duration-300
+    hover:bg-neutral-700/70
+    hover:scale-[1.02]
+    active:scale-[0.98]
+  "
+>
+  <span class="shine-soft" data-text="지금, 익명으로 시작하기">
+  지금, 익명으로 시작하기
+</span>
+
+  <svg class="w-4 h-4 opacity-70 text-neutral-300" fill="none" stroke="currentColor" stroke-width="2"
+    viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+  </svg>
+</a>
+
+</div>
+<p class="mt-2 text-xs sm:text-sm text-gray-500" id="윤주원개존잘">
+  지금까지 <span id="total-thoughts">0</span>개의 생각이 공유되었습니다.</p>
+<div class="mt-24 flex flex-col items-center text-gray-400 animate-bounce">
+  <span class="text-base sm:text-lg font-medium tracking-wide" id="hello-sajung">
+    스크롤하여 더 알아보기
+  </span>
+  <svg class="w-8 h-8 mt-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+       viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+  </svg>
+</div>
+</section>
+<script>
+async function loadThoughtCount() {
+  try {
+    const [postRes, commentRes] = await Promise.all([
+      fetch('/post_count'),
+      fetch('/comment_count')
+    ]);
+
+    const postData = await postRes.json();
+    const commentData = await commentRes.json();
+
+    if (postData.success && commentData.success) {
+      const totalGoal = postData.count + commentData.count;
+      animateCount('total-thoughts', totalGoal, 2000);
+    }
+  } catch (err) {
+    console.error("데이터를 불러오지 못했습니다:", err);
+    document.getElementById('윤주원개존잘').innerHTML = "지금까지 공유된 생각의 수를 불러올 수 없습니다.<br>이 에러가 새로고침 후에도 계속된다면, <a href='/report' class='text-blue-500'>버그 발견 및 사용자 신고</a>에서 제보해주세요."; 
+  }
+}
+function animateCount(id, target, duration) {
+  const element = document.getElementById(id);
+  let startTimestamp = null;
+  let lastValue = 0;
+
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const ease = progress * progress * progress * (progress * (6 * progress - 15) + 10);
+    const value = ease * target;
+    lastValue += (value - lastValue) * 0.12;
+    element.innerText = Math.round(lastValue).toLocaleString();
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      element.innerText = target.toLocaleString();
+    }
+  };
+
+  requestAnimationFrame(step);
+}
+window.addEventListener('DOMContentLoaded', () => {
+  loadThoughtCount();
+});
+</script>
+<script>
+(function() {
+    const targetId = 'sj-floating-footer';
+    
+    function createLinks() {
+        if (document.getElementById(targetId)) return;
+
+        const div = document.createElement('div');
+        div.id = targetId;
+        
+        const updatePosition = () => {
+            const isMobileView = window.innerWidth <= 1180;
+            const isShortHeight = window.innerHeight <= 800;
+
+            if (isShortHeight) {
+                div.style.display = 'none';
+                return;
+            } else {
+                div.style.display = 'flex';
+            }
+
+            div.style.bottom = isMobileView ? '100px' : '40px';
+        };
+
+        div.style.cssText = `
+            position: fixed !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 999999 !important;
+            background: rgba(23, 23, 23, 0.6) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 12px 20px !important;
+            border-radius: 24px !important;
+            width: auto !important;
+            min-width: 280px !important;
+            max-width: 85vw !important;
+            pointer-events: auto !important;
+            transition: opacity 0.4s ease, visibility 0.4s ease, bottom 0.3s ease !important;
+            opacity: 1;
+            visibility: visible;
+            text-align: center !important;
+        `;
+
+        updatePosition();
+
+        div.innerHTML = `
+            <div style="font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 6px; letter-spacing: -0.02em; font-weight: 300; width: 100%; text-align: center;">
+                 상정인사이드 - 자유로운 토론 커뮤니티
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: clamp(10px, 3vw, 16px); width: 100%;">
+                <span style="cursor:pointer; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 500; white-space: nowrap;" 
+                      onclick="location.href='/term'">개인정보처리방침</span>
+                <i style="width: 1px; height: 10px; background: rgba(255,255,255,0.15); flex-shrink: 0;"></i>
+                <span style="cursor:pointer; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 500; white-space: nowrap;" 
+                      onclick="location.href='/service-terms'">서비스 이용약관</span>
+                <i style="width: 1px; height: 10px; background: rgba(255,255,255,0.8); flex-shrink: 0;"></i>
+                <span style="cursor:pointer; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 500; white-space: nowrap;" 
+                      onclick="location.href='/history'">서비스 통계</span>
+            </div>
+        `;
+        
+        document.body.appendChild(div);
+
+        window.addEventListener('resize', updatePosition);
+        handleScroll();
+    }
+
+    function handleScroll() {
+        const el = document.getElementById(targetId);
+        const hero = document.getElementById('hero');
+        if (!el || !hero) return;
+
+        if (window.innerHeight <= 800) return; 
+
+        const heroHeight = hero.offsetHeight;
+        const scrollY = window.scrollY;
+        
+        const startFade = heroHeight * 0.4;
+        const endFade = heroHeight * 0.8;
+        
+        if (scrollY <= startFade) {
+            el.style.opacity = "1";
+            el.style.visibility = "visible";
+        } else if (scrollY > startFade && scrollY < endFade) {
+            const opacity = 1 - (scrollY - startFade) / (endFade - startFade);
+            el.style.opacity = opacity.toString();
+            el.style.visibility = "visible";
+        } else {
+            el.style.opacity = "0";
+            el.style.visibility = "hidden";
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    createLinks();
+
+    const observer = new MutationObserver(() => { if (!document.getElementById(targetId)) createLinks(); });
+    observer.observe(document.body, { childList: true, subtree: true });
+    setInterval(() => { if (!document.getElementById(targetId)) createLinks(); }, 1000);
+})();
+</script>
+<style>
+#rotate-wrapper {
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  vertical-align: bottom;
+}
+
+.rotate-enter {
+  animation: rotateIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rotate-exit {
+  animation: rotateOut 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes rotateIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes rotateOut {
+  from { transform: translateY(0); opacity: 1; }
+  to   { transform: translateY(-20px); opacity: 0; }
+}
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const words = ["로그인", "회원가입", "추적", "본인인증", "비밀번호", "계정생성", "내 정보", "복잡함", "개인정보", "귀찮음", "가입절차", "인증절차", "번거로움", "불편함", "위치추적", "전화번호", "실명", "이메일", "보안문제", "앱 설치", "로그아웃"];
+  const el = document.getElementById("rotate-word");
+  const wrapper = document.getElementById("rotate-wrapper");
+  let index = 0;
+  wrapper.style.width = el.offsetWidth + "px";
+
+  function rotateText() {
+    el.classList.remove("rotate-enter");
+    el.classList.add("rotate-exit");
+
+    setTimeout(() => {
+      index = (index + 1) % words.length;
+      el.textContent = words[index];
+      wrapper.style.width = el.offsetWidth + "px";
+      el.classList.remove("rotate-exit");
+      el.classList.add("rotate-enter");
+      setTimeout(rotateText, 2000);
+    }, 500); 
+  }
+  setTimeout(rotateText, 1000);
+});
+</script>
+
+<style>
+.shine-soft {
+  position: relative;
+  display: inline-block;
+  color: #e5e7eb;
+}
+
+.shine-soft::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+
+  color: transparent;
+  background: linear-gradient(
+    110deg,
+    transparent 40%,
+    rgba(255,255,255,0.8) 50%,
+    transparent 60%
+  );
+
+  background-size: 200% 100%;
+  background-position: -150% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.75));
+  opacity: 0;
+  pointer-events: none;
+}
+a:hover .shine-soft::after {
+  opacity: 1;
+  animation: shine-text-only 1.4s ease-out forwards;
+}
+
+@keyframes shine-text-only {
+  from {
+    background-position: -150% 0;
+  }
+  to {
+    background-position: 150% 0;
+  }
+}
+
+:root {
+  --scale-target: 1.7;
+  --translate-y-from: -1.17vw;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --scale-target: 1.3; 
+    --translate-y-from: -15px;
+  }
+}
+
+.grow-container {
+  position: absolute;
+  left: 50%;         
+  top: 100px; 
+}
+
+@keyframes growFromTop {
+  0% {
+    transform: scale(0.9) translateY(var(--translate-y-from));
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(var(--scale-target)) translateY(0);
+    opacity: 1;
+  }
+}
+
+.grow-init {
+  opacity: 0.3;
+  transform: scale(0.9) translateY(var(--translate-y-from));
+  transform-origin: top left;
+  will-change: transform, opacity;
+}
+
+.animate-grow {
+  animation: growFromTop 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+
+
+#random-author {
+  display: inline-block;
+  transition: all 0.2s ease-out;
+  position: relative;
+  min-width: 1rem;
+}
+
+.author-change {
+  opacity: 0.5;
+  transform: translateY(-2px);
+  color: #3b82f6; 
+}
+
+#Anonymous .grow-init {
+  opacity: 0;
+  transform: scale(0.9) translateY(var(--translate-y-from, 20px));
+  transform-origin: top left;
+  will-change: transform, opacity;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 45%,  
+    rgba(0, 0, 0, 0.6) 65%,  
+    rgba(0, 0, 0, 0.15) 85%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 45%,
+    rgba(0, 0, 0, 0.6) 65%,
+    rgba(0, 0, 0, 0.15) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+#Anonymous {
+  position: relative; 
+}
+
+.animate-grow {
+  animation: growFromTop 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+.desc-text {
+  word-break: keep-all; 
+  letter-spacing: -0.02em; 
+  line-height: 1.8; 
+}
+
+.highlight-white {
+  color: #ffffff;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-white::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(59, 130, 246, 0.2);
+  z-index: -1;
+}
+
+
+#Anonymous p{
+  color: #374151;
+}
+</style>
+
+<section id="why-we-cant-speak"
+  class="max-w-6xl mx-auto px-6 py-40 text-neutral-200">
+<p class="text-sm text-neutral-400 mb-4">
+  우리는 생각보다 많은 말을 삼키며 살아갑니다.
+</p>
+
+  <div class="grid grid-cols-12 gap-10 items-start">
+
+    <div class="col-span-12 md:col-span-4">
+<h2 class="text-3xl md:text-4xl font-semibold leading-tight text-neutral-100">
+  <span class="block md:inline">왜 우리는</span>
+  <span class="block md:inline"> 온라인에서 말하지 못할까?</span>
+</h2>
+
+    </div>
+
+    <div class="col-span-12 md:col-span-8 space-y-8">
+
+      <div class="flex items-center gap-4">
+        <span class="w-6 text-xs text-neutral-500">01</span>
+<div
+  class="
+    flex-1
+    h-px
+    bg-neutral-700/60
+    max-w-[220px]
+    [@media(max-width:1490px)]:max-w-[80px]
+    [@media(max-width:768px)]:hidden
+  "
+></div>
+
+        <p class="text-lg text-neutral-300">닉네임이 남는다</p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <span class="w-6 text-xs text-neutral-500">02</span>
+<div
+  class="
+    flex-1
+    h-px
+    bg-neutral-700/60
+    max-w-[220px]
+    [@media(max-width:1490px)]:max-w-[80px]
+    [@media(max-width:768px)]:hidden
+  "
+></div>
+
+        <p class="text-lg text-neutral-300">과거 발언이 캡쳐된다</p>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <span class="w-6 text-xs text-neutral-500">03</span>
+<div
+  class="
+    flex-1
+    h-px
+    bg-neutral-700/60
+    max-w-[220px]
+    [@media(max-width:1490px)]:max-w-[80px]
+    [@media(max-width:768px)]:hidden
+  "
+></div>
+
+        <p class="text-lg text-neutral-300">말 한마디가 정체성이 된다</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="about" class="min-h-[250vh] flex flex-col items-center justify-center
+         text-center bg-neutral-950 px-6 break-keep">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-100 mb-64">
+      상정인사이드는 단순한 커뮤니티가 아닙니다
+    </h2>
+    <div class="space-y-18 desc-text">
+  <p class="text-gray-300 text-xl sm:text-2xl my-16">
+    수많은 인기 커뮤니티들과는 다르게,<br />
+    <span class="highlight-white text-white">상정인사이드는 익명성</span>에 초점을 둡니다.
+  </p><p class="text-gray-300 my-16">
+  이곳에서는, 작성자조차 고정되지 않습니다.
+</p>
+    </div>
+    <div id="Anonymous" class="mt-0 min-h-[50vh] text-left">
+      <div class="bg-white rounded shadow p-4 grow-init" data-post-id="1">
+        <h3 class="text-lg font-bold text-gray-800">ㅎㅇㅎㅇ</h3>
+        <p class="text-gray-700 my-2 break-words w-full">안녕하세요!</p>
+        <div class="text-xs text-gray-500 mb-2">작성자: <span id="random-author">7e5b8b92</span> · <time datetime="2025-04-24T14:51:50.189989">2025-04-24 14:51</time></div>
+            <div class="flex gap-2 mb-2"><button class="bg-green-500 text-white px-2 py-1 rounded">추천 (12)</button>
+                <button class="bg-red-500 text-white px-2 py-1 rounded">비추천 (0)</button>
+            </div>
+            <div class="border-t pt-2 space-y-3"><div class="text-sm font-semibold">댓글</div>
+            
+            </div><div class="flex gap-3 w-full items-baseline">
+
+            <form class="flex gap-2 mt-2 w-full">
+                <input type="text" placeholder="댓글 작성" class="flex-1 w-full border px-2 py-1 rounded" autocomplete="off" disabled="">
+                <button type="button" class="bg-blue-500 text-white px-3 py-1 rounded">
+                    작성
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<div class="space-y-12 desc-text">
+
+  <div class="py-4">
+    <p class="text-gray-400 text-lg">
+      매일, 매시간 바뀌는 ID.<br />
+      누가 누구인지 특정할 수 없는 환경을 제공합니다.
+    </p>
+  </div>
+
+  <p class="mt-20 text-2xl sm:text-2xl text-white font-light">
+    당신의 ID는 끊임없이 변화하며, <br  />
+    그 누구도 당신의 과거 발언을 <span class="highlight-white text-white">추적</span>하거나<br />
+    현재의 당신을 <span class="highlight-white text-white">특정</span>할 수 없습니다.
+  </p>
+
+  <p class="text-gray-300 text-xl sm:text-2xl">
+    <span class="highlight-white text-white">익명이라는 자유</span> 속에서,<br />
+    누구나 자신의 목소리를 은밀하게 낼 수 있습니다.
+  </p>
+</div>
+<p class="mt-32 mb-16 text-sm sm:text-base text-gray-400">
+    —  단, 경찰·정부 지침에 따른 합법적 요청 시에는 예외가 있을 수 있습니다.</p>
+  </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.querySelector('#Anonymous .bg-white');
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        target.classList.add('animate-grow');
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.3 }
+  );
+  observer.observe(target);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.querySelector('#Anonymous .bg-white');
+  const authorSpan = document.getElementById('random-author');
+  const generateRandomID = () => Math.random().toString(16).substring(2, 10);
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        target.classList.add('animate-grow');
+        setInterval(() => {
+          authorSpan.classList.add('author-change');
+          setTimeout(() => {
+            authorSpan.textContent = generateRandomID();
+            authorSpan.classList.remove('author-change');
+          }, 100); 
+        }, 500);
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.3 }
+  );
+  observer.observe(target);
+});
+</script>
+
+<section id="features" class="py-40 bg-neutral-950 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-24">
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white">
+        상정인사이드를 더 편하게 쓰는 방법
+      </h2>
+      <p class="mt-4 text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto">
+        복잡한 설명 없이, 직접 보면 바로 이해되는 핵심 기능만 담았습니다.
+      </p>
+    </div>
+    <div class="swiper featureSwiper">
+      <div class="swiper-wrapper">
+  <div class="feature-swipe-hint" id="feature-swipe-hint" aria-hidden="true">
+    <div class="feature-swipe-hint-inner">
+      <svg class="feature-swipe-hint-icon" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="92" cy="20" r="8" fill="currentColor" class="feature-swipe-hint-finger"/>
+      </svg>
+      <p>넘겨보세요!</p>
+    </div>
+  </div>
+<div class="swiper-slide">
+  <div class="feature-card feature-activity-card">
+    <h3 class="text-2xl font-bold text-white mb-4">내 활동</h3>
+    <p class="text-neutral-400 leading-relaxed mb-6">
+      매시간 바뀌는 익명 ID와 함께,
+      <span class="text-white font-semibold">내 활동</span>에서
+      현재 접속한 <span class="text-white font-semibold">내 IP 대역 기준</span>
+      게시물과 댓글을 확인할 수 있습니다.
+    </p>
+    <div class="feature-activity-preview-wrap">
+      <div class="feature-activity-preview-card feature-activity-grow-init" id="feature-activity-preview-card">
+        <div class="feature-activity-preview-top">
+          <div>
+            <h4 class="feature-activity-post-title">내 활동</h4>
+            <p class="feature-activity-post-desc">내가 남긴 흔적을 한눈에</p>
+          </div>
+        </div>
+        <div class="feature-activity-post-body">
+          <p class="feature-activity-post-text mb-3">
+            현재 접속 중인 IP 대역에서 작성한 게시물과 댓글을 모아볼 수 있습니다.
+          </p>
+          <div class="feature-activity-ip-box">
+            <span class="feature-activity-ip-label">IP 대역</span>
+            <span class="feature-activity-ip-value" id="feature-activity-ip-band">123.45.***.***</span>
+          </div>
+          <div class="feature-activity-actions">
+            <button type="button">게시물 2개</button>
+            <button type="button">댓글 5개</button>
+          </div>
+          <div class="feature-activity-comments">
+            <div class="feature-activity-comment">
+              <span class="feature-activity-comment-prefix">ㄴ</span>
+              <span class="feature-activity-comment-line feature-activity-w1"></span>
+            </div>
+            <div class="feature-activity-comment">
+              <span class="feature-activity-comment-prefix">ㄴ</span>
+              <span class="feature-activity-comment-line feature-activity-w2"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swiper-slide">
+  <div class="feature-card feature-censor-real-card">
+    <h3 class="text-2xl font-bold text-white mb-4">검열 기능</h3>
+    <p class="text-neutral-400 mb-6 leading-relaxed">
+      <span class="text-white font-semibold">보기 불편한 표현</span>을 자동으로 가려 더 <span class="text-white font-semibold">편안하게</span> 글을 볼 수 있어요.
+      설정에서 직접 켜고 끌 수 있는 선택형 기능입니다.
+    </p>
+    <div class="feature-censor-real-demo" id="feature-censor-real-demo">
+      <div class="feature-censor-post-layer" id="feature-censor-post-layer">
+        <div class="feature-censor-anonymous mt-0 min-h-[50vh] text-left">
+          <div class="bg-white rounded shadow p-4 feature-censor-post-box" data-post-id="1">
+            <h3 class="text-lg font-bold text-gray-800">ㅎㅇㅎㅇ</h3>
+            <p class="text-xs sm:text-sm md:text-base text-gray-700 my-2 break-words w-full feature-censor-target-text">
+              안녕하세요
+              <span class="feature-censor-word" data-original="멍청이">멍청이</span>!
+              진짜
+              <span class="feature-censor-word" data-original="바보">바보</span>
+              같아요
+            </p>
+            <div class="text-xs text-gray-500 mb-2">
+              작성자: anonymous ·
+              <time datetime="2025-04-24T14:51:50.189989">2025-04-24 14:51</time>
+            </div>
+            <div class="flex gap-2 mb-2">
+              <button class="bg-green-500 text-white px-2 py-1 rounded">추천 (12)</button>
+              <button class="bg-red-500 text-white px-2 py-1 rounded">비추천 (0)</button>
+            </div>
+            <div class="border-t pt-2 space-y-3">
+              <div class="text-sm font-semibold">댓글</div>
+            </div>
+            <div class="flex gap-3 w-full items-baseline">
+              <form class="flex gap-2 mt-2 w-full">
+                <input type="text" placeholder="댓글 작성" class="flex-1 w-full border px-2 py-1 rounded" autocomplete="off" disabled>
+                <button type="button" class="bg-blue-500 text-white px-3 py-1 rounded">
+                  작성
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-censor-settings-overlay settings-modal active" id="feature-censor-settings-modal">
+        <div class="settings-content" id="feature-censor-settings-content">
+          <div class="feature-censor-settings-scroll" id="feature-censor-settings-scroll">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold">설정</h2>
+              <button class="text-gray-500 hover:text-gray-700 text-2xl" type="button">×</button>
+            </div>
+            <div class="space-y-2">
+              <div class="settings-item">
+                <h3 class="font-semibold">빠른설정</h3>
+                <select class="theme-select" disabled>
+                  <option>선택 안 함</option>
+                </select>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">우클릭 메뉴</h3>
+                  <p class="text-sm text-gray-600">우클릭 컨텍스트 메뉴를 활성화합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">정보 실시간 반영</h3>
+                  <p class="text-sm text-gray-600">통계 및 정보를 실시간으로 업데이트합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item feature-censor-settings-target" id="feature-censor-settings-target">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="font-semibold">검열 기능</h3>
+                  </div>
+                  <p class="text-sm text-gray-600">비속어나 부적절한 단어를 자동으로 필터링합니다</p>
+                </div>
+                <div id="feature-censor-toggle" class="toggle-switch"></div>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">이미지 및 링크 파싱</h3>
+                  <p class="text-sm text-gray-600">본문 내 URL을 이미지나 링크로 변환합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">댓글 접기</h3>
+                  <p class="text-sm text-gray-600">기본 댓글 표시 개수를 설정합니다</p>
+                </div>
+                <select class="theme-select">
+                  <option>10개</option>
+                </select>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">댓글 상태 초기화</h3>
+                  <p class="text-sm text-gray-600">페이지 새로고침 시 더보기 상태를 초기화합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item flex justify-between items-center gap-6">
+                <div>
+                  <h3 class="font-semibold">첫 사용자 페이지 다시보기</h3>
+                  <p class="text-sm text-gray-600">첫 접속 시 보였던 안내/랜딩 페이지를 다시 활성화합니다</p>
+                </div>
+                <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-md transition-colors border border-gray-300 whitespace-nowrap">
+                  다시보기 적용
+                </button>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-end items-center space-x-2 whitespace-nowrap flex-nowrap">
+              <p class="text-xs text-gray-600 mr-4 whitespace-normal feature-censor-helptext">
+                선택을 마친 후에는 반드시 '적용' 버튼을 눌러야 변경 내용이 적용되고 유지됩니다.
+              </p>
+              <button class="px-4 py-2 text-gray-600 hover:text-gray-800 whitespace-nowrap" type="button">초기화</button>
+              <button id="feature-censor-save" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 whitespace-nowrap" type="button">적용</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="swiper-slide">
+  <div class="feature-card feature-realtime-real-card">
+    <h3 class="text-2xl font-bold text-white mb-4">정보 실시간 반영</h3>
+    <p class="text-neutral-400 mb-6 leading-relaxed">
+      설정에서 <span class="text-white font-semibold">정보 실시간 반영</span>을 켜고 적용하면,
+      추천, 비추천, 댓글 변화가 <span class="text-white font-semibold">새로고침 없이</span> 바로 반영돼요.
+    </p>
+    <div class="feature-realtime-real-demo" id="feature-realtime-real-demo">
+      <div class="feature-realtime-post-layer" id="feature-realtime-post-layer">
+        <div class="feature-realtime-anonymous mt-0 min-h-[50vh] text-left">
+          <div class="bg-white rounded shadow p-4 feature-realtime-post-box" data-post-id="1">
+            <h3 class="text-lg font-bold text-gray-800">실시간 반영 테스트</h3>
+            <p class="text-gray-700 my-2 break-words w-full">
+              추천과 비추천 수가 새로고침 없이 바로 반영됩니다.
+            </p>
+            <div class="text-xs text-gray-500 mb-2">
+              작성자: anonymous ·
+              <time datetime="2025-04-24T14:51:50.189989">2025-04-24 14:51</time>
+            </div>
+            <div class="flex gap-2 mb-2">
+              <button class="bg-green-500 text-white px-2 py-1 rounded">
+                추천 (<span id="feature-realtime-like-count">12</span>)
+              </button>
+              <button class="bg-red-500 text-white px-2 py-1 rounded">
+                비추천 (<span id="feature-realtime-dislike-count">0</span>)
+              </button>
+            </div>
+            <div class="border-t pt-2 space-y-3">
+              <div class="text-sm font-semibold">댓글</div>
+            </div>
+            <div class="flex gap-3 w-full items-baseline">
+              <form class="flex gap-2 mt-2 w-full">
+                <input type="text" placeholder="댓글 작성" class="flex-1 w-full border px-2 py-1 rounded" autocomplete="off" disabled>
+                <button type="button" class="bg-blue-500 text-white px-3 py-1 rounded">
+                  작성
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="feature-realtime-settings-overlay settings-modal active" id="feature-realtime-settings-modal">
+        <div class="settings-content" id="feature-realtime-settings-content">
+          <div class="feature-realtime-settings-scroll" id="feature-realtime-settings-scroll">
+            <div class="flex justify-between items-center mb-6">
+              <h2 class="text-2xl font-bold">설정</h2>
+              <button class="text-gray-500 hover:text-gray-700 text-2xl" type="button">×</button>
+            </div>
+            <div class="space-y-2">
+              <div class="settings-item">
+                <h3 class="font-semibold">빠른설정</h3>
+                <select class="theme-select" disabled>
+                  <option>선택 안 함</option>
+                </select>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">우클릭 메뉴</h3>
+                  <p class="text-sm text-gray-600">우클릭 컨텍스트 메뉴를 활성화합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item feature-realtime-settings-target" id="feature-realtime-settings-target">
+                <div>
+                  <h3 class="font-semibold">정보 실시간 반영</h3>
+                  <p class="text-sm text-gray-600">통계 및 정보를 실시간으로 업데이트합니다</p>
+                </div>
+                <div id="feature-realtime-toggle" class="toggle-switch"></div>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">검열 기능</h3>
+                  <p class="text-sm text-gray-600">비속어나 부적절한 단어를 자동으로 필터링합니다</p>
+                </div>
+                <div class="toggle-switch" style="pointer-events:none;opacity:.6;"></div>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">이미지 및 링크 파싱</h3>
+                  <p class="text-sm text-gray-600">본문 내 URL을 이미지나 링크로 변환합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">댓글 접기</h3>
+                  <p class="text-sm text-gray-600">기본 댓글 표시 개수를 설정합니다</p>
+                </div>
+                <select class="theme-select">
+                  <option>10개</option>
+                </select>
+              </div>
+              <div class="settings-item">
+                <div>
+                  <h3 class="font-semibold">댓글 상태 초기화</h3>
+                  <p class="text-sm text-gray-600">페이지 새로고침 시 더보기 상태를 초기화합니다</p>
+                </div>
+                <div class="toggle-switch"></div>
+              </div>
+              <div class="settings-item flex justify-between items-center gap-6">
+                <div>
+                  <h3 class="font-semibold">첫 사용자 페이지 다시보기</h3>
+                  <p class="text-sm text-gray-600">첫 접속 시 보였던 안내/랜딩 페이지를 다시 활성화합니다</p>
+                </div>
+                <button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium rounded-md transition-colors border border-gray-300 whitespace-nowrap">
+                  다시보기 적용
+                </button>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-end items-center space-x-2 whitespace-nowrap flex-nowrap">
+              <p class="text-xs text-gray-600 mr-4 whitespace-normal feature-realtime-helptext">
+                선택을 마친 후에는 반드시 '적용' 버튼을 눌러야 변경 내용이 적용되고 유지됩니다.
+              </p>
+              <button class="px-4 py-2 text-gray-600 hover:text-gray-800 whitespace-nowrap" type="button">초기화</button>
+              <button id="feature-realtime-save" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 whitespace-nowrap" type="button">적용</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+<p class="mt-8 text-center text-sm text-neutral-500 max-w-2xl mx-auto leading-relaxed">
+  위 애니메이션은 기능 이해를 돕기 위한 예시 화면입니다.<br>
+  실제 화면과 세부 동작은 일부 다를 수 있습니다.
+</p>
+</section>
+<style>
+.feature-realtime-real-card {position: relative;overflow: hidden;}
+.feature-realtime-real-demo {
+  position: relative;height: 300px;border-radius: 1.4rem;overflow: hidden;background: rgba(255,255,255,.03);border: 1px solid rgba(255,255,255,.08);}
+.feature-realtime-real-card .feature-realtime-post-layer {
+  position: absolute;inset: 0;padding: 18px;display: flex;align-items: flex-end;z-index: 1;}
+.feature-realtime-real-card .feature-realtime-anonymous {width: 100%;min-height: auto !important;}
+.feature-realtime-real-card .feature-realtime-post-box {transform: translateY(18px) scale(.98);opacity: .65;transition: all .7s cubic-bezier(.22,1,.36,1);}
+.feature-realtime-real-card .feature-realtime-post-box.feature-realtime-post-show {transform: translateY(0) scale(1);opacity: 1;}
+.feature-realtime-real-card .settings-modal {position: absolute;inset: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.6);backdrop-filter: blur(10px);z-index: 3;display: flex;align-items: flex-start;justify-content: center;opacity: 1;visibility: visible;transition: opacity .35s ease, visibility .35s ease;overflow: hidden;}
+.feature-realtime-real-card .settings-modal.feature-realtime-modal-hidden {opacity: 0;visibility: hidden;}
+.feature-realtime-real-card .settings-content {background: white;border-radius: 12px;padding: 1rem;width: 88%;margin-top: 12px;box-shadow: 0 20px 40px rgba(0,0,0,0.3);transform: scale(.92);transition: transform .3s ease, opacity .45s ease;max-height: none;overflow: hidden;}
+.feature-realtime-real-card .settings-content.feature-realtime-modal-show {transform: scale(1);}
+.feature-realtime-real-card .settings-content.feature-realtime-modal-out {transform: scale(.96) translateY(-120px);opacity: 0;}
+.feature-realtime-real-card .feature-realtime-settings-scroll {transform: translateY(0);transition: transform .75s cubic-bezier(.22,1,.36,1);}
+.feature-realtime-real-card .feature-realtime-settings-scroll.feature-realtime-scroll-down {transform: translateY(-60px);}
+.feature-realtime-real-card .settings-item {display: flex;justify-content: space-between;align-items: center;padding: .75rem 0;border-bottom: 1px solid #e5e7eb;gap: 12px;}
+.feature-realtime-real-card .settings-item:last-child {border-bottom: none;}
+.feature-realtime-real-card .settings-item h3,
+.feature-realtime-real-card .settings-item .font-semibold {font-size: .9rem;}
+.feature-realtime-real-card .settings-item p {font-size: .72rem;line-height: 1.4;}
+.feature-realtime-real-card .theme-select {border: 1px solid #d1d5db;background: #fff;border-radius: 8px;padding: .45rem .6rem;font-size: .72rem;color: #374151;min-width: 70px;}
+.feature-realtime-real-card .toggle-switch {width: 38px;height: 22px;border-radius: 999px;background: #d1d5db;position: relative;flex-shrink: 0;transition: all .28s ease;}
+.feature-realtime-real-card .toggle-switch::after {content: "";position: absolute;top: 3px;left: 3px;width: 16px;height: 16px;border-radius: 999px;background: white;box-shadow: 0 2px 6px rgba(0,0,0,.18);transition: all .28s cubic-bezier(.22,1,.36,1);}
+.feature-realtime-real-card .toggle-switch.active {background: #3b82f6;}
+.feature-realtime-real-card .toggle-switch.active::after {left: 19px;}
+.feature-realtime-real-card .toggle-switch.feature-realtime-toggle-on {background: #3b82f6;box-shadow: 0 0 0 4px rgba(59,130,246,.12);}
+.feature-realtime-real-card .toggle-switch.feature-realtime-toggle-on::after {left: 19px;}
+.feature-realtime-real-card .feature-realtime-settings-target {position: relative;transition: all .28s ease;}
+.feature-realtime-real-card .feature-realtime-settings-target.feature-realtime-target-focus {background: rgba(59,130,246,.06);border-radius: 12px;padding-left: 10px;padding-right: 10px;margin-left: -10px;margin-right: -10px;}
+.feature-realtime-real-card #feature-realtime-save {transition: transform .28s ease, box-shadow .28s ease, filter .28s ease, background-color .28s ease;}
+.feature-realtime-real-card #feature-realtime-save.feature-realtime-save-press {transform: scale(.9);filter: brightness(.9);box-shadow: 0 0 0 6px rgba(59,130,246,.16);}
+.feature-realtime-real-card .feature-realtime-helptext {max-width: 190px;font-size: .64rem;}
+.feature-realtime-real-card .feature-realtime-post-box {background: #fff;border-radius: .5rem;box-shadow: 0 8px 24px rgba(0,0,0,.16);}
+.feature-realtime-real-card .feature-realtime-post-box h3 {font-size: 1rem;}
+.feature-realtime-real-card .feature-realtime-post-box p,
+.feature-realtime-real-card .feature-realtime-post-box input,
+.feature-realtime-real-card .feature-realtime-post-box button,
+.feature-realtime-real-card .feature-realtime-post-box div {font-size: .78rem;}
+.feature-realtime-real-card .feature-realtime-post-box input {min-width: 0;}
+.feature-realtime-real-card #feature-realtime-like-count,
+.feature-realtime-real-card #feature-realtime-dislike-count {display: inline-block;min-width: 10px;transition: transform .18s ease, filter .18s ease;}
+.feature-realtime-real-card .feature-realtime-count-bump {transform: scale(1.16);filter: brightness(1.08);}
+</style>
+<style>
+.feature-censor-real-card {position: relative;overflow: hidden;}
+.feature-censor-real-demo {position: relative;height: 300px;border-radius: 1.4rem;overflow: hidden;background: rgba(255,255,255,.03);border: 1px solid rgba(255,255,255,.08);}
+.feature-censor-real-card .feature-censor-post-layer {position: absolute;inset: 0;padding: 18px;display: flex;align-items: flex-end;z-index: 1;}
+.feature-censor-real-card .feature-censor-anonymous {width: 100%;min-height: auto !important;}
+.feature-censor-real-card .feature-censor-post-box {transform: translateY(18px) scale(.98);opacity: .65;transition: all .7s cubic-bezier(.22,1,.36,1);}
+.feature-censor-real-card .feature-censor-post-box.feature-censor-post-show {transform: translateY(0) scale(1);opacity: 1;}
+.feature-censor-real-card .settings-modal {position: absolute;inset: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.6);backdrop-filter: blur(10px);z-index: 3;display: flex;align-items: flex-start;justify-content: center;opacity: 1;visibility: visible;transition: opacity .35s ease, visibility .35s ease;overflow: hidden;}
+.feature-censor-real-card .settings-modal.feature-censor-modal-hidden {opacity: 0;visibility: hidden;}
+.feature-censor-real-card .settings-content {background: white;border-radius: 12px;padding: 1rem;width: 88%;margin-top: 12px;box-shadow: 0 20px 40px rgba(0,0,0,0.3);transform: scale(.92);transition: transform .3s ease, opacity .45s ease;max-height: none;overflow: hidden;}
+.feature-censor-real-card .settings-content.feature-censor-modal-show {transform: scale(1);}
+.feature-censor-real-card .settings-content.feature-censor-modal-out {transform: scale(.96) translateY(-120px);opacity: 0;}
+.feature-censor-real-card .feature-censor-settings-scroll {transform: translateY(0);transition: transform .75s cubic-bezier(.22,1,.36,1);}
+.feature-censor-real-card .feature-censor-settings-scroll.feature-censor-scroll-down {transform: translateY(-132px);}
+.feature-censor-real-card .settings-item {display: flex;justify-content: space-between;align-items: center;padding: .75rem 0;border-bottom: 1px solid #e5e7eb;gap: 12px;}
+.feature-censor-real-card .settings-item:last-child {border-bottom: none;}
+.feature-censor-real-card .settings-item h3,
+.feature-censor-real-card .settings-item .font-semibold {font-size: .9rem;}
+.feature-censor-real-card .settings-item p {font-size: .72rem;line-height: 1.4;}
+.feature-censor-real-card .theme-select {border: 1px solid #d1d5db;background: #fff;border-radius: 8px;padding: .45rem .6rem;font-size: .72rem;color: #374151;min-width: 70px;}
+.feature-censor-real-card .toggle-switch {width: 38px;height: 22px;border-radius: 999px;background: #d1d5db;position: relative;flex-shrink: 0;transition: all .28s ease;}
+.feature-censor-real-card .toggle-switch::after {content: "";position: absolute;top: 3px;left: 3px;width: 16px;height: 16px;border-radius: 999px;background: white;box-shadow: 0 2px 6px rgba(0,0,0,.18);transition: all .28s cubic-bezier(.22,1,.36,1);}
+.feature-censor-real-card .toggle-switch.active {background: #3b82f6;}
+.feature-censor-real-card .toggle-switch.active::after {left: 19px;}
+.feature-censor-real-card .toggle-switch.feature-censor-toggle-on {background: #3b82f6;box-shadow: 0 0 0 4px rgba(59,130,246,.12);}
+.feature-censor-real-card .toggle-switch.feature-censor-toggle-on::after {left: 19px;}
+.feature-censor-real-card .feature-censor-settings-target {position: relative;transition: all .28s ease;}
+.feature-censor-real-card .feature-censor-settings-target.feature-censor-target-focus {background: rgba(59,130,246,.06);border-radius: 12px;padding-left: 10px;padding-right: 10px;margin-left: -10px;margin-right: -10px;}
+.feature-censor-real-card #feature-censor-save {transition: transform .28s ease, box-shadow .28s ease, filter .28s ease, background-color .28s ease;}
+.feature-censor-real-card #feature-censor-save.feature-censor-save-press {transform: scale(.9);filter: brightness(.9);box-shadow: 0 0 0 6px rgba(59,130,246,.16);}
+.feature-censor-real-card .feature-censor-helptext {max-width: 190px;font-size: .64rem;}
+.feature-censor-real-card .feature-censor-post-box {background: #fff;border-radius: .5rem;box-shadow: 0 8px 24px rgba(0,0,0,.16);}
+.feature-censor-real-card .feature-censor-post-box h3 {font-size: 1rem;}
+.feature-censor-real-card .feature-censor-post-box p,
+.feature-censor-real-card .feature-censor-post-box input,
+.feature-censor-real-card .feature-censor-post-box button,
+.feature-censor-real-card .feature-censor-post-box div {font-size: .78rem;}
+.feature-censor-real-card .feature-censor-post-box input {min-width: 0;}
+.feature-censor-real-card .feature-censor-word {display: inline-block;font-weight: 700;color: #dc2626;transition: all .22s ease;}
+.feature-censor-real-card .feature-censor-word.feature-censor-word-hit {transform: scale(1.08);}
+.feature-censor-real-card .feature-censor-word.feature-censor-word-censored {color: #111827;background: rgba(59,130,246,.08);border-radius: 4px;padding: 0 2px;}
+</style>
+<style>
+.featureSwiper {overflow: visible;padding-bottom: 80px;}
+.swiper-pagination-bullet {width: 10px;height: 10px;background: rgba(255, 255, 255, 0.2) !important; opacity: 1 !important;transition: all 0.4s ease;margin: 0 6px !important;}
+.swiper-pagination-bullet-active {width: 30px; border-radius: 5px;background: #3b82f6 !important;}
+.featureSwiper .swiper-slide {width: 420px;transition: all .7s cubic-bezier(.25,1,.5,1);}
+@media (max-width: 767px) {
+  .featureSwiper .swiper-slide {
+    position: relative;
+  }
+
+  .featureSwiper .swiper-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    background: transparent;
+    transition: background .35s ease, backdrop-filter .35s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .featureSwiper.feature-hint-active .swiper-slide::after {
+    background: rgba(120,120,120,.22);
+    backdrop-filter: grayscale(1);
+    filter: blur(3px);
+  }
+
+  .featureSwiper.feature-hint-active .swiper-slide-active::after {
+    background: rgba(120,120,120,.12);
+  }
+}
+@media (min-width: 768px) {
+  .featureSwiper .swiper-slide {
+    filter: blur(8px);
+    opacity: .2;
+    transform: scale(.8);
+  }
+  .featureSwiper .swiper-slide-prev,
+  .featureSwiper .swiper-slide-next {
+    filter: blur(3px);
+    opacity: .5;
+    transform: scale(.9);
+  }
+  .featureSwiper .swiper-slide-active {
+    filter: blur(0);
+    opacity: 1;
+    transform: scale(1.15);
+    z-index: 10;
+  }
+}
+.featureSwiper .swiper-slide-prev,
+.featureSwiper .swiper-slide-next {  filter: blur(3px);opacity: .5;transform: scale(.9);}
+.feature-card {min-height: 380px;padding: 40px;border-radius: 2rem;background: rgba(23,23,23,.8);border: 1px solid rgba(255,255,255,.1);backdrop-filter: blur(10px);}
+</style>
+<style>
+.feature-activity-card {overflow: hidden;position: relative;}
+.feature-activity-preview-wrap {margin-top: 6px;min-height: 220px;display: flex;align-items: center;}
+.feature-activity-preview-card {width: 100%;background: #ffffff;border-radius: 1.4rem;box-shadow:0 20px 40px rgba(0,0,0,.28),0 8px 18px rgba(0,0,0,.12);padding: 18px;transform-origin: center center;opacity: 0;}
+.feature-activity-preview-top {display: flex;justify-content: space-between;align-items: flex-start;gap: 12px;margin-bottom: 14px;}
+.feature-activity-post-title {font-size: 1.05rem;font-weight: 800;color: #111827;line-height: 1.2;}
+.feature-activity-post-desc {font-size: .78rem;color: #6b7280;margin-top: 3px;}
+.feature-activity-post-text {font-size: .92rem;line-height: 1.65;color: #374151;margin-bottom: 12px;word-break: keep-all;}
+.feature-activity-meta {font-size: .78rem;color: #6b7280;margin-bottom: 14px;}
+.feature-activity-author {display: inline-block;font-weight: 800;color: #111827;min-width: 72px;transition: transform .18s ease, opacity .18s ease, filter .18s ease;}
+.feature-activity-ip-box {display: flex;align-items: center;justify-content: space-between;gap: 10px;border-radius: 14px;background: #f3f4f6;border: 1px solid #e5e7eb;padding: 10px 12px;margin-bottom: 12px;}
+.feature-activity-ip-label {font-size: .73rem;color: #6b7280;font-weight: 700;letter-spacing: .04em;}
+.feature-activity-ip-value {font-size: .82rem;color: #111827;font-weight: 800;}
+.feature-activity-actions {display: flex;gap: 8px;margin-bottom: 14px;}
+.feature-activity-actions button {border: 0;border-radius: 8px;padding: 8px 11px;font-size: .78rem;font-weight: 700;background: #2563eb;color: white;cursor: default;}
+.feature-activity-comments {border-top: 1px solid #e5e7eb;padding-top: 12px;display: flex;flex-direction: column;gap: 9px;}
+.feature-activity-comment {display: flex;align-items: center;gap: 8px;}
+.feature-activity-comment-prefix {font-size: .78rem;color: #6b7280;font-weight: 700;}
+.feature-activity-comment-line {display: inline-block;height: 8px;border-radius: 999px;background: linear-gradient(90deg, #d1d5db, #9ca3af, #d1d5db);background-size: 200% 100%;animation: featureActivityShimmer 2.4s linear infinite;}
+.feature-activity-w1 { width: 70%; }
+.feature-activity-w2 { width: 52%; }
+.feature-activity-grow-init {transform: scale(.82);opacity: 0;filter: blur(10px);}
+.feature-activity-grow-animate {animation: featureActivityGrowCard .9s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes featureActivityGrowCard {
+  0% {
+    transform: scale(.82) translateY(18px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  60% {
+    transform: scale(1.03) translateY(-4px);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes featureActivityShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes featureActivityLivePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(37,99,235,0);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(37,99,235,.18);
+  }
+}
+
+@media (max-width: 640px) {
+  .feature-activity-actions {
+    flex-wrap: wrap;
+  }
+
+  .feature-activity-ip-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+<style>
+.featureSwiper {position: relative;}
+.feature-swipe-hint {position: absolute;left: 50%;top: 48%;transform: translate(-50%, -50%);z-index: 30;pointer-events: none;opacity: 0;visibility: hidden;transition: opacity .35s ease, transform .35s ease, visibility .35s ease;}
+.feature-swipe-hint.show {opacity: 1;visibility: visible;transform: translate(-50%, -50%);}
+.feature-swipe-hint-inner {display: flex;flex-direction: column;align-items: center;gap: 10px;padding: 14px 18px;border-radius: 999px;background: rgba(90, 90, 90, 0.78);backdrop-filter: blur(10px);border: 1px solid rgba(255,255,255,.14);box-shadow: 0 10px 30px rgba(0,0,0,.20);color: white;}
+.feature-swipe-hint-inner p {margin: 0;font-size: .85rem;font-weight: 700;letter-spacing: -.02em;color: rgba(255,255,255,.92);}
+.feature-swipe-hint-icon {width: 92px;height: 30px;color: #ffffff;overflow: visible;}
+.feature-swipe-hint-icon path {opacity: .9;}
+.feature-swipe-hint-finger {animation: featureSwipeFinger 1.4s cubic-bezier(.22,1,.36,1) infinite;}
+@keyframes featureSwipeFinger {
+  0% {
+    transform: translateX(0);
+    opacity: .25;
+  }
+  20% {
+    opacity: 1;
+  }
+  70% {
+    transform: translateX(-38px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-52px);
+    opacity: 0;
+  }
+}
+@media (min-width: 768px) {
+  .feature-swipe-hint {
+    display: none !important;
+  }
+}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.getElementById('feature-activity-preview-card');
+  if (!target) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        target.classList.add('feature-activity-grow-animate');
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.35 }
+  );
+
+  observer.observe(target);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.querySelector('.feature-censor-real-card');
+  if (!root) return;
+
+  const modal = root.querySelector('#feature-censor-settings-modal');
+  const content = root.querySelector('#feature-censor-settings-content');
+  const scrollArea = root.querySelector('#feature-censor-settings-scroll');
+  const target = root.querySelector('#feature-censor-settings-target');
+  const toggle = root.querySelector('#feature-censor-toggle');
+  const saveBtn = root.querySelector('#feature-censor-save');
+  const postBox = root.querySelector('.feature-censor-post-box');
+  const words = root.querySelectorAll('.feature-censor-word');
+
+  const originals = Array.from(words).map(el => el.dataset.original || el.textContent);
+  let timers = [];
+
+  const toStars = (text) => '*'.repeat([...text].length);
+
+  function later(fn, delay) {
+    const id = setTimeout(fn, delay);
+    timers.push(id);
+  }
+
+  function clearTimers() {
+    timers.forEach(clearTimeout);
+    timers = [];
+  }
+
+  function resetDemo() {
+    clearTimers();
+
+    modal.classList.remove('feature-censor-modal-hidden');
+    content.classList.remove('feature-censor-modal-show', 'feature-censor-modal-out');
+    scrollArea.classList.remove('feature-censor-scroll-down');
+    target.classList.remove('feature-censor-target-focus');
+    toggle.classList.remove('feature-censor-toggle-on');
+    saveBtn.classList.remove('feature-censor-save-press');
+    postBox.classList.remove('feature-censor-post-show');
+
+    words.forEach((el, i) => {
+      el.textContent = originals[i];
+      el.classList.remove('feature-censor-word-hit', 'feature-censor-word-censored');
+    });
+  }
+
+  function playDemo() {
+    resetDemo();
+
+    later(() => {
+      content.classList.add('feature-censor-modal-show');
+    }, 80);
+
+    later(() => {
+      scrollArea.classList.add('feature-censor-scroll-down');
+      target.classList.add('feature-censor-target-focus');
+    }, 850);
+
+    later(() => {
+      toggle.classList.add('feature-censor-toggle-on');
+    }, 1550);
+
+    later(() => {
+      saveBtn.classList.add('feature-censor-save-press');
+    }, 2150);
+
+    later(() => {
+      saveBtn.classList.remove('feature-censor-save-press');
+    }, 2900);
+
+    later(() => {
+      content.classList.add('feature-censor-modal-out');
+    }, 3150);
+
+    later(() => {
+      modal.classList.add('feature-censor-modal-hidden');
+      postBox.classList.add('feature-censor-post-show');
+    }, 3550);
+
+    words.forEach((el, i) => {
+      later(() => {
+        el.classList.add('feature-censor-word-hit');
+      }, 3200 + i * 240);
+
+      later(() => {
+        el.textContent = toStars(originals[i]);
+        el.classList.remove('feature-censor-word-hit');
+        el.classList.add('feature-censor-word-censored');
+      }, 3860 + i * 240);
+    });
+  }
+
+  function isActive() {
+    const slide = root.closest('.swiper-slide');
+    return slide && slide.classList.contains('swiper-slide-active');
+  }
+
+  function sync() {
+    if (isActive()) playDemo();
+    else resetDemo();
+  }
+
+  function bindSwiper() {
+    const swiperEl = document.querySelector('.featureSwiper');
+    if (!swiperEl || !swiperEl.swiper) return false;
+
+    const swiper = swiperEl.swiper;
+
+    swiper.on('slideChangeTransitionStart', () => {
+      resetDemo();
+    });
+
+    swiper.on('slideChangeTransitionEnd', () => {
+      sync();
+    });
+
+    swiper.on('transitionEnd', () => {
+      sync();
+    });
+
+    setTimeout(sync, 120);
+    return true;
+  }
+
+  if (!bindSwiper()) {
+    const wait = setInterval(() => {
+      if (bindSwiper()) clearInterval(wait);
+    }, 100);
+
+    setTimeout(() => clearInterval(wait), 5000);
+  }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.querySelector('.feature-realtime-real-card');
+  if (!root) return;
+
+  const modal = root.querySelector('#feature-realtime-settings-modal');
+  const content = root.querySelector('#feature-realtime-settings-content');
+  const scrollArea = root.querySelector('#feature-realtime-settings-scroll');
+  const target = root.querySelector('#feature-realtime-settings-target');
+  const toggle = root.querySelector('#feature-realtime-toggle');
+  const saveBtn = root.querySelector('#feature-realtime-save');
+  const postBox = root.querySelector('.feature-realtime-post-box');
+  const likeEl = root.querySelector('#feature-realtime-like-count');
+  const dislikeEl = root.querySelector('#feature-realtime-dislike-count');
+
+  if (!modal || !content || !scrollArea || !target || !toggle || !saveBtn || !postBox || !likeEl || !dislikeEl) return;
+
+  let timers = [];
+  let countInterval = null;
+
+  const initialLike = 12;
+  const initialDislike = 0;
+
+  function later(fn, delay) {
+    const id = setTimeout(fn, delay);
+    timers.push(id);
+  }
+
+  function clearTimers() {
+    timers.forEach(clearTimeout);
+    timers = [];
+  }
+
+  function bump(el) {
+    el.classList.add('feature-realtime-count-bump');
+    setTimeout(() => {
+      el.classList.remove('feature-realtime-count-bump');
+    }, 180);
+  }
+
+  function startCounting() {
+    let like = initialLike;
+    let dislike = initialDislike;
+    let tick = 0;
+
+    clearInterval(countInterval);
+    countInterval = setInterval(() => {
+      tick += 1;
+      like += 1;
+      likeEl.textContent = like;
+      bump(likeEl);
+      if (tick % 4 === 0) {
+        dislike += 1;
+        dislikeEl.textContent = dislike;
+        bump(dislikeEl);
+      }
+    }, 700);
+  }
+
+  function stopCounting() {
+    clearInterval(countInterval);
+    countInterval = null;
+  }
+
+  function resetDemo() {
+    clearTimers();
+    stopCounting();
+
+    modal.classList.remove('feature-realtime-modal-hidden');
+    content.classList.remove('feature-realtime-modal-show', 'feature-realtime-modal-out');
+    scrollArea.classList.remove('feature-realtime-scroll-down');
+    target.classList.remove('feature-realtime-target-focus');
+    toggle.classList.remove('feature-realtime-toggle-on');
+    saveBtn.classList.remove('feature-realtime-save-press');
+    postBox.classList.remove('feature-realtime-post-show');
+
+    likeEl.textContent = initialLike;
+    dislikeEl.textContent = initialDislike;
+    likeEl.classList.remove('feature-realtime-count-bump');
+    dislikeEl.classList.remove('feature-realtime-count-bump');
+  }
+
+  function playDemo() {
+    resetDemo();
+
+    later(() => {
+      content.classList.add('feature-realtime-modal-show');
+    }, 80);
+
+    later(() => {
+      scrollArea.classList.add('feature-realtime-scroll-down');
+      target.classList.add('feature-realtime-target-focus');
+    }, 850);
+
+    later(() => {
+      toggle.classList.add('feature-realtime-toggle-on');
+    }, 1500);
+
+    later(() => {
+      saveBtn.classList.add('feature-realtime-save-press');
+    }, 2080);
+
+    later(() => {
+      saveBtn.classList.remove('feature-realtime-save-press');
+    }, 2850);
+
+    later(() => {
+      content.classList.add('feature-realtime-modal-out');
+    }, 3100);
+
+    later(() => {
+      modal.classList.add('feature-realtime-modal-hidden');
+      postBox.classList.add('feature-realtime-post-show');
+    }, 3500);
+
+    later(() => {
+      startCounting();
+    }, 3780);
+  }
+
+  function isActive() {
+    const slide = root.closest('.swiper-slide');
+    return slide && slide.classList.contains('swiper-slide-active');
+  }
+
+  function sync() {
+    if (isActive()) playDemo();
+    else resetDemo();
+  }
+
+  function bindSwiper() {
+    const swiperEl = document.querySelector('.featureSwiper');
+    if (!swiperEl || !swiperEl.swiper) return false;
+
+    const swiper = swiperEl.swiper;
+
+    swiper.on('slideChangeTransitionStart', () => {
+      resetDemo();
+    });
+
+    swiper.on('slideChangeTransitionEnd', () => {
+      sync();
+    });
+
+    swiper.on('transitionEnd', () => {
+      sync();
+    });
+
+    setTimeout(sync, 120);
+    return true;
+  }
+
+  if (!bindSwiper()) {
+    const wait = setInterval(() => {
+      if (bindSwiper()) clearInterval(wait);
+    }, 100);
+
+    setTimeout(() => clearInterval(wait), 5000);
+  }
+});
+</script>
+<script>
+new Swiper('.featureSwiper', {
+  slidesPerView: "auto",
+  centeredSlides: true,
+  spaceBetween: 60,
+  speed: 900,
+  grabCursor: true,
+
+
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true
+  },
+
+breakpoints: {
+  320: {
+    slidesPerView: 1,
+    spaceBetween: 0
+  },
+  768: {
+    slidesPerView: 1.8,
+    spaceBetween: 30
+  },
+  1024: {
+    slidesPerView: 2.2,
+    spaceBetween: 50
+  },
+}
+});
+</script>
+<script>
+(() => {
+  const featuresSection = document.getElementById('features');
+  const hint = document.getElementById('feature-swipe-hint');
+  const swiperEl = document.querySelector('.featureSwiper');
+
+  if (!featuresSection || !hint || !swiperEl) return;
+
+  let idleTimer = null;
+  let hasUserSwiped = false;
+  let isFeatureVisible = false;
+
+  function isMobile() {
+    return window.innerWidth < 768;
+  }
+
+  function showHint() {
+    if (!isMobile()) return;
+    if (!isFeatureVisible) return;
+    if (hasUserSwiped) return;
+
+    hint.classList.add('show');
+    swiperEl.classList.add('feature-hint-active');
+  }
+
+  function hideHint() {
+    hint.classList.remove('show');
+    swiperEl.classList.remove('feature-hint-active');
+  }
+
+  function resetIdleTimer() {
+    clearTimeout(idleTimer);
+    hideHint();
+
+    if (!isMobile()) return;
+    if (!isFeatureVisible) return;
+    if (hasUserSwiped) return;
+
+    idleTimer = setTimeout(() => {
+      showHint();
+    }, 1800);
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        isFeatureVisible = entry.isIntersecting;
+
+        if (!isFeatureVisible) {
+          hideHint();
+          clearTimeout(idleTimer);
+        } else {
+          resetIdleTimer();
+        }
+      });
+    },
+    { threshold: 0.45 }
+  );
+
+  io.observe(featuresSection);
+
+  function bindSwiperHint() {
+    if (!swiperEl.swiper) return false;
+
+    const swiper = swiperEl.swiper;
+
+    swiper.on('touchStart', () => {
+      hideHint();
+    });
+
+    swiper.on('sliderFirstMove', () => {
+      hasUserSwiped = true;
+      hideHint();
+      clearTimeout(idleTimer);
+    });
+
+    swiper.on('slideChange', () => {
+      hasUserSwiped = true;
+      hideHint();
+      clearTimeout(idleTimer);
+    });
+
+    swiper.on('tap', () => {
+      resetIdleTimer();
+    });
+
+    resetIdleTimer();
+    return true;
+  }
+
+  if (!bindSwiperHint()) {
+    const wait = setInterval(() => {
+      if (bindSwiperHint()) clearInterval(wait);
+    }, 100);
+
+    setTimeout(() => clearInterval(wait), 5000);
+  }
+
+  window.addEventListener('resize', () => {
+    hideHint();
+    resetIdleTimer();
+  }, { passive: true });
+
+  window.addEventListener('scroll', () => {
+    if (isFeatureVisible && !hasUserSwiped) {
+      resetIdleTimer();
+    }
+  }, { passive: true });
+})();
+</script>
+
+<section id="font-identity" class="font-identity-section py-44 px-6 break-keep relative">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <p class="bridge-text text-neutral-400 text-lg sm:text-xl mb-44 px-6 reveal">
+      그리고 우리는,<br />
+      <span class="text-white font-semibold">
+        글자의 형태까지 고민했습니다.
+      </span>
+    </p>
+    <span class="text-gray-500 text-sm mt-4 block my-16">
+      Sangjeong-SansKR은 현재 개발 중인 폰트입니다.<br />
+      개발 완료 후 정식 적용될 예정이며, 현재는 Noto Sans KR로 임시 대체되어 있습니다.<br /><br />
+      또한 미리보기로 제공되는 텍스트는 Sangjeong-SansKR의 실제 결과물이 아니며,<br />
+      디자인 콘셉트를 전달하기 위한 임시 시안임을 알려드립니다.
+    </span>
+    <div class="sticky-title-wrapper mb-24">
+      <p class="text-sm text-neutral-500 mb-3 reveal delay-1">
+        SangjeongInside Typeface
+      </p>
+      <h2 id="zoom-title" class="zoom-title text-4xl sm:text-6xl font-extrabold text-white mb-16">
+        Sangjeong-SansKR
+      </h2>
+    </div>
+    <span class="text-gray-500 text-sm mt-4 block">
+        폰트 미리보기 텍스트입니다.
+    </span>
+    <hr class="my-8 border-gray-500">
+
+    <div class="space-y-10 reveal delay-3">
+      <p class="font-sample opacity-95">익명 속에서 드러나는 진심</p>
+      <p class="font-sample text-2xl font-medium opacity-60">말하지 못했던 생각들</p>
+      <p class="font-sample text-xl font-normal opacity-40">여과되지 않은 문장들</p>
+    </div>
+<hr class="my-12 border-gray-500">
+    <div class="desc-text mt-44 space-y-16">
+<div class="mt-44 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-16 items-start">
+
+  <div class="space-y-16 text-right">
+    <p class="reveal text-neutral-300 text-lg sm:text-xl">
+      <span class="highlight-white">Sangjeong-SansKR</span>은<br />
+      상정인사이드의 철학에서 출발한<br />
+      전용 서체입니다.
+    </p>
+
+    <p class="reveal text-neutral-300 text-lg sm:text-xl">
+      이 서체는 ‘정상적임’을 강요하는<br />
+      익숙한 글꼴에서 한 발 물러나,<br />
+      편안함과 불편함의 경계 위에서<br />
+      형태를 잡았습니다.
+    </p>
+  </div>
+
+  <div class="reveal delay-1 w-px h-80 bg-neutral-600 mx-auto"></div>
+
+  <div class="space-y-16 text-left">
+    <div class="reveal delay-1">
+      <p class="text-2xl sm:text-3xl font-bold text-white leading-snug">
+        상정인사이드의 시선으로 <br />
+        다시 만든 글꼴
+      </p>
+    </div>
+
+    <div class="reveal delay-2">
+      <p class="text-neutral-400 text-xl">
+        과하게 둥글지 않고,<br />
+        지나치게 각지지도 않은 균형
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<p class="text-neutral-400 text-base mt-32 text-center reveal delay-3">
+  이 폰트는 길게 설명하지 않습니다.<br />
+  <span class="ending-line text-xl block mt-3">
+    읽히는 순간, 감각으로 전해집니다.
+  </span>
+  <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+
+
+
+</p>
+
+
+    </div>
+  </div>
+
+  <style>
+    .font-identity-section {
+      background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.04), transparent 60%), #0a0a0a;
+    }
+
+    .zoom-title {
+      display: inline-block;
+      will-change: transform, opacity;
+      transform: scale(8); 
+      opacity: 0;
+      transition: transform 0.1s linear, opacity 0.1s linear;
+    }
+
+    .font-identity-section .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .font-identity-section .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .font-identity-section .delay-1 { transition-delay: 0.12s; }
+    .font-identity-section .delay-2 { transition-delay: 0.24s; }
+    .font-identity-section .delay-3 { transition-delay: 0.36s; }
+
+    .font-sample {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    .highlight-white { color: white; font-weight: 600; }
+    .interactive { position: relative; }
+    .interactive::after {
+      content: ""; position: absolute; left: 0; bottom: -4px;
+      width: 100%; height: 1px; background: white;
+      opacity: 0.5; transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .interactive:hover::after { transform: scaleX(1); }
+    .ending-line { color: white; font-weight: 600; letter-spacing: -0.01em; }
+    #zoom-title {will-change: transform, opacity;transform-origin: center center;}
+  </style>
+
+<script>
+(() => {
+  const zoomTitle = document.getElementById('zoom-title');
+  const section = document.querySelector('#font-identity');
+  const reveals = document.querySelectorAll('#font-identity .reveal');
+  if (!zoomTitle || !section) return;
+  let currentScale = 8;
+  let currentOpacity = 0;
+  let targetScale = 8;
+  let targetOpacity = 0;
+  let ticking = false;
+
+  function clamp(v, min, max) {
+    return Math.min(Math.max(v, min), max);
+  }
+
+  function isMobile() {
+    return window.innerWidth < 768;
+  }
+
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function delayedProgress(t, delay = 0.25) {
+    if (t <= delay) return 0;
+    return (t - delay) / (1 - delay);
+  }
+  function updateTarget() {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const sectionHeight = rect.height;
+    const mobile = isMobile();
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const totalDistance = windowHeight + sectionHeight;
+      let rawProgress = (windowHeight - rect.top) / totalDistance;
+      rawProgress *= mobile ? 1.8 : 1.6;
+      rawProgress = clamp(rawProgress, 0, 1);
+      const delay = mobile ? 0.06 : 0.22;
+      const delayed = delayedProgress(rawProgress, delay);
+      const eased = easeOutQuart(delayed);
+      const startScale = mobile ? 5.8 : 8;
+      const endScale = 1.02;
+      targetScale = startScale - ((startScale - endScale) * eased);
+      targetOpacity = clamp(rawProgress * (mobile ? 1.35 : 1.15), 0, 1);
+    } else {
+      if (rect.top >= windowHeight) {
+        targetScale = isMobile() ? 5.8 : 8;
+        targetOpacity = 0;
+      } else {
+        targetScale = 1.02;
+        targetOpacity = 1;
+      }
+    }
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(animate);
+    }
+  }
+
+  function animate() {
+    currentScale += (targetScale - currentScale) * 0.09;
+    currentOpacity += (targetOpacity - currentOpacity) * 0.1;
+    zoomTitle.style.transform = `scale(${currentScale})`;
+    zoomTitle.style.opacity = currentOpacity;
+    const scaleDiff = Math.abs(targetScale - currentScale);
+    const opacityDiff = Math.abs(targetOpacity - currentOpacity);
+    if (scaleDiff > 0.001 || opacityDiff > 0.001) {
+      requestAnimationFrame(animate);
+    } else {
+      currentScale = targetScale;
+      currentOpacity = targetOpacity;
+      zoomTitle.style.transform = `scale(${currentScale})`;
+      zoomTitle.style.opacity = currentOpacity;
+      ticking = false;
+    }
+  }
+
+  window.addEventListener('scroll', updateTarget, { passive: true });
+  window.addEventListener('resize', updateTarget);
+  updateTarget();
+  const io = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  reveals.forEach(el => io.observe(el));
+})();
+</script>
+  <div class="section-fade-divider">
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+  <hr>
+</div>
+<style>
+.section-fade-divider {
+  margin-top: 160px;
+  margin-bottom: -120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-fade-divider hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+  transition: all 0.6s ease;
+}
+.section-fade-divider hr:nth-child(1) {
+  width: 60%;
+  margin-top: 12px;
+  opacity: 0.5;
+}
+.section-fade-divider hr:nth-child(2) {
+  width: 45%;
+  margin-top: 20px;
+  opacity: 0.4;
+}
+.section-fade-divider hr:nth-child(3) {
+  width: 32%;
+  margin-top: 32px;
+  opacity: 0.3;
+}
+.section-fade-divider hr:nth-child(4) {
+  width: 20%;
+  margin-top: 48px;
+  opacity: 0.2;
+}
+.section-fade-divider hr:nth-child(5) {
+  width: 10%;
+  margin-top: 72px;
+  opacity: 0.1;
+}
+</style>
+</section>
+
+<section id="maker" class="py-56 px-6 bg-black break-keep relative overflow-hidden">
+  <div class="max-w-4xl mx-auto space-y-28 text-left">
+
+    <div class="reveal">
+      <p class="text-sm text-neutral-500 tracking-widest">
+        그리고 마지막으로,
+      </p>
+    </div>
+
+    <div class="reveal delay-1">
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+        이 공간은<br />
+        거대한 회사가 만든 것이 아닙니다.
+      </h2>
+    </div>
+
+    <div class="reveal delay-2">
+      <p class="text-neutral-400 text-xl leading-relaxed mt-8">
+        투자도 없고,<br />
+        팀도 없고,<br />
+        기획 회의도 없었습니다.
+      </p>
+    </div>
+
+    <div class="reveal delay-3">
+      <p class="text-neutral-200 text-2xl font-light leading-relaxed">
+        단 <b>한 명</b>의 고등학생이<br />
+        처음부터 끝까지 만들었습니다.
+      </p>
+    </div>
+
+
+    <div class="reveal delay-4 mt-16">
+      <p class="text-neutral-400 text-lg leading-relaxed max-w-2xl">
+        학원이 끝난 늦은 밤,<br />
+        이해되지 않는 에러 메시지를 붙잡고<br />
+        수만 번을 고치고 다시 만들었습니다.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="max-w-2xl mx-auto text-center mt-40 space-y-20">
+
+    <div class="reveal delay-5">
+      <p class="text-neutral-400 text-lg leading-relaxed">
+        왜냐하면,<br /><br />
+        “완벽한 익명이라는 자유”가<br />
+        누군가에겐 정말로 필요하다고 믿었기 때문입니다.
+      </p>
+    </div>
+
+    <div class="reveal delay-6">
+      <p class="text-white text-2xl font-semibold leading-relaxed">
+        누군가는 말하고 싶었을 테니까요.
+      </p>
+    </div>
+
+
+    <div class="reveal delay-9 pt-24 text-neutral-600 text-sm tracking-widest leading-relaxed">
+      상정인사이드는 제 첫 번째 대형 프로젝트입니다.<br />
+      제 전문 분야는 백엔드 개발이지만, 프론트엔드부터 디자인까지<br />
+      모든 부분을 혼자서 만들었습니다.<br />
+      이 공간이 누구에게나 편안한 이야기를 나눌 수 있는 곳이 되길 바랍니다.<br /><br />
+      — 상정인사이드 제작자 
+      <a href="https://github.com/anion15" target="_blank"
+         class="inline-flex items-center gap-1 text-neutral-400 hover:text-white transition-colors">
+        anion15
+        <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18" fill="currentColor">
+          <path d="M0 0h24v24H0V0z" fill="none"/>
+          <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+        </svg>
+      </a> 올림
+    </div>
+  </div>
+</section>
+
+<style>
+  .solo-line {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+    font-size: 1.25rem;
+    color: #a3a3a3;
+  }
+
+  .solo-line.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+
+<style>
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; }
+.delay-8 { transition-delay: 0.8s; }
+.delay-9 { transition-delay: 0.9s; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const elements = document.querySelectorAll('.reveal, .solo-line');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+
+        if (entry.target.classList.contains('solo-line')) {
+          const index = Array.from(
+            document.querySelectorAll('.solo-line')
+          ).indexOf(entry.target);
+
+          entry.target.style.transitionDelay = `${index * 0.15}s`;
+        }
+
+        entry.target.classList.add('active');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  elements.forEach(el => observer.observe(el));
+});
+</script>
+
+
+
+
+
+
+
+<section id="guidelines" class="py-32 px-6 bg-neutral-900 break-keep">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-100 text-center mb-12">
+      커뮤니티 가이드라인
+    </h2>
+
+    <p class="text-gray-300 text-center leading-relaxed mb-10">
+      상정인사이드는 자유로운 표현을 존중합니다.<br />
+      하지만 모두를 위한 최소한의 규칙이 존재합니다.
+    </p>
+
+    <ul class="space-y-4 text-gray-300">
+      <li>1. 타 유저 게시물/댓글 허위 신고</li>
+      <li>2. 조롱성 게시물</li>
+      <li>3. 협박성 게시물</li>
+      <li>4. 과도한 욕설이 포함된 게시물</li>
+      <li>5. 성적인 내용 또는 불쾌감을 주는 게시물</li>
+      <li>6. 악성·불법 사이트 홍보 및 유도 게시물</li>
+      <li class="text-gray-400">그 외 사항은 관리자의 판단에 따릅니다.</li>
+    </ul>
+  </div>
+</section>
+<hr class="my-8 border-gray-500">
+<div class="min-h-[15vh]"></div>
+<section id="faq" class="mx-auto max-w-4xl px-6 py-12 sm:py-16 bg-neutral-850 break-keep">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-100 mb-8">
+        자주 묻는 질문 (FAQ)
+    </h2>
+    <p class="text-sm text-gray-400 mb-6">
+  처음 오는 분들이 가장 많이 궁금해하는 것들입니다.
+</p>
+
+
+    <details id="nodrag" class="bbb group mb-6 border rounded-lg border-gray-800 dark:border-gray-800">
+        <summary class="cursor-pointer px-5 py-5 text-lg font-medium text-gray-900 dark:text-gray-800 flex justify-between items-center">
+        전체 보기
+        <svg class="faq-main-arrow h-5 w-5 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+        </summary>
+        <div class="faq-main-content-wrapper">
+          <div class="faq-main-content px-6 pb-6 text-gray-700 dark:text-gray-300 space-y-8">
+
+        <div class="py-4">
+            <h3 class="text-xl font-semibold mt-6 mb-4">사이트 이용</h3>
+
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>여기는 어떤 사이트인가요?</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 text-gray-100">
+                        <p>
+                        상정인사이드는 당신의 일상과 생각을 나누는 공간입니다.  
+                        로그인과 회원가입 절차 없이 완전 익명으로 소통할 수 있습니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>이번 달 핫토픽 선정 기준은 어떻게 되나요?</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-3">
+                    <p><strong>1. 대상 글</strong>: 최근 한 달 내 작성된 글만 포함됩니다.</p>
+                    <p><strong>2. 점수 계산</strong>: 점수 = 댓글 수 + 추천(좋아요) 수</p>
+                    <p><strong>3. 선정 방식</strong>:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>종합 1위: 댓글+추천 합산 점수가 가장 높은 글 → "hot"</li>
+                        <li>댓글 1위: 댓글이 가장 많은 글(종합 1위와 중복 제외) → "comments"</li>
+                        <li>추천 1위: 추천이 가장 많은 글(다른 순위와 중복 제외) → "likes"</li>
+                        <li>추가 인기글 5개: 남은 글 중 점수 상위 5개 → "hot"</li>
+                    </ul>
+                    <p><strong>4. 중복 방지</strong>: 같은 글이 여러 순위에 중복되지 않도록 함</p>
+                    <p><strong>5. 업데이트 주기</strong>: 하루 한 번 자동 계산 (필요 시 즉시 계산 가능)</p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>상정인사이드 부관리자가 되고 싶어요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-3">
+                    <p>부관리자는 다음 역할을 수행합니다.</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>게시물 및 댓글 관리</li>
+                        <li>신고 처리</li>
+                        <li>코딩 작업</li>
+                    </ul>
+                    <p>지원 방법: <a href="https://discord.com/invite/bNJvy5weuc" class="text-blue-600 underline">공식 디스코드 서버</a> 가입 후 면접 진행</p>
+                    <p class="text-red-500 text-sm">※ 권한을 악용할 경우 영구정지 및 법적 대응 가능</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="py-4">
+            <h3 class="text-xl font-semibold mt-6 mb-4">계정 · 개인정보</h3>
+
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>개인정보는 어떻게 처리하나요?</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        자세한 내용은 <a href="https://commu.world/term" class="text-blue-600 underline">개인정보처리방침</a> 페이지에서 확인할 수 있습니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>내 개인정보나 게시글을 삭제하고 싶어요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        DISCORD: coding_09 또는 <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a>로 요청하시면 됩니다.  
+                        보안상 삭제가 불가능한 항목은 그 사유와 법적 근거를 안내드립니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>영구정지 사유를 알고 싶어요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        DISCORD: coding_09 또는 <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a>로 문의 시 안내드립니다.  
+                        단, 경찰·정부 지침에 따른 영구정지는 해제 불가입니다.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="py-4">
+            <h3 class="text-xl font-semibold mt-6 mb-4">버그 · 오류</h3>
+
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>디자인이 깨져 보여요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        <strong>Safari 또는 iOS/macOS</strong>: 설정 → 빠른설정 → 실시간 모드 → 적용  
+                        </p>
+                        <p>
+                        <strong>기타 브라우저</strong>: 쿠키 삭제 후 새로고침 (간헐적으로 Cloudflare/TailwindCSS CDN 문제 발생 가능)  
+                        </p>
+                        <p>
+                        해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>작성 중인 댓글이 갑자기 사라져요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        설정 → 정보 실시간 반영 끄기 → 적용  
+                        </p>
+                        <p>
+                        그래도 해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>텍스트 복사가 안 돼요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        설정 → 정보 실시간 반영 끄기 → 적용  
+                        </p>
+                        <p>
+                        그래도 해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>검열 기능이 이상하게 작동해요.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        해당 기능은 베타 버전이며, 여러 버그가 발생할 수 있습니다. 정식 배포 전까지 개선 작업이 진행됩니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>게시물 작성 시 인증 오류 메시지가 뜹니다.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        작성란 아래 <em>사람인지 확인</em> 체크박스를 클릭하여 "성공!" 메시지가 뜬 후 작성 버튼을 누르세요.  
+                        </p>
+                        <p>
+                        체크박스가 보이지 않으면 새로고침 후 다시 시도하세요.  
+                        </p>
+                        <p>
+                        해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>추천/비추천 수가 NaN으로 표시됩니다.</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        페이지 새로고침 후 다시 확인하세요.  
+                        </p>
+                        <p>
+                        해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>버그 제보·사용자 신고·기능 제안은 어디서 하나요?</span>
+                    <svg
+                      class="faq-arrow h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        <strong>버그·신고</strong>: <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지  
+                        </p>
+                        <p>
+                        <strong>기능 제안</strong>: DISCORD: coding_09 또는 <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a>
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+          </div>
+
+        </div>
+    </details>
+</section>
+
+
+<section id="fvSection"
+    class="min-h-[250vh] flex flex-col items-center justify-center
+         text-center bg-neutral-950 px-6 break-keep">
+
+  <div class="max-w-3xl translate-y-6 transition-all duration-700">
+    <h2 id="hahaha" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-100 mb-16">
+      가면 뒤에 숨겨진 당신의 진심을 보여주세요.
+    </h2>
+
+    <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-10">
+      <span id="fvmainview" class="text-gray-400">
+        당신만의 '인사이드'가 세상과 만나는 곳<br />
+        상정인사이드.
+      </span>
+    </p>
+
+    <a href="javascript:startSite()"
+       class="start-btn inline-block bg-blue-600 hover:bg-blue-700
+              text-white font-semibold
+              px-8 py-4 rounded-2xl
+              transition transform hover:scale-105">
+      이제 직접 써보기 →
+    </a>
+    <span class="text-gray-500 text-sm mt-4 block">
+        버튼을 누르면 메인 서비스로 이동합니다.
+    </span>
+  </div>
+</section>
+
+
+<style>
+@keyframes flipToNormal {
+  from {
+    transform: scaleX(-1);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-flip {
+  display: inline-block;
+
+  opacity: 0;
+  filter: blur(6px);
+  letter-spacing: 0.5em;
+  transform: scale(0.96) translateY(4px);
+
+  animation: settleIdentity 1.1s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: 0.35s;
+}
+
+@keyframes settleIdentity {
+  to {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 0;
+    transform: scale(1) translateY(0);
+  }
+}
+details[open] > summary .faq-arrow {
+  transform: rotate(180deg);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-main-content-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.75s cubic-bezier(.22,1,.36,1),
+    opacity 0.35s ease;
+}
+.bbb.is-animating > summary {
+  cursor: default;
+}
+.faq-main-content {
+  padding-top: 0;
+}
+
+.bbb[open] > summary .faq-main-arrow {
+  transform: rotate(180deg);
+}
+
+#nodrag {
+  -webkit-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  user-select: none;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mainFaq = document.querySelector(".bbb");
+  if (!mainFaq) return;
+
+  const summary = mainFaq.querySelector("summary");
+  const wrapper = mainFaq.querySelector(".faq-main-content-wrapper");
+  const content = mainFaq.querySelector(".faq-main-content");
+
+  if (!summary || !wrapper || !content) return;
+
+  let isAnimating = false;
+  const ANIMATION_DURATION = 750;
+
+  function openFaq() {
+    mainFaq.classList.add("is-animating");
+    isAnimating = true;
+    summary.style.pointerEvents = "none";
+
+    mainFaq.setAttribute("open", "");
+    wrapper.style.opacity = "1";
+    wrapper.style.maxHeight = content.scrollHeight + "px";
+
+    setTimeout(() => {
+      isAnimating = false;
+      summary.style.pointerEvents = "";
+      if (mainFaq.hasAttribute("open")) {
+        wrapper.style.maxHeight = content.scrollHeight + "px";
+      }
+    }, ANIMATION_DURATION);
+    mainFaq.classList.remove("is-animating");
+  }
+
+  function closeFaq() {
+    mainFaq.classList.add("is-animating")
+    isAnimating = true;
+    summary.style.pointerEvents = "none";
+
+    wrapper.style.maxHeight = content.scrollHeight + "px";
+
+    requestAnimationFrame(() => {
+      wrapper.style.maxHeight = "0px";
+      wrapper.style.opacity = "0";
+    });
+
+    setTimeout(() => {
+      mainFaq.removeAttribute("open");
+      isAnimating = false;
+      summary.style.pointerEvents = "";
+    }, ANIMATION_DURATION);
+    mainFaq.classList.remove("is-animating")
+  }
+
+  summary.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (isAnimating) return;
+
+    if (mainFaq.hasAttribute("open")) {
+      closeFaq();
+    } else {
+      openFaq();
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (mainFaq.hasAttribute("open") && !isAnimating) {
+      wrapper.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
+</script>
+
+
+<script>
+const header = document.getElementById('mainHeader');
+const hero = document.getElementById('hero');
+const fvSection = document.getElementById('fvSection');
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    const shouldHide = entries.some(entry => entry.isIntersecting);
+
+    if (shouldHide) {
+      header.classList.add('-translate-y-full', 'opacity-0');
+    } else {
+      header.classList.remove('-translate-y-full', 'opacity-0');
+    }
+  },
+  { threshold: 0.15 }
+);
+
+observer.observe(hero);
+observer.observe(fvSection);
+</script>
+
+
+
+
+
+<section id="legal">
+<div class="pt-24 text-neutral-600 text-sm tracking-widest leading-relaxed text-center">
+
+<strong>법적 고지 및 운영 안내</strong><br><br>
+
+본 고지는 이용자의 이해를 돕기 위하여 최초 안내 페이지 및 메인 서비스 운영 페이지에 게시하고 있으며,
+서비스 이용약관 및 개인정보처리방침 등 주요 정책 문서는 모든 일반 서비스 화면 하단에 상시 명시되어 있습니다.<br><br>
+
+상정인사이드는 대한민국 법령을 준수하여 독립적으로 운영되는 익명 커뮤니티 서비스입니다.<br>
+이용자는 최초 방문 시 제공되는 안내 페이지를 통해 직접 클릭 및 이동하여
+메인 페이지 및 각 서비스 화면으로 진입하게 되며,
+해당 과정에서 서비스 이용 및 개인정보 보호에 관한 사항이 안내됩니다.<br>
+
+안내 메시지(팝업)는 명확히 제공되며,
+이용자가 이를 임의로 건너뛰거나 별도의 확인 버튼을 누르지 아니하였더라도,
+최초 이용 시 제공되는 안내 페이지 하단에 동일한 법적 고지 사항이 명시되어 있습니다.<br>
+이에 따라 본 서비스는 이용자에게 관련 사항을 사전 고지하고 있습니다.<br><br>
+
+────────────────────────<br><br>
+
+<strong>IP 수집 및 로그 관리 안내</strong><br><br>
+
+IP 정보의 수집은 익명 커뮤니티 서비스 구조상
+서비스 보안 유지, 악성 이용 방지, 법령 준수 및 분쟁 대응을 위하여
+불가피하게 이루어지는 기술적 조치입니다.<br>
+해당 내용은 개인정보처리방침 및 서비스 이용약관에 명시되어 있습니다.<br><br>
+
+최초 안내 페이지에서도 IP 수집 사실을 사전 고지하고 있으며,
+IP 정보는 서비스 보안 및 운영을 위한 최소한의 범위에서 처리됩니다.
+이는 법령이 허용하는 범위 내에서 이루어지며, 관련 사항은 개인정보처리방침에 명시되어 있습니다.<br><br>
+서비스 이용 기록이 없는 범위 내에서
+관리자에게 IP 로그 삭제를 요청할 수 있으며,
+삭제 요청 이후에는 서비스 이용을 중단해야 합니다.<br><br>
+
+개인정보처리방침에는 수집 목적, 보관 기간, 제3자 제공 여부가 구체적으로 명시되어 있습니다.<br><br>
+
+이용자가 상정인사이드의 어떠한 페이지에 접속하거나
+서비스를 이용한 경우, 해당 접속 기록은 내부 서버 로그에 저장될 수 있습니다.<br>
+신고를 통해 게시물 또는 댓글이 삭제된 경우에도
+분쟁 대응 및 운영 기록 보존을 위하여 내부 로그에 기록이 유지될 수 있습니다.<br><br>
+
+로그는 보안 강화를 위하여 외부 보안 서비스 및 보호 체계를 활용하여 관리됩니다.<br>
+서버 보안 상태는 상시 점검되고 있습니다.<br><br>
+
+────────────────────────<br><br>
+
+<strong>광고 및 후원 안내</strong><br><br>
+
+상정인사이드는 서비스의 지속적인 운영을 위하여
+메인 페이지('/') 및 검색 결과 페이지('/view/post/search?q=')에
+PC 환경 또는 화면 너비가 충분한 경우에 한하여 세로형 광고를 게재할 수 있습니다.<br>
+광고의 구체적 내용은 광고 제공 사업자인 Kakao AdFit의 관리 기준에 따라 노출됩니다.<br>
+본 서비스는 「표시·광고의 공정화에 관한 법률」 등 관련 법령을 준수합니다.<br><br>
+
+상정인사이드는 유료 재화·용역을 판매하지 않으며,
+단순 후원(대가성 없음)만을 받고 있습니다.<br>
+후원은 Buy Me a Coffee, 관리자 개인 계좌, 가상자산 등을 통해 이루어질 수 있으나,
+후원자에게 기능 제공, 광고 제거, 닉네임 강조,
+후원자 명단 공개, 특별 감사 표시 등
+차등적 혜택은 제공하지 않습니다.<br>
+후원은 대가성이 없는 자발적 지원이며,
+후원금은 서비스 운영 비용에 사용됩니다.<br><br>
+
+현재 운영 구조는 일반적인 통신판매 또는 유료 콘텐츠 판매 형태에 해당하지 않는 것으로 판단하고 있습니다.<br>
+다만 관련 법령의 적용 여부는 향후 운영 방식의 변경 또는 관계 기관의 해석에 따라 달라질 수 있습니다.<br><br>
+
+────────────────────────<br><br>
+
+<strong>브랜드 무관 및 제재 기준 안내</strong><br><br>
+
+<b>상정인사이드는 디시인사이드 및 인천상정고등학교와
+어떠한 제휴·소속·공식 관계도 존재하지 않습니다.</b><br>
+명칭의 유사성은 관련성을 의미하지 않습니다.<br><br>
+
+커뮤니티 가이드라인 위반,
+또는 경찰·정부 기관의 적법한 요청이 있는 경우,
+IP 또는 IP 대역에 대한 접속 제한 조치가 이루어질 수 있습니다.<br>
+동일 네트워크 환경 사용자가 제한의 영향을 받을 수 있으며,
+이는 기술적 차단 방식에 따른 불가피한 결과일 수 있습니다.<br><br>
+
+가이드라인 위반에 따른 차단의 경우,
+분쟁이 종결되고 운영 정책에 따른 검토가 이루어진 경우에 한하여
+해제 여부가 판단됩니다.<br>
+관계 기관의 적법한 요청에 따라 이루어진 차단의 경우,
+별도의 해제 사유가 발생하기 전까지 제한이 유지될 수 있습니다.<br><br>
+
+이의 제기를 위하여 별도의 문의 수단(Discord 사용자 ID 등)을 제공하고 있습니다.<br>
+접속 제한의 해제 여부는 운영 정책 및 관리자의 합리적 판단에 따릅니다.<br><br>
+
+────────────────────────<br><br>
+
+<strong>이용자 보호 및 법령 준수</strong><br><br>
+
+상정인사이드 커뮤니티 관리자는
+(밴된 IP 안내 페이지, 허용되지 않는 브라우저 안내 페이지,
+VPN/프록시 감지 안내 페이지를 제외한)
+모든 일반 서비스 페이지 하단에 대표 이메일,
+신고 접수 경로, 서비스 이용약관,
+개인정보처리방침(「개인정보 보호법」 제30조에 따라 쉽게 확인할 수 있도록 강조 표기)을 상시 명시하고 있습니다.<br><br>
+
+또한 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」,
+「아동·청소년의 성보호에 관한 법률」 등 관련 법령에 따라
+게시물 및 댓글을 관리하고 있으며,
+신고 접수 건은 내부 검토 절차에 따라 처리됩니다.<br><br>
+
+</div>
+</section>
+
+
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+
+<footer class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
+
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div>
+      <div class="flex items-center space-x-4 mb-6">
+        <a>
+          <img
+            src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png"
+            alt="logo"
+            class="w-36 sm:w-32 md:w-36 lg:w-40 xl:w-44"
+          />
+        </a>
+      </div>
+      <ul class="space-y-3 text-base text-gray-600">
+        <li><span class="font-medium"><b>대표이메일</b></span> admin@commu.world</li>
+        <li><span class="font-medium"><b>운영 형태</b></span> 커뮤니티 서비스 | 1인 개발</li>
+      </ul>
+    </div>
+
+    <div></div>
+
+    <div class="flex flex-col items-start md:items-end space-y-6">
+
+      <div class="space-y-3 text-base">
+        <a href="/history" class="flex items-center gap-2 hover:underline">
+          서비스 통계
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/release-notes" class="flex items-center gap-2 hover:underline">
+          업데이트 · 릴리즈 노트
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/report" class="flex items-center gap-2 hover:underline">
+          버그 발견 및 사용자 신고 접수
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex space-x-3">
+        <a href="https://www.instagram.com/yxbh.rh0" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/instagram.svg" class="w-4 h-4">
+        </a>
+        <a href="https://www.youtube.com/@SjInside-j8q" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/youtube.svg" class="w-4 h-4">
+        </a>
+        <a href="https://x.com/Sjinside_" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/x.svg" class="w-4 h-4">
+        </a>
+        <a href="https://github.com/anion15" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/github.svg" class="w-4 h-4">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
+      <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
+      <a href="/service-terms">서비스 이용약관</a>
+      <a href="/info">서비스 안내</a>
+      <a href="/sitemap.xml">사이트맵</a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
+    본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
+    전적으로 개발자에게 있음을 알립니다.
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
+    <span>© 2025-2026 상정인사이드. All rights reserved.</span>
+    <span>Developed by anion15</span>
+  </div>
+
+<div
+  id="site-status-bar"
+  class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
+>
+  <span id="site-badge" class="font-semibold">
+    SangjeongInside
+  </span>
+
+  <span id="site-status-text" class="opacity-80">
+    최신 정보를 불러오는 중…
+  </span>
+</div>
+</footer>
+<style>
+.dark-theme footer {
+  background-color: #2d2d2d;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+.dark-theme footer a {
+  color: #d1d5db;
+}
+
+.dark-theme footer a:hover {
+  color: #60a5fa;
+}
+
+.dark-theme footer .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+.dark-theme footer a.font-semibold {
+  color: #60a5fa;
+}
+
+.dark-theme footer .border {
+  border-color: #4b5563;
+}
+
+.dark-theme footer .border:hover {
+  background-color: #374151;
+}
+
+.dark-theme footer .leading-relaxed {
+  color: #9ca3af;
+}
+
+.dark-theme footer .flex {
+  color: #9ca3af;
+}
+
+.dark-theme footer > div:last-child {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+a svg {
+  transition: transform 0.2s ease;
+}
+a:hover svg {
+  transform: translateX(3px);
+}
+
+.dark-theme footer img{
+  filter: brightness(0) invert(1);
+}
+</style>
+<script>
+  async function loadLatestUpdate() {
+    try {
+      const res = await fetch('/api/SangjeongInside_latest_update');
+      if (!res.ok) throw new Error('API error');
+
+      const data = await res.json();
+
+      const version = data.version;
+      const time = new Date(data.time);
+      const link = data.link;
+
+      const timeText = time.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      document.getElementById('site-status-text').innerHTML = `
+        현재 버전 <a href="${link}" class="underline hover:text-white">
+          v${version}
+        </a>
+        · ${timeText} 업데이트
+      `;
+    } catch (e) {
+      document.getElementById('site-status-text').textContent =
+        '버전 정보를 불러올 수 없습니다.';
+    }
+  }
+
+  loadLatestUpdate();
+</script>
+</body>
+</html>
