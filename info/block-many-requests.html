@@ -83,12 +83,13 @@ body {
 </script>
   <script>
     (function () {
-      var bgColor = "rgba(10,11,15,0.96)";
-      var spinnerSize = 40;
-      var brandText = "Loading…";
-      var minShowMs = 300;
-      var safetyTimeoutMs = 10000;
+      var bgColor = "rgba(10,11,15,0.96)"; // 배경색
+      var spinnerSize = 40; // px
+      var brandText = "Loading…"; // 중앙 텍스트 (빈 문자열로 비활성화)
+      var minShowMs = 300; // 최소 표시 시간
+      var safetyTimeoutMs = 10000; // 안전 타임아웃
 
+      // ==== 스타일 주입 ====
       var css = `
         html.__no_scroll, html.__no_scroll body { overflow: hidden !important; height: 100%; }
         #__page_loader {
@@ -118,6 +119,7 @@ body {
       styleEl.textContent = css;
       document.head.appendChild(styleEl);
 
+      // ==== 오버레이 DOM 생성 ====
       var overlay = document.createElement("div");
       overlay.id = "__page_loader";
       overlay.setAttribute("role", "status");
@@ -128,6 +130,7 @@ body {
         (brandText ? '<div id="__brand">' + brandText + "</div>" : "") +
         "</div>";
 
+      // body가 아직 없을 수도 있으므로 안전하게 추가
       function mount() {
         if (!document.body) { requestAnimationFrame(mount); return; }
         document.documentElement.classList.add("__no_scroll");
@@ -149,16 +152,19 @@ body {
         }, { once: true });
       }
 
+      // 외부에서 수동으로 닫고 싶을 때: window.hidePageLoader()
       window.hidePageLoader = function () {
         var elapsed = Date.now() - shownAt;
         var delay = Math.max(0, minShowMs - elapsed);
         setTimeout(cleanup, delay);
       };
 
+      // 페이지 완전 로드 후 자동 종료
       window.addEventListener("load", function () {
         window.hidePageLoader();
       });
 
+      // 안전 타임아웃(예: load 이벤트가 영영 안 올 때)
       setTimeout(function () {
         if (document.getElementById("__page_loader")) window.hidePageLoader();
       }, safetyTimeoutMs);
@@ -171,6 +177,7 @@ body {
 </head>
 
 <style>
+    /* 다크 테마 스타일 */
     .dark-theme {
       background-color: #1a1a1a;
       color: #e5e7eb;
@@ -228,11 +235,13 @@ body {
       color: #9ca3af;
     }
 
+    /* 글 작성 폼 다크 테마 */
     .dark-theme #post-form {
       background-color: #2d2d2d !important;
       color: #e5e7eb;
     }
 
+    /* 버튼 다크 테마 */
     .dark-theme #latest-btn,
     .dark-theme #popular-btn {
       background-color: #374151;
@@ -244,11 +253,13 @@ body {
       background-color: #2563eb;
     }
 
+    /* 통계 텍스트 다크 테마 */
     .dark-theme #stats-text,
     .dark-theme #end-text {
       color: #9ca3af !important;
     }
 
+    /* 메인 배경 다크 테마 */
     .dark-theme {
       background-color: #1a1a1a !important;
     }
@@ -257,10 +268,12 @@ body {
       background-color: transparent;
     }
 
+    /* 다크 테마 로고 필터 */
     .dark-theme header img {
       filter: brightness(0) invert(1);
     }
 
+    /* 후원하기 버튼은 로고 필터에서 제외 */
     .dark-theme header img {
       filter: brightness(0) invert(1);
     }
@@ -273,20 +286,24 @@ body {
       filter: none !important;
     }
 
+    /* Footer p 태그 다크 테마 */
     .dark-theme p {
       color: #e5e7eb !important;
     }
 </style>
 <script>
+      // 기본 설정값
       const defaultSettings = {
         theme: 'system'
       };
 
+      // 설정 불러오기
       function loadSettings() {
         const saved = localStorage.getItem('sjinside_settings');
         return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
       }
 
+      // 테마 적용 함수
       function applyTheme(theme) {
         const body = document.body;
         body.classList.remove('dark-theme');
@@ -300,10 +317,12 @@ body {
         }
       }
 
+      // 페이지 로드 시 초기 설정
       document.addEventListener('DOMContentLoaded', function() {
         const settings = loadSettings();
         applyTheme(settings.theme);
         
+        // 시스템 테마 변경 감지
         if (window.matchMedia) {
           window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
             if (loadSettings().theme === 'system') {
@@ -315,6 +334,7 @@ body {
 </script>
 
 <body class="flex flex-col min-h-screen bg-gray-100 dark">
+    <!--우클릭 이벤트 정의-->
     <style>
       @keyframes fadeInSlide {
         from { opacity: 0; transform: translateY(-10px); }
@@ -389,6 +409,7 @@ body {
         background-color: #6b7280;
       }
 
+      /* 다크 테마 버튼 구별 - 더 강력한 스타일링 */
       .dark-theme #latest-btn,
       .dark-theme #popular-btn {
         background-color: #374151 !important;
@@ -410,12 +431,13 @@ body {
         box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3) !important;
       }
 
+      /* 다크 테마 버튼 색상 변경 */
       .dark-theme .bg-green-500 {
-        background-color: #059669 !important;
+        background-color: #059669 !important; /* bg-emerald-500 */
       }
 
       .dark-theme .bg-red-500 {
-        background-color: #e11d48 !important;
+        background-color: #e11d48 !important; /* bg-rose-500 */
       }
     </style>
 
@@ -432,11 +454,14 @@ body {
       const popMenu = document.getElementById('popMenu');
 
       document.addEventListener('contextmenu', e => {
+        // 우클릭 비활성화 설정 확인
         const settings = JSON.parse(localStorage.getItem('sjinside_settings') || '{}');
         if (settings.rightClickEnabled === false) {
+          // 기본 우클릭 메뉴 허용 (preventDefault 호출하지 않음)
           return;
         }
 
+        // 커스텀 우클릭 메뉴 표시
         e.preventDefault();
 
         popMenu.style.display = 'block';
@@ -495,9 +520,12 @@ body {
         popMenu.style.display = 'none';
       });
     </script>
+    <!--우클릭 이벤트 정의 끝-->
+    <!--헤더 시작-->
   <div id="menu-overlay" class="menu-overlay z-30"></div>
 
   <header class="bg-white shadow py-4 px-6 mb-6 flex items-center justify-between">
+    <!-- 왼쪽: 로고 -->
     <div class="flex items-center space-x-4">
       <a href="https://commu.world">
         <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
@@ -508,6 +536,7 @@ body {
         <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       </svg>
     </button>
+    <!-- 오른쪽: 버튼 그룹 -->
     <div class="hidden lg:flex space-x-2">
       <a href="/info"
         class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
@@ -529,7 +558,9 @@ body {
   </header>
 
 
+<!-- 모바일 메뉴 -->
 <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full z-50 flex flex-col hidden lg:hidden">
+  <!-- 상단 닫기 버튼 -->
   <div class="flex justify-end items-center p-5 border-b border-gray-200">
     <button id="menu-close" class="p-2 rounded-full hover:bg-gray-100 transition">
       <svg width="28" height="28" viewBox="0 0 40 40" class="stroke-current text-gray-800">
@@ -538,6 +569,7 @@ body {
     </button>
   </div>
 
+  <!-- 메뉴 링크 -->
 <nav class="flex-1 p-6 space-y-4">
   <a href="/" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
      style="background-color: #343B44; color: white;">홈</a>
@@ -553,6 +585,7 @@ body {
 </nav>
 
 
+  <!-- 소셜 & 저작권 -->
   <div class="p-6 border-t border-gray-200 flex flex-col items-start space-y-3">
     <div class="flex space-x-4">
       <a href="https://github.com/anion15" class="hover:text-gray-800"><img src="https://simpleicons.org/icons/github.svg" class="w-5 h-5"></a>
@@ -564,6 +597,7 @@ body {
 
 <style>
 
+/* 모바일 메뉴 기본 상태 */
 #mobile-menu {
   transform: translateX(-100%);
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -572,22 +606,26 @@ body {
   box-shadow: 0 10px 40px rgba(0,0,0,0.25);
 }
 
+/* 메뉴 오픈 시 슬라이드 인 */
 #mobile-menu.menu-open {
   transform: translateX(0);
 }
 
 
+/* 메뉴 항목 초기 상태 */
 .menu-item {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.35s ease;
 }
 
+/* 메뉴 오픈 시 항목 계단식 등장 */
 #mobile-menu.menu-open .menu-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
 #mobile-menu.menu-open .menu-item:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
 #mobile-menu.menu-open .menu-item:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
 #mobile-menu.menu-open .menu-item:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
 
+/* 메뉴 닫힐 때 부드럽게 사라지도록 */
 #mobile-menu.menu-closing {
   transform: translateX(-100%);
 }
@@ -598,42 +636,43 @@ body {
   transition-delay: 0s !important;
 }
 
+  /* 다크 모드 적용 */
 .dark-theme #mobile-menu {
-  background-color: #111827;
+  background-color: #111827; /* gray-900 */
 }
 .dark-theme #mobile-menu .flex.justify-end.items-center {
-  border-bottom: 1px solid #374151;
+  border-bottom: 1px solid #374151; /* 선의 두께와 종류를 명시 */
 }
 
 .dark-theme #mobile-menu button#menu-close:hover {
-  background-color: #1f2937;
+  background-color: #1f2937; /* gray-800 */
 }
 
 .dark-theme #mobile-menu nav a {
-  border: 1px solid #374151 !important;
-  background-color: transparent;
+  border: 1px solid #374151 !important; /* gray-700 - 선이 안 보일 경우 !important 추가 */
+  background-color: transparent; /* 배경을 비워서 선을 강조 */
 }
 
 .dark-theme #mobile-menu nav a:hover {
-  background-color: #1f2937;
-  border-color: #4b5563;
+  background-color: #1f2937; /* gray-800 */
+  border-color: #4b5563; /* 호버 시 선을 더 밝게 */
 }
 
 .dark-theme #mobile-menu nav a span {
-  color: #e5e7eb;
+  color: #e5e7eb; /* gray-200 */
 }
 
 .dark-theme #mobile-menu nav a.bg-yellow-50 {
-  background-color: rgba(251, 191, 36, 0.1);
-  border: 1px solid #d97706 !important;
+  background-color: rgba(251, 191, 36, 0.1); /* 더 투명하게 */
+  border: 1px solid #d97706 !important; /* 테두리를 진한 호버색으로 고정 */
 }
 
 .dark-theme #mobile-menu nav a.bg-yellow-50 span {
-  color: #fcd34d;
+  color: #fcd34d; /* yellow-400 */
 }
 
 .dark-theme #mobile-menu nav a.bg-yellow-50:hover {
-  background-color: #78350f;
+  background-color: #78350f; /* yellow-800 */
   color: #fcd34d;
 }
 
@@ -642,7 +681,7 @@ body {
 }
 
 .dark-theme #mobile-menu .p-6.border-t p {
-  color: #9ca3af;
+  color: #9ca3af; /* gray-400 */
 }
 
 .dark-theme #mobile-menu .p-6.border-t .flex.space-x-4 a img {
@@ -663,6 +702,7 @@ function openMenu() {
   menuOverlay.classList.add('active');
   document.body.classList.add('menu-open');
 
+  // 약간의 지연 후 메뉴 오픈 애니메이션 시작
   setTimeout(() => {
     mobileMenu.classList.add('menu-open');
   }, 10);
@@ -670,18 +710,18 @@ function openMenu() {
 
 function closeMenu() {
   mobileMenu.classList.remove('menu-open');
-  mobileMenu.classList.add('menu-closing');
+  mobileMenu.classList.add('menu-closing'); // 닫기 애니메이션
   menuOverlay.classList.remove('active');
   document.body.classList.remove('menu-open');
 
   setTimeout(() => {
     mobileMenu.classList.add('hidden');
     mobileMenu.classList.remove('menu-closing');
-  }, 400);
+  }, 400); // 슬라이드 시간과 맞춤
 }
 
 menuToggle.addEventListener('click', () => {
-  menuToggle.classList.toggle('active');
+  menuToggle.classList.toggle('active'); // 햄버거 -> X
   openMenu();
 });
 menuClose.addEventListener('click', () => {
@@ -695,10 +735,12 @@ menuOverlay.addEventListener('click', () => {
 
   </script>
   <style>
+    /* ===== 메뉴 오픈 시 body 제어 ===== */
 body.menu-open {
   overflow: hidden;
 }
 
+/* ===== 오버레이 ===== */
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -717,6 +759,7 @@ body.menu-open {
   visibility: visible;
 }
 
+/* ===== 모바일 메뉴 슬라이드 ===== */
 #mobile-menu {
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform: translateX(-100%);
@@ -733,6 +776,7 @@ body.menu-open {
   transform: translateX(0);
 }
 
+/* ===== 모바일 메뉴 내부 아이템 애니메이션 ===== */
 #mobile-menu > * {
   opacity: 0;
   transform: translateY(20px);
@@ -750,6 +794,7 @@ body.menu-open {
 #mobile-menu.menu-open > *:nth-child(4) { transition-delay: 0.4s; }
 #mobile-menu.menu-open > *:nth-child(5) { transition-delay: 0.5s; }
 
+/* ===== 햄버거 버튼 클릭 효과 ===== */
 #menu-toggle {
   transition: all 0.3s ease;
 }
@@ -758,10 +803,12 @@ body.menu-open {
   transform: scale(0.95);
 }
 
+/* ===== 모바일 메뉴 링크 ===== */
 #mobile-menu a {
   transition: all 0.3s ease;
 }
 
+/* ===== 다크 테마 대응 ===== */
 .dark-theme #mobile-menu {
   background: linear-gradient(
     135deg,
@@ -776,27 +823,29 @@ body.menu-open #site-footer {
 body.menu-open footer {
   display: none !important;
 }
+/* 라이트 모드 모바일 메뉴 링크 */
 #mobile-menu nav a {
-  border: 1px solid #d1d5db;
-  background-color: #ffffff;
+  border: 1px solid #d1d5db; /* gray-300, 배경과 충분한 대비 */
+  background-color: #ffffff;  /* 흰색 */           /* gray-900, 텍스트 선명하게 */
 }
 
 #mobile-menu nav a:hover {
-  background-color: #f3f4f6;
-  border-color: #9ca3af;
+  background-color: #f3f4f6;  /* gray-100, 호버 시 살짝 색 변화 */
+  border-color: #9ca3af;      /* gray-400 */
 }
 
 #mobile-menu nav a.bg-yellow-50 {
-  background-color: #fef3c7;
-  border: 1px solid #fbbf24;
-  color: #b45309;
+  background-color: #fef3c7;  /* yellow-50 계열 */
+  border: 1px solid #fbbf24;  /* yellow-400 */
+  color: #b45309;             /* yellow-700 */
 }
 
 #mobile-menu nav a.bg-yellow-50:hover {
-  background-color: #fcd34d;
+  background-color: #fcd34d;  /* yellow-300 */
 }
 
   </style>
+  <!--헤더 끝-->
 <main class="flex-1 flex justify-center items-center">
   <div class="max-w-2xl bg-white p-8 rounded-xl shadow text-center">
     <h1 class="text-2xl font-bold mb-4">상정인사이드는 왜 요청 속도를 제한하나요?</h1>
@@ -848,10 +897,13 @@ body.menu-open footer {
   <h1>&nbsp;</h1>
   <h1>&nbsp;</h1>
 
+  <!--새로운 footer-->
 <footer class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
 
+  <!-- 메인 정보 영역 -->
   <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
 
+    <!-- 로고 / 기관명 -->
     <div>
       <div class="flex items-center space-x-4 mb-6">
         <a>
@@ -868,8 +920,10 @@ body.menu-open footer {
       </ul>
     </div>
 
+    <!-- 여백 -->
     <div></div>
 
+    <!-- 유틸리티 + SNS -->
     <div class="flex flex-col items-start md:items-end space-y-6">
 
       <div class="space-y-3 text-base">
@@ -922,6 +976,7 @@ body.menu-open footer {
     </div>
   </div>
 
+  <!-- 5. 정책 링크 -->
   <div class="border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
       <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
@@ -931,16 +986,19 @@ body.menu-open footer {
     </div>
   </div>
 
+  <!-- 🔹 개발자 고지 문구 -->
   <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
     본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
     전적으로 개발자에게 있음을 알립니다.
   </div>
 
+  <!-- 6. 저작권 -->
   <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
     <span>© 2025-2026 상정인사이드. All rights reserved.</span>
     <span>Developed by anion15</span>
   </div>
 
+<!-- 하단 상태 바 -->
 <div
   id="site-status-bar"
   class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
@@ -955,8 +1013,11 @@ body.menu-open footer {
 </div>
 </footer>
 <style>
+  /* =========================
+   Footer Dark Theme
+   ========================= */
 .dark-theme footer {
-  background-color: #1f2933;
+  background-color: #1f2933; /* gray-800 계열 */
   color: #e5e7eb;
   border-color: #374151;
 }
@@ -966,9 +1027,10 @@ body.menu-open footer {
 }
 
 .dark-theme footer a:hover {
-  color: #60a5fa;
+  color: #60a5fa; /* blue-400 */
 }
 
+/* 메인 정보 영역 텍스트 */
 .dark-theme footer .text-gray-600 {
   color: #9ca3af !important;
 }
@@ -977,6 +1039,7 @@ body.menu-open footer {
   color: #9ca3af !important;
 }
 
+/* 정책 링크 영역 */
 .dark-theme footer .border-t {
   border-color: #374151;
 }
@@ -985,6 +1048,7 @@ body.menu-open footer {
   color: #60a5fa;
 }
 
+/* SNS 아이콘 버튼 */
 .dark-theme footer .border {
   border-color: #4b5563;
 }
@@ -993,16 +1057,19 @@ body.menu-open footer {
   background-color: #374151;
 }
 
+/* 개발자 고지 문구 */
 .dark-theme footer .leading-relaxed {
   color: #9ca3af;
 }
 
+/* 저작권 영역 */
 .dark-theme footer .flex {
   color: #9ca3af;
 }
 
+/* KRDS 하단 바 */
 .dark-theme footer > div:last-child {
-  background-color: #020617;
+  background-color: #020617; /* 거의 블랙 */
   color: #e5e7eb;
 }
 
