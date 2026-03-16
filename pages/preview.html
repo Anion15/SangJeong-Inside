@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='icon' type="images/png" href="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png">
+  
+  <title>{{ post.title }} - 상정인사이드</title>
+  
+  <meta name="description" content="{{ post.content[:120] }}">
+  <meta name="keywords" content="커뮤니티, 상정인사이드, 자유로운">
+  <meta name="author" content="anion15">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ post.title }} - 상정인사이드">
+  <meta property="og:description" content="{{ post.content[:120] }}">
+  <meta property="og:image" content="https://img.commu.world/og?type=post&title={{ post.title[:12]|urlencode }}&content={{ post.content[:20]|urlencode }}&author={{ post.client_id[:8]|urlencode }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://commu.world/view/{{ post.id }}">
+
+  <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:title" content="{{ post.title }} - 상정인사이드">
+  <meta name="twitter:description" content="{{ post.content[:120] }}">
+  <meta name="twitter:image" content="https://img.commu.world/og?type=post&title={{ post.title|urlencode }}&content={{ post.content|urlencode }}&author={{ post.client_id[:8]|urlencode }}">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: transform 0.3s ease-in-out;
+  background-color: white; 
+}
+
+.dark-theme header {
+  background-color: #2d2d2d !important;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+}
+
+body {
+  padding-top: 120px; 
+}
+  </style>
+<script>
+  function applyTheme(theme) {
+    const target = document.body || document.documentElement;
+    if (!target) return;
+
+    target.classList.remove('dark-theme');
+    const isDark = theme === 'dark' || 
+                 (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (isDark) {
+      target.classList.add('dark-theme');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const settings = loadSettings();
+    applyTheme(settings.theme);
+
+    const header = document.querySelector('header');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        header.classList.add('header-hidden');
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollY = currentScrollY;
+    });
+  });
+</script>
+</head>
+<style>
+  .dark-theme {
+    background-color: #1a1a1a !important;
+    color: #e5e7eb;
+  }
+
+  .dark-theme .settings-content {
+    background: #2d2d2d;
+    color: #e5e7eb;
+  }
+
+  .dark-theme .settings-item {
+    border-bottom-color: #4b5563;
+  }
+
+  .dark-theme .theme-select {
+    background: #374151;
+    color: #e5e7eb;
+    border-color: #4b5563;
+  }
+
+  .dark-theme header {
+    background: #2d2d2d;
+    color: #e5e7eb;
+  }
+
+  .dark-theme .bg-white {
+    background-color: #2d2d2d !important;
+    color: #e5e7eb;
+  }
+
+  .dark-theme #site-footer {
+    background: #2d2d2d;
+    color: #e5e7eb;
+  }
+
+  .dark-theme .text-gray-600 {
+    color: #9ca3af !important;
+  }
+
+  .dark-theme .text-gray-800 {
+    color: #e5e7eb !important;
+  }
+
+  .dark-theme .border {
+    border-color: #4b5563;
+  }
+
+  .dark-theme input,
+  .dark-theme textarea {
+    background: #374151;
+    color: #e5e7eb;
+    border-color: #4b5563;
+  }
+
+  .dark-theme input::placeholder,
+  .dark-theme textarea::placeholder {
+    color: #9ca3af;
+  }
+
+  .dark-theme #post-form {
+    background-color: #2d2d2d !important;
+    color: #e5e7eb;
+  }
+
+  .dark-theme #latest-btn,
+  .dark-theme #popular-btn {
+    background-color: #374151;
+    color: #e5e7eb;
+  }
+
+  .dark-theme #latest-btn.active,
+  .dark-theme #popular-btn.active {
+    background-color: #2563eb;
+  }
+  .dark-theme #stats-text,
+  .dark-theme #end-text {
+    color: #9ca3af !important;
+  }
+
+  .dark-theme main {
+    background-color: transparent;
+  }
+
+  .dark-theme header img {
+    filter: brightness(0) invert(1);
+  }
+
+  .dark-theme header a[href*="buymeacoffee"] img,
+  .dark-theme #mobile-menu a[href*="buymeacoffee"] img {
+    filter: none !important;
+  }
+
+  .dark-theme p {
+    color: #e5e7eb !important;
+  }
+</style>
+
+<script>
+  const defaultSettings = {
+    theme: 'system'
+  };
+
+  function loadSettings() {
+    const saved = localStorage.getItem('sjinside_settings');
+    return saved
+      ? { ...defaultSettings, ...JSON.parse(saved) }
+      : defaultSettings;
+  }
+
+  function applyTheme(theme) {
+    const body = document.body;
+    body.classList.remove('dark-theme');
+
+    if (theme === 'dark') {
+      body.classList.add('dark-theme');
+    } else if (theme === 'system') {
+      if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        body.classList.add('dark-theme');
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const settings = loadSettings();
+    applyTheme(settings.theme);
+
+    if (window.matchMedia) {
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', function () {
+          if (loadSettings().theme === 'system') {
+            applyTheme('system');
+          }
+        });
+    }
+  });
+</script>
+<body class="flex flex-col min-h-screen bg-gray-100">
+  <article>
+  <div id="menu-overlay" class="menu-overlay z-30"></div>
+
+  <header class="bg-white shadow py-4 px-6 mb-6 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <a href="https://commu.world">
+        <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
+      </a>
+    </div>
+    <button id="menu-toggle" class="lg:hidden p-2 rounded bg-blue-600 text-white">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="hidden lg:flex space-x-2">
+      <a href="/info"
+        class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
+                text-[clamp(0.75rem,2vw,0.9rem)]
+                py-[clamp(0.25rem,1vw,0.75rem)]
+                px-[clamp(0.5rem,2vw,1.5rem)]
+                rounded">
+        서비스 안내
+      </a>
+      <a href="/history"
+        class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
+                text-[clamp(0.75rem,2vw,0.9rem)]
+                py-[clamp(0.25rem,1vw,0.75rem)]
+                px-[clamp(0.5rem,2vw,1.5rem)]
+                rounded">
+        서비스 통계
+      </a>
+    </div>
+  </header>
+
+
+<div id="mobile-menu" class="fixed top-0 left-0 w-full h-full z-50 flex flex-col hidden lg:hidden">
+  <div class="flex justify-end items-center p-5 border-b border-gray-200">
+    <button id="menu-close" class="p-2 rounded-full hover:bg-gray-100 transition">
+      <svg width="28" height="28" viewBox="0 0 40 40" class="stroke-current text-gray-800">
+        <path d="M12 12 L28 28 M28 12 L12 28" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+<nav class="flex-1 p-6 space-y-4">
+  <a href="/" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+     style="background-color: #343B44; color: white;">홈</a>
+     
+  <a href="/info" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+     style="background-color: #343B44; color: white;">서비스 안내</a>
+     
+  <a href="/history" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+     style="background-color: #343B44; color: white;">서비스 통계</a>
+     
+  <a href="https://buymeacoffee.com/sjinside" class="menu-item block text-lg font-medium p-4 rounded-lg border border-yellow-300 transition"
+     style="background-color: #343B44; color: white;">후원하기</a>
+</nav>
+
+
+  <div class="p-6 border-t border-gray-200 flex flex-col items-start space-y-3">
+    <div class="flex space-x-4">
+      <a href="https://github.com/anion15" class="hover:text-gray-800"><img src="https://simpleicons.org/icons/github.svg" class="w-5 h-5"></a>
+      <a href="https://x.com/Sjinside_" class="hover:text-blue-500"><img src="https://simpleicons.org/icons/x.svg" class="w-5 h-5"></a>
+    </div>
+    <p class="text-xs text-gray-400">© 2026 SangjeongInside</p>
+  </div>
+</div>
+
+<style>
+
+#mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+
+
+.menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.35s ease;
+}
+
+#mobile-menu.menu-open .menu-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+#mobile-menu.menu-closing {
+  transform: translateX(-100%);
+}
+
+#mobile-menu.menu-closing .menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition-delay: 0s !important;
+}
+
+.dark-theme #mobile-menu {
+  background-color: #111827;
+}
+.dark-theme #mobile-menu .flex.justify-end.items-center {
+  border-bottom: 1px solid #374151;
+}
+
+.dark-theme #mobile-menu button#menu-close:hover {
+  background-color: #1f2937;
+}
+
+.dark-theme #mobile-menu nav a {
+  border: 1px solid #374151 !important;
+  background-color: transparent;
+}
+
+.dark-theme #mobile-menu nav a:hover {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+.dark-theme #mobile-menu nav a span {
+  color: #e5e7eb;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50 {
+  background-color: rgba(251, 191, 36, 0.1);
+  border: 1px solid #d97706 !important;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50 span {
+  color: #fcd34d;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50:hover {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.dark-theme #mobile-menu .p-6.border-t {
+  border-top: 1px solid #374151;
+}
+
+.dark-theme #mobile-menu .p-6.border-t p {
+  color: #9ca3af;
+}
+
+.dark-theme #mobile-menu .p-6.border-t .flex.space-x-4 a img {
+  filter: invert(1);
+}
+
+</style>
+
+
+  <script>
+const menuToggle = document.getElementById('menu-toggle');
+const menuClose = document.getElementById('menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuOverlay = document.getElementById('menu-overlay');
+
+function openMenu() {
+  mobileMenu.classList.remove('hidden', 'menu-closing');
+  menuOverlay.classList.add('active');
+  document.body.classList.add('menu-open');
+
+  setTimeout(() => {
+    mobileMenu.classList.add('menu-open');
+  }, 10);
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('menu-open');
+  mobileMenu.classList.add('menu-closing');
+  menuOverlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+
+  setTimeout(() => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('menu-closing');
+  }, 400);
+}
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  openMenu();
+});
+menuClose.addEventListener('click', () => {
+  menuToggle.classList.remove('active');
+  closeMenu();
+});
+menuOverlay.addEventListener('click', () => {
+  menuToggle.classList.remove('active');
+  closeMenu();
+});
+
+  </script>
+  <style>
+body.menu-open {
+  overflow: hidden;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mobile-menu {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-100%);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.95) 0%,
+    rgba(240,245,255,0.95) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+
+#mobile-menu > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+#mobile-menu.menu-open > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#mobile-menu.menu-open > *:nth-child(1) { transition-delay: 0.1s; }
+#mobile-menu.menu-open > *:nth-child(2) { transition-delay: 0.2s; }
+#mobile-menu.menu-open > *:nth-child(3) { transition-delay: 0.3s; }
+#mobile-menu.menu-open > *:nth-child(4) { transition-delay: 0.4s; }
+#mobile-menu.menu-open > *:nth-child(5) { transition-delay: 0.5s; }
+
+#menu-toggle {
+  transition: all 0.3s ease;
+}
+
+#menu-toggle:active {
+  transform: scale(0.95);
+}
+
+#mobile-menu a {
+  transition: all 0.3s ease;
+}
+
+.dark-theme #mobile-menu {
+  background: linear-gradient(
+    135deg,
+    rgba(45,45,45,0.95) 0%,
+    rgba(30,30,30,0.95) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
+body.menu-open #site-footer {
+  display: none !important;
+}
+body.menu-open footer {
+  display: none !important;
+}
+#mobile-menu nav a {
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+}
+
+#mobile-menu nav a:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+#mobile-menu nav a.bg-yellow-50 {
+  background-color: #fef3c7;
+  border: 1px solid #fbbf24;
+  color: #b45309;
+}
+
+#mobile-menu nav a.bg-yellow-50:hover {
+  background-color: #fcd34d;
+}
+
+  </style>
+    <main class="flex-grow max-w-2xl mx-auto px-4">
+    <h1 class="text-3xl font-bold text-gray-800">게시물 미리보기</h1><br><br>
+    <div class="bg-white rounded shadow p-4" data-post-id="{{ post.id }}">
+        <h3 class="text-lg font-bold text-gray-800">{{ post.title }}</h3>
+        <p class="text-gray-700 my-2 break-words w-full">{{ post.content }}</p>
+        <div class="text-xs text-gray-500 mb-2">작성자: {{ post.client_id[:8] }} · <time datetime="{{ post.date.isoformat() }}">{{ post.date.strftime('%Y-%m-%d %H:%M') }}</time></div>
+            <div class="flex gap-2 mb-2"><button class="bg-green-500 text-white px-2 py-1 rounded">추천 ({{ post.likes }})</button>
+                <button class="bg-red-500 text-white px-2 py-1 rounded">비추천 ({{ post.dislikes }})</button>
+            </div>
+            <div class="border-t pt-2 space-y-3"><div class="text-sm font-semibold">댓글</div>
+            <div class="flex gap-3 w-full items-baseline"><div class="shrink-0 text-gray-500 w-15 text-right">(00000000)</div>
+            <div class="text-sm text-gray-800 break-words w-full min-w-0">댓글 확인 및 작성은 홈페이지에서만 가능합니다.</div></div>
+            </div><div class="flex gap-3 w-full items-baseline">
+
+            <form class="flex gap-2 mt-2 w-full">
+                <input type="text"
+                    placeholder="댓글 확인 및 작성은 홈페이지에서만 가능합니다."
+                    class="flex-1 w-full border px-2 py-1 rounded"
+                    autocomplete="off" disabled>
+                <button type="button"
+                        class="bg-blue-500 text-white px-3 py-1 rounded">
+                    작성
+                </button>
+            </form>
+            </div>
+        </div>
+    </main>
+  <br><br>
+  <div class="text-center">
+    <a href="https://commu.world" class="inline-block bg-blue-600 text-white text-lg font-medium px-8 py-4 rounded-full hover:bg-blue-700 transition duration-300">
+        홈으로 돌아가기
+    </a>
+  </div>
+  <br><br><br><br>
+<footer class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
+
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div>
+      <div class="flex items-center space-x-4 mb-6">
+        <a>
+          <img
+            src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png"
+            alt="logo"
+            class="w-36 sm:w-32 md:w-36 lg:w-40 xl:w-44"
+          />
+        </a>
+      </div>
+      <ul class="space-y-3 text-base text-gray-600">
+        <li><span class="font-medium"><b>대표이메일</b></span> admin@commu.world</li>
+        <li><span class="font-medium"><b>운영 형태</b></span> 커뮤니티 서비스 | 1인 개발</li>
+      </ul>
+    </div>
+
+    <div></div>
+
+    <div class="flex flex-col items-start md:items-end space-y-6">
+
+      <div class="space-y-3 text-base">
+        <a href="/history" class="flex items-center gap-2 hover:underline">
+          서비스 통계
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/release-notes" class="flex items-center gap-2 hover:underline">
+          업데이트 · 릴리즈 노트
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/report" class="flex items-center gap-2 hover:underline">
+          버그 발견 및 사용자 신고 접수
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex space-x-3">
+        <a href="https://www.instagram.com/yxbh.rh0" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/instagram.svg" class="w-4 h-4">
+        </a>
+        <a href="https://www.youtube.com/@SjInside-j8q" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/youtube.svg" class="w-4 h-4">
+        </a>
+        <a href="https://x.com/Sjinside_" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/x.svg" class="w-4 h-4">
+        </a>
+        <a href="https://github.com/anion15" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/github.svg" class="w-4 h-4">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
+      <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
+      <a href="/service-terms">서비스 이용약관</a>
+      <a href="/info">서비스 안내</a>
+      <a href="/sitemap.xml">사이트맵</a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
+    본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
+    전적으로 개발자에게 있음을 알립니다.
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
+    <span>© 2025-2026 상정인사이드. All rights reserved.</span>
+    <span>Developed by anion15</span>
+  </div>
+
+<div
+  id="site-status-bar"
+  class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
+>
+  <span id="site-badge" class="font-semibold">
+    SangjeongInside
+  </span>
+
+  <span id="site-status-text" class="opacity-80">
+    최신 정보를 불러오는 중…
+  </span>
+</div>
+</footer>
+<style>
+.dark-theme footer {
+  background-color: #1f2933;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.dark-theme footer a {
+  color: #d1d5db;
+}
+
+.dark-theme footer a:hover {
+  color: #60a5fa;
+}
+
+.dark-theme footer .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+.dark-theme footer a.font-semibold {
+  color: #60a5fa;
+}
+
+.dark-theme footer .border {
+  border-color: #4b5563;
+}
+
+.dark-theme footer .border:hover {
+  background-color: #374151;
+}
+
+.dark-theme footer .leading-relaxed {
+  color: #9ca3af;
+}
+
+.dark-theme footer .flex {
+  color: #9ca3af;
+}
+
+.dark-theme footer > div:last-child {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+a svg {
+  transition: transform 0.2s ease;
+}
+a:hover svg {
+  transform: translateX(3px);
+}
+
+.dark-theme footer img{
+  filter: brightness(0) invert(1);
+}
+</style>
+<script>
+  async function loadLatestUpdate() {
+    try {
+      const res = await fetch('/api/SangjeongInside_latest_update');
+      if (!res.ok) throw new Error('API error');
+
+      const data = await res.json();
+
+      const version = data.version;
+      const time = new Date(data.time);
+      const link = data.link;
+
+      const timeText = time.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      document.getElementById('site-status-text').innerHTML = `
+        현재 버전 <a href="${link}" class="underline hover:text-white">
+          v${version}
+        </a>
+        · ${timeText} 업데이트
+      `;
+    } catch (e) {
+      document.getElementById('site-status-text').textContent =
+        '버전 정보를 불러올 수 없습니다.';
+    }
+  }
+
+  loadLatestUpdate();
+</script>
+
+  </article>
+</body>
+</html>

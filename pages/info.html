@@ -1,0 +1,1549 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='icon' type="images/png" href="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png">
+  <meta name="theme-color" content="#0a0b0f">
+  
+  <title>서비스 안내 - 상정인사이드</title>
+  
+  <meta name="description" content="상정인사이드 커뮤니티의 이용 방법과 가이드라인을 확인하세요.">
+  <meta name="keywords" content="커뮤니티, 상정인사이드, 이용가이드, 서비스안내">
+  <meta name="author" content="anion15">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="상정인사이드 서비스 안내">
+  <meta property="og:description" content="상정인사이드 커뮤니티의 이용 방법과 가이드라인을 확인하세요.">
+  <meta property="og:image" content="https://img.commu.world/og?type=page&page=%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%95%88%EB%82%B4">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://commu.world/info">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="상정인사이드 서비스 안내">
+  <meta name="twitter:description" content="상정인사이드 커뮤니티의 이용 방법과 가이드라인을 확인하세요.">
+  <meta name="twitter:image" content="https://img.commu.world/og?type=page&page=%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%95%88%EB%82%B4">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    (function () {
+      var bgColor = "rgba(10,11,15,0.96)";
+      var spinnerSize = 40;
+      var brandText = "Loading…";
+      var minShowMs = 300;
+      var safetyTimeoutMs = 10000;
+
+      var css = `
+        html.__no_scroll, html.__no_scroll body { overflow: hidden !important; height: 100%; }
+        #__page_loader {
+          position: fixed; inset: 0; z-index: 2147483647;
+          display: grid; place-items: center;
+          background: ${bgColor}; color: #fff;
+          opacity: 1; transition: opacity .25s ease;
+        }
+        #__page_loader.__hide { opacity: 0; }
+        #__loader_inner { display: grid; gap: 14px; place-items: center; }
+        /* 스피너 */
+        #__spinner {
+          width: ${spinnerSize}px; height: ${spinnerSize}px;
+          border-radius: 50%;
+          border: 3px solid #ffffff22; border-top-color: #fff;
+          animation: __spin 1s linear infinite;
+        }
+        /* 감속 모션 환경 배려 */
+        @media (prefers-reduced-motion: reduce) {
+          #__spinner { animation: none; border-top-color: #ffffffcc; }
+        }
+        #__brand { font: 600 14px/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Apple SD Gothic Neo", "맑은 고딕", sans-serif; opacity:.9; letter-spacing:.2px;}
+        @keyframes __spin { to { transform: rotate(360deg); } }
+      `;
+      var styleEl = document.createElement("style");
+      styleEl.setAttribute("data-loader-style", "");
+      styleEl.textContent = css;
+      document.head.appendChild(styleEl);
+
+      var overlay = document.createElement("div");
+      overlay.id = "__page_loader";
+      overlay.setAttribute("role", "status");
+      overlay.setAttribute("aria-live", "polite");
+      overlay.innerHTML =
+        '<div id="__loader_inner" aria-label="페이지 로딩 중">' +
+        '<div id="__spinner" aria-hidden="true"></div>' +
+        (brandText ? '<div id="__brand">' + brandText + "</div>" : "") +
+        "</div>";
+
+      function mount() {
+        if (!document.body) { requestAnimationFrame(mount); return; }
+        document.documentElement.classList.add("__no_scroll");
+        document.body.appendChild(overlay);
+      }
+      mount();
+
+      var shownAt = Date.now();
+      var hidden = false;
+
+      function cleanup() {
+        if (hidden) return;
+        hidden = true;
+        overlay.classList.add("__hide");
+        overlay.addEventListener("transitionend", function () {
+          overlay.remove();
+          styleEl.remove();
+          document.documentElement.classList.remove("__no_scroll");
+        }, { once: true });
+      }
+
+      window.hidePageLoader = function () {
+        var elapsed = Date.now() - shownAt;
+        var delay = Math.max(0, minShowMs - elapsed);
+        setTimeout(cleanup, delay);
+      };
+
+      window.addEventListener("load", function () {
+        window.hidePageLoader();
+      });
+
+      setTimeout(function () {
+        if (document.getElementById("__page_loader")) window.hidePageLoader();
+      }, safetyTimeoutMs);
+    })();
+  </script>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; -ms-overflow-style: none; }
+    ::-webkit-scrollbar { display: none;}
+  </style>
+</head>
+<style>
+    body {
+      overflow-x: hidden;
+      background-color: #171717 !important; 
+    }
+
+    html, body {
+      overflow-x: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    #about {
+      overflow: clip;
+    }
+
+    #Anonymous {
+      contain: paint;
+    }
+
+    #faq h2 {
+      color: #ffffff;
+    }
+
+    #faq details summary {
+      color: #757575;
+    }
+
+    #faq h3 {
+      color: #cbcbcb;
+    }
+
+    #faq .space-y-4 details summary {
+      color: #949494;
+    }
+
+    #faq .space-y-4 details .group summary span {
+      color: #ededed;
+    }
+
+    #faq details div p{
+      color:#bdbdbd;
+    }
+    
+    #faq details div ul li {
+      color: #acacac;
+    }
+
+    #faq details {
+      border-color: #d1d5db;
+    }
+
+    #faq a {
+      color: #2563eb;
+    }
+
+    
+
+
+</style>
+<script>
+      const defaultSettings = {
+        theme: 'system'
+      };
+
+      function loadSettings() {
+        const saved = localStorage.getItem('sjinside_settings');
+        return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+      }
+
+      function applyTheme(theme) {
+        const body = document.body;
+        body.classList.remove('dark-theme');
+        
+        if (theme === 'dark') {
+          body.classList.add('dark-theme');
+        } else if (theme === 'system') {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add('dark-theme');
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const settings = loadSettings();
+        applyTheme(settings.theme);
+        
+        if (window.matchMedia) {
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (loadSettings().theme === 'system') {
+              applyTheme('system');
+            }
+          });
+        }
+      });
+</script>
+
+
+<body class="bg-gray-100 min-h-screen">
+  <style>
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      border-radius: 0.375rem;
+      overflow: hidden;
+    }
+
+    .list-group-item {
+      position: relative;
+      display: block;
+      padding: 0.75rem 1.25rem;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      color: #212529;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out, transform 0.2s ease;
+    }
+
+    .list-group-item + .list-group-item {
+      border-top: none;
+    }
+
+    .header-glass {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+
+    .list-group-item:hover {
+      z-index: 1;
+      background-color: #f8f9fa;
+      font-weight: bold;
+      transform: scale(1.01);
+    }
+
+    .list-group-item:active {
+      background-color: #e9ecef;
+    }
+
+    #popMenu {
+      position: absolute;
+      display: none;
+      width: 280px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border-radius: 0.5rem;
+      z-index: 9999;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      animation: fadeInSlide 0.3s ease forwards;
+    }
+
+
+
+    .break-keep {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+
+
+#scrollNav {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    z-index: 50;
+    transition: all 0.3s ease;
+}
+
+#scrollNav span {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: font-size 0.3s ease, color 0.3s ease;
+}
+
+#scrollNav .w-3.h-3 {
+    width: 0.9rem;
+    height: 0.9rem;
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
+}
+
+#scrollNav .active div {
+    background-color: white; 
+    transform: scale(1.6);
+}
+
+#scrollNav .active span {
+    color: white;
+    font-size: 1.2rem; 
+    font-weight: 600;
+}
+
+@media (max-width: 1180px) {
+    #scrollNav {
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transform: none;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 0.8rem 0;
+        background: linear-gradient(to top, rgba(23,23,23,0.95), rgba(23,23,23,0));
+        backdrop-filter: blur(12px);
+    }
+
+    #scrollNav > div {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    #scrollNav span {
+        font-size: 1.0rem;
+    }
+
+    #scrollNav .w-3.h-3 {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+
+    #scrollNav .active div {
+        transform: scale(1.6);
+    }
+
+    #scrollNav .active span {
+        font-size: 1.2rem;
+    }
+
+    @media (max-width: 640px) {
+        #scrollNav span {
+            font-size: 0.9rem;
+        }
+        #scrollNav .w-3.h-3 {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+
+        #scrollNav .active div {
+            transform: scale(1.45);
+        }
+
+        #scrollNav .active span {
+            font-size: 1.05rem;
+        }
+    }
+}
+
+  </style>
+
+  <div id="popMenu" class="list-group">
+    <div class="list-group-item" data-action="reload">🔄 새로고침</div>
+    <hr style="margin: 0">
+    <a href="/" class="list-group-item list-group-item-action">🏠 홈으로 가기</a>
+    <a href="/info" class="list-group-item list-group-item-action">📘 소개 및 이용규칙</a>
+    <a href="/history" class="list-group-item list-group-item-action">📊 통계 및 정보</a>
+    <a href="https://buymeacoffee.com/sjinside" class="list-group-item list-group-item-action">☕ 후원하기</a>
+  </div>
+
+  <script>
+    const popMenu = document.getElementById('popMenu');
+
+    document.addEventListener('contextmenu', e => {
+      const settings = JSON.parse(localStorage.getItem('sjinside_settings') || '{}');
+      if (settings.rightClickEnabled === false) {
+        return;
+      }
+
+      e.preventDefault();
+
+      popMenu.style.display = 'block';
+      popMenu.style.visibility = 'hidden';
+
+      const menuWidth = popMenu.offsetWidth;
+      const menuHeight = popMenu.offsetHeight;
+
+      let left = e.pageX + 5;
+      let top = e.pageY + 5;
+
+      const maxLeft = window.scrollX + window.innerWidth - menuWidth - 10;
+      const maxTop = window.scrollY + window.innerHeight - menuHeight - 10;
+
+      if (left > maxLeft) left = maxLeft;
+      if (top > maxTop) top = maxTop;
+
+      popMenu.style.left = `${left}px`;
+      popMenu.style.top = `${top}px`;
+
+      popMenu.style.visibility = 'visible';
+      popMenu.style.animation = 'none';
+      void popMenu.offsetHeight;
+      popMenu.style.animation = 'fadeInSlide 0.3s ease forwards';
+    });
+
+    popMenu.addEventListener('click', async e => {
+      const action = e.target.dataset.action;
+      if (!action) return;
+
+      try {
+        if (action === 'reload') {
+          location.reload();
+        } else if (action === 'settings') {
+          openSettingsModal();
+        }
+      } catch (err) {
+        console.error(err);
+        alert('작업을 수행할 수 없습니다. 브라우저 보안 정책 또는 HTTPS 확인 필요.');
+      } finally {
+        popMenu.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (!popMenu.contains(e.target)) {
+        popMenu.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      popMenu.style.display = 'none';
+    });
+
+    window.addEventListener('scroll', () => {
+      popMenu.style.display = 'none';
+    });
+  </script>
+
+
+<header id="mainHeader"
+  class="fixed top-0 left-0 w-full z-50
+         header-glass
+         py-4 px-6
+         flex items-center justify-between
+         transition-all duration-500
+         -translate-y-full opacity-0">
+
+
+    <div class="flex items-center space-x-4">
+      <a href="https://commu.world">
+        <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
+      </a>
+    </div>
+  
+    <div class="flex space-x-2">
+      <a href="/info"
+         class="bg-blue-600 text-white font-semibold
+                text-sm sm:text-base md:text-sm sm:text-xl
+                py-1 px-2 sm:py-2 sm:px-4 md:py-3 md:px-6 rounded">
+        서비스 안내
+      </a>
+      <a href="/history"
+         class="bg-gray-600 text-white font-semibold
+                text-sm sm:text-base md:text-sm sm:text-xl
+                py-1 px-2 sm:py-2 sm:px-4 md:py-3 md:px-6 rounded">
+        서비스 통계
+      </a>
+    </div>
+  </header>
+<div id="scrollNav" class="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-4 z-50">
+  <div class="flex items-center gap-2 cursor-pointer" data-target="hero">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">Hero</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="about">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">About</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="guidelines">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">Guideline</span>
+  </div>
+  <div class="flex items-center gap-2 cursor-pointer" data-target="faq">
+    <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
+    <span class="text-gray-400 text-sm transition-all">FAQ</span>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const navItems = document.querySelectorAll('#scrollNav > div');
+
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetEl = document.getElementById(item.dataset.target);
+      if (!targetEl) return;
+
+      const rect = targetEl.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetY = rect.top + scrollTop - window.innerHeight / 2 + rect.height / 2;
+
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.25 };
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const navItem = document.querySelector(`#scrollNav > div[data-target="${entry.target.id}"]`);
+      if (!navItem) return;
+
+      if (entry.isIntersecting) {
+        navItems.forEach(i => i.classList.remove('active'));
+        navItem.classList.add('active');
+      }
+    });
+  }, observerOptions);
+
+  navItems.forEach(item => {
+    const section = document.getElementById(item.dataset.target);
+    if (section) observer.observe(section);
+  });
+});
+
+</script>
+<section id="hero"
+  class="h-screen flex flex-col items-center justify-center
+         text-center bg-neutral-900 break-keep">
+
+  <h1 id="sksdbswndnjsdlekz" class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-gray-100">
+    로그인 없이, 바로 익명.<br />
+  <span class="inline-block text-gray-300 mt-6">
+    <span class="animate-flip inline-block">상정</span><span class="inline-block">인사이드.</span>
+  </span>
+  </h1>
+
+<div class="mt-24 flex flex-col items-center text-gray-400 animate-bounce">
+  <span class="text-base sm:text-lg font-medium tracking-wide" id="hello-sajung">
+    스크롤하여 더보기
+  </span>
+  <svg class="w-8 h-8 mt-3 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
+       viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+  </svg>
+</div>
+</section>
+<style>
+:root {
+  --scale-target: 1.7;
+  --translate-y-from: -1.17vw;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --scale-target: 1.3;
+    --translate-y-from: -15px;
+  }
+}
+
+.grow-container {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+}
+
+@keyframes growFromTop {
+  0% {
+    transform: scale(0.9) translateY(var(--translate-y-from));
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(var(--scale-target)) translateY(0);
+    opacity: 1;
+  }
+}
+
+.grow-init {
+  opacity: 0.3;
+  transform: scale(0.9) translateY(var(--translate-y-from));
+  transform-origin: top left;
+  will-change: transform, opacity;
+}
+
+.animate-grow {
+  animation: growFromTop 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+
+
+#random-author {
+  display: inline-block;
+  transition: all 0.2s ease-out;
+  position: relative;
+  min-width: 1rem;
+}
+
+.author-change {
+  opacity: 0.5;
+  transform: translateY(-2px);
+  color: #3b82f6;
+}
+
+
+#Anonymous .grow-init {
+  opacity: 0;
+  transform: scale(0.9) translateY(var(--translate-y-from, 20px));
+  transform-origin: top left;
+  will-change: transform, opacity;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 45%,
+    rgba(0, 0, 0, 0.6) 65%,
+    rgba(0, 0, 0, 0.15) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 45%,
+    rgba(0, 0, 0, 0.6) 65%,
+    rgba(0, 0, 0, 0.15) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+
+
+#Anonymous {
+  position: relative;
+}
+
+.animate-grow {
+  animation: growFromTop 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.5s;
+}
+
+
+
+.desc-text {
+  word-break: keep-all;
+  letter-spacing: -0.02em;
+  line-height: 1.8;
+}
+
+.highlight-white {
+  color: #ffffff;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-white::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(59, 130, 246, 0.2);
+  z-index: -1;
+}
+
+
+.dark-theme #site-footer {
+  background: #2d2d2d;
+  color: #e5e7eb;
+}
+
+#Anonymous p{
+  color: #374151;
+}
+
+</style>
+
+
+
+<section id="about" class="min-h-[250vh] flex flex-col items-center justify-center
+         text-center bg-neutral-950 px-6 break-keep">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-100 mb-64">
+      상정인사이드는 단순한 커뮤니티가 아닙니다
+    </h2>
+    <div class="space-y-12 desc-text">
+  <p class="text-gray-300 text-xl sm:text-2xl my-16">
+    수많은 인기 커뮤니티들과는 다르게,<br />
+    <span class="highlight-white text-white">상정인사이드는 익명성</span>에 초점을 둡니다.
+  </p>
+    </div>
+    <div id="Anonymous" class="mt-0 min-h-[50vh] text-left">
+      <div class="bg-white rounded shadow p-4 grow-init" data-post-id="1">
+        <h3 class="text-lg font-bold text-gray-800">ㅎㅇㅎㅇ</h3>
+        <p class="text-gray-700 my-2 break-words w-full">안녕하세요!</p>
+        <div class="text-xs text-gray-500 mb-2">작성자: <span id="random-author">7e5b8b92</span> · <time datetime="2025-04-24T14:51:50.189989">2025-04-24 14:51</time></div>
+            <div class="flex gap-2 mb-2"><button class="bg-green-500 text-white px-2 py-1 rounded">추천 (12)</button>
+                <button class="bg-red-500 text-white px-2 py-1 rounded">비추천 (0)</button>
+            </div>
+            <div class="border-t pt-2 space-y-3"><div class="text-sm font-semibold">댓글</div>
+            
+            </div><div class="flex gap-3 w-full items-baseline">
+
+            <form class="flex gap-2 mt-2 w-full">
+                <input type="text" placeholder="댓글 작성" class="flex-1 w-full border px-2 py-1 rounded" autocomplete="off" disabled="">
+                <button type="button" class="bg-blue-500 text-white px-3 py-1 rounded">
+                    작성
+                </button>
+            </form>
+            </div>
+        </div>
+    </div>
+  </div>
+
+<div class="space-y-12 desc-text">
+
+  <div class="py-4">
+    <p class="text-gray-400 text-lg">
+      매일, 매시간 바뀌는 ID.<br />
+      누가 누구인지 특정할 수 없는 환경을 제공합니다.
+    </p>
+  </div>
+
+  <p class="mt-20 text-2xl sm:text-2xl text-white font-light">
+    당신의 ID는 끊임없이 변화하며, <br  />
+    그 누구도 당신의 과거 발언을 <span class="highlight-white text-white">추적</span>하거나<br />
+    현재의 당신을 <span class="highlight-white text-white">특정</span>할 수 없습니다.
+  </p>
+
+  <p class="text-gray-300 text-xl sm:text-2xl">
+    <span class="highlight-white text-white">익명이라는 자유</span> 속에서,<br />
+    누구나 자신의 목소리를 은밀하게 낼 수 있습니다.
+  </p>
+</div>
+<p class="mt-32 mb-16 text-sm sm:text-base text-gray-400">
+    —  단, 경찰·정부 지침에 따른 합법적 요청 시에는 예외가 있을 수 있습니다.
+  </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.querySelector('#Anonymous .bg-white');
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        target.classList.add('animate-grow');
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(target);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const target = document.querySelector('#Anonymous .bg-white');
+  const authorSpan = document.getElementById('random-author');
+
+  const generateRandomID = () => Math.random().toString(16).substring(2, 10);
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        target.classList.add('animate-grow');
+        
+        setInterval(() => {
+          authorSpan.classList.add('author-change');
+          
+          setTimeout(() => {
+            authorSpan.textContent = generateRandomID();
+            authorSpan.classList.remove('author-change');
+          }, 100); 
+
+        }, 500);
+
+        observer.disconnect();
+      }
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(target);
+});
+</script>
+<section id="font-identity" class="font-identity-section py-44 px-6 break-keep relative">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <p class="bridge-text text-neutral-400 text-lg sm:text-xl mb-44 px-6 reveal">
+      그리고 우리는,<br />
+      <span class="text-white font-semibold">
+        글자의 형태까지 고민했습니다.
+      </span>
+    </p>
+    <span class="text-gray-500 text-sm mt-4 block my-16">
+      Sangjeong-SansKR은 현재 개발 중인 폰트입니다.<br />
+      개발 완료 후 정식 적용될 예정이며, 현재는 Noto Sans KR로 임시 대체되어 있습니다.<br /><br />
+      또한 미리보기로 제공되는 텍스트는 Sangjeong-SansKR의 실제 결과물이 아니며,<br />
+      디자인 콘셉트를 전달하기 위한 임시 시안임을 알려드립니다.
+    </span>
+    <div class="sticky-title-wrapper mb-24">
+      <p class="text-sm text-neutral-500 mb-3 reveal delay-1">
+        SangjeongInside Typeface
+      </p>
+      <h2 id="zoom-title" class="zoom-title text-4xl sm:text-6xl font-extrabold text-white mb-16">
+        Sangjeong-SansKR
+      </h2>
+    </div>
+    <span class="text-gray-500 text-sm mt-4 block">
+        폰트 미리보기 텍스트입니다.
+    </span>
+    <hr class="my-8 border-gray-500">
+
+    <div class="space-y-10 reveal delay-3">
+      <p class="font-sample opacity-95">익명 속에서 드러나는 진심</p>
+      <p class="font-sample text-2xl font-medium opacity-60">말하지 못했던 생각들</p>
+      <p class="font-sample text-xl font-normal opacity-40">여과되지 않은 문장들</p>
+    </div>
+<hr class="my-12 border-gray-500">
+    <div class="desc-text mt-44 space-y-16">
+<div class="mt-44 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-16 items-start">
+
+  <div class="space-y-16 text-right">
+    <p class="reveal text-neutral-300 text-lg sm:text-xl">
+      <span class="highlight-white">Sangjeong-SansKR</span>은<br />
+      상정인사이드의 철학에서 출발한<br />
+      전용 서체입니다.
+    </p>
+
+    <p class="reveal text-neutral-300 text-lg sm:text-xl">
+      이 서체는 ‘정상적임’을 강요하는<br />
+      익숙한 글꼴에서 한 발 물러나,<br />
+      편안함과 불편함의 경계 위에서<br />
+      형태를 잡았습니다.
+    </p>
+  </div>
+
+  <div class="reveal delay-1 w-px h-80 bg-neutral-600 mx-auto"></div>
+
+  <div class="space-y-16 text-left">
+    <div class="reveal delay-1">
+      <p class="text-2xl sm:text-3xl font-bold text-white leading-snug">
+        상정인사이드의 시선으로 <br />
+        다시 만든 글꼴
+      </p>
+    </div>
+
+    <div class="reveal delay-2">
+      <p class="text-neutral-400 text-xl">
+        과하게 둥글지 않고,<br />
+        지나치게 각지지도 않은 균형
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<p class="text-neutral-400 text-base mt-32 text-center reveal delay-3">
+  이 폰트는 길게 설명하지 않습니다.<br />
+  <span class="ending-line text-xl block mt-3">
+    읽히는 순간, 감각으로 전해집니다.
+  </span>
+  <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+    <br  />
+  <br  />
+  <br  />
+
+
+
+</p>
+
+
+    </div>
+  </div>
+
+  <style>
+    .font-identity-section {
+      background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.04), transparent 60%), #0a0a0a;
+    }
+
+    .zoom-title {
+      display: inline-block;
+      will-change: transform, opacity;
+      transform: scale(8); 
+      opacity: 0;
+      transition: transform 0.1s linear, opacity 0.1s linear;
+    }
+
+    .font-identity-section .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .font-identity-section .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .font-identity-section .delay-1 { transition-delay: 0.12s; }
+    .font-identity-section .delay-2 { transition-delay: 0.24s; }
+    .font-identity-section .delay-3 { transition-delay: 0.36s; }
+
+    .font-sample {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    .highlight-white { color: white; font-weight: 600; }
+    .interactive { position: relative; }
+    .interactive::after {
+      content: ""; position: absolute; left: 0; bottom: -4px;
+      width: 100%; height: 1px; background: white;
+      opacity: 0.5; transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .interactive:hover::after { transform: scaleX(1); }
+    .ending-line { color: white; font-weight: 600; letter-spacing: -0.01em; }
+  </style>
+
+  <script>
+    (() => {
+      const zoomTitle = document.getElementById('zoom-title');
+      const section = document.querySelector('#font-identity');
+      const reveals = document.querySelectorAll("#font-identity .reveal");
+
+      window.addEventListener('scroll', () => {
+        const sectionRect = section.getBoundingClientRect();
+        const sectionTop = sectionRect.top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight && sectionRect.bottom > 0) {
+          let progress = (windowHeight - sectionTop) / (windowHeight * 1.2);
+          progress = Math.min(Math.max(progress, 0), 1);
+
+          const scale = 8 - (progress * 7);
+          const opacity = progress * 1.5;
+
+          zoomTitle.style.transform = `scale(${Math.max(scale, 1)})`;
+          zoomTitle.style.opacity = Math.min(opacity, 1);
+        }
+      });
+
+      const io = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      reveals.forEach(el => io.observe(el));
+    })();
+  </script>
+</section>
+
+<section id="guidelines" class="py-32 px-6 bg-neutral-900 break-keep">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-100 text-center mb-12">
+      커뮤니티 가이드라인
+    </h2>
+
+    <p class="text-gray-300 text-center leading-relaxed mb-10">
+      상정인사이드는 자유로운 표현을 존중합니다.<br />
+      하지만 모두를 위한 최소한의 규칙이 존재합니다.
+    </p>
+
+    <ul class="space-y-4 text-gray-300">
+      <li>1. 타 유저 게시물/댓글 허위 신고</li>
+      <li>2. 조롱성 게시물</li>
+      <li>3. 협박성 게시물</li>
+      <li>4. 과도한 욕설이 포함된 게시물</li>
+      <li>5. 성적인 내용 또는 불쾌감을 주는 게시물</li>
+      <li>6. 악성·불법 사이트 홍보 및 유도 게시물</li>
+      <li class="text-gray-400">그 외 사항은 관리자의 판단에 따릅니다.</li>
+    </ul>
+  </div>
+</section>
+<hr class="my-8 border-gray-500">
+<div class="min-h-[15vh]"></div>
+<section id="faq" class="mx-auto max-w-4xl px-6 py-12 sm:py-16 bg-neutral-850 break-keep">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-100 mb-8">
+        자주 묻는 질문 (FAQ)
+    </h2>
+
+    <details class="bbb group mb-6 border rounded-lg border-gray-800 dark:border-gray-800">
+        <summary class="cursor-pointer px-5 py-5 text-lg font-medium text-gray-900 dark:text-gray-800 flex justify-between items-center">
+        전체 보기
+        <svg class="h-5 w-5 text-gray-500 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-700 dark:text-gray-300 space-y-8">
+
+        <div class="py-4">
+            <h3 class="text-xl font-semibold mt-6 mb-4">사이트 이용</h3>
+
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>여기는 어떤 사이트인가요?</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 text-gray-100">
+                        <p>
+                        상정인사이드는 당신의 일상과 생각을 나누는 공간입니다.  
+                        로그인과 회원가입 절차 없이 완전 익명으로 소통할 수 있습니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>이번 달 핫토픽 선정 기준은 어떻게 되나요?</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-3">
+                    <p><strong>1. 대상 글</strong>: 최근 한 달 내 작성된 글만 포함됩니다.</p>
+                    <p><strong>2. 점수 계산</strong>: 점수 = 댓글 수 + 추천(좋아요) 수</p>
+                    <p><strong>3. 선정 방식</strong>:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>종합 1위: 댓글+추천 합산 점수가 가장 높은 글 → "hot"</li>
+                        <li>댓글 1위: 댓글이 가장 많은 글(종합 1위와 중복 제외) → "comments"</li>
+                        <li>추천 1위: 추천이 가장 많은 글(다른 순위와 중복 제외) → "likes"</li>
+                        <li>추가 인기글 5개: 남은 글 중 점수 상위 5개 → "hot"</li>
+                    </ul>
+                    <p><strong>4. 중복 방지</strong>: 같은 글이 여러 순위에 중복되지 않도록 함</p>
+                    <p><strong>5. 업데이트 주기</strong>: 하루 한 번 자동 계산 (필요 시 즉시 계산 가능)</p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>상정인사이드 부관리자가 되고 싶어요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-3">
+                    <p>부관리자는 다음 역할을 수행합니다.</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>게시물 및 댓글 관리</li>
+                        <li>신고 처리</li>
+                        <li>코딩 작업</li>
+                    </ul>
+                    <p>지원 방법: <a href="https://discord.com/invite/bNJvy5weuc" class="text-blue-600 underline">공식 디스코드 서버</a> 가입 후 면접 진행</p>
+                    <p class="text-red-500 text-sm">※ 권한을 악용할 경우 영구정지 및 법적 대응 가능</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="py-4">
+            <h3 class="text-xl font-semibold mt-6 mb-4">계정 · 개인정보</h3>
+
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>개인정보는 어떻게 처리하나요?</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        자세한 내용은 <a href="https://commu.world/term" class="text-blue-600 underline">개인정보처리방침</a> 페이지에서 확인할 수 있습니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>내 개인정보나 게시글을 삭제하고 싶어요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        DISCORD: coding_09 또는 <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a>로 요청하시면 됩니다.  
+                        보안상 삭제가 불가능한 항목은 그 사유와 법적 근거를 안내드립니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>영구정지 사유를 알고 싶어요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        DISCORD: coding_09 또는 <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a>로 문의 시 안내드립니다.  
+                        단, 경찰·정부 지침에 따른 영구정지는 해제 불가입니다.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        <div class="py-4">
+            <h3 class="text-xl font-semibold mt-6 mb-4">버그 · 오류</h3>
+
+            <div class="space-y-4">
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>디자인이 깨져 보여요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        <strong>Safari 또는 iOS/macOS</strong>: 설정 → 빠른설정 → 실시간 모드 → 적용  
+                        </p>
+                        <p>
+                        <strong>기타 브라우저</strong>: 쿠키 삭제 후 새로고침 (간헐적으로 Cloudflare/TailwindCSS CDN 문제 발생 가능)  
+                        </p>
+                        <p>
+                        해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>작성 중인 댓글이 갑자기 사라져요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        설정 → 정보 실시간 반영 끄기 → 적용  
+                        </p>
+                        <p>
+                        그래도 해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>텍스트 복사가 안 돼요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        설정 → 정보 실시간 반영 끄기 → 적용  
+                        </p>
+                        <p>
+                        그래도 해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>검열 기능이 이상하게 작동해요.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2">
+                        <p>
+                        해당 기능은 베타 버전이며, 여러 버그가 발생할 수 있습니다. 정식 배포 전까지 개선 작업이 진행됩니다.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>게시물 작성 시 인증 오류 메시지가 뜹니다.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        작성란 아래 <em>사람인지 확인</em> 체크박스를 클릭하여 "성공!" 메시지가 뜬 후 작성 버튼을 누르세요.  
+                        </p>
+                        <p>
+                        체크박스가 보이지 않으면 새로고침 후 다시 시도하세요.  
+                        </p>
+                        <p>
+                        해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>추천/비추천 수가 NaN으로 표시됩니다.</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        페이지 새로고침 후 다시 확인하세요.  
+                        </p>
+                        <p>
+                        해결되지 않으면 <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지로 제보해주세요.
+                        </p>
+                    </div>
+                </details>
+
+                <details class="group">
+                    <summary class="flex justify-between cursor-pointer py-3">
+                    <span>버그 제보·사용자 신고·기능 제안은 어디서 하나요?</span>
+                    <span class="text-gray-500 group-open:rotate-180 transition-transform">▼</span>
+                    </summary>
+                    <div class="mt-3 pl-6 py-2 space-y-2">
+                        <p>
+                        <strong>버그·신고</strong>: <a href="/report" class="text-blue-600 underline">버그 신고</a> 페이지  
+                        </p>
+                        <p>
+                        <strong>기능 제안</strong>: DISCORD: coding_09 또는 <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a>
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+
+        </div>
+    </details>
+</section>
+
+
+
+<style>
+@keyframes flipToNormal {
+  from {
+    transform: scaleX(-1);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-flip {
+  transform: scaleX(-1);
+  animation: flipToNormal 0.8s ease-out forwards;
+  animation-delay: 0.35s;
+}
+</style>
+
+
+
+<script>
+const header = document.getElementById('mainHeader');
+const hero = document.getElementById('hero');
+
+const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting) {
+      header.classList.add('-translate-y-full', 'opacity-0');
+    } else {
+      header.classList.remove('-translate-y-full', 'opacity-0');
+    }
+  },
+  { threshold: 0.15 }
+);
+
+observer.observe(hero);
+</script>
+<script>
+let isMobileLayout = null;
+
+function updateHeroText() {
+  const heroText = document.getElementById('sksdbswndnjsdlekz');
+  if (!heroText) return;
+
+  const nowMobile = window.innerWidth <= 462;
+
+  if (nowMobile === isMobileLayout) return;
+  isMobileLayout = nowMobile;
+
+  if (nowMobile) {
+    heroText.innerHTML = `
+      로그인 없이,<br />
+      바로 익명.<br />
+      <span class="inline-block text-gray-300 mt-6">
+        <span class="animate-flip inline-block">상정</span><span class="inline-block">인사이드.</span>
+      </span>
+    `;
+  } else {
+    heroText.innerHTML = `
+      로그인 없이, 바로 익명.<br />
+      <span class="inline-block text-gray-300 mt-6">
+        <span class="animate-flip inline-block">상정</span><span class="inline-block">인사이드.</span>
+      </span>
+    `;
+  }
+}
+
+updateHeroText();
+
+window.addEventListener('resize', updateHeroText);
+</script>
+
+
+
+
+
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>  
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+
+<footer class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
+
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div>
+      <div class="flex items-center space-x-4 mb-6">
+        <a>
+          <img
+            src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png"
+            alt="logo"
+            class="w-36 sm:w-32 md:w-36 lg:w-40 xl:w-44"
+          />
+        </a>
+      </div>
+      <ul class="space-y-3 text-base text-gray-600">
+        <li><span class="font-medium"><b>대표이메일</b></span> admin@commu.world</li>
+        <li><span class="font-medium"><b>운영 형태</b></span> 커뮤니티 서비스 | 1인 개발</li>
+      </ul>
+    </div>
+
+    <div></div>
+
+    <div class="flex flex-col items-start md:items-end space-y-6">
+
+      <div class="space-y-3 text-base">
+        <a href="/history" class="flex items-center gap-2 hover:underline">
+          서비스 통계
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/release-notes" class="flex items-center gap-2 hover:underline">
+          업데이트 · 릴리즈 노트
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/report" class="flex items-center gap-2 hover:underline">
+          버그 발견 및 사용자 신고 접수
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex space-x-3">
+        <a href="https://www.instagram.com/yxbh.rh0" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/instagram.svg" class="w-4 h-4">
+        </a>
+        <a href="https://www.youtube.com/@SjInside-j8q" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/youtube.svg" class="w-4 h-4">
+        </a>
+        <a href="https://x.com/Sjinside_" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/x.svg" class="w-4 h-4">
+        </a>
+        <a href="https://github.com/anion15" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/github.svg" class="w-4 h-4">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
+      <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
+      <a href="/service-terms">서비스 이용약관</a>
+      <a href="/info">서비스 안내</a>
+      <a href="/sitemap.xml">사이트맵</a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
+    본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
+    전적으로 개발자에게 있음을 알립니다.
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
+    <span>© 2025-2026 상정인사이드. All rights reserved.</span>
+    <span>Developed by anion15</span>
+  </div>
+
+<div
+  id="site-status-bar"
+  class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
+>
+  <span id="site-badge" class="font-semibold">
+    SangjeongInside
+  </span>
+
+  <span id="site-status-text" class="opacity-80">
+    최신 정보를 불러오는 중…
+  </span>
+</div>
+</footer>
+<style>
+.dark-theme footer {
+  background-color: #2d2d2d;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.dark-theme footer a {
+  color: #d1d5db;
+}
+
+.dark-theme footer a:hover {
+  color: #60a5fa;
+}
+
+.dark-theme footer .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+.dark-theme footer a.font-semibold {
+  color: #60a5fa;
+}
+
+.dark-theme footer .border {
+  border-color: #4b5563;
+}
+
+.dark-theme footer .border:hover {
+  background-color: #374151;
+}
+
+.dark-theme footer .leading-relaxed {
+  color: #9ca3af;
+}
+
+.dark-theme footer .flex {
+  color: #9ca3af;
+}
+
+.dark-theme footer > div:last-child {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+a svg {
+  transition: transform 0.2s ease;
+}
+a:hover svg {
+  transform: translateX(3px);
+}
+
+.dark-theme footer img{
+  filter: brightness(0) invert(1);
+}
+</style>
+<script>
+  async function loadLatestUpdate() {
+    try {
+      const res = await fetch('/api/SangjeongInside_latest_update');
+      if (!res.ok) throw new Error('API error');
+
+      const data = await res.json();
+
+      const version = data.version;
+      const time = new Date(data.time);
+      const link = data.link;
+
+      const timeText = time.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      document.getElementById('site-status-text').innerHTML = `
+        현재 버전 <a href="${link}" class="underline hover:text-white">
+          v${version}
+        </a>
+        · ${timeText} 업데이트
+      `;
+    } catch (e) {
+      document.getElementById('site-status-text').textContent =
+        '버전 정보를 불러올 수 없습니다.';
+    }
+  }
+
+  loadLatestUpdate();
+</script>
+</body>
+</html>

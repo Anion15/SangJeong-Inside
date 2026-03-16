@@ -1,0 +1,1688 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='icon' type="images/png" href="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png">
+  
+  <title>'{{ keyword }}' 검색 결과 ({{ current_page }}/{{ total_pages }}페이지) - 상정인사이드</title>
+  <link rel="canonical" href="https://commu.world/view/post/search?q={{ keyword }}&page={{ current_page }}">
+  
+  <meta name="description" content="'{{ keyword }}'에 대한 {{ count }}개의 검색 결과가 있습니다. {{ current_page }}페이지 내용 확인하기.">
+  <meta name="keywords" content="커뮤니티, 상정인사이드, 자유로운, 검색결과">
+  <meta name="author" content="anion15">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="'{{ keyword }}' 검색 결과 - 상정인사이드">
+  <meta property="og:description" content="총 {{ count }}개의 게시물을 찾았습니다. ({{ elapsed }}초 소요)">
+  <meta property="og:url" content="https://commu.world/view/post/search?q={{ keyword }}">
+  
+  <meta property="og:image" content="https://img.commu.world/og?type=search&query={{ keyword|urlencode }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="'{{ keyword }}' 검색 결과 - 상정인사이드">
+  <meta name="twitter:description" content="총 {{ count }}개의 게시물을 찾았습니다. ({{ elapsed }}초 소요)">
+  <meta name="twitter:image" content="https://img.commu.world/og?type=search&query={{ keyword|urlencode }}">
+
+  <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "tnlirpxyjr");
+    </script>
+</head>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const target = document.querySelector('main');
+      const ads = document.querySelectorAll('.floating-ad');
+      
+      function applyZoom() {
+          if (!target) return;
+
+          const width = window.innerWidth;
+
+          if (width > 2000) {
+              let dynamicZoom = 1.1 + (width - 2000) / 5000; 
+              dynamicZoom = Math.min(dynamicZoom, 1.6);
+
+              let adZoom = 1.3 + (width - 2000) / 3500; 
+              adZoom = Math.min(adZoom, 2.2);
+
+              target.style.zoom = dynamicZoom;
+              target.style.maxWidth = (900 + (width - 2000) * 0.15) + 'px'; 
+              target.style.margin = '0 auto';
+
+              ads.forEach(ad => {
+                  ad.style.zoom = adZoom; 
+              });
+              
+              console.log(`[와이드 대응] 확대 적용 중...`);
+          } 
+          else {
+              target.style.zoom = '1';
+              target.style.maxWidth = '';
+              target.style.margin = '';
+              
+              ads.forEach(ad => {
+                  ad.style.zoom = '1';
+              });
+              
+              console.log('[일반 모드] 배율 초기화');
+          }
+      }
+
+      applyZoom();
+      window.addEventListener('resize', applyZoom);
+  });
+</script>
+  <style>
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  transition: transform 0.3s ease-in-out;
+  background-color: white; 
+}
+
+.dark-theme header {
+  background-color: #2d2d2d !important;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+}
+
+body {
+  padding-top: 120px; 
+}
+  </style>
+<script>
+  function applyTheme(theme) {
+    const target = document.body || document.documentElement;
+    if (!target) return;
+
+    target.classList.remove('dark-theme');
+    const isDark = theme === 'dark' || 
+                 (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (isDark) {
+      target.classList.add('dark-theme');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const settings = loadSettings();
+    applyTheme(settings.theme);
+
+    const header = document.querySelector('header');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        header.classList.add('header-hidden');
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      lastScrollY = currentScrollY;
+    });
+  });
+</script>
+<script>
+window.addEventListener("focus", function() {
+    var loader = document.getElementById("__page_loader");
+    if (loader) {
+        window.hidePageLoader();
+    }
+    
+    document.documentElement.classList.remove("__no_scroll");
+    document.body.classList.remove("menu-open"); 
+});
+
+setTimeout(function() {
+    document.documentElement.classList.remove("__no_scroll");
+    var loader = document.getElementById("__page_loader");
+    if (loader) loader.style.pointerEvents = "none"; 
+}, 5000);
+</script>
+  <script>
+    (function () {
+      var bgColor = "rgba(10,11,15,0.96)";
+      var spinnerSize = 40;
+      var brandText = "Loading…";
+      var minShowMs = 300;
+      var safetyTimeoutMs = 10000;
+
+      var css = `
+        html.__no_scroll, html.__no_scroll body { overflow: hidden !important; height: 100%; }
+        #__page_loader {
+          position: fixed; inset: 0; z-index: 2147483647;
+          display: grid; place-items: center;
+          background: ${bgColor}; color: #fff;
+          opacity: 1; transition: opacity .25s ease;
+        }
+        #__page_loader.__hide { opacity: 0; }
+        #__loader_inner { display: grid; gap: 14px; place-items: center; }
+        /* 스피너 */
+        #__spinner {
+          width: ${spinnerSize}px; height: ${spinnerSize}px;
+          border-radius: 50%;
+          border: 3px solid #ffffff22; border-top-color: #fff;
+          animation: __spin 1s linear infinite;
+        }
+        /* 감속 모션 환경 배려 */
+        @media (prefers-reduced-motion: reduce) {
+          #__spinner { animation: none; border-top-color: #ffffffcc; }
+        }
+        #__brand { font: 600 14px/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Apple SD Gothic Neo", "맑은 고딕", sans-serif; opacity:.9; letter-spacing:.2px;}
+        @keyframes __spin { to { transform: rotate(360deg); } }
+      `;
+      var styleEl = document.createElement("style");
+      styleEl.setAttribute("data-loader-style", "");
+      styleEl.textContent = css;
+      document.head.appendChild(styleEl);
+
+      var overlay = document.createElement("div");
+      overlay.id = "__page_loader";
+      overlay.setAttribute("role", "status");
+      overlay.setAttribute("aria-live", "polite");
+      overlay.innerHTML =
+        '<div id="__loader_inner" aria-label="페이지 로딩 중">' +
+        '<div id="__spinner" aria-hidden="true"></div>' +
+        (brandText ? '<div id="__brand">' + brandText + "</div>" : "") +
+        "</div>";
+
+      function mount() {
+        if (!document.body) { requestAnimationFrame(mount); return; }
+        document.documentElement.classList.add("__no_scroll");
+        document.body.appendChild(overlay);
+      }
+      mount();
+
+      var shownAt = Date.now();
+      var hidden = false;
+
+      function cleanup() {
+        if (hidden) return;
+        hidden = true;
+        overlay.classList.add("__hide");
+        overlay.addEventListener("transitionend", function () {
+          overlay.remove();
+          styleEl.remove();
+          document.documentElement.classList.remove("__no_scroll");
+        }, { once: true });
+      }
+
+      window.hidePageLoader = function () {
+        var elapsed = Date.now() - shownAt;
+        var delay = Math.max(0, minShowMs - elapsed);
+        setTimeout(cleanup, delay);
+      };
+
+      window.addEventListener("load", function () {
+        window.hidePageLoader();
+      });
+
+      setTimeout(function () {
+        if (document.getElementById("__page_loader")) window.hidePageLoader();
+      }, safetyTimeoutMs);
+    })();
+  </script>
+<script>
+(function() {
+    const applyImmediateTheme = () => {
+        const saved = localStorage.getItem('sjinside_settings');
+        if (saved) {
+            try {
+                const settings = JSON.parse(saved);
+                const isDark = settings.theme === 'dark' || 
+                              (settings.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                
+                if (isDark) {
+                    document.documentElement.classList.add('dark-theme');
+                    if (document.body) document.body.classList.add('dark-theme');
+                }
+            } catch (e) {
+                console.error("Theme settings parse error", e);
+            }
+        }
+    };
+    applyImmediateTheme();
+
+    window.getCurrentTheme = function() {
+        return document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light';
+    };
+
+    window.getBaseOptions = function() {
+        const isDark = getCurrentTheme() === 'dark';
+        return {
+            background: isDark ? '#2d2d2d' : '#fff',
+            color: isDark ? '#e5e7eb' : '#1f2937',
+            customClass: {
+                popup: isDark ? 'rounded-popup styled-popup dark-popup' : 'rounded-popup styled-popup light-popup',
+                title: isDark ? 'styled-title dark-title' : 'styled-title light-title',
+                htmlContainer: isDark ? 'styled-text dark-text' : 'styled-text light-text',
+                confirmButton: isDark ? 'dark-button' : 'light-button',
+                cancelButton: isDark ? 'dark-button' : 'light-button'
+            }
+        };
+    };
+
+    window.alert = function (msg) {
+        Swal.fire({
+            ...getBaseOptions(),
+            icon: 'info',
+            title: '알림',
+            text: msg,
+            confirmButtonText: '확인'
+        });
+    };
+
+    window.confirm = function (msg) {
+        return Swal.fire({
+            ...getBaseOptions(),
+            icon: 'question',
+            title: '확인',
+            text: msg,
+            showCancelButton: true,
+            confirmButtonText: '예',
+            cancelButtonText: '아니오'
+        }).then(result => result.isConfirmed);
+    };
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (document.documentElement.classList.contains('dark-theme')) {
+        document.body.classList.add('dark-theme');
+    }
+});
+</script>
+<style>
+.dark-theme {
+    background-color: #1a1a1a;
+    color: #e5e7eb;
+}
+
+.rounded-popup {
+    border-radius: 30px !important;
+}
+
+.dark-popup {
+    background: #2d2d2d !important;
+    color: #e5e7eb !important;
+    border: 1px solid #4b5563 !important;
+}
+
+.dark-theme .settings-content {
+    background: #2d2d2d;
+    color: #e5e7eb;
+}
+
+.dark-theme .settings-item {
+    border-bottom-color: #4b5563;
+}
+
+.dark-theme .theme-select {
+    background: #374151;
+    color: #e5e7eb;
+    border-color: #4b5563;
+}
+
+.dark-theme header {
+    background: #2d2d2d;
+    color: #e5e7eb;
+}
+
+.dark-theme .bg-white {
+    background-color: #2d2d2d !important;
+    color: #e5e7eb;
+}
+
+.dark-theme #site-footer {
+    background: #2d2d2d;
+    color: #e5e7eb;
+}
+
+#site-footer {
+    position: relative;
+    z-index: 1000;
+    background: #fff;
+}
+
+.dark-theme .text-gray-600 {
+    color: #9ca3af !important;
+}
+
+.dark-theme .text-gray-800 {
+    color: #e5e7eb !important;
+}
+
+.dark-theme .border {
+    border-color: #4b5563;
+}
+
+.dark-theme input, .dark-theme textarea {
+    background: #374151;
+    color: #e5e7eb;
+    border-color: #4b5563;
+}
+
+.dark-theme input::placeholder, .dark-theme textarea::placeholder {
+    color: #9ca3af;
+}
+
+.dark-theme #post-form {
+    background-color: #2d2d2d !important;
+    color: #e5e7eb;
+}
+
+.dark-theme #latest-btn,
+.dark-theme #popular-btn {
+    background-color: #374151;
+    color: #e5e7eb;
+}
+
+.dark-theme #latest-btn.active,
+.dark-theme #popular-btn.active {
+    background-color: #2563eb;
+}
+
+.dark-theme #stats-text,
+.dark-theme #end-text {
+    color: #9ca3af !important;
+}
+
+.dark-theme {
+    background-color: #1a1a1a !important;
+}
+
+.dark-theme main {
+    background-color: transparent;
+}
+
+.dark-theme header img {
+    filter: brightness(0) invert(1);
+}
+
+.dark-theme header img {
+    filter: brightness(0) invert(1);
+}
+
+.dark-theme header a[href*="buymeacoffee"] img {
+    filter: none !important;
+}
+
+.dark-theme #mobile-menu a[href*="buymeacoffee"] img {
+    filter: none !important;
+}
+
+.dark-theme p {
+    color: #e5e7eb !important;
+}
+
+body { 
+    font-family: 'Noto Sans KR', sans-serif; 
+}
+
+@media (max-width: 1090px) {
+    .floating-ad {
+        display: none !important;
+    }
+    
+    main, .content-area, .container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin: 0 auto !important;
+        padding: 0 16px !important;
+    }
+    
+    #post-form, .post-list, .post-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
+
+.floating-ad {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: fixed;
+    top: 100px;
+    width: 160px;
+    min-width: 160px;
+    height: 600px;
+    background-color: #f4f4f4;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    z-index: 98;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.floating-ad.hide {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+
+.left-ad {
+    left: 5vw;
+    margin-top: 3vh;
+}
+
+.right-ad {
+    right: 5vw;
+    margin-top: 3vh;
+}
+</style>
+
+<script src="https://unpkg.com/vanilla-back-to-top@7.2.1/dist/vanilla-back-to-top.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    addBackToTop({
+      diameter: 55,
+      backgroundColor: 'rgb(255, 255, 255)',
+      textColor: '#000000',
+      zIndex: 9999997
+    });
+  });
+</script>
+  <style>
+    #back-to-top {
+      left: 20px !important;
+      right: auto !important;
+      bottom: 20px !important;
+      z-index: 9999997 !important;
+      transition: all 0.3s ease;
+      border-radius: 50% !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      #back-to-top {
+        left: auto !important;
+        right: 20px !important;
+        bottom: 20px !important;
+      }
+    }
+
+    #back-to-top:hover {
+      background: #f3f4f6 !important;
+    }
+
+    .dark #back-to-top {
+      background: #2d2d2d !important;
+      color: #e5e7eb !important;
+      border: 1px solid #4b5563 !important;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.15);
+    }
+
+    .dark #back-to-top:hover {
+      background: #3a3a3a !important;
+    }
+  </style>
+
+<script>
+const defaultSettings = {
+theme: 'system'
+};
+
+function loadSettings() {
+const saved = localStorage.getItem('sjinside_settings');
+return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+}
+
+function applyTheme(theme) {
+const body = document.body;
+body.classList.remove('dark-theme');
+
+if (theme === 'dark') {
+    body.classList.add('dark-theme');
+} else if (theme === 'system') {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    body.classList.add('dark-theme');
+    }
+}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+const settings = loadSettings();
+applyTheme(settings.theme);
+
+if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    if (loadSettings().theme === 'system') {
+        applyTheme('system');
+    }
+    });
+}
+});
+</script>
+  <style>
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .list-group {
+      display: flex;
+      flex-direction: column;
+      padding-left: 0;
+      margin-bottom: 0;
+      border-radius: 0.375rem;
+      overflow: hidden;
+    }
+
+    .list-group-item {
+      position: relative;
+      display: block;
+      padding: 0.75rem 1.25rem;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      color: #212529;
+      text-decoration: none;
+      user-select: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out, transform 0.2s ease;
+    }
+
+    .list-group-item + .list-group-item {
+      border-top: none;
+    }
+
+    .list-group-item:hover {
+      z-index: 1;
+      background-color: #f8f9fa;
+      font-weight: bold;
+      transform: scale(1.01);
+    }
+
+    .list-group-item:active {
+      background-color: #e9ecef;
+    }
+
+    #popMenu {
+      position: absolute;
+      display: none;
+      width: 280px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      border-radius: 0.5rem;
+      z-index: 9999;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.15);
+      overflow: hidden;
+      animation: fadeInSlide 0.3s ease forwards;
+    }
+
+    .dark-theme #popMenu {
+      background: rgba(45, 45, 45, 0.95);
+    }
+
+    .dark-theme .list-group-item {
+      background-color: #374151;
+      color: #e5e7eb;
+      border-color: #4b5563;
+    }
+    
+
+    .dark-theme .list-group-item:hover {
+      background-color: #4b5563;
+    }
+
+    .dark-theme .list-group-item:active {
+      background-color: #6b7280;
+    }
+
+    .dark-theme #dlwjs, .dark-theme #ekdma {
+      color: #e8e6e6 !important;
+    }
+
+    .dark-theme #latest-btn,
+    .dark-theme #popular-btn {
+      background-color: #374151 !important;
+      color: #9ca3af !important;
+      border: 2px solid #4b5563 !important;
+    }
+
+    .dark-theme #latest-btn.active {
+      background-color: #2563eb !important;
+      color: white !important;
+      border: 2px solid #2563eb !important;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3) !important;
+    }
+
+    .dark-theme #popular-btn.active {
+      background-color: #dc2626 !important;
+      color: white !important;
+      border: 2px solid #dc2626 !important;
+      box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3) !important;
+    }
+
+    .dark-theme .bg-green-500 {
+      background-color: #059669 !important;
+    }
+
+    .dark-theme .bg-red-500 {
+      background-color: #e11d48 !important;
+    }
+
+    .dark-theme #mobile-menu a[href*="buymeacoffee"] img {
+      filter: none !important;
+    }
+
+
+    .dark-theme #mobile-menu {
+      background: linear-gradient(135deg, rgba(45,45,45,0.95) 0%, rgba(30,30,30,0.95) 100%);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    }
+  </style>
+
+  <div id="popMenu" class="list-group">
+    <div class="list-group-item" data-action="reload">🔄 새로고침</div>
+    <hr style="margin: 0">
+    <a href="/" class="list-group-item list-group-item-action">🏠 홈으로 가기</a>
+    <a href="/info" class="list-group-item list-group-item-action">📘 소개 및 이용규칙</a>
+    <a href="/history" class="list-group-item list-group-item-action">📊 통계 및 정보</a>
+    <a href="https://buymeacoffee.com/sjinside" class="list-group-item list-group-item-action">☕ 후원하기</a>
+  </div>
+
+  <script>
+    const popMenu = document.getElementById('popMenu');
+
+    document.addEventListener('contextmenu', e => {
+      const settings = JSON.parse(localStorage.getItem('sjinside_settings') || '{}');
+      if (settings.rightClickEnabled === false) {
+        return;
+      }
+
+      e.preventDefault();
+
+      popMenu.style.display = 'block';
+      popMenu.style.visibility = 'hidden';
+
+      const menuWidth = popMenu.offsetWidth;
+      const menuHeight = popMenu.offsetHeight;
+
+      let left = e.pageX + 5;
+      let top = e.pageY + 5;
+
+      const maxLeft = window.scrollX + window.innerWidth - menuWidth - 10;
+      const maxTop = window.scrollY + window.innerHeight - menuHeight - 10;
+
+      if (left > maxLeft) left = maxLeft;
+      if (top > maxTop) top = maxTop;
+
+      popMenu.style.left = `${left}px`;
+      popMenu.style.top = `${top}px`;
+
+      popMenu.style.visibility = 'visible';
+      popMenu.style.animation = 'none';
+      void popMenu.offsetHeight;
+      popMenu.style.animation = 'fadeInSlide 0.3s ease forwards';
+    });
+
+    popMenu.addEventListener('click', async e => {
+      const action = e.target.dataset.action;
+      if (!action) return;
+
+      try {
+        if (action === 'reload') {
+          location.reload();
+        } else if (action === 'settings') {
+          openSettingsModal();
+        }
+      } catch (err) {
+        console.error(err);
+        alert('작업을 수행할 수 없습니다. 브라우저 보안 정책 또는 HTTPS 확인 필요.');
+      } finally {
+        popMenu.style.display = 'none';
+      }
+    });
+
+    document.addEventListener('click', e => {
+      if (!popMenu.contains(e.target)) {
+        popMenu.style.display = 'none';
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      popMenu.style.display = 'none';
+    });
+
+    window.addEventListener('scroll', () => {
+      popMenu.style.display = 'none';
+    });
+  </script>
+<body class="flex flex-col min-h-screen bg-gray-100">
+  <article>
+
+  <div class="floating-ad left-ad">
+    <ins class="kakao_ad_area" style="display:none;"
+    data-ad-unit = "DAN-8gHfOqlbcytyjwRZ"
+    data-ad-width = "160"
+    data-ad-height = "600"></ins>
+  </div>
+
+  <div class="floating-ad right-ad">
+    <ins class="kakao_ad_area" style="display:none;"
+    data-ad-unit = "DAN-Hq5UrzycnTkMdqSE"
+    data-ad-width = "160"
+    data-ad-height = "600"></ins>
+  </div>
+  <div id="menu-overlay" class="menu-overlay z-30"></div>
+
+  <header class="bg-white shadow py-4 px-6 mb-6 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <a href="https://commu.world">
+        <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
+      </a>
+    </div>
+    <button id="menu-toggle" class="lg:hidden p-2 rounded bg-blue-600 text-white">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="hidden lg:flex space-x-2">
+      <div class="relative w-[260px]">
+      <form action="/view/post/search" method="get" class="flex items-center">
+          <div class="relative w-full">
+          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+              fill="none" stroke="currentColor" stroke-width="2"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"/>
+          </svg>
+
+          <input
+              type="text"
+              name="q"
+              value="{{ keyword }}"
+              autocomplete="off"
+              placeholder="게시물 검색..."
+              class="w-full py-[clamp(0.25rem,1vw,0.75rem)] pl-10 pr-4 rounded-lg
+                  bg-[#4b5563] text-gray-100 placeholder-gray-300
+                  border border-transparent
+                  focus:outline-none focus:ring-2 focus:ring-blue-500
+                  transition"
+              id="search-input-pc"
+          />
+          <ul id="autocomplete-pc"
+              class="absolute z-50 mt-1 w-full rounded-lg
+                  bg-[#374151] border border-gray-600
+                  text-sm text-gray-200 hidden z-50">
+          </ul>
+
+          </div>
+      </form>
+      </div>
+      <a href="/info"
+        class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
+                text-[clamp(0.75rem,2vw,0.9rem)]
+                py-[clamp(0.25rem,1vw,0.75rem)]
+                px-[clamp(0.5rem,2vw,1.5rem)]
+                rounded">
+        서비스 안내
+      </a>
+      <a href="/history"
+        class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
+                text-[clamp(0.75rem,2vw,0.9rem)]
+                py-[clamp(0.25rem,1vw,0.75rem)]
+                px-[clamp(0.5rem,2vw,1.5rem)]
+                rounded">
+        서비스 통계
+      </a>
+    </div>
+  </header>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      
+      const suggestions = [
+        { key: "creator:", label: "작성자 검색" },
+        { key: "title:", label: "제목 검색" },
+        { key: "detail:", label: "내용 검색" },
+        { key: "time:", label: "날짜 검색 (yyyy-mm-dd)" }
+      ];
+
+      function setupSearch(inputId, boxId) {
+        const input = document.getElementById(inputId);
+        const box = document.getElementById(boxId);
+        
+        if (!input || !box) {
+          console.error(`요소를 찾을 수 없습니다: ${inputId} 또는 ${boxId}`);
+          return;
+        }
+
+        function renderSuggestions(value = "") {
+          box.innerHTML = "";
+
+          const trimmed = value.trim();
+          const hasColon = trimmed.includes(":");
+          const prefix = hasColon ? trimmed.split(":")[0] + ":" : trimmed;
+
+          if (!hasColon) {
+            const info = document.createElement("li");
+            info.className =
+              "px-4 py-2 text-gray-400 text-xs cursor-default border-b border-gray-600";
+            info.innerText = "그냥 검색하면 통합검색으로 처리됩니다";
+            box.appendChild(info);
+          }
+
+          suggestions.forEach(item => {
+            const shouldShow = !hasColon
+              ? item.key.startsWith(prefix)
+              : item.key === prefix;
+
+            if (shouldShow) {
+              const li = document.createElement("li");
+              li.className = "px-4 py-2 cursor-pointer hover:bg-blue-600";
+              li.innerHTML = `<b>${item.key}</b> ${item.label}`;
+              li.onclick = (e) => {
+                e.stopPropagation(); 
+                input.value = item.key + " ";
+                box.classList.add("hidden");
+                input.focus();
+              };
+              box.appendChild(li);
+            }
+          });
+
+          box.classList.toggle("hidden", box.children.length === 0);
+        }
+
+        input.addEventListener("input", () => {
+          renderSuggestions(input.value);
+        });
+
+        input.addEventListener("focus", () => {
+          renderSuggestions(input.value);
+        });
+
+        document.addEventListener("click", e => {
+            if (!e.target.closest('#autocomplete-pc') && !e.target.closest('#search-input-pc')) {
+                const pcBox = document.getElementById("autocomplete-pc");
+                if(pcBox) pcBox.classList.add("hidden");
+            }
+            if (!e.target.closest('#autocomplete-mobile') && !e.target.closest('#search-input-mobile')) {
+                const mobileBox = document.getElementById("autocomplete-mobile");
+                if(mobileBox) mobileBox.classList.add("hidden");
+            }
+        });
+      }
+
+      setupSearch("search-input-pc", "autocomplete-pc");
+      setupSearch("search-input-mobile", "autocomplete-mobile");
+    });
+  </script>
+  <style>
+    #mobile-menu form {
+        width: 100%;
+        overflow: visible !important;
+    }
+
+    #autocomplete-mobile {
+        top: 100%;
+        left: 0;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+  </style>
+
+<div id="mobile-menu" class="fixed top-0 left-0 w-full h-full z-50 flex flex-col hidden lg:hidden">
+  <div class="flex justify-end items-center p-5 border-b border-gray-200">
+    <button id="menu-close" class="p-2 rounded-full hover:bg-gray-100 transition">
+      <svg width="28" height="28" viewBox="0 0 40 40" class="stroke-current text-gray-800">
+        <path d="M12 12 L28 28 M28 12 L12 28" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+<nav class="flex-1 p-6 space-y-4">
+        <form action="/view/post/search" method="get" class="flex items-center">
+          <div class="relative w-full z-50">
+              
+              <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"/>
+              </svg>
+
+              <input
+                  type="text"
+                  name="q"
+                  placeholder="게시물 검색..."
+                  value="{{ keyword }}"
+                  autocomplete="off"
+                  class="w-full py-[clamp(0.25rem,1vw,0.75rem)] pl-10 pr-4 rounded-lg
+                      bg-[#4b5563] text-gray-100 placeholder-gray-300
+                      border border-transparent
+                      focus:outline-none focus:ring-2 focus:ring-blue-500
+                      transition"
+                  id="search-input-mobile"
+              />
+              <ul id="autocomplete-mobile"
+                  class="absolute left-0 top-full z-[70] mt-1 w-full rounded-lg
+                        bg-[#374151] border border-gray-600
+                        text-sm text-gray-200 hidden shadow-xl
+                        max-h-60 overflow-y-auto">
+              </ul>
+          </div>
+      </form>
+<a href="/" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+   style="background-color: #343B44; color: white;">홈</a>
+
+<a href="/info" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+   style="background-color: #343B44; color: white;">서비스 안내</a>
+   
+<a href="/history" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+   style="background-color: #343B44; color: white;">서비스 통계</a>
+   
+
+</nav>
+
+
+  <div class="p-6 border-t border-gray-200 flex flex-col items-start space-y-3">
+    <div class="flex space-x-4">
+      <a href="https://github.com/anion15" class="hover:text-gray-800"><img src="https://simpleicons.org/icons/github.svg" class="w-5 h-5"></a>
+      <a href="https://x.com/Sjinside_" class="hover:text-blue-500"><img src="https://simpleicons.org/icons/x.svg" class="w-5 h-5"></a>
+    </div>
+    <p class="text-xs text-gray-400">© 2026 SangjeongInside</p>
+  </div>
+</div>
+
+<style>
+
+#mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+
+
+.menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.35s ease;
+}
+
+#mobile-menu.menu-open .menu-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+#mobile-menu.menu-closing {
+  transform: translateX(-100%);
+}
+
+#mobile-menu.menu-closing .menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition-delay: 0s !important;
+}
+
+.dark-theme #mobile-menu {
+  background-color: #111827;
+}
+.dark-theme #mobile-menu .flex.justify-end.items-center {
+  border-bottom: 1px solid #374151;
+}
+
+.dark-theme #mobile-menu button#menu-close:hover {
+  background-color: #1f2937;
+}
+
+.dark-theme #mobile-menu nav a {
+  border: 1px solid #374151 !important;
+  background-color: transparent;
+}
+
+.dark-theme #mobile-menu nav a:hover {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+.dark-theme #mobile-menu nav a span {
+  color: #e5e7eb;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50 {
+  background-color: rgba(251, 191, 36, 0.1);
+  border: 1px solid #d97706 !important;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50 span {
+  color: #fcd34d;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50:hover {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.dark-theme #mobile-menu .p-6.border-t {
+  border-top: 1px solid #374151;
+}
+
+.dark-theme #mobile-menu .p-6.border-t p {
+  color: #9ca3af;
+}
+
+.dark-theme #mobile-menu .p-6.border-t .flex.space-x-4 a img {
+  filter: invert(1);
+}
+
+</style>
+
+
+  <script>
+const menuToggle = document.getElementById('menu-toggle');
+const menuClose = document.getElementById('menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuOverlay = document.getElementById('menu-overlay');
+
+function openMenu() {
+  mobileMenu.classList.remove('hidden', 'menu-closing');
+  menuOverlay.classList.add('active');
+  document.body.classList.add('menu-open');
+
+  setTimeout(() => {
+    mobileMenu.classList.add('menu-open');
+  }, 10);
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('menu-open');
+  mobileMenu.classList.add('menu-closing');
+  menuOverlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+
+  setTimeout(() => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('menu-closing');
+  }, 400);
+}
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  openMenu();
+});
+menuClose.addEventListener('click', () => {
+  menuToggle.classList.remove('active');
+  closeMenu();
+});
+menuOverlay.addEventListener('click', () => {
+  menuToggle.classList.remove('active');
+  closeMenu();
+});
+
+  </script>
+  <style>
+body.menu-open {
+  overflow: hidden;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mobile-menu {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-100%);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.95) 0%,
+    rgba(240,245,255,0.95) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+
+#mobile-menu > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+#mobile-menu.menu-open > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#mobile-menu.menu-open > *:nth-child(1) { transition-delay: 0.1s; }
+#mobile-menu.menu-open > *:nth-child(2) { transition-delay: 0.2s; }
+#mobile-menu.menu-open > *:nth-child(3) { transition-delay: 0.3s; }
+#mobile-menu.menu-open > *:nth-child(4) { transition-delay: 0.4s; }
+#mobile-menu.menu-open > *:nth-child(5) { transition-delay: 0.5s; }
+
+#menu-toggle {
+  transition: all 0.3s ease;
+}
+
+#menu-toggle:active {
+  transform: scale(0.95);
+}
+
+#mobile-menu a {
+  transition: all 0.3s ease;
+}
+
+.dark-theme #mobile-menu {
+  background: linear-gradient(
+    135deg,
+    rgba(45,45,45,0.95) 0%,
+    rgba(30,30,30,0.95) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
+body.menu-open #site-footer {
+  display: none !important;
+}
+body.menu-open footer {
+  display: none !important;
+}
+#mobile-menu nav a {
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+}
+
+#mobile-menu nav a:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+#mobile-menu nav a.bg-yellow-50 {
+  background-color: #fef3c7;
+  border: 1px solid #fbbf24;
+  color: #b45309;
+}
+
+#mobile-menu nav a.bg-yellow-50:hover {
+  background-color: #fcd34d;
+}
+
+  </style>
+<script>
+document.addEventListener("scroll", () => {
+  const footer = document.getElementById("site-footer");
+  const ads = document.querySelectorAll(".floating-ad");
+
+  if (!footer) return;
+
+  const footerTop = footer.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+
+  ads.forEach(ad => {
+    if (footerTop < windowHeight) {
+      ad.classList.add("hide");
+    } else {
+      ad.classList.remove("hide");
+    }
+  });
+});
+</script>
+
+
+<main class="flex-grow max-w-2xl mx-auto px-4">
+  <br><h1 class="text-3xl font-bold text-gray-800 break-words flex flex-wrap items-baseline gap-2">
+    <span>'{{ keyword }}' 검색결과</span>
+    <span class="text-lg font-normal text-gray-500">({{ current_page }} / {{ total_pages }}페이지)</span>
+</h1>
+
+  <p class="text-gray-700 my-2 break-words">
+    총 {{ count }}개의 검색결과를 찾았습니다. {{ elapsed }}초 소요됨
+  </p><br>
+
+  {% for post in posts %}
+  <div class="bg-white rounded shadow p-4 mb-6" data-post-id="{{ post.id }}">
+    <h3 class="text-lg font-bold text-gray-800">{{ post.title }}</h3>
+    <p class="text-gray-700 my-2 break-words w-full">{{ post.content }}</p>
+
+    <div class="text-xs text-gray-500 mb-2">
+      작성자: {{ post.client_id[:8] }}
+      ·
+      <time datetime="{{ post.date.isoformat() }}">
+        {{ post.date.strftime('%Y-%m-%d %H:%M') }}
+      </time>
+    </div>
+
+    <div class="flex gap-2 mb-2">
+      <button type="button" onclick="alert('검색 페이지의 게시물은 추천/비추천을 추가할 수 없습니다.');" class="bg-green-500 text-white px-2 py-1 rounded">추천 ({{ post.likes }})</button>
+      <button type="button" onclick="alert('검색 페이지의 게시물은 추천/비추천을 추가할 수 없습니다.');" class="bg-red-500 text-white px-2 py-1 rounded">비추천 ({{ post.dislikes }})</button>
+      <button type="button" 
+          onclick="copyToClipboard('{{ post.id }}')" 
+          class="ml-auto bg-gray-600 text-white px-2.5 py-1 rounded flex items-center gap-2 hover:bg-gray-700 transition-colors text-sm font-medium">
+          <svg viewBox="0 0 512 512" class="w-3.5 h-3.5 fill-current text-white">
+          <path d="M448 344c-23.7 0-44.4 10.7-58.1 27.5l-163.7-81.8c2.2-7.1 3.8-14.5 3.8-22.3s-1.6-15.2-3.8-22.3l163.1-81.5c13.8 17.2 34.7 28.1 58.7 28.1 41.9 0 76-34.1 76-76s-34.1-76-76-76-76 34.1-76 76c0 7.3 1.1 14.3 3.1 20.9l-164 82c-13.7-16.7-34.3-27.4-57.1-27.4-41.9 0-76 34.1-76 76s34.1 76 76 76c23.2 0 44.1-10.4 58-26.8l163.3 81.7c-2 6.6-3.3 13.6-3.3 20.9 0 41.9 34.1 76 76 76s76-34.1 76-76-34.1-76-76-76z"/>
+    </svg>공유
+      </button>
+    </div>
+
+<script>
+function copyToClipboard(postId) {
+  const shareUrl = 'https://commu.world/view/' + postId;
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      alert('게시물 공유링크가 복사되었습니다');
+    }).catch(err => {
+      console.error('복사 실패:', err);
+    });
+  } else {
+    const textArea = document.createElement("textarea");
+    textArea.value = shareUrl;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      alert('게시물 공유링크가 복사되었습니다');
+    } catch (err) {
+      console.error('복사 실패:', err);
+    }
+    document.body.removeChild(textArea);
+  }
+}
+</script>
+
+<div class="border-t pt-4 mt-4 space-y-3">
+        <div class="text-sm font-semibold">댓글</div>
+        
+        {% if post.comments %}
+          {% for comm in post.comments %}
+          <div class="flex gap-3 w-full items-baseline">
+            <div class="shrink-0 text-gray-500 w-15 text-right" style="        --tw-text-opacity: 1;
+        color: rgb(107 114 128 / var(--tw-text-opacity, 1));">
+              ({{ comm.client_id[:8] }})
+            </div>
+            <div class="text-sm text-gray-800 break-words w-full min-w-0" style="        --tw-text-opacity: 1;
+        color: rgb(31 41 55 / var(--tw-text-opacity, 1));">
+              {{ comm.text }} · 
+              <span class="text-sm text-gray-800 break-words w-full min-w-0" style="        --tw-text-opacity: 1;
+        color: rgb(31 41 55 / var(--tw-text-opacity, 1));">{{ comm.date.strftime('%Y-%m-%d %H:%M:%S') if comm.date else '' }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="text-xs text-gray-400">등록된 댓글이 없습니다.</div>
+        {% endif %}
+
+        <form class="flex gap-2 mt-2 w-full"> <input type="text" disabled
+            class="flex-1 min-w-0 border px-2 py-1 rounded" 
+            placeholder="검색 페이지의 게시물은 댓글을 작성할 수 없습니다." />
+        <button type="button"
+            onclick="alert('검색 페이지의 게시물은 댓글을 작성할 수 없습니다.')"
+            class="bg-blue-500 text-white px-3 py-1 rounded whitespace-nowrap shrink-0">
+            작성
+        </button>
+        </form>
+      </div>
+      </div>
+    {% endfor %}
+  </div>
+<br>
+{% if total_pages > 1 %}
+<nav class="flex flex-col items-center my-8" aria-label="페이지 선택">
+    <ul class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        
+        <div class="flex items-center space-x-8 sm:contents">
+            <li>
+                {% if current_page > 1 %}
+                <a href="/view/post/search?q={{ keyword }}&page={{ current_page - 1 }}"
+                   class="flex items-center text-gray-500 hover:text-gray-900 py-2" id="dlwjs" aria-label="이전 페이지">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="text-base font-medium">이전</span>
+                </a>
+                {% else %}
+                <span class="flex items-center text-gray-300 cursor-not-allowed py-2">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="text-base font-medium">이전</span>
+                </span>
+                {% endif %}
+            </li>
+
+            <li class="sm:hidden">
+                {% if current_page < total_pages %}
+                <a href="/view/post/search?q={{ keyword }}&page={{ current_page + 1 }}"
+                   class="flex items-center text-gray-500 hover:text-gray-900 py-2" id="ekdma" aria-label="다음 페이지">
+                    <span class="text-base font-medium">다음</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </a>
+                {% else %}
+                <span class="flex items-center text-gray-300 cursor-not-allowed py-2">
+                    <span class="text-base font-medium">다음</span>
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </span>
+                {% endif %}
+            </li>
+        </div>
+
+        <div class="flex items-center space-x-1">
+            {% set display_limit = 7 %}
+            {% if total_pages <= display_limit %}
+                {% set page_range = range(1, total_pages + 1) %}
+            {% else %}
+                {% if current_page <= 4 %}
+                    {% set page_range = [1, 2, 3, 4, 5, '...', total_pages] %}
+                {% elif current_page >= total_pages - 3 %}
+                    {% set page_range = [1, '...', total_pages - 4, total_pages - 3, total_pages - 2, total_pages - 1, total_pages] %}
+                {% else %}
+                    {% set page_range = [1, '...', current_page - 1, current_page, current_page + 1, '...', total_pages] %}
+                {% endif %}
+            {% endif %}
+
+            {% for p in page_range %}
+            <li>
+                {% if p == '...' %}
+                <span class="flex items-center justify-center w-10 h-10 text-gray-400">· · ·</span>
+                {% elif p == current_page %}
+                <a href="#" aria-current="page" 
+                   class="flex items-center justify-center w-10 h-10 bg-[#003366] text-white font-bold rounded-md">
+                    {{ p }}
+                </a>
+                {% else %}
+                <a href="/view/post/search?q={{ keyword }}&page={{ p }}" 
+                   class="flex items-center justify-center w-10 h-10 text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
+                   aria-label="{{ p }}페이지 이동">
+                    {{ p }}
+                </a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </div>
+
+        <li class="hidden sm:block">
+            {% if current_page < total_pages %}
+            <a href="/view/post/search?q={{ keyword }}&page={{ current_page + 1 }}" 
+               class="flex items-center text-gray-500 hover:text-gray-900 py-2" id="ekdma" aria-label="다음 페이지">
+                <span class="text-base font-medium">다음</span>
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </a>
+            {% else %}
+            <span class="flex items-center text-gray-300 cursor-not-allowed py-2">
+                <span class="text-base font-medium">다음</span>
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </span>
+            {% endif %}
+        </li>
+    </ul>
+
+
+    <div class="flex items-center space-x-2 mt-6">
+        <form action="/view/post/search" method="get" class="flex items-center space-x-8">
+            <input type="hidden" name="q" value="{{ keyword }}">
+            <div class="relative flex items-center">
+                <input type="number" 
+                       name="page" 
+                       min="1" 
+                       max="{{ total_pages }}" 
+                       value="{{ current_page }}"
+                       class="w-16 h-10 border border-gray-400 rounded-md text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       aria-label="이동할 페이지 번호 입력">
+                <span class="ml-2 text-gray-600">/{{ total_pages }}</span>
+            </div>
+            <button type="submit" 
+                    class="h-10 px-6 border border-blue-600 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors">
+                이동
+            </button>
+        </form>
+    </div>
+</nav>
+{% endif %}
+</main>
+
+  <br><br><br><br><br><br>
+  <div class="text-center">
+    <p class="text-gray-700 my-2 break-words">원하시는 검색 결과를 찾지 못하셨나요?</p>
+    <p class="text-gray-700 my-2 break-words">입력하신 검색어의 문법이 틀렸거나, 일시적인 시스템 오류일 수 있습니다. 다시 한번 확인해 주세요.</p><br><br>
+    <a href="https://commu.world" class="inline-block bg-blue-600 text-white text-lg font-medium px-8 py-4 rounded-full hover:bg-blue-700 transition duration-300">
+        홈으로 돌아가기
+    </a>
+  </div>
+  <br><br><br><br>
+<footer id="site-footer" class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
+
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div>
+      <div class="flex items-center space-x-4 mb-6">
+        <a>
+          <img
+            src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png"
+            alt="logo"
+            class="w-36 sm:w-32 md:w-36 lg:w-40 xl:w-44"
+          />
+        </a>
+      </div>
+      <ul class="space-y-3 text-base text-gray-600">
+        <li><span class="font-medium"><b>대표이메일</b></span> admin@commu.world</li>
+        <li><span class="font-medium"><b>운영 형태</b></span> 커뮤니티 서비스 | 1인 개발</li>
+      </ul>
+    </div>
+
+    <div></div>
+
+    <div class="flex flex-col items-start md:items-end space-y-6">
+
+      <div class="space-y-3 text-base">
+        <a href="/history" class="flex items-center gap-2 hover:underline">
+          서비스 통계
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/release-notes" class="flex items-center gap-2 hover:underline">
+          업데이트 · 릴리즈 노트
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/report" class="flex items-center gap-2 hover:underline">
+          버그 발견 및 사용자 신고 접수
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex space-x-3">
+        <a href="https://www.instagram.com/yxbh.rh0" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/instagram.svg" class="w-4 h-4">
+        </a>
+        <a href="https://www.youtube.com/@SjInside-j8q" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/youtube.svg" class="w-4 h-4">
+        </a>
+        <a href="https://x.com/Sjinside_" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/x.svg" class="w-4 h-4">
+        </a>
+        <a href="https://github.com/anion15" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/github.svg" class="w-4 h-4">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
+      <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
+      <a href="/service-terms">서비스 이용약관</a>
+      <a href="/info">서비스 안내</a>
+      <a href="/sitemap.xml">사이트맵</a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
+    본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
+    전적으로 개발자에게 있음을 알립니다.
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
+    <span>© 2025-2026 상정인사이드. All rights reserved.</span>
+    <span>Developed by anion15</span>
+  </div>
+
+<div
+  id="site-status-bar"
+  class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
+>
+  <span id="site-badge" class="font-semibold">
+    SangjeongInside
+  </span>
+
+  <span id="site-status-text" class="opacity-80">
+    최신 정보를 불러오는 중…
+  </span>
+</div>
+</footer>
+<style>
+.dark-theme footer {
+  background-color: #1f2933;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.dark-theme footer a {
+  color: #d1d5db;
+}
+
+.dark-theme footer a:hover {
+  color: #60a5fa;
+}
+
+.dark-theme footer .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+.dark-theme footer a.font-semibold {
+  color: #60a5fa;
+}
+
+.dark-theme footer .border {
+  border-color: #4b5563;
+}
+
+.dark-theme footer .border:hover {
+  background-color: #374151;
+}
+
+.dark-theme footer .leading-relaxed {
+  color: #9ca3af;
+}
+
+.dark-theme footer .flex {
+  color: #9ca3af;
+}
+
+.dark-theme footer > div:last-child {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+a svg {
+  transition: transform 0.2s ease;
+}
+a:hover svg {
+  transform: translateX(3px);
+}
+
+.dark-theme footer img{
+  filter: brightness(0) invert(1);
+}
+</style>
+<script>
+  async function loadLatestUpdate() {
+    try {
+      const res = await fetch('/api/SangjeongInside_latest_update');
+      if (!res.ok) throw new Error('API error');
+
+      const data = await res.json();
+
+      const version = data.version;
+      const time = new Date(data.time);
+      const link = data.link;
+
+      const timeText = time.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      document.getElementById('site-status-text').innerHTML = `
+        현재 버전 <a href="${link}" class="underline hover:text-white">
+          v${version}
+        </a>
+        · ${timeText} 업데이트
+      `;
+    } catch (e) {
+      document.getElementById('site-status-text').textContent =
+        '버전 정보를 불러올 수 없습니다.';
+    }
+  }
+
+  loadLatestUpdate();
+</script>
+
+  </article>
+</body>
+
+</html>
+
+
+
+
