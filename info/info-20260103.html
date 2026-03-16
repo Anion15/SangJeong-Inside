@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='icon' type="images/png" href="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png">
+  
+  <title>공지: 업데이트 중단 안내 - 상정인사이드</title>
+  
+  <meta name="description" content="상정인사이드 서비스의 업데이트 잠정 중단에 대해 안내드립니다. 자세한 내용은 공지사항을 확인해 주세요.">
+  <meta name="keywords" content="커뮤니티, 상정인사이드, 공지사항, 업데이트중단">
+  <meta name="author" content="anion15">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="상정인사이드 공지 - 업데이트 잠정 중단 안내">
+  <meta property="og:description" content="서비스 운영 관련 중요 공지사항입니다.">
+  <meta property="og:url" content="https://commu.world/info/20260103">
+  
+  <meta property="og:image" content="https://img.commu.world/og?type=page&page=%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%20%EC%A4%91%EB%8B%A8%20%EC%95%88%EB%82%B4">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="상정인사이드 공지 - 업데이트 잠정 중단 안내">
+  <meta name="twitter:description" content="서비스 운영 관련 중요 공지사항입니다.">
+  <meta name="twitter:image" content="https://img.commu.world/og?type=page&page=%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%20%EC%A4%91%EB%8B%A8%20%EC%95%88%EB%82%B4">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    (function () {
+      var bgColor = "rgba(10,11,15,0.96)";
+      var spinnerSize = 40;
+      var brandText = "Loading…";
+      var minShowMs = 300;
+      var safetyTimeoutMs = 10000;
+
+      var css = `
+        html.__no_scroll, html.__no_scroll body { overflow: hidden !important; height: 100%; }
+        #__page_loader {
+          position: fixed; inset: 0; z-index: 2147483647;
+          display: grid; place-items: center;
+          background: ${bgColor}; color: #fff;
+          opacity: 1; transition: opacity .25s ease;
+        }
+        #__page_loader.__hide { opacity: 0; }
+        #__loader_inner { display: grid; gap: 14px; place-items: center; }
+        /* 스피너 */
+        #__spinner {
+          width: ${spinnerSize}px; height: ${spinnerSize}px;
+          border-radius: 50%;
+          border: 3px solid #ffffff22; border-top-color: #fff;
+          animation: __spin 1s linear infinite;
+        }
+        /* 감속 모션 환경 배려 */
+        @media (prefers-reduced-motion: reduce) {
+          #__spinner { animation: none; border-top-color: #ffffffcc; }
+        }
+        #__brand { font: 600 14px/1.2 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Apple SD Gothic Neo", "맑은 고딕", sans-serif; opacity:.9; letter-spacing:.2px;}
+        @keyframes __spin { to { transform: rotate(360deg); } }
+      `;
+      var styleEl = document.createElement("style");
+      styleEl.setAttribute("data-loader-style", "");
+      styleEl.textContent = css;
+      document.head.appendChild(styleEl);
+
+      var overlay = document.createElement("div");
+      overlay.id = "__page_loader";
+      overlay.setAttribute("role", "status");
+      overlay.setAttribute("aria-live", "polite");
+      overlay.innerHTML =
+        '<div id="__loader_inner" aria-label="페이지 로딩 중">' +
+        '<div id="__spinner" aria-hidden="true"></div>' +
+        (brandText ? '<div id="__brand">' + brandText + "</div>" : "") +
+        "</div>";
+
+      function mount() {
+        if (!document.body) { requestAnimationFrame(mount); return; }
+        document.documentElement.classList.add("__no_scroll");
+        document.body.appendChild(overlay);
+      }
+      mount();
+
+      var shownAt = Date.now();
+      var hidden = false;
+
+      function cleanup() {
+        if (hidden) return;
+        hidden = true;
+        overlay.classList.add("__hide");
+        overlay.addEventListener("transitionend", function () {
+          overlay.remove();
+          styleEl.remove();
+          document.documentElement.classList.remove("__no_scroll");
+        }, { once: true });
+      }
+
+      window.hidePageLoader = function () {
+        var elapsed = Date.now() - shownAt;
+        var delay = Math.max(0, minShowMs - elapsed);
+        setTimeout(cleanup, delay);
+      };
+
+      window.addEventListener("load", function () {
+        window.hidePageLoader();
+      });
+
+      setTimeout(function () {
+        if (document.getElementById("__page_loader")) window.hidePageLoader();
+      }, safetyTimeoutMs);
+    })();
+  </script>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; -ms-overflow-style: none; }
+    ::-webkit-scrollbar { display: none;}
+  </style>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; -ms-overflow-style: none; }
+    ::-webkit-scrollbar { display: none;}
+    @media (max-width: 511px) {body {width: 125%;}}
+    @media (max-width: 410px) {body {width: 150%;}}
+    @media (max-width: 342px) {body {width: 175%;}}
+    @media (max-width: 292px) {body {width: 200%;}}
+  </style>
+</head>
+
+<style>
+    .dark-theme {
+      background-color: #1a1a1a;
+      color: #e5e7eb;
+    }
+
+    .dark-theme .settings-content {
+      background: #2d2d2d;
+      color: #e5e7eb;
+    }
+
+    .dark-theme .settings-item {
+      border-bottom-color: #4b5563;
+    }
+
+    .dark-theme .theme-select {
+      background: #374151;
+      color: #e5e7eb;
+      border-color: #4b5563;
+    }
+
+    .dark-theme header {
+      background: #2d2d2d;
+      color: #e5e7eb;
+    }
+
+    .dark-theme .bg-white {
+      background-color: #2d2d2d !important;
+      color: #e5e7eb;
+    }
+
+    .dark-theme #site-footer {
+      background: #2d2d2d;
+      color: #e5e7eb;
+    }
+
+    .dark-theme .text-gray-600 {
+      color: #9ca3af !important;
+    }
+
+    .dark-theme .text-gray-800 {
+      color: #e5e7eb !important;
+    }
+
+    .dark-theme .border {
+      border-color: #4b5563;
+    }
+
+    .dark-theme input, .dark-theme textarea {
+      background: #374151;
+      color: #e5e7eb;
+      border-color: #4b5563;
+    }
+
+    .dark-theme input::placeholder, .dark-theme textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .dark-theme #post-form {
+      background-color: #2d2d2d !important;
+      color: #e5e7eb;
+    }
+
+    .dark-theme #latest-btn,
+    .dark-theme #popular-btn {
+      background-color: #374151;
+      color: #e5e7eb;
+    }
+
+    .dark-theme #latest-btn.active,
+    .dark-theme #popular-btn.active {
+      background-color: #2563eb;
+    }
+
+    .dark-theme #stats-text,
+    .dark-theme #end-text {
+      color: #9ca3af !important;
+    }
+
+    .dark-theme {
+      background-color: #1a1a1a !important;
+    }
+
+    .dark-theme main {
+      background-color: transparent;
+    }
+
+    .dark-theme header img {
+      filter: brightness(0) invert(1);
+    }
+
+    .dark-theme header img {
+      filter: brightness(0) invert(1);
+    }
+
+    .dark-theme header a[href*="buymeacoffee"] img {
+      filter: none !important;
+    }
+
+    .dark-theme #mobile-menu a[href*="buymeacoffee"] img {
+      filter: none !important;
+    }
+
+    .dark-theme p {
+      color: #e5e7eb !important;
+    }
+</style>
+<script>
+      const defaultSettings = {
+        theme: 'system'
+      };
+
+      function loadSettings() {
+        const saved = localStorage.getItem('sjinside_settings');
+        return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
+      }
+
+      function applyTheme(theme) {
+        const body = document.body;
+        body.classList.remove('dark-theme');
+        
+        if (theme === 'dark') {
+          body.classList.add('dark-theme');
+        } else if (theme === 'system') {
+          if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add('dark-theme');
+          }
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const settings = loadSettings();
+        applyTheme(settings.theme);
+        
+        if (window.matchMedia) {
+          window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (loadSettings().theme === 'system') {
+              applyTheme('system');
+            }
+          });
+        }
+      });
+</script>
+
+<body class="flex flex-col min-h-screen bg-gray-100 dark">
+    <style>
+      @keyframes fadeInSlide {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .list-group {
+        display: flex;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        border-radius: 0.375rem;
+        overflow: hidden;
+      }
+
+      .list-group-item {
+        position: relative;
+        display: block;
+        padding: 0.75rem 1.25rem;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        color: #212529;
+        text-decoration: none;
+        user-select: none;
+        cursor: pointer;
+        transition: background-color 0.15s ease-in-out, transform 0.2s ease;
+      }
+
+      .list-group-item + .list-group-item {
+        border-top: none;
+      }
+
+      .list-group-item:hover {
+        z-index: 1;
+        background-color: #f8f9fa;
+        font-weight: bold;
+        transform: scale(1.01);
+      }
+
+      .list-group-item:active {
+        background-color: #e9ecef;
+      }
+
+      #popMenu {
+        position: absolute;
+        display: none;
+        width: 280px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        border-radius: 0.5rem;
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.15);
+        overflow: hidden;
+        animation: fadeInSlide 0.3s ease forwards;
+      }
+
+      .dark-theme #popMenu {
+        background: rgba(45, 45, 45, 0.95);
+      }
+
+      .dark-theme .list-group-item {
+        background-color: #374151;
+        color: #e5e7eb;
+        border-color: #4b5563;
+      }
+
+      .dark-theme .list-group-item:hover {
+        background-color: #4b5563;
+      }
+
+      .dark-theme .list-group-item:active {
+        background-color: #6b7280;
+      }
+
+      .dark-theme #latest-btn,
+      .dark-theme #popular-btn {
+        background-color: #374151 !important;
+        color: #9ca3af !important;
+        border: 2px solid #4b5563 !important;
+      }
+
+      .dark-theme #latest-btn.active {
+        background-color: #2563eb !important;
+        color: white !important;
+        border: 2px solid #2563eb !important;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3) !important;
+      }
+
+      .dark-theme #popular-btn.active {
+        background-color: #dc2626 !important;
+        color: white !important;
+        border: 2px solid #dc2626 !important;
+        box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.3) !important;
+      }
+
+      .dark-theme .bg-green-500 {
+        background-color: #059669 !important;
+      }
+
+      .dark-theme .bg-red-500 {
+        background-color: #e11d48 !important;
+      }
+    </style>
+
+    <div id="popMenu" class="list-group">
+      <div class="list-group-item" data-action="reload">🔄 새로고침</div>
+      <hr style="margin: 0">
+      <a href="/" class="list-group-item list-group-item-action">🏠 홈으로 가기</a>
+      <a href="/info" class="list-group-item list-group-item-action">📘 소개 및 이용규칙</a>
+      <a href="/history" class="list-group-item list-group-item-action">📊 통계 및 정보</a>
+      <a href="https://buymeacoffee.com/sjinside" class="list-group-item list-group-item-action">☕ 후원하기</a>
+    </div>
+
+    <script>
+      const popMenu = document.getElementById('popMenu');
+
+      document.addEventListener('contextmenu', e => {
+        const settings = JSON.parse(localStorage.getItem('sjinside_settings') || '{}');
+        if (settings.rightClickEnabled === false) {
+          return;
+        }
+
+        e.preventDefault();
+
+        popMenu.style.display = 'block';
+        popMenu.style.visibility = 'hidden';
+
+        const menuWidth = popMenu.offsetWidth;
+        const menuHeight = popMenu.offsetHeight;
+
+        let left = e.pageX + 5;
+        let top = e.pageY + 5;
+
+        const maxLeft = window.scrollX + window.innerWidth - menuWidth - 10;
+        const maxTop = window.scrollY + window.innerHeight - menuHeight - 10;
+
+        if (left > maxLeft) left = maxLeft;
+        if (top > maxTop) top = maxTop;
+
+        popMenu.style.left = `${left}px`;
+        popMenu.style.top = `${top}px`;
+
+        popMenu.style.visibility = 'visible';
+        popMenu.style.animation = 'none';
+        void popMenu.offsetHeight;
+        popMenu.style.animation = 'fadeInSlide 0.3s ease forwards';
+      });
+
+      popMenu.addEventListener('click', async e => {
+        const action = e.target.dataset.action;
+        if (!action) return;
+
+        try {
+          if (action === 'reload') {
+            location.reload();
+          } else if (action === 'settings') {
+            openSettingsModal();
+          }
+        } catch (err) {
+          console.error(err);
+          alert('작업을 수행할 수 없습니다. 브라우저 보안 정책 또는 HTTPS 확인 필요.');
+        } finally {
+          popMenu.style.display = 'none';
+        }
+      });
+
+      document.addEventListener('click', e => {
+        if (!popMenu.contains(e.target)) {
+          popMenu.style.display = 'none';
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        popMenu.style.display = 'none';
+      });
+
+      window.addEventListener('scroll', () => {
+        popMenu.style.display = 'none';
+      });
+    </script>
+  <div id="menu-overlay" class="menu-overlay z-30"></div>
+
+  <header class="bg-white shadow py-4 px-6 mb-6 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <a href="https://commu.world">
+        <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
+      </a>
+    </div>
+    <button id="menu-toggle" class="lg:hidden p-2 rounded bg-blue-600 text-white">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="hidden lg:flex space-x-2">
+      <a href="/info"
+        class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
+                text-[clamp(0.75rem,2vw,0.9rem)]
+                py-[clamp(0.25rem,1vw,0.75rem)]
+                px-[clamp(0.5rem,2vw,1.5rem)]
+                rounded">
+        서비스 안내
+      </a>
+      <a href="/history"
+        class="bg-gray-600 hover:bg-blue-600 text-white font-semibold
+                text-[clamp(0.75rem,2vw,0.9rem)]
+                py-[clamp(0.25rem,1vw,0.75rem)]
+                px-[clamp(0.5rem,2vw,1.5rem)]
+                rounded">
+        서비스 통계
+      </a>
+    </div>
+  </header>
+
+
+<div id="mobile-menu" class="fixed top-0 left-0 w-full h-full z-50 flex flex-col hidden lg:hidden">
+  <div class="flex justify-end items-center p-5 border-b border-gray-200">
+    <button id="menu-close" class="p-2 rounded-full hover:bg-gray-100 transition">
+      <svg width="28" height="28" viewBox="0 0 40 40" class="stroke-current text-gray-800">
+        <path d="M12 12 L28 28 M28 12 L12 28" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+<nav class="flex-1 p-6 space-y-4">
+  <a href="/" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+     style="background-color: #343B44; color: white;">홈</a>
+     
+  <a href="/info" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+     style="background-color: #343B44; color: white;">서비스 안내</a>
+     
+  <a href="/history" class="menu-item block text-lg font-medium p-4 rounded-lg border border-gray-200 transition"
+     style="background-color: #343B44; color: white;">서비스 통계</a>
+     
+  <a href="https://buymeacoffee.com/sjinside" class="menu-item block text-lg font-medium p-4 rounded-lg border border-yellow-300 transition"
+     style="background-color: #343B44; color: white;">후원하기</a>
+</nav>
+
+
+  <div class="p-6 border-t border-gray-200 flex flex-col items-start space-y-3">
+    <div class="flex space-x-4">
+      <a href="https://github.com/anion15" class="hover:text-gray-800"><img src="https://simpleicons.org/icons/github.svg" class="w-5 h-5"></a>
+      <a href="https://x.com/Sjinside_" class="hover:text-blue-500"><img src="https://simpleicons.org/icons/x.svg" class="w-5 h-5"></a>
+    </div>
+    <p class="text-xs text-gray-400">© 2026 SangjeongInside</p>
+  </div>
+</div>
+
+<style>
+
+#mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+}
+
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+
+
+.menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.35s ease;
+}
+
+#mobile-menu.menu-open .menu-item:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+#mobile-menu.menu-open .menu-item:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+
+#mobile-menu.menu-closing {
+  transform: translateX(-100%);
+}
+
+#mobile-menu.menu-closing .menu-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition-delay: 0s !important;
+}
+
+.dark-theme #mobile-menu {
+  background-color: #111827;
+}
+.dark-theme #mobile-menu .flex.justify-end.items-center {
+  border-bottom: 1px solid #374151;
+}
+
+.dark-theme #mobile-menu button#menu-close:hover {
+  background-color: #1f2937;
+}
+
+.dark-theme #mobile-menu nav a {
+  border: 1px solid #374151 !important;
+  background-color: transparent;
+}
+
+.dark-theme #mobile-menu nav a:hover {
+  background-color: #1f2937;
+  border-color: #4b5563;
+}
+
+.dark-theme #mobile-menu nav a span {
+  color: #e5e7eb;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50 {
+  background-color: rgba(251, 191, 36, 0.1);
+  border: 1px solid #d97706 !important;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50 span {
+  color: #fcd34d;
+}
+
+.dark-theme #mobile-menu nav a.bg-yellow-50:hover {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.dark-theme #mobile-menu .p-6.border-t {
+  border-top: 1px solid #374151;
+}
+
+.dark-theme #mobile-menu .p-6.border-t p {
+  color: #9ca3af;
+}
+
+.dark-theme #mobile-menu .p-6.border-t .flex.space-x-4 a img {
+  filter: invert(1);
+}
+
+</style>
+
+
+  <script>
+const menuToggle = document.getElementById('menu-toggle');
+const menuClose = document.getElementById('menu-close');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuOverlay = document.getElementById('menu-overlay');
+
+function openMenu() {
+  mobileMenu.classList.remove('hidden', 'menu-closing');
+  menuOverlay.classList.add('active');
+  document.body.classList.add('menu-open');
+
+  setTimeout(() => {
+    mobileMenu.classList.add('menu-open');
+  }, 10);
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('menu-open');
+  mobileMenu.classList.add('menu-closing');
+  menuOverlay.classList.remove('active');
+  document.body.classList.remove('menu-open');
+
+  setTimeout(() => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('menu-closing');
+  }, 400);
+}
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('active');
+  openMenu();
+});
+menuClose.addEventListener('click', () => {
+  menuToggle.classList.remove('active');
+  closeMenu();
+});
+menuOverlay.addEventListener('click', () => {
+  menuToggle.classList.remove('active');
+  closeMenu();
+});
+
+  </script>
+  <style>
+body.menu-open {
+  overflow: hidden;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+#mobile-menu {
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateX(-100%);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.95) 0%,
+    rgba(240,245,255,0.95) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+#mobile-menu.menu-open {
+  transform: translateX(0);
+}
+
+#mobile-menu > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+#mobile-menu.menu-open > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#mobile-menu.menu-open > *:nth-child(1) { transition-delay: 0.1s; }
+#mobile-menu.menu-open > *:nth-child(2) { transition-delay: 0.2s; }
+#mobile-menu.menu-open > *:nth-child(3) { transition-delay: 0.3s; }
+#mobile-menu.menu-open > *:nth-child(4) { transition-delay: 0.4s; }
+#mobile-menu.menu-open > *:nth-child(5) { transition-delay: 0.5s; }
+
+#menu-toggle {
+  transition: all 0.3s ease;
+}
+
+#menu-toggle:active {
+  transform: scale(0.95);
+}
+
+#mobile-menu a {
+  transition: all 0.3s ease;
+}
+
+.dark-theme #mobile-menu {
+  background: linear-gradient(
+    135deg,
+    rgba(45,45,45,0.95) 0%,
+    rgba(30,30,30,0.95) 100%
+  );
+  box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
+body.menu-open #site-footer {
+  display: none !important;
+}
+body.menu-open footer {
+  display: none !important;
+}
+#mobile-menu nav a {
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+}
+
+#mobile-menu nav a:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+#mobile-menu nav a.bg-yellow-50 {
+  background-color: #fef3c7;
+  border: 1px solid #fbbf24;
+  color: #b45309;
+}
+
+#mobile-menu nav a.bg-yellow-50:hover {
+  background-color: #fcd34d;
+}
+
+  </style>
+<main class="flex-1 flex justify-center items-center">
+  <div class="max-w-2xl bg-white p-8 rounded-xl shadow text-center">
+    <h1 class="text-2xl font-bold mb-4">2026-01-03 상정인사이드 공지</h1>
+
+    <p class="text-gray-700 mb-4">
+    <br>안녕하세요, 상정인사이드 커뮤니티 이용자 여러분.<br><br>
+    2026년 1월 3일부로 상정인사이드의 업데이트가 잠정적으로 중단됨을 안내드립니다.<br>
+    서버 유지 비용 및 운영 인력 부족, 그리고 <strong>운영자의 새로운 개인 프로젝트 개발로 인해</strong>
+    당분간 새로운 기능 추가 및 기존 기능 개선이 어려운 상황입니다.<br>
+<br> 하지만 현재의 서비스는 계속해서 안정적으로 운영될 예정이며,<br>
+    기존 서비스에 대한 문제 발생 시에만 필요한 유지보수가 이루어질 것입니다.<br>
+    다만, 새로운 기능 도입이나 대규모 업데이트는 당분간 이루어지 않을 예정입니다.<br>
+<br>
+    상정인사이드 커뮤니티를 사랑해주신 모든 이용자분들께 깊은 감사의 말씀을 드리며,<br>
+    앞으로도 여러분의 소중한 의견과 피드백을 바탕으로 더 나은 서비스를 제공할 수 있도록 노력하겠습니다.
+    감사합니다.
+    </p>
+    <hr class="my-6">
+
+    <p class="text-sm text-gray-600">버그 발견 및 사용자 신고: <a href="https://commu.world/report" class="text-blue-600 underline">https://commu.world/report</a><br>
+      문의: <a href="mailto:admin@commu.world" class="text-blue-600 underline">admin@commu.world</a></p>
+  </div>
+</main>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+  <h1>&nbsp;</h1>
+
+<footer class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
+
+  <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div>
+      <div class="flex items-center space-x-4 mb-6">
+        <a>
+          <img
+            src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png"
+            alt="logo"
+            class="w-36 sm:w-32 md:w-36 lg:w-40 xl:w-44"
+          />
+        </a>
+      </div>
+      <ul class="space-y-3 text-base text-gray-600">
+        <li><span class="font-medium"><b>대표이메일</b></span> admin@commu.world</li>
+        <li><span class="font-medium"><b>운영 형태</b></span> 커뮤니티 서비스 | 1인 개발</li>
+      </ul>
+    </div>
+
+    <div></div>
+
+    <div class="flex flex-col items-start md:items-end space-y-6">
+
+      <div class="space-y-3 text-base">
+        <a href="/history" class="flex items-center gap-2 hover:underline">
+          서비스 통계
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/release-notes" class="flex items-center gap-2 hover:underline">
+          업데이트 · 릴리즈 노트
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+        <a href="/report" class="flex items-center gap-2 hover:underline">
+          버그 발견 및 사용자 신고 접수
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="w-4 h-4">
+            <path d="M5 12h14" />
+            <path d="M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="flex space-x-3">
+        <a href="https://www.instagram.com/yxbh.rh0" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/instagram.svg" class="w-4 h-4">
+        </a>
+        <a href="https://www.youtube.com/@SjInside-j8q" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/youtube.svg" class="w-4 h-4">
+        </a>
+        <a href="https://x.com/Sjinside_" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/x.svg" class="w-4 h-4">
+        </a>
+        <a href="https://github.com/anion15" class="w-9 h-9 border rounded-full flex items-center justify-center hover:bg-gray-100">
+          <img src="https://simpleicons.org/icons/github.svg" class="w-4 h-4">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
+      <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
+      <a href="/service-terms">서비스 이용약관</a>
+      <a href="/info">서비스 안내</a>
+      <a href="/sitemap.xml">사이트맵</a>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
+    본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
+    전적으로 개발자에게 있음을 알립니다.
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
+    <span>© 2025-2026 상정인사이드. All rights reserved.</span>
+    <span>Developed by anion15</span>
+  </div>
+
+<div
+  id="site-status-bar"
+  class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
+>
+  <span id="site-badge" class="font-semibold">
+    SangjeongInside
+  </span>
+
+  <span id="site-status-text" class="opacity-80">
+    최신 정보를 불러오는 중…
+  </span>
+</div>
+</footer>
+<style>
+.dark-theme footer {
+  background-color: #1f2933;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+.dark-theme footer a {
+  color: #d1d5db;
+}
+
+.dark-theme footer a:hover {
+  color: #60a5fa;
+}
+
+.dark-theme footer .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.dark-theme footer .border-t {
+  border-color: #374151;
+}
+
+.dark-theme footer a.font-semibold {
+  color: #60a5fa;
+}
+
+.dark-theme footer .border {
+  border-color: #4b5563;
+}
+
+.dark-theme footer .border:hover {
+  background-color: #374151;
+}
+
+.dark-theme footer .leading-relaxed {
+  color: #9ca3af;
+}
+
+.dark-theme footer .flex {
+  color: #9ca3af;
+}
+
+.dark-theme footer > div:last-child {
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+a svg {
+  transition: transform 0.2s ease;
+}
+a:hover svg {
+  transform: translateX(3px);
+}
+
+.dark-theme footer img{
+  filter: brightness(0) invert(1);
+}
+</style>
+<script>
+  async function loadLatestUpdate() {
+    try {
+      const res = await fetch('/api/SangjeongInside_latest_update');
+      if (!res.ok) throw new Error('API error');
+
+      const data = await res.json();
+
+      const version = data.version;
+      const time = new Date(data.time);
+      const link = data.link;
+
+      const timeText = time.toLocaleString('ko-KR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      document.getElementById('site-status-text').innerHTML = `
+        현재 버전 <a href="${link}" class="underline hover:text-white">
+          v${version}
+        </a>
+        · ${timeText} 업데이트
+      `;
+    } catch (e) {
+      document.getElementById('site-status-text').textContent =
+        '버전 정보를 불러올 수 없습니다.';
+    }
+  }
+
+  loadLatestUpdate();
+</script>
+</body>
+</html>
