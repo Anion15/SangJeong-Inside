@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윤주원 — 개발자</title>
+<meta name="description" content="윤주원 — 웹 풀스택 개발자 포트폴리오. 실제 서비스 운영 경험과 프로젝트를 소개합니다.">
+<meta name="keywords" content="윤주원, 개발자, 포트폴리오, 풀스택, 웹개발, Node.js, React">
+<meta name="author" content="윤주원">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="윤주원 포트폴리오">
+<meta property="og:title" content="윤주원 — 개발자 포트폴리오">
+<meta property="og:description" content="코딩을 사랑하는 고등학생 개발자. 실제 서비스 운영과 다양한 프로젝트 경험을 확인해보세요.">
+<meta property="og:url" content="https://dev.rederx.com">
+
+<meta name="twitter:title" content="윤주원 — 개발자 포트폴리오">
+<meta name="twitter:description" content="웹 풀스택 개발자 윤주원의 포트폴리오와 프로젝트를 확인해보세요.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg: #F7F5F2;
+  --bg2: #EFEDE9;
+  --text: #1A1A18;
+  --muted: #7A7873;
+  --border: #DEDBD6;
+  --accent: #1A4A3C;
+  --accent-light: #E8F2EE;
+  --font-sans: 'Noto Sans KR', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-name {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--text); }
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero {
+  padding: 80px 0 72px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-intro {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+.hero-name {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+.hero-desc strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 5px 12px;
+  border-radius: 3px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.badge.green {
+  background: var(--accent-light);
+  border-color: #B8D4CC;
+  color: var(--accent);
+}
+
+.section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-of-type { border-bottom: none; }
+
+.section-heading {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #3A3835;
+  margin-bottom: 20px;
+}
+.about-text:last-child { margin-bottom: 0; }
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 4px;
+}
+.tl-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.tl-item:last-child { border-bottom: 1px solid var(--border); }
+.tl-year {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.tl-content {}
+.tl-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.tl-desc {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.project {
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+}
+.project:last-child { border-bottom: 1px solid var(--border); }
+
+.project-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.project-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+.project-link {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid #B8D4CC;
+  background: var(--accent-light);
+  padding: 4px 10px;
+  border-radius: 3px;
+  white-space: pre-wrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.project-link:hover { background: #D4E9E3; }
+
+.project-desc {
+  font-size: 0.9rem;
+  color: #4A4845;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+.project-detail {
+  background: var(--bg2);
+  border-left: 2px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 16px;
+}
+.project-detail p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.project-detail p + p { margin-top: 8px; }
+.project-detail strong {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.stack-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+
+.skill-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.skill-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0 24px;
+  padding: 18px 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.skill-row:last-child { border-bottom: 1px solid var(--border); }
+.skill-cat-label {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--muted);
+  padding-top: 1px;
+}
+.skill-items {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+.skill-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.skill-level {
+  display: inline-flex;
+  gap: 3px;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+}
+.dot.on { background: var(--accent); }
+
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.contact-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0 24px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  align-items: center;
+}
+.contact-row:last-child { border-bottom: 1px solid var(--border); }
+.contact-label {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+.contact-row a {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.contact-row a:hover { text-decoration: underline; }
+.contact-row span {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.goal-box {
+  margin-top: 40px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--accent);
+  border-radius: 0 0 4px 4px;
+  padding: 24px 28px;
+}
+.goal-box-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.goal-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.goal-list li {
+  font-size: 0.875rem;
+  color: #3A3835;
+  line-height: 1.65;
+  padding-left: 26px;
+  position: relative;
+}
+.goal-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+}
+.footer-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.8;
+}
+.footer-text a { color: var(--muted); text-decoration: none; }
+.footer-text a:hover { color: var(--accent); }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 1.2rem; }
+  .hero { padding: 52px 0 48px; }
+  .tl-item, .skill-row, .contact-row { grid-template-columns: 1fr; gap: 4px; }
+  .tl-year, .skill-cat-label, .contact-label { font-size: 0.68rem; }
+  .project-header { flex-direction: column; gap: 8px; }
+}
+.project-meta {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+u {
+  text-decoration-line: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.tip-hint {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+}
+html.dark {
+  --bg: #0F0F0D;
+  --bg2: #1A1A17;
+  --text: #E8E6E1;
+  --muted: #6B6966;
+  --border: #2A2A26;
+  --accent: #4ECDA4;
+  --accent-light: #0D2B22;
+}
+html.dark nav { background: var(--bg); }
+html.dark .goal-list li { color: var(--muted); }
+
+.toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: #1A1A18;
+  color: #E8E6E1;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  padding: 12px 20px;
+  border-radius: 8px;
+  max-width: 360px;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 32px));
+  text-align: center;
+  white-space: pre-line;
+  opacity: 0;
+  transition: opacity 0.35s, transform 0.35s;
+  z-index: 9999;
+  pointer-events: none;
+  border: 1px solid #2A2A26;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.dark-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 52px;
+  height: 32px;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+.dark-toggle:hover { color: var(--text); border-color: var(--text); }
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  background: var(--accent);
+  width: 5px;
+  height: 5px;
+  z-index: 9999;
+  animation: particle-fade 0.6s ease-out forwards;
+}
+@keyframes particle-fade {
+  0%   { opacity: 1; transform: translate(0,0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+}
+
+.konami-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.konami-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+.konami-terminal {
+  font-family: var(--font-mono), monospace;
+  color: #4ECDA4;
+  font-size: 0.82rem;
+  line-height: 2;
+  text-align: left;
+  max-width: 480px;
+  padding: 0 24px;
+}
+.konami-terminal .cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: #4ECDA4;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+@keyframes blink { 50% { opacity: 0; } }
+.konami-close {
+  margin-top: 24px;
+  font-size: 0.72rem;
+  color: #6B6966;
+  cursor: pointer;
+}
+.konami-close:hover { color: #4ECDA4; }
+html.dark u {
+  text-decoration-color: rgba(255, 255, 255, 0.25);
+}
+html.dark .about-text,
+html.dark .project-desc { color: var(--muted); }
+</style>
+<script>
+(function(){
+  const source = localStorage.getItem('themeSource');
+  const theme  = localStorage.getItem('theme');
+  const h = new Date().getHours();
+  const isNight = h >= 22 || h < 6;
+  const shouldDark = source === 'manual' ? theme === 'dark' : isNight;
+  if (shouldDark) document.documentElement.classList.add('dark');
+})();
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name"><b>Yoon-juwon</b></a>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#projects">프로젝트</a></li>
+    <li><a href="#skills">기술</a></li>
+    <li><a href="#contact">연락</a></li>
+  </ul>
+  <button class="dark-toggle" id="darkToggle">어두운</button>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero reveal">
+    <p class="hero-intro" id="heroGreeting">Fullstack Developer — 2009</p>
+    <h1 class="hero-name">윤주원</h1>
+    <p class="hero-desc">
+      <strong>코딩을 사랑하는 고2 개발자.</strong><br>
+      중학교 때 혼자 개발을 배우기 시작했고, 지금은 실제로 사람들이 쓰는 서비스를 만들고 운영하고 있어요.<br>
+    </p>
+    <div class="hero-badges">
+      <u><span class="badge green" data-tip="인천상정고등학교는 인천광역시 부평구에 위치한 일반계 남자고등학교로, 2009년 3월 1일에 개교하였어요.">인천상정고등학교 재학</span></u>
+      <u><span class="badge" data-tip="상정인사이드는 1인 개발·운영 중인 익명 커뮤니티로, 현재 월간 수만 명의 방문자를 기록하고 있어요.">월 수만 명 방문 서비스 운영 중</span></u>
+      <u><span class="badge" data-tip="실제 클라이언트 프로젝트를 혼자 설계·개발·납품한 경험이 있어요.">외주 개발 경험</span></u>
+    </div>
+
+    <p class="tip-hint">✦ 밑줄 친 항목에 마우스를 올리거나 탭하여 TMI를 확인할 수 있어요.</p>
+  </header>
+
+  <section class="section" id="about">
+    <p class="section-heading reveal">소개</p>
+
+    <div class="reveal" style="transition-delay:0.05s">
+      <p class="about-text">
+        처음 개발을 접한 건 중학교 때입니다. 따로 배울 환경이 없어서 인터넷과 책을 뒤지며 혼자 익혔는데, 그게 오히려 좋았던 것 같습니다. 무언가 안 되면 직접 원인을 찾아야 했으니까요.
+      </p>
+      <p class="about-text">
+        지금은 웹 풀스택 개발을 주로 합니다. 프론트엔드부터 서버, 데이터베이스, 배포와 인프라까지 혼자 다룰 수 있고, 실제로 그렇게 운영하고 있습니다. AI는 디자인 피드백을 받을 때 가끔 씁니다.<br>거의 모든 코드는 제가 직접 짭니다.
+      </p>
+      <p class="about-text">
+        포트폴리오에 있는 서비스들은 지금도 실제로 돌아가고 있고, 한 달에 수만 명이 방문합니다. 만들어 두고 끝나는 게 아니라 계속 운영하면서 고치고 발전시키는 걸 중요하게 생각합니다.
+      </p>
+    </div>
+
+    <div class="timeline reveal" style="transition-delay:0.1s; margin-top: 40px;">
+      <div class="tl-item">
+        <span class="tl-year">2025 ~ 현재</span>
+        <div class="tl-content">
+          <p class="tl-title">인천상정고등학교 재학 (고2)</p>
+          <u><p class="tl-desc" data-tip="Ai랩업 동아리의 CodeNova 팀원으로 활동하고 있어요. 아직 예산이 들어오지 않아서 프로젝트 진행이 제한되고 있어요.">Ai랩업 CodeNova 활동 중이에요.</p></u>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2024 ~ 현재</span>
+        <div class="tl-content">
+          <p class="tl-title">상정인사이드 운영</p>
+          <u><p class="tl-desc" data-tip="1년동안 업데이트를 반복하여 더 탄탄한 서비스를 제공하기 위해 노력하고 있어요. 현재 월간 수만 명 방문하고 있어요.">1인 개발·운영 중인 익명 커뮤니티.</p></u>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2024 ~ 2025</span>
+        <div class="tl-content">
+          <p class="tl-title">외주 개발 진행</p>
+          <u><p class="tl-desc" data-tip="10개 이상의 대형 프로젝트를 실무 현장에서 사용 가능하도록 혼자 설계·개발·납품한 경험이 있어요.">실제 클라이언트 프로젝트 납품한 경험이 있어요.</p></u>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">중학교</span>
+        <div class="tl-content">
+          <p class="tl-title">개발 독학 시작</p>
+          <u><p class="tl-desc" data-tip="사실 초등학교 2학년 때부터 파이썬을 접하며 자연스럽게 공부를 시작했고, 중학교에 들어서면서 코딩에 흥미를 느껴 본격적으로 독학에 몰입하게 되었어요.">HTML/CSS/JS부터 시작해 서버, DB, 인프라로 범위를 넓혀갔어요.</p></u>
+        </div>
+      </div>
+    </div>
+    <div class="goal-box reveal" style="transition-delay:0.12s">
+      <p class="goal-box-label">앞으로의 방향</p>
+      <ul class="goal-list">
+        <li>Rederx.com을 실제 개발자들이 쓰는 API 보안 서비스로 성장시키기</li>
+        <li>운영 중인 서비스의 MAU를 지속적으로 늘리고 안정성 높이기</li>
+        <li>팀 프로젝트·오픈소스를 통해 협업 경험 쌓기</li>
+        <li>지금까지 혼자 익힌 기술들을 더 깊게 파고들기 — 특히 분산 시스템, 보안, 성능 최적화</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <p class="section-heading reveal">프로젝트</p>
+
+    <div class="project-list">
+
+      <article class="project reveal" style="transition-delay:0.05s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
+            <h2 class="project-name">상정인사이드</h2>
+            <p class="project-meta">2025.02 ~ 진행 중 · 1인 개발</p>
+          </div>
+          <a class="project-link" href="https://commu.world/?stpg=1" target="_blank" rel="noopener">commu.world ↗</a>
+        </div>
+        <p class="project-desc">
+          익명 커뮤니티입니다. 로그인 없이 누구나 글을 올리고 토론할 수 있습니다. 실제 방문자가 꾸준히 늘어나고 있습니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>왜 만들었나</strong> — 익명으로 자유롭게 이야기할 수 있는 공간이 필요하다고 생각했습니다. 기존 플랫폼들은 너무 복잡하거나, 광고가 많거나, 특정 주제에 치우쳐 있거나 하는 문제가 있었어요. 그래서 직접 만들기로 했습니다.</p>
+          <p><strong>어떻게 만들었나</strong> — 서버사이드 렌더링 기반으로 처음부터 직접 설계했습니다. 익명 시스템이라 사용자 식별이나 도배 방지를 어떻게 처리할지 고민이 많았고, 결국 세션과 IP 기반의 조합으로 해결했습니다.</p>
+          <p><strong>지금은</strong> — 월간 수만 명이 방문하는 서비스가 됐습니다. 그 정도 트래픽을 직접 감당하면서 서버 성능이나 DB 쿼리 최적화에 대해 배운 게 많습니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">HTML/CSS/JS</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Cloudflare</span>
+        </div>
+      </article>
+
+      <article class="project reveal" style="transition-delay:0.08s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
+            <h2 class="project-name">Apice.kr</h2>
+            <p class="project-meta">2026.02 ~ 2026.03 · 1인 개발</p>
+          </div>
+          <a class="project-link" href="https://www.apice.kr" target="_blank" rel="noopener">apice.kr ↗</a>
+        </div>
+        <p class="project-desc">
+          인천상정고등학교 Apice 동아리 사이트입니다. 동아리 소개와 함께 실험·프로젝트 관리 기능을 붙였습니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>왜 만들었나</strong> — 동아리 특성상 실험 데이터를 관리하는 기능이 필요했습니다. 단순 소개 페이지가 아니라 실제로 동아리 활동에 쓰이는 도구로 만들었습니다.</p>
+          <p><strong>지금은</strong> — 친구 요청으로 만든 외부 프로젝트입니다. 지금은 운영하지 않고, 보안 구조에 신경 쓴 프로젝트입니다. 인증, 세션 관리, SQL 인젝션 방어 등을 직접 구현했습니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">HTML/CSS/JS</span>
+          <span class="stack-tag">Flask</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Cloudflare</span>
+        </div>
+      </article>
+
+      <article class="project reveal" style="transition-delay:0.1s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;"> 
+            <h2 class="project-name">Rederx.com</h2>
+            <p class="project-meta">2026.03 ~ 진행 중 · 1인 개발</p>
+          </div>
+          <a class="project-link" href="https://www.rederx.com" target="_blank" rel="noopener">rederx.com ↗</a>
+        </div>
+        <p class="project-desc">
+          개발 단계에서 놓치기 쉬운 보안 요소들을 단 한 줄로 적용하는 API 보호 레이어 서비스입니다. 현재 개발 중인 프로젝트입니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>왜 만들었나</strong> — 개발하다 보면 보안은 항상 나중으로 밀립니다. 귀찮고, 복잡하고, 시간이 걸리니까요. 그 문제를 해결하고 싶어서 만들기 시작했습니다. API 보안 설정을 코드 한 줄로 끝낼 수 있는 서비스를 목표로 지금도 개발 중입니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Cloudflare</span>
+        </div>
+      </article>
+
+      <article class="project reveal" style="transition-delay:0.12s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
+            <h2 class="project-name">News-RCNS</h2>
+            <p class="project-meta">2024.12 ~ 2025.05 · 1인 개발</p>
+          </div>
+          <div style="display:flex; gap:6px; flex-shrink:0; margin-top:2px;">
+            <a class="project-link" href="https://github.com/Anion15/News-RCNS" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="project-link" href="https://docs.google.com/document/d/1Dnp-4HpUMN5VKaPx2pmPN1HnLwejVsc7/edit?usp=sharing&ouid=109048308215348806547&rtpof=true&sd=true" target="_blank" rel="noopener">Docs ↗</a>
+          </div>
+        </div>
+        <p class="project-desc">
+          뉴스를 요약하고, 감정 태그를 달고, 반대 의견을 자동으로 생성하는 시스템입니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>왜 만들었나</strong> — 대회 출전용으로 만든 작품입니다. 뉴스는 항상 특정 방향으로 편향될 수 있다는 생각이 있었습니다. 같은 사건을 다른 시각에서 볼 수 있도록 반대 의견을 자동으로 붙여 주는 기능을 만들었습니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">NLP</span>
+        </div>
+      </article>
+
+      <article class="project reveal" style="transition-delay:0.12s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
+            <h2 class="project-name">CRNN 기반 소리 분석을 활용한 버스 도착 알림 시스템 개발에 관한 연구</h2>
+            <p class="project-meta">2024.12 ~ 2025.04 · 1인 개발</p>
+          </div>
+          <a class="project-link" href="https://docs.google.com/document/d/1tRPg58dxpT0GrtvCXPFIjp_bR_I43BatjdE6OCvs0fo/edit?usp=sharing" target="_blank" rel="noopener">Docs ↗</a>
+        </div>
+        <p class="project-desc">
+          시각장애인이 가장 많이 쓰는 교통수단은 버스지만, 도착 여부를 스스로 인지하기가 어렵습니다. 아두이노와 소리 인식 모델로 버스 소리를 감지해 더 정확한 도착 정보를 전달하는 시스템을 개발했습니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>어떻게 만들었나</strong> — 대회 출전용으로 만든 작품입니다. CRNN 기반 소리 분류 모델을 직접 학습시켜 버스 특유의 소리를 감지하도록 했습니다. 기존 버스정보시스템보다 더 정확한 도착 정보를 제공하는 것이 목표였습니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Machine Learning</span>
+          <span class="stack-tag">NLP</span>
+        </div>
+      </article>
+    <p class="project reveal" style="text-align:center; color:var(--muted); font-size:0.9rem; transition-delay:0.12s">여기 없는 프로젝트가 6건 더 있는데, 아직은 비밀이에요.</p>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <p class="section-heading reveal">기술</p>
+ 
+    <div class="skill-blocks reveal" style="transition-delay:0.05s">
+      <div class="skill-row">
+        <span class="skill-cat-label">프론트엔드</span>
+        <div>
+          <p class="skill-items">
+            HTML · CSS · JavaScript
+            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+          </p>
+          <p class="skill-items" style="margin-top:4px;">
+            React · Next.js · TailwindCSS
+            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
+          </p>
+          <p class="skill-note">바닐라 JS로 먼저 익혔고, 복잡한 상태 관리가 필요할 때 React/Next.js를 쓰고 있어요.</p>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat-label">백엔드</span>
+        <div>
+          <p class="skill-items">
+            Node.js · Express
+            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+          </p>
+          <p class="skill-items" style="margin-top:4px;">
+            Python · Flask
+            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+          </p>
+          <p class="skill-items" style="margin-top:4px;">
+            Java · Spring · C++
+            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
+          </p>
+          <p class="skill-note">프로젝트 성격에 따라 언어와 프레임워크를 골라요. 주력은 Node.js와 Spring.</p>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat-label">데이터베이스</span>
+        <div>
+          <p class="skill-items">MySQL · MongoDB · SQLite
+            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
+          </p>
+          <p class="skill-note">쿼리 최적화, 인덱스 설계, 실제 트래픽 환경에서의 DB 튜닝 경험이 있어요.</p>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat-label">인프라</span>
+        <div>
+          <p class="skill-items">Docker · Git · Cloudflare · Linux</p>
+          <p class="skill-note">서비스를 직접 운영하면서 자연스럽게 익혔어요. CDN 설정, 캐싱 전략, DDoS 방어 설정까지 실전에서 다뤄봤어요.</p>
+        </div>
+      </div>
+      <div class="skill-row">
+        <span class="skill-cat-label">AI / ML</span>
+        <div>
+          <p class="skill-items">Python · NLP · CRNN</p>
+          <p class="skill-note">대회 프로젝트를 통해 NLP 파이프라인과 딥러닝 모델 학습·경량화를 직접 경험했어요. 이론에 그치지 않고 운영 중인 서비스에도 모델을 직접 붙여 실제 트래픽 환경에서 검증하고 있어요. 지금도 가장 깊게 파고들고 있는 분야예요.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <p class="section-heading reveal">연락</p>
+
+    <div class="contact-grid reveal" style="transition-delay:0.05s">
+      <div class="contact-row">
+        <span class="contact-label">이메일</span>
+        <a href="mailto:juwony27@gmail.com">juwony27@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">프로젝트 문의</span>
+        <a href="mailto:admin@commu.world">admin@commu.world</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">GitHub</span>
+        <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Instagram</span>
+        <a href="https://instagram.com/yxbh.rh0" target="_blank" rel="noopener">@yxbh.rh0</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-text">
+      윤주원 — <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15<br>↑↑↓↓←→←→BA</a>
+    </p>
+  </div>
+</footer>
+<div class="konami-overlay" id="konamiOverlay">
+  <div class="konami-terminal">
+    <div class="lines"></div>
+    <span class="cursor"></span>
+    <div class="konami-close" id="konamiClose">[ ESC 또는 클릭하여 닫기 ]</div>
+  </div>
+</div>
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script>
+const tip = document.createElement('div');
+tip.style.cssText = `
+  position: fixed;
+  background: #292925;
+  color: #F7F5F2;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  padding: 6px 10px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  font-sans: 'Noto Sans KR', sans-serif;
+  max-width: 280px;
+  word-break: keep-all;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+`;
+document.body.appendChild(tip);
+
+document.querySelectorAll('[data-tip]').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    tip.textContent = el.getAttribute('data-tip');
+    tip.style.opacity = '0';
+
+    const rect = el.getBoundingClientRect();
+    const maxW = Math.min(280, window.innerWidth - 32);
+    tip.style.maxWidth = maxW + 'px';
+
+    let left = rect.left;
+    if (left + maxW > window.innerWidth - 16) {
+      left = window.innerWidth - 16 - maxW;
+    }
+    if (left < 16) left = 16;
+    tip.style.left = left + 'px';
+    tip.style.top = '0px';
+
+    requestAnimationFrame(() => {
+      const tipH = tip.getBoundingClientRect().height;
+      let top = rect.top - tipH - 8;
+      if (top < 8) top = rect.bottom + 8;
+      tip.style.top = top + 'px';
+      tip.style.opacity = '1';
+    });
+  });
+
+  el.addEventListener('mouseleave', () => {
+    tip.style.opacity = '0';
+  });
+  window.addEventListener('scroll', () => { tip.style.opacity = '0'; }, { passive: true });
+});
+</script>
+<script>
+const toggleBtn = document.getElementById('darkToggle');
+const root = document.documentElement;
+
+function applyDark(on) {
+  on ? root.classList.add('dark') : root.classList.remove('dark');
+  toggleBtn.textContent = on ? '밝은' : '어두운';
+}
+
+applyDark(root.classList.contains('dark'));
+
+toggleBtn.addEventListener('click', () => {
+  const isDark = root.classList.toggle('dark');
+  toggleBtn.textContent = isDark ? '밝은' : '어두운';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  localStorage.setItem('themeSource', 'manual');
+});
+
+function showToast(msg) {
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => t.remove(), 400);
+  }, 5000);
+}
+
+const h = new Date().getHours();
+const isNight = h >= 22 || h < 6;
+const themeSource = localStorage.getItem('themeSource');
+
+const wasAlreadyAuto = themeSource === 'auto';
+
+if (isNight && themeSource !== 'manual') {
+  applyDark(true);
+  localStorage.setItem('theme', 'dark');
+  localStorage.setItem('themeSource', 'auto');
+  if (!wasAlreadyAuto) {
+    setTimeout(() => showToast(
+      '이 야심한 밤 속에도 제 포트폴리오를\n찾아오셨네요. \n당신의 눈 보호를 위해 다크모드를 적용했어요.'
+    ), 1900);
+  }
+} else if (!isNight && themeSource === 'auto') {
+  applyDark(false);
+  localStorage.removeItem('theme');
+  localStorage.removeItem('themeSource');
+}
+
+const greetings = [
+  { range: [0, 5],   text: '새벽에도 코딩 중 — Fullstack Developer · 2009' },
+  { range: [6, 11],  text: '좋은 아침이에요 — Fullstack Developer · 2009' },
+  { range: [12, 17], text: 'Fullstack Developer — 2009' },
+  { range: [18, 21], text: '저녁에 포트폴리오 탐방 중이시군요 — Fullstack Developer · 2009' },
+  { range: [22, 23], text: '야행성이시군요 — Fullstack Developer · 2009' },
+];
+const greetHour = new Date().getHours();
+const greeting = greetings.find(g => greetHour >= g.range[0] && greetHour <= g.range[1]);
+if (greeting) document.getElementById('heroGreeting').textContent = greeting.text;
+
+console.log('%c\n  ___  _  _ ___ ___  _  _ \n / _ \\| \\| |_ _/ _ \\| \\| |\n| (_) | .` || | (_) | .` |\n \\__\\_\\_|\\_|___\\___/|_|\\_|\n', 'color:#4ECDA4; font-family:monospace');
+console.log('%c안녕하세요! 저는 윤주원입니다.', 'color:#4ECDA4; font-weight:bold; font-size:13px');
+console.log('%c콘솔까지 열어보셨군요. 역시 개발자시네요.', 'color:#888; font-size:12px');
+console.log('%c협업 문의: juwony27@gmail.com', 'color:#888; font-size:12px');
+console.log('%cgithub.com/anion15', 'color:#888; font-size:12px');
+
+function spawnParticles(x, y) {
+  for (let i = 0; i < 8; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const angle = (Math.PI * 2 * i) / 8;
+    const dist = 30 + Math.random() * 20;
+    p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+    p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+    p.style.left = x - 2.5 + 'px';
+    p.style.top  = y - 2.5 + 'px';
+    document.body.appendChild(p);
+    p.addEventListener('animationend', () => p.remove());
+  }
+}
+document.querySelectorAll('.badge, .project-link, .stack-tag').forEach(el => {
+  el.addEventListener('click', e => spawnParticles(e.clientX, e.clientY));
+});
+
+const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIdx = 0;
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('konamiOverlay').classList.remove('show');
+    return;
+  }
+  if (e.key === KONAMI[konamiIdx]) {
+    konamiIdx++;
+    if (konamiIdx === KONAMI.length) { konamiIdx = 0; showKonami(); }
+  } else { konamiIdx = 0; }
+});
+
+function showKonami() {
+  const overlay = document.getElementById('konamiOverlay');
+  overlay.classList.add('show');
+  overlay.onclick = () => overlay.classList.remove('show');
+  typeLines([
+    '$ sudo unlock --mode developer',
+    '',
+    '인증 완료',
+    '포트폴리오 비밀 열람 권한 부여됨',
+    '',
+    '> 운영 중인 서비스: N개',
+    '> 지금까지 마신 커피: 측정 불가',
+    '> 디버깅에 쓴 시간: 전체의 약 60%',
+    '> 가장 오래 붙잡은 버그: 30일',
+    '> 가장 좋아하는 에러: Cannot read properties of undefined',
+    '',
+    '> 여기까지 찾아오셨다면, 같이 만들어봐요.',
+    '> juwony27@gmail.com',
+    '',
+  ]);
+}
+
+function typeLines(lines) {
+  const terminal = document.querySelector('.konami-terminal .lines');
+  terminal.innerHTML = '';
+  let i = 0;
+  function next() {
+    if (i >= lines.length) return;
+    const line = document.createElement('div');
+    line.textContent = lines[i];
+    terminal.appendChild(line);
+    i++;
+    setTimeout(next, lines[i-1] === '' ? 80 : 60);
+  }
+  next();
+}
+
+const originalTitle = document.title;
+let hasBeenVisible = false;
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    if (hasBeenVisible) document.title = '돌아와요...';
+  } else {
+    hasBeenVisible = true;
+    document.title = originalTitle;
+  }
+});
+</script>
+</body>
+</html>
