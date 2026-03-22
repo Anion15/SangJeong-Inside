@@ -561,7 +561,7 @@ html.dark .project-desc { color: var(--muted); }
 <body>
 
 <nav>
-  <a href="#" class="nav-name"><b>Yoon-juwon</b></a>
+  <a href="#" class="nav-name">윤주원</a>
   <ul class="nav-links">
     <li><a href="#about">소개</a></li>
     <li><a href="#projects">프로젝트</a></li>
@@ -1079,6 +1079,29 @@ document.addEventListener('visibilitychange', () => {
     document.title = originalTitle;
   }
 });
+</script>
+<script>
+(function() {
+  const heroName = document.querySelector('.hero-name');
+  const navName  = document.querySelector('.nav-name');
+
+  navName.style.transition = 'opacity 0.25s';
+  navName.style.opacity = '0';
+
+  window.addEventListener('scroll', () => {
+    const rect = heroName.getBoundingClientRect();
+    const navH = 56;
+
+    const start = rect.top + rect.height;
+    const end   = rect.bottom - navH;
+
+    const progress = Math.min(1, Math.max(0, 1 - (rect.top - navH) / rect.height));
+
+    heroName.style.opacity = 1 - progress;
+
+    navName.style.opacity = progress > 0.6 ? ((progress - 0.6) / 0.4) : 0;
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
