@@ -175,7 +175,7 @@ nav {
   color: var(--muted);
   padding-top: 2px;
 }
-.tl-content {}
+.tl-content,
 .tl-title {
   font-weight: 700;
   font-size: 0.95rem;
@@ -719,6 +719,49 @@ html.dark .project-desc { color: var(--muted); }
         </div>
       </article>
 
+      <article class="project reveal" style="transition-delay:0.08s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
+            <h2 class="project-name">한강.</h2>
+            <p class="project-meta">2024.11 ~ 2024.12 · 1인 개발</p>
+          </div>
+          <a class="project-link" href="https://anion15.github.io/hangang.html" target="_blank" rel="noopener">anion15.github.io ↗</a>
+        </div>
+        <p class="project-desc">
+          실시간 한강 물온도 측정기입니다. 자체 계산 알고리즘을 사용하여 실제로 한강에 들어갔을 때 느껴지는 온도에 더 가깝게 예측하는 것을 목표로 개발했습니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>왜 만들었나</strong> — 보통 한강물 온도는 직접 들어가보지 않고는 온도만을 보고 실제 느낌을 알기 어렵습니다. 이를 해결하기 위해 독자적인 계산 알고리즘을 사용하여 더 정확한 예측을 목표로 했습니다.</p>
+          <p><strong>지금은</strong> — 실제 한강물 온도 측정은 제가 하지 않고 있습니다. 대신 실제 측정을 위한 한강물 온도 측정기 모듈을 개발 중입니다. 한강물 온도 측정기 모듈 개발에 성공한다면 합법적인 과정에 따라 설치하여 더 신속하고 정확한 정보를 제공할 수 있을 것입니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">HTML/CSS/JS</span>
+          <span class="stack-tag">Serverless</span>
+          <span class="stack-tag">API</span>
+        </div>
+      </article>
+
+      <article class="project reveal" style="transition-delay:0.08s">
+        <div class="project-header">
+          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
+            <h2 class="project-name">Noise Player</h2>
+            <p class="project-meta">2023.11 ~ 2024.12 · 1인 개발</p>
+          </div>
+          <a class="project-link" href="https://anion15.github.io/noise.html" target="_blank" rel="noopener">anion15.github.io ↗</a>
+        </div>
+        <p class="project-desc">
+          개발 독학을 시작한 지 얼마 안 됐을 때 만든 프로젝트입니다. 웹 오디오 API를 사용하여 특정 Hz 대역의 노이즈를 재생하는 Noise Player입니다.
+        </p>
+        <div class="project-detail">
+          <p><strong>왜 만들었나</strong> — 스터디 카페의 특유의 소음을 좋아하는데, 그걸 재현해보고 싶어서 만들었습니다.</p>
+        </div>
+        <div class="project-stack">
+          <span class="stack-tag">HTML/CSS/JS</span>
+          <span class="stack-tag">Serverless</span>
+          <span class="stack-tag">API</span>
+        </div>
+      </article>
+
       <article class="project reveal" style="transition-delay:0.12s">
         <div class="project-header">
           <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
@@ -856,7 +899,8 @@ html.dark .project-desc { color: var(--muted); }
 <footer>
   <div class="wrap">
     <p class="footer-text">
-      윤주원 — <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15<br>↑↑↓↓←→←→BA</a>
+      윤주원 — <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15</a>
+      <br>↑↑↓↓←→←→BA
     </p>
   </div>
 </footer>
