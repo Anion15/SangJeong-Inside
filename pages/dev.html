@@ -1141,11 +1141,12 @@ if (isNight && themeSource !== 'manual') {
 }
 
 const greetings = [
-  { range: [0, 5],   text: '새벽에도 코딩 중 — Fullstack Developer · 2009' },
+  { range: [0, 1],   text: '한밤중의 버그 사냥 — Fullstack Developer · 2009' },
+  { range: [2, 5],   text: '새벽에도 코딩 중 — Fullstack Developer · 2009' },
   { range: [6, 11],  text: '좋은 아침이에요 — Fullstack Developer · 2009' },
   { range: [12, 17], text: 'Fullstack Developer — 2009' },
   { range: [18, 21], text: '저녁에 포트폴리오 탐방 중이시군요 — Fullstack Developer · 2009' },
-  { range: [22, 23], text: '야행성이시군요 — Fullstack Developer · 2009' },
+  { range: [22, 23], text: '야행성 개발자 모드 활성화 — Fullstack Developer · 2009' },
 ];
 const greetHour = new Date().getHours();
 const greeting = greetings.find(g => greetHour >= g.range[0] && greetHour <= g.range[1]);
