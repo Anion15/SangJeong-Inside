@@ -600,6 +600,49 @@ html.dark .hero-socials img {
   filter: brightness(0) invert(1);
   opacity: 1;
 }
+
+.search-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-decoration: none;
+
+  border: 1px dashed var(--border);
+  background: transparent;
+
+  padding: 4px 10px;
+  border-radius: 4px;
+
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  opacity: 0.85;
+}
+
+.search-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  opacity: 1;
+}
+
+.search-link:active {
+  transform: translateY(1px);
+}
+
+html.dark .search-link {
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  background: transparent;
+}
+
+html.dark .search-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
 </style>
 <script>
 (function(){
@@ -724,6 +767,7 @@ html.dark .hero-socials img {
             <p class="project-meta">2025.02 ~ 진행 중 · 1인 개발</p>
           </div>
           <a class="project-link" href="https://commu.world/?stpg=1" target="_blank" rel="noopener">commu.world ↗</a>
+          <a class="search-link" href="https://www.google.com/search?q=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C" target="_blank" rel="noopener">Search ↗</a>
         </div>
         <p class="project-desc">
           익명 커뮤니티입니다. 로그인 없이 누구나 글을 올리고 토론할 수 있습니다. 실제 방문자가 꾸준히 늘어나고 있습니다.
@@ -748,6 +792,7 @@ html.dark .hero-socials img {
             <p class="project-meta">2026.02 ~ 2026.03 · 1인 개발</p>
           </div>
           <a class="project-link" href="https://www.apice.kr" target="_blank" rel="noopener">apice.kr ↗</a>
+          <a class="search-link" href="https://www.google.com/search?q=%EC%9D%B8%EC%B2%9C%EC%83%81%EC%A0%95%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%20Apice%EB%8F%99%EC%95%84%EB%A6%AC" target="_blank" rel="noopener">Search ↗</a>
         </div>
         <p class="project-desc">
           인천상정고등학교 Apice 동아리 사이트입니다. 동아리 소개와 함께 실험·프로젝트 관리 기능을 붙였습니다.
@@ -771,6 +816,7 @@ html.dark .hero-socials img {
             <p class="project-meta">2026.03 ~ 진행 중 · 1인 개발</p>
           </div>
           <a class="project-link" href="https://www.rederx.com" target="_blank" rel="noopener">rederx.com ↗</a>
+          <a class="search-link" href="https://www.google.com/search?q=Rederx" target="_blank" rel=nopener">Search ↗</a>
         </div>
         <p class="project-desc">
           개발 단계에서 놓치기 쉬운 보안 요소들을 단 한 줄로 적용하는 API 보호 레이어 서비스입니다. 현재 개발 중인 프로젝트입니다.
