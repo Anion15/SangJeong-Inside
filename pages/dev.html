@@ -643,6 +643,101 @@ html.dark .search-link:hover {
   border-color: var(--accent);
   background: var(--accent-light);
 }
+
+.qa-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 8px;
+}
+
+.qa-item {
+  border-top: 1px solid var(--border);
+}
+
+.qa-item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.qa-question {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 22px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text);
+}
+
+.qa-question span:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.6;
+}
+
+.qa-toggle {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--muted);
+  flex-shrink: 0;
+  line-height: 1.4;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.qa-item.open .qa-toggle {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+
+.qa-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.qa-answer p {
+  font-size: 0.92rem;
+  color: #4A4845;
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+.qa-answer p:last-child {
+  margin-bottom: 24px;
+}
+
+html.dark .qa-answer p {
+  color: var(--muted);
+}
+
+.qa-question:hover .qa-toggle {
+  color: var(--accent);
+}
+
+.qa-question:hover span:first-child {
+  color: var(--accent);
+}
+
+@media (max-width: 600px) {
+  .qa-question {
+    padding: 18px 0;
+  }
+
+  .qa-question span:first-child {
+    font-size: 0.94rem;
+  }
+
+  .qa-answer p {
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+}
+
 </style>
 <script>
 (function(){
@@ -754,6 +849,142 @@ html.dark .search-link:hover {
       </ul>
     </div>
   </section>
+<section class="section" id="mindset">
+  <p class="section-heading reveal">자주 듣는 질문</p>
+
+  <div class="qa-list">
+    <article class="qa-item reveal" style="transition-delay:0.03s">
+      <button class="qa-question" type="button">
+        <span>왜 많은 분야 중에서 웹 풀스택 개발을 하고 있나요?</span>
+        <span class="qa-toggle">+</span>
+      </button>
+      <div class="qa-answer">
+        <p>
+          저는 게임 개발, 프로그램 개발, 자동화 도구 제작처럼 여러 분야를 두루 좋아합니다.
+          실제로 이것저것 직접 만들어보기도 했고요.
+        </p>
+        <p>
+          그런데 웹은 조금 다르게 느껴졌습니다. 제가 만든 결과물을 누군가가 확인하고 써보려면
+          보통은 특정 환경이나 기기가 필요할 때가 많습니다. 하지만 웹은 인터넷만 연결되어 있다면
+          장소나 환경에 크게 구애받지 않고, 누구나 바로 접속해서 제가 만든 결과물을 직접 보고
+          사용해볼 수 있습니다.
+        </p>
+        <p>
+          저는 그 점이 정말 특별하다고 느꼈습니다. 내가 만든 것이 가장 빠르고 넓게 사람들에게 닿을 수 있는
+          분야가 웹이라고 생각했고, 그래서 자연스럽게 웹 풀스택 개발을 가장 깊게 파고들게 됐습니다.
+        </p>
+      </div>
+    </article>
+
+    <article class="qa-item reveal" style="transition-delay:0.06s">
+      <button class="qa-question" type="button">
+        <span>왜 직접 서비스를 운영하는 개발자가 되고 싶나요?</span>
+        <span class="qa-toggle">+</span>
+      </button>
+      <div class="qa-answer">
+        <p>
+          저는 단순히 기능을 구현하는 것에서 끝나는 개발보다, 실제 사용자가 있는 환경에서
+          계속 개선해 나가는 개발을 더 좋아합니다.
+        </p>
+        <p>
+          혼자 만들 때는 괜찮아 보이던 기능도, 실제 서비스에 올리면 예상과 다르게 동작할 때가 많습니다.
+          사용자는 어디서 불편해하는지, 서버는 어떤 순간에 버거워지는지, 어떤 기능은 왜 전혀 쓰이지 않는지
+          직접 보게 됩니다.
+        </p>
+        <p>
+          그 과정을 겪으면서 개발은 단순히 코드를 작성하는 것만이 아니라,
+          문제를 계속 발견하고 고쳐 나가는 일이라는 걸 배웠습니다.
+          그래서 저는 결과물을 끝내는 개발자보다, 결과물을 운영하면서 성장시키는 개발자가 되고 싶습니다.
+        </p>
+      </div>
+    </article>
+
+    <article class="qa-item reveal" style="transition-delay:0.09s">
+      <button class="qa-question" type="button">
+        <span>혼자 개발하면서 가장 크게 늘어난 능력은 무엇인가요?</span>
+        <span class="qa-toggle">+</span>
+      </button>
+      <div class="qa-answer">
+        <p>
+          문제를 끝까지 추적하는 힘이라고 생각합니다.
+        </p>
+        <p>
+          혼자 개발하면 누군가 바로 답을 알려주지 않습니다. 오류가 나면 직접 원인을 찾고,
+          구조를 다시 보고, 로그를 확인하고, 여러 가설을 세워 하나씩 검증해야 합니다.
+          그 과정이 반복되면서 자연스럽게 문제를 겉으로만 보는 게 아니라,
+          왜 이런 문제가 생겼는지 깊게 파고드는 습관이 생겼습니다.
+        </p>
+        <p>
+          덕분에 지금은 단순히 기능을 만드는 것보다, 문제가 생겼을 때 구조적으로 해결하는 쪽에
+          더 자신감이 생겼습니다.
+        </p>
+      </div>
+    </article>
+
+    <article class="qa-item reveal" style="transition-delay:0.12s">
+      <button class="qa-question" type="button">
+        <span>기술을 고를 때 가장 중요하게 보는 기준은 무엇인가요?</span>
+        <span class="qa-toggle">+</span>
+      </button>
+      <div class="qa-answer">
+        <p>
+          저는 멋있어 보이는 기술보다, 지금 해결하려는 문제에 정말 맞는 기술인지를 먼저 봅니다.
+        </p>
+        <p>
+          프로젝트마다 필요한 구조와 속도가 다르기 때문에, 항상 같은 언어나 프레임워크만
+          고집하지는 않습니다. 빠르게 검증해야 하는 프로젝트와 오래 운영해야 하는 프로젝트는
+          접근 방식부터 달라야 한다고 생각합니다.
+        </p>
+        <p>
+          그래서 저는 무조건 최신 기술을 좇기보다, 유지보수와 확장성,
+          실제 운영 환경까지 고려해서 선택하려고 합니다.
+        </p>
+      </div>
+    </article>
+
+    <article class="qa-item reveal" style="transition-delay:0.15s">
+      <button class="qa-question" type="button">
+        <span>AI를 개발에 어느 정도 활용하나요?</span>
+        <span class="qa-toggle">+</span>
+      </button>
+      <div class="qa-answer">
+        <p>
+          AI를 전혀 쓰지 않는다고 말하고 싶지는 않습니다. 
+          실제로 디자인 피드백이나 아이디어 정리처럼 보조적인 용도로 활용할 때가 있습니다.
+        </p>
+        <p>
+          하지만 핵심 로직이나 서비스 구조, 실제 코드 작성은 대부분 직접 합니다.
+          저는 개발에서 가장 중요한 건 결과보다 이해라고 생각합니다. 내가 왜 이렇게 설계했는지, 
+          이 코드가 왜 돌아가는지 설명할 수 있어야 진짜 내 것이 된다고 생각합니다.
+        </p>
+        <p>
+          그래서 AI는 보조 도구로만 사용하고, 중심은 항상 제가 직접 잡으려고 합니다.
+        </p>
+      </div>
+    </article>
+
+    <article class="qa-item reveal" style="transition-delay:0.18s">
+      <button class="qa-question" type="button">
+        <span>앞으로 어떤 개발자가 되고 싶나요?</span>
+        <span class="qa-toggle">+</span>
+      </button>
+      <div class="qa-answer">
+        <p>
+          저는 단순히 코드를 잘 짜는 개발자보다, 실제로 사람들이 계속 찾는 서비스를 만드는 개발자가 되고 싶습니다.
+        </p>
+        <p>
+          한 번 보여주고 끝나는 결과물이 아니라, 오래 운영되고 점점 더 좋아지는 서비스를 만들고 싶습니다.
+          그리고 프론트엔드, 백엔드, 인프라를 모두 이해하는 강점을 살려서,
+          기능 하나를 만들더라도 전체 흐름을 볼 수 있는 개발자가 되고 싶습니다.
+        </p>
+        <p>
+          결국 제가 원하는 건 많이 아는 개발자보다는, 끝까지 만들어내는 개발자에 더 가깝습니다.
+        </p>
+      </div>
+    </article>
+
+  </div>
+</section>
 
   <section class="section" id="projects">
     <p class="section-heading reveal">프로젝트</p>
@@ -1262,6 +1493,26 @@ document.addEventListener('visibilitychange', () => {
     navName.style.opacity = progress > 0.6 ? ((progress - 0.6) / 0.4) : 0;
   }, { passive: true });
 })();
+</script>
+<script>
+document.querySelectorAll('.qa-item').forEach(item => {
+  const btn = item.querySelector('.qa-question');
+  const answer = item.querySelector('.qa-answer');
+
+  btn.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+
+    document.querySelectorAll('.qa-item').forEach(other => {
+      other.classList.remove('open');
+      other.querySelector('.qa-answer').style.maxHeight = null;
+    });
+
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
 </script>
 </body>
 </html>
