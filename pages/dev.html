@@ -1,1518 +1,1803 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>윤주원 — 개발자</title>
-<meta name="description" content="윤주원 — 웹 풀스택 개발자 포트폴리오. 실제 서비스 운영 경험과 프로젝트를 소개합니다.">
-<meta name="keywords" content="윤주원, 개발자, 포트폴리오, 풀스택, 웹개발, Node.js, React">
-<meta name="author" content="윤주원">
-<link rel='icon' type="image/png" href="https://avatars.githubusercontent.com/u/125840838?v=4">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>윤주원 — 개발자</title>
+  <meta name="description" content="윤주원 — 웹 풀스택 개발자 포트폴리오. 실제 서비스 운영 경험과 프로젝트를 소개합니다.">
+  <meta name="keywords" content="윤주원, 개발자, 포트폴리오, 풀스택, 웹개발, Node.js, React">
+  <meta name="author" content="윤주원">
+  <link rel='icon' type="image/png" href="https://avatars.githubusercontent.com/u/125840838?v=4">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="윤주원 포트폴리오">
-<meta property="og:title" content="윤주원 — 개발자 포트폴리오">
-<meta property="og:description" content="코딩을 사랑하는 고등학생 개발자. 실제 서비스 운영과 다양한 프로젝트 경험을 확인해보세요.">
-<meta property="og:url" content="https://dev.rederx.com">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="윤주원 포트폴리오">
+  <meta property="og:title" content="윤주원 — 개발자 포트폴리오">
+  <meta property="og:description" content="코딩을 사랑하는 고등학생 개발자. 실제 서비스 운영과 다양한 프로젝트 경험을 확인해보세요.">
+  <meta property="og:url" content="https://dev.rederx.com">
 
-<meta name="twitter:title" content="윤주원 — 개발자 포트폴리오">
-<meta name="twitter:description" content="웹 풀스택 개발자 윤주원의 포트폴리오와 프로젝트를 확인해보세요.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+  <meta name="twitter:title" content="윤주원 — 개발자 포트폴리오">
+  <meta name="twitter:description" content="웹 풀스택 개발자 윤주원의 포트폴리오와 프로젝트를 확인해보세요.">
+  <style>
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: local('SF Pro Display'), local('.SFNSDisplay-Regular');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'SF Pro Text';
+      src: local('SF Pro Text'), local('.SFNSText-Regular');
+      font-weight: 100 900;
+      font-display: swap;
+    }
 
-:root {
-  --bg: #FFFFFF;
-  --bg2: #EFEDE9;
-  --text: #1A1A18;
-  --muted: #7A7873;
-  --border: #DEDBD6;
-  --accent: #1A4A3C;
-  --accent-light: #E8F2EE;
-  --font-sans: 'Noto Sans KR', sans-serif;
-}
+    :root {
+      --color-black: #000000;
+      --color-white: #ffffff;
+      --color-gray-light: #f5f5f7;
+      --color-near-black: #1d1d1f;
+      --color-apple-blue: #0071e3;
+      --color-link-blue: #0066cc;
+      --color-link-blue-dark: #2997ff;
+      --color-text-secondary: rgba(0, 0, 0, 0.8);
+      --color-text-tertiary: rgba(0, 0, 0, 0.48);
+      --color-surface-dark-1: #272729;
+      --color-surface-dark-2: #262628;
+      --color-shadow: rgba(0, 0, 0, 0.22);
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
+      --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-text: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  padding: 0 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 56px;
-}
-.nav-name {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-}
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-}
-.nav-links a {
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.nav-links a:hover { color: var(--text); }
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 48px;
+      --space-2xl: 80px;
+      --space-3xl: 120px;
 
-.wrap {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
+      --max-width: 980px;
+      --radius-sm: 5px;
+      --radius-md: 8px;
+      --radius-lg: 14px;
+      --radius-pill: 980px;
+    }
 
-.hero {
-  padding: 80px 0 72px;
-  border-bottom: 1px solid var(--border);
-}
-.hero-intro {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-bottom: 20px;
-  letter-spacing: 0.04em;
-}
-.hero-name {
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-  color: var(--text);
-}
-.hero-desc {
-  font-size: 1.05rem;
-  color: var(--muted);
-  max-width: 560px;
-  line-height: 1.8;
-  margin-bottom: 36px;
-}
-.hero-desc strong {
-  color: var(--text);
-  font-weight: 500;
-}
-.hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.badge {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 5px 12px;
-  border-radius: 3px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  color: var(--muted);
-}
-.badge.green {
-  background: var(--accent-light);
-  border-color: #B8D4CC;
-  color: var(--accent);
-}
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.section {
-  padding: 64px 0;
-  border-bottom: 1px solid var(--border);
-}
-.section:last-of-type { border-bottom: none; }
+    html {
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-.section-heading {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 36px;
-}
+    body {
+      font-family: var(--font-text);
+      font-size: 17px;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: var(--color-near-black);
+      background-color: var(--color-white);
+    }
 
-.about-text {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: #3A3835;
-  margin-bottom: 20px;
-}
-.about-text:last-child { margin-bottom: 0; }
+    a {
+      color: var(--color-link-blue);
+      text-decoration: none;
+      transition: opacity 0.15s ease;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 4px;
-}
-.tl-item {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 0 24px;
-  padding: 20px 0;
-  border-top: 1px solid var(--border);
-  position: relative;
-}
-.tl-item:last-child { border-bottom: 1px solid var(--border); }
-.tl-year {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
-  padding-top: 2px;
-}
-.tl-content,
-.tl-title {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--text);
-  margin-bottom: 4px;
-  letter-spacing: -0.01em;
-}
-.tl-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.65;
-}
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-.project-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.project {
-  padding: 36px 0;
-  border-top: 1px solid var(--border);
-}
-.project:last-child { border-bottom: 1px solid var(--border); }
+    hr{
+      border: none;
+      border-top: 1px solid var(--color-gray-light);
+    }
 
-.project-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 12px;
-}
-.project-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
-  line-height: 1.3;
-}
-.project-link {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--accent);
-  text-decoration: none;
-  border: 1px solid #B8D4CC;
-  background: var(--accent-light);
-  padding: 4px 10px;
-  border-radius: 3px;
-  white-space: pre-wrap;
-  transition: background 0.15s;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-.project-link:hover { background: #D4E9E3; }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.project-desc {
-  font-size: 0.9rem;
-  color: #4A4845;
-  line-height: 1.75;
-  margin-bottom: 16px;
-}
+    .nav-inner {
+      width: 100%;
+      max-width: var(--max-width);
+      padding: 0 var(--space-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.project-detail {
-  background: var(--bg2);
-  border-left: 2px solid var(--accent);
-  padding: 14px 18px;
-  border-radius: 0 4px 4px 0;
-  margin-bottom: 16px;
-}
-.project-detail p {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.7;
-}
-.project-detail p + p { margin-top: 8px; }
-.project-detail strong {
-  color: var(--accent);
-  font-weight: 500;
-}
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-white);
+      letter-spacing: -0.2px;
+    }
 
-.project-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.stack-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 3px 9px;
-  border-radius: 3px;
-}
+    .nav-links {
+      display: flex;
+      gap: var(--space-lg);
+      list-style: none;
+    }
 
-.skill-blocks {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.skill-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0 24px;
-  padding: 18px 0;
-  border-top: 1px solid var(--border);
-  align-items: start;
-}
-.skill-row:last-child { border-bottom: 1px solid var(--border); }
-.skill-cat-label {
-  font-family: var(--font-mono);
-  font-size: 0.73rem;
-  color: var(--muted);
-  padding-top: 1px;
-}
-.skill-items {
-  font-size: 0.875rem;
-  color: var(--text);
-  line-height: 1.6;
-}
-.skill-note {
-  font-size: 0.8rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-white);
+      opacity: 0.8;
+      transition: opacity 0.15s ease;
+    }
+    .nav-links a:hover {
+      opacity: 1;
+      text-decoration: none;
+    }
 
-.skill-level {
-  display: inline-flex;
-  gap: 3px;
-  vertical-align: middle;
-  margin-left: 8px;
-}
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--border);
-}
-.dot.on { background: var(--accent); }
+    .section {
+      padding: var(--space-3xl) var(--space-lg);
+    }
 
-.contact-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.contact-row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 0 24px;
-  padding: 16px 0;
-  border-top: 1px solid var(--border);
-  align-items: center;
-}
-.contact-row:last-child { border-bottom: 1px solid var(--border); }
-.contact-label {
-  font-family: var(--font-mono);
-  font-size: 0.73rem;
-  color: var(--muted);
-}
-.contact-row a {
-  font-size: 0.9rem;
-  color: var(--accent);
-  text-decoration: none;
-}
-.contact-row a:hover { text-decoration: underline; }
-.contact-row span {
-  font-size: 0.9rem;
-  color: var(--text);
-}
+    .section--dark {
+      background-color: var(--color-black);
+      color: var(--color-white);
+    }
+    .section--dark a {
+      color: var(--color-link-blue-dark);
+    }
 
-.goal-box {
-  margin-top: 40px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
-  border-top: 2px solid var(--accent);
-  border-radius: 0 0 4px 4px;
-  padding: 24px 28px;
-}
-.goal-box-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  margin-bottom: 14px;
-}
-.goal-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.goal-list li {
-  font-size: 0.875rem;
-  color: #3A3835;
-  line-height: 1.65;
-  padding-left: 26px;
-  position: relative;
-}
-.goal-list li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-family: var(--font-mono);
-}
+    .section--light {
+      background-color: var(--color-gray-light);
+      color: var(--color-near-black);
+    }
 
-footer {
-  border-top: 1px solid var(--border);
-  padding: 32px 0;
-}
-.footer-text {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-  text-align: center;
-  line-height: 1.8;
-}
-.footer-text a { color: var(--muted); text-decoration: none; }
-.footer-text a:hover { color: var(--accent); }
+    .section--white {
+      background-color: var(--color-white);
+      color: var(--color-near-black);
+    }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.reveal.in { opacity: 1; transform: none; }
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
 
-@media (max-width: 600px) {
-  nav { padding: 0 20px; }
-  .nav-links { gap: 1.2rem; }
-  .hero { padding: 52px 0 48px; }
-  .tl-item, .skill-row, .contact-row { grid-template-columns: 1fr; gap: 4px; }
-  .tl-year, .skill-cat-label, .contact-label { font-size: 0.68rem; }
-  .project-header { flex-direction: column; gap: 8px; }
-}
-.project-meta {
-  font-family: var(--font-mono);
-  font-size: 0.73rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-u {
-  text-decoration-line: underline;
-  text-decoration-color: rgba(0, 0, 0, 0.3);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-}
-.tip-hint {
-  margin-top: 16px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--muted);
-  opacity: 0.7;
-  letter-spacing: 0.02em;
-}
-html.dark {
-  --bg: #0F0F0D;
-  --bg2: #1A1A17;
-  --text: #E8E6E1;
-  --muted: #6B6966;
-  --border: #2A2A26;
-  --accent: #4ECDA4;
-  --accent-light: #0D2B22;
-}
-html.dark nav { background: var(--bg); }
-html.dark .goal-list li { color: var(--muted); }
+    .display-hero {
+      font-family: var(--font-display);
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1.07;
+      letter-spacing: -0.28px;
+    }
 
-.toast {
-  position: fixed;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%) translateY(12px);
-  background: #1A1A18;
-  color: #E8E6E1;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
-  line-height: 1.65;
-  padding: 12px 20px;
-  border-radius: 8px;
-  max-width: 360px;
-  width: max-content;
-  max-width: min(360px, calc(100vw - 32px));
-  text-align: center;
-  white-space: pre-line;
-  opacity: 0;
-  transition: opacity 0.35s, transform 0.35s;
-  z-index: 9999;
-  pointer-events: none;
-  border: 1px solid #2A2A26;
-}
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.10;
+      letter-spacing: normal;
+      margin-bottom: var(--space-xl);
+    }
 
-.dark-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  width: 52px;
-  height: 32px;
-  cursor: pointer;
-  color: var(--muted);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.15s, border-color 0.15s;
-  flex-shrink: 0;
-}
-.dark-toggle:hover { color: var(--text); border-color: var(--text); }
+    .tile-heading {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.14;
+      letter-spacing: 0.196px;
+    }
 
-.particle {
-  position: fixed;
-  pointer-events: none;
-  border-radius: 50%;
-  background: var(--accent);
-  width: 5px;
-  height: 5px;
-  z-index: 9999;
-  animation: particle-fade 0.6s ease-out forwards;
-}
-@keyframes particle-fade {
-  0%   { opacity: 1; transform: translate(0,0) scale(1); }
-  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
-}
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+    }
 
-.konami-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 9000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s;
-}
-.konami-overlay.show {
-  opacity: 1;
-  pointer-events: all;
-}
-.konami-terminal {
-  font-family: var(--font-mono), monospace;
-  color: #4ECDA4;
-  font-size: 0.82rem;
-  line-height: 2;
-  text-align: left;
-  max-width: 480px;
-  padding: 0 24px;
-}
-.konami-terminal .cursor {
-  display: inline-block;
-  width: 8px;
-  height: 1em;
-  background: #4ECDA4;
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
-  margin-left: 2px;
-}
-@keyframes blink { 50% { opacity: 0; } }
-.konami-close {
-  margin-top: 24px;
-  font-size: 0.72rem;
-  color: #6B6966;
-  cursor: pointer;
-}
-.konami-close:hover { color: #4ECDA4; }
-html.dark u {
-  text-decoration-color: rgba(255, 255, 255, 0.25);
-}
-html.dark .about-text,
-html.dark .project-desc { color: var(--muted); }
-.hero-name-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
+    .sub-heading {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+    }
 
-.hero-socials {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+    .body-text {
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+    }
 
-.hero-socials a {
-  width: 38px;
-  height: 38px;
-  border: 1px solid var(--border);
-  border-radius: 9999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg2);
-  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-}
+    .body-emphasis {
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.24;
+      letter-spacing: -0.374px;
+    }
 
-.hero-socials a:hover {
-  transform: translateY(-2px);
-  background: var(--accent-light);
-  border-color: #B8D4CC;
-}
+    .caption {
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.29;
+      letter-spacing: -0.224px;
+      color: var(--color-text-secondary);
+    }
 
-.hero-socials img {
-  width: 17px;
-  height: 17px;
-  display: block;
-  filter: none;
-  opacity: 0.9;
-}
+    .micro {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: var(--color-gray-light);
+    }
 
-html.dark .hero-socials a {
-  border: 1px solid rgba(255,255,255,0.14);
-  background: rgba(255,255,255,0.04);
-}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 48px;
+    }
 
-html.dark .hero-socials a:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.22);
-}
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 400;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      margin-top: var(--space-md);
+      opacity: 0.9;
+    }
 
-html.dark .hero-socials img {
-  filter: brightness(0) invert(1);
-  opacity: 1;
-}
+    .hero-subsubtitle {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      margin-top: var(--space-md);
+      opacity: 0.725;
+    }
 
-.search-link {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--muted);
-  text-decoration: none;
+    .hero-cta-group {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-  border: 1px dashed var(--border);
-  background: transparent;
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1;
+      padding: 12px 22px;
+      border-radius: var(--radius-pill);
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
 
-  padding: 4px 10px;
-  border-radius: 4px;
+    .btn--primary {
+      background-color: var(--color-apple-blue);
+      color: var(--color-white);
+    }
+    .btn--primary:hover {
+      background-color: #0077ed;
+      text-decoration: none;
+    }
 
-  white-space: nowrap;
-  transition: all 0.15s ease;
-  flex-shrink: 0;
-  margin-top: 2px;
+    .btn--outline {
+      background-color: transparent;
+      color: var(--color-link-blue-dark);
+      border: 1px solid var(--color-link-blue-dark);
+    }
+    .btn--outline:hover {
+      background-color: var(--color-link-blue-dark);
+      color: var(--color-black);
+      text-decoration: none;
+    }
 
-  opacity: 0.85;
-}
+    .btn--dark {
+      background-color: var(--color-near-black);
+      color: var(--color-white);
+    }
 
-.search-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-light);
-  opacity: 1;
-}
+    .link-pill {
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.224px;
+    }
+    .link-pill::after {
+      content: ' >';
+    }
 
-.search-link:active {
-  transform: translateY(1px);
-}
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
 
-html.dark .search-link {
-  border: 1px dashed var(--border);
-  color: var(--muted);
-  background: transparent;
-}
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
 
-html.dark .search-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-light);
-}
+    .timeline-date {
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.224px;
+      color: var(--color-text-tertiary);
+    }
+    .section--dark .timeline-date {
+      color: rgba(255, 255, 255, 0.48);
+    }
 
-.qa-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: 8px;
-}
+    .timeline-content h3 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      margin-bottom: var(--space-xs);
+    }
 
-.qa-item {
-  border-top: 1px solid var(--border);
-}
+    .timeline-content p {
+      color: var(--color-text-secondary);
+    }
+    .section--dark .timeline-content p {
+      color: rgba(255, 255, 255, 0.8);
+    }
 
-.qa-item:last-child {
-  border-bottom: 1px solid var(--border);
-}
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-lg);
+    }
 
-.qa-question {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  padding: 22px 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  cursor: pointer;
-  text-align: left;
-  color: var(--text);
-}
+    .card {
+      background-color: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--color-shadow) 3px 5px 30px 0px;
+    }
 
-.qa-question span:first-child {
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.6;
-}
+    .card--dark {
+      background-color: var(--color-surface-dark-1);
+      color: var(--color-white);
+    }
+    .card--dark .caption {
+      color: rgba(255, 255, 255, 0.6);
+    }
 
-.qa-toggle {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--muted);
-  flex-shrink: 0;
-  line-height: 1.4;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--space-sm);
+    }
 
-.qa-item.open .qa-toggle {
-  transform: rotate(45deg);
-  color: var(--accent);
-}
+    .card-date {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--color-text-tertiary);
+      letter-spacing: -0.12px;
+    }
+    .card--dark .card-date {
+      color: rgba(255, 255, 255, 0.48);
+    }
 
-.qa-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-}
+    .card h3 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      margin-bottom: var(--space-sm);
+    }
 
-.qa-answer p {
-  font-size: 0.92rem;
-  color: #4A4845;
-  line-height: 1.85;
-  margin-bottom: 14px;
-}
+    .card p {
+      margin-bottom: var(--space-md);
+    }
 
-.qa-answer p:last-child {
-  margin-bottom: 24px;
-}
+    .card-links {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
 
-html.dark .qa-answer p {
-  color: var(--muted);
-}
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
 
-.qa-question:hover .qa-toggle {
-  color: var(--accent);
-}
+    .tag {
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-gray-light);
+      color: var(--color-text-secondary);
+    }
+    .card--dark .tag {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.8);
+    }
 
-.qa-question:hover span:first-child {
-  color: var(--accent);
-}
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xl);
+    }
 
-@media (max-width: 600px) {
-  .qa-question {
-    padding: 18px 0;
-  }
+    .faq-item h3 {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      margin-bottom: var(--space-sm);
+    }
 
-  .qa-question span:first-child {
-    font-size: 0.94rem;
-  }
+    .faq-item p {
+      color: var(--color-text-secondary);
+    }
 
-  .qa-answer p {
-    font-size: 0.88rem;
-    line-height: 1.8;
-  }
-}
+    .tech-showcase {
+      position: relative;
+      overflow: hidden;
+      background: #000000;
+      color: #ffffff;
+      padding-left: 0;
+      padding-right: 0;
+    }
 
-</style>
-<script>
-(function(){
-  const source = localStorage.getItem('themeSource');
-  const theme  = localStorage.getItem('theme');
-  const h = new Date().getHours();
-  const isNight = h >= 22 || h < 6;
-  const shouldDark = source === 'manual' ? theme === 'dark' : isNight;
-  if (shouldDark) document.documentElement.classList.add('dark');
-})();
-</script>
+    .tech-showcase-inner {
+      max-width: 980px;
+      padding: 0 clamp(20px, 6vw, 96px);
+      text-align: center;
+    }
+
+    .tech-eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    .tech-heading {
+      max-width: 760px;
+      margin: 0 auto;
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+      color: #ffffff;
+    }
+
+    .tech-heading span {
+      color: #86868b;
+    }
+
+    .tech-stage {
+      position: relative;
+      width: 100%;
+      margin: 56px 0 42px;
+      padding: 18px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      transform: translateZ(0);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000000 10%, #000000 90%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000000 10%, #000000 90%, transparent 100%);
+    }
+
+    .tech-row {
+      display: flex;
+      width: max-content;
+      gap: 18px;
+      will-change: transform;
+      animation: tech-marquee-left 44s linear infinite;
+    }
+
+    .tech-row--middle {
+      animation-name: tech-marquee-right;
+      animation-duration: 52s;
+      transform: translateX(-50%);
+    }
+
+    .tech-row--bottom {
+      animation-duration: 48s;
+    }
+
+    .tech-chip {
+      flex: 0 0 auto;
+      width: clamp(58px, 6vw, 98px);
+      height: clamp(58px, 6vw, 98px);
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #1d1d1f;
+      box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+      animation: tech-float 5.8s ease-in-out infinite;
+    }
+
+    .tech-chip:nth-child(3n) {
+      animation-delay: -1.4s;
+    }
+
+    .tech-chip:nth-child(4n) {
+      animation-delay: -2.6s;
+    }
+
+    .tech-chip:nth-child(5n) {
+      animation-delay: -3.8s;
+    }
+
+    .tech-chip img {
+      width: 58%;
+      height: 58%;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .tech-summary {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 6vw, 96px);
+      text-align: center;
+    }
+
+    .tech-summary-main {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 600;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
+      color: #ffffff;
+    }
+
+    .tech-summary-sub {
+      max-width: 620px;
+      margin: 14px auto 0;
+      font-family: var(--font-text);
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: rgba(255, 255, 255, 0.64);
+    }
+
+    @keyframes tech-marquee-left {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes tech-marquee-right {
+      from { transform: translateX(-50%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes tech-float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-3px) scale(1.035); }
+    }
+
+    @media (max-width: 834px) {
+      .tech-showcase-inner,
+      .tech-summary {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .tech-stage {
+        margin-top: 44px;
+        gap: 16px;
+      }
+
+      .tech-row {
+        gap: 14px;
+      }
+
+      .tech-chip {
+        border-radius: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tech-showcase {
+        padding-top: var(--space-2xl);
+        padding-bottom: var(--space-2xl);
+      }
+
+      .tech-heading {
+        font-size: 36px;
+        letter-spacing: -0.9px;
+      }
+
+      .tech-stage {
+        margin: 36px 0 34px;
+        gap: 12px;
+      }
+
+      .tech-row {
+        gap: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tech-row,
+      .tech-chip {
+        animation: none;
+      }
+
+      .tech-stage {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .contact-item {
+      text-align: center;
+    }
+
+    .contact-item .label {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.12px;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-xs);
+    }
+    .section--dark .contact-item .label {
+      color: rgba(255, 255, 255, 0.48);
+    }
+
+    .contact-item a {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .footer {
+      padding: var(--space-xl) var(--space-lg);
+      text-align: center;
+      background-color: var(--color-gray-light);
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: var(--color-text-tertiary);
+      letter-spacing: -0.12px;
+    }
+
+    @media (max-width: 834px) {
+      .display-hero {
+        font-size: 40px;
+      }
+      .section-heading {
+        font-size: 32px;
+      }
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .display-hero {
+        font-size: 28px;
+      }
+      .section-heading {
+        font-size: 24px;
+      }
+      .section {
+        padding: var(--space-2xl) var(--space-md);
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .projects-showcase {
+      background: #f5f5f7;
+      color: var(--color-near-black);
+      overflow: hidden;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .projects-inner {
+      max-width: none;
+      width: 100%;
+      margin: 0;
+      padding-left: 0;
+    }
+
+    .projects-title-row {
+      max-width: 980px;
+      margin-left: clamp(20px, 6vw, 96px);
+      padding-right: clamp(20px, 6vw, 96px);
+      margin-bottom: 38px;
+    }
+
+
+    .projects-heading {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -1.4px;
+      color: #86868b;
+    }
+
+    .projects-heading span {
+      color: #1d1d1f;
+    }
+
+    .projects-subtitle {
+      max-width: 680px;
+      margin-top: 14px;
+      font-family: var(--font-text);
+      font-size: 17px;
+      line-height: 1.47;
+      letter-spacing: -0.374px;
+      color: rgba(0, 0, 0, 0.72);
+    }
+
+    .projects-carousel-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .projects-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+
+      padding: 0 clamp(20px, 6vw, 96px) 76px clamp(20px, 6vw, 96px);
+      scroll-padding-left: clamp(20px, 6vw, 96px);
+
+      scrollbar-width: none;
+    }
+
+    .projects-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .project-feature-card {
+      flex: 0 0 min(404px, calc(100vw - 40px));
+      min-height: 560px;
+      scroll-snap-align: start;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #1d1d1f;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: rgba(0, 0, 0, 0.12) 3px 5px 30px 0px;
+      transition: box-shadow 150ms ease;
+    }
+
+    .project-feature-card:hover {
+      transform: none;
+      box-shadow: rgba(0, 0, 0, 0.12) 3px 5px 30px 0px;
+    }
+
+    .project-feature-card.project-card--rederx {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .project-feature-card.project-card--rederx .project-kicker,
+    .project-feature-card.project-card--rederx .project-description,
+    .project-feature-card.project-card--rederx .project-footnote,
+    .project-feature-card.project-card--rederx .project-card-bottom {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .project-feature-card.project-card--rederx .project-line,
+    .project-feature-card.project-card--rederx .project-more {
+      color: #2997ff;
+    }
+
+    .project-feature-card.project-card--rederx .project-point,
+    .project-feature-card.project-card--rederx .project-icon-stage {
+      background: #1d1d1f;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .project-feature-card.project-card--rederx .project-app-icon {
+      background: #ffffff;
+    }
+
+    .project-card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .project-title-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 54px;
+    }
+
+    .project-app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #f5f5f7;
+      box-shadow: rgba(0, 0, 0, 0.14) 0 6px 18px 0;
+    }
+
+    .project-app-icon-apice {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #f5f5f7;
+      box-shadow: rgba(0, 0, 0, 0.14) 0 6px 18px 0;
+    }
+
+    .project-card--apice .project-app-icon {
+      object-position: calc(50% + 0.4px) center;
+    }
+
+    .project-title-block {
+      min-width: 0;
+    }
+
+    .project-kicker {
+      display: block;
+      margin-bottom: 3px;
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: rgba(0, 0, 0, 0.48);
+    }
+
+    .project-title-line h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.14;
+      letter-spacing: -0.45px;
+      color: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .project-line {
+      font-family: var(--font-display);
+      font-size: 21px;
+      font-weight: 600;
+      line-height: 1.19;
+      letter-spacing: 0.231px;
+      color: #1d1d1f;
+    }
+
+    .project-description {
+      font-family: var(--font-text);
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.43;
+      letter-spacing: -0.224px;
+      color: rgba(0, 0, 0, 0.74);
+    }
+
+    .project-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+
+    .project-open {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 0 15px;
+      border-radius: 980px;
+      background: #0071e3;
+      color: #ffffff !important;
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.224px;
+      text-decoration: none;
+    }
+
+    .project-open:hover {
+      background: #0077ed;
+      text-decoration: none;
+    }
+
+    .project-more {
+      font-family: var(--font-text);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.43;
+      letter-spacing: -0.224px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .project-more:hover {
+      text-decoration: underline;
+    }
+
+    .project-icon-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      margin: 28px 0;
+      border-radius: 12px;
+      background: #f5f5f7;
+    }
+
+    .project-icon-stage .project-app-icon {
+      width: 104px;
+      height: 104px;
+      border-radius: 24px;
+      box-shadow: rgba(0, 0, 0, 0.18) 3px 5px 30px 0px;
+    }
+
+    .project-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .project-point {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 0 10px;
+      border-radius: 980px;
+      background: #f5f5f7;
+      color: rgba(0, 0, 0, 0.72);
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.12px;
+    }
+
+    .project-card-bottom {
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      padding-top: 14px;
+      font-family: var(--font-text);
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: rgba(0, 0, 0, 0.56);
+    }
+
+    .project-feature-card.project-card--rederx .project-card-bottom {
+      border-top-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .project-card-bottom strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      color: inherit;
+    }
+
+    .project-footnote {
+      margin-top: 12px;
+      font-family: var(--font-text);
+      font-size: 12px;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: rgba(0, 0, 0, 0.48);
+    }
+
+    .project-scroll-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 14px;
+      padding: 0 clamp(20px, 6vw, 96px) 0 0;
+      transform: translateY(-42px);
+    }
+
+    .project-scroll-btn {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: #D2D2D7;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 150ms ease, color 150ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    #L {
+      transform: rotate(180deg);
+    }
+
+    .project-scroll-btn svg path {
+      fill: #4A4A4B !important;
+    }
+
+    .project-scroll-btn:hover {
+      background: #d2d2d7;
+      color: #1d1d1f;
+    }
+
+    .project-scroll-btn:focus-visible,
+    .project-open:focus-visible,
+    .project-more:focus-visible {
+      outline: 2px solid #0071e3;
+      outline-offset: 3px;
+    }
+
+
+    .project-symbol {
+      width: 104px;
+      height: 104px;
+      border-radius: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #1d1d1f;
+      box-shadow: rgba(0, 0, 0, 0.18) 3px 5px 30px 0px;
+    }
+
+    .project-symbol svg {
+      width: 48px;
+      height: 48px;
+      stroke: currentColor;
+    }
+
+    .project-symbol--small {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: #f5f5f7;
+      box-shadow: rgba(0, 0, 0, 0.14) 0 6px 18px 0;
+      flex: 0 0 auto;
+    }
+
+    .project-symbol--small svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .projects-secret-note {
+      max-width: 980px;
+      padding: 0 clamp(20px, 6vw, 96px) 0 0;
+      margin-top: -16px;
+      font-family: var(--font-text);
+      font-size: 12px;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: rgba(0, 0, 0, 0.48);
+      text-align: center;
+    }
+
+    @media (max-width: 834px) {
+      .projects-inner {
+        padding-left: 0;
+      }
+
+      .projects-title-row {
+        margin-left: 20px;
+        padding-right: 20px;
+      }
+
+      .projects-track {
+        gap: 16px;
+        padding-left: 20px;
+        padding-right: 20px;
+        scroll-padding-left: 20px;
+      }
+
+      .project-feature-card {
+        min-height: 548px;
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .projects-showcase {
+        padding-top: var(--space-2xl);
+      }
+
+      .projects-heading {
+        font-size: 36px;
+        letter-spacing: -0.9px;
+      }
+
+      .project-feature-card {
+        flex-basis: calc(100vw - 40px);
+        min-height: 520px;
+      }
+
+      .project-title-line h3 {
+        font-size: 25px;
+      }
+
+      .project-icon-stage {
+        min-height: 122px;
+        margin: 20px 0;
+      }
+
+      .project-icon-stage .project-app-icon {
+        width: 88px;
+        height: 88px;
+        border-radius: 21px;
+      }
+    }
+
+
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="nav-name">윤주원</a>
-  <ul class="nav-links">
-    <li><a href="#about">소개</a></li>
-    <li><a href="#projects">프로젝트</a></li>
-    <li><a href="#skills">기술</a></li>
-    <li><a href="#contact">연락</a></li>
-  </ul>
-  <button class="dark-toggle" id="darkToggle">어두운</button>
-</nav>
-
-<div class="wrap">
-
-  <header class="hero reveal">
-    <p class="hero-intro" id="heroGreeting">Fullstack Developer — 2009</p>
-    <div class="hero-name-row">
-        <h1 class="hero-name">윤주원</h1>
-        <div class="hero-socials">
-        <a href="https://www.instagram.com/yxbh.rh0" target="_blank" rel="noopener" aria-label="Instagram">
-            <img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://github.com/anion15" target="_blank" rel="noopener" aria-label="GitHub">
-            <img src="https://simpleicons.org/icons/github.svg" alt="GitHub">
-        </a>
-        <a href="https://discord.com/users/1126799229709451264" target="_blank" rel="noopener" aria-label="GitHub">
-            <img src="https://simpleicons.org/icons/discord.svg" alt="Discord">
-        </a>
-        </div>
+  <nav class="nav">
+    <div class="nav-inner">
+      <span class="nav-logo">윤주원</span>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#projects">프로젝트</a></li>
+        <li><a href="#skills">기술</a></li>
+        <li><a href="#contact">연락</a></li>
+      </ul>
     </div>
-    <p class="hero-desc">
-      <strong>코딩을 사랑하는 고2 개발자.</strong><br>
-      중학교 때 혼자 개발을 배우기 시작했고, 지금은 실제로 사람들이 쓰는 서비스를 만들고 운영하고 있어요.<br>
-    </p>
-    <div class="hero-badges">
-      <u><span class="badge green" data-tip="인천상정고등학교는 인천광역시 부평구에 위치한 일반계 남자고등학교로, 2009년 3월 1일에 개교하였어요.">인천상정고등학교 재학</span></u>
-      <u><span class="badge" data-tip="상정인사이드는 1인 개발·운영 중인 익명 커뮤니티로, 현재 월간 수만 명의 방문자를 기록하고 있어요.">월 수만 명 방문 서비스 운영 중</span></u>
-      <u><span class="badge" data-tip="실제 클라이언트 프로젝트를 혼자 설계·개발·납품한 경험이 있어요.">외주 개발 경험</span></u>
+  </nav>
+
+  <section class="section section--dark hero" id="hero">
+    <div class="section-inner">
+      <h1 class="display-hero">윤주원</h1>
+      <p class="hero-subtitle">코딩을 사랑하는 고2 풀스택 개발자.<br><br><span class="hero-subsubtitle">중학교 때 혼자 개발을 배우기 시작했고, 지금은 실제로 사람들이 쓰는 서비스를 만들고 운영하고 있어요.</span></p>
+      <div class="hero-cta-group">
+        <a href="#projects" class="btn btn--outline">프로젝트 보기</a>
+        <a href="#contact" class="btn btn--primary" style="background-color: var(--color-apple-blue); color: var(--color-white);">연락하기</a>
+      </div>
     </div>
+  </section>
 
-    <p class="tip-hint">✦ 밑줄 친 항목에 마우스를 올리거나 탭하여 TMI를 확인할 수 있어요.</p>
-  </header>
-
-  <section class="section" id="about">
-    <p class="section-heading reveal">소개</p>
-
-    <div class="reveal" style="transition-delay:0.05s">
-      <p class="about-text">
-        처음 개발을 접한 건 중학교 때입니다. 따로 배울 환경이 없어서 인터넷과 책을 뒤지며 혼자 익혔는데, 그게 오히려 좋았던 것 같습니다. 무언가 안 되면 직접 원인을 찾아야 했으니까요.
+  <section class="section section--light" id="about">
+    <div class="section-inner">
+      <h2 class="section-heading">소개</h2>
+      <p class="body-text" style="max-width: 720px; margin-bottom: var(--space-xl);">
+        처음 개발을 접한 건 중학교 때입니다. 따로 배울 환경이 없어서 인터넷과 책을 뒤지며 혼자 익혔는데, 그게 오히려 좋았던 것 같습니다. 무언가 안 되면 직접 원인을 찾아야 했으니까요. 지금은 웹 풀스택 개발을 주로 합니다. 프론트엔드부터 서버, 데이터베이스, 배포와 인프라까지 혼자 다룰 수 있고, 실제로 그렇게 운영하고 있습니다.
       </p>
-      <p class="about-text">
-        지금은 웹 풀스택 개발을 주로 합니다. 프론트엔드부터 서버, 데이터베이스, 배포와 인프라까지 혼자 다룰 수 있고, 실제로 그렇게 운영하고 있습니다. AI는 디자인 피드백을 받을 때 가끔 씁니다.<br>거의 모든 코드는 제가 직접 짭니다.
-      </p>
-      <p class="about-text">
+      <p class="body-text" style="max-width: 720px;">
         포트폴리오에 있는 서비스들은 지금도 실제로 돌아가고 있고, 한 달에 수만 명이 방문합니다. 만들어 두고 끝나는 게 아니라 계속 운영하면서 고치고 발전시키는 걸 중요하게 생각합니다.
       </p>
     </div>
-
-    <div class="timeline reveal" style="transition-delay:0.1s; margin-top: 40px;">
-      <div class="tl-item">
-        <span class="tl-year">2025 ~ 현재</span>
-        <div class="tl-content">
-          <p class="tl-title">인천상정고등학교 재학 (고2)</p>
-          <u><p class="tl-desc" data-tip="Ai랩업 동아리의 CodeNova 팀원으로 활동하고 있어요. 아직 예산이 들어오지 않아서 프로젝트 진행이 제한되고 있어요.">Ai랩업 CodeNova 활동 중이에요.</p></u>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-year">2024 ~ 현재</span>
-        <div class="tl-content">
-          <p class="tl-title">상정인사이드 운영</p>
-          <u><p class="tl-desc" data-tip="1년동안 업데이트를 반복하여 더 탄탄한 서비스를 제공하기 위해 노력하고 있어요. 현재 월간 수만 명 방문하고 있어요.">1인 개발·운영 중인 익명 커뮤니티.</p></u>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-year">2024 ~ 2025</span>
-        <div class="tl-content">
-          <p class="tl-title">외주 개발 진행</p>
-          <u><p class="tl-desc" data-tip="10개 이상의 대형 프로젝트를 실무 현장에서 사용 가능하도록 혼자 설계·개발·납품한 경험이 있어요.">실제 클라이언트 프로젝트 납품한 경험이 있어요.</p></u>
-        </div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-year">중학교</span>
-        <div class="tl-content">
-          <p class="tl-title">개발 독학 시작</p>
-          <u><p class="tl-desc" data-tip="사실 초등학교 2학년 때부터 파이썬을 접하며 자연스럽게 공부를 시작했고, 중학교에 들어서면서 코딩에 흥미를 느껴 본격적으로 독학에 몰입하게 되었어요.">HTML/CSS/JS부터 시작해 서버, DB, 인프라로 범위를 넓혀갔어요.</p></u>
-        </div>
-      </div>
-    </div>
-    <div class="goal-box reveal" style="transition-delay:0.12s">
-      <p class="goal-box-label">앞으로의 방향</p>
-      <ul class="goal-list">
-        <li>Rederx.com을 실제 개발자들이 쓰는 API 보안 서비스로 성장시키기</li>
-        <li>운영 중인 서비스의 MAU를 지속적으로 늘리고 안정성 높이기</li>
-        <li>팀 프로젝트·오픈소스를 통해 협업 경험 쌓기</li>
-        <li>지금까지 혼자 익힌 기술들을 더 깊게 파고들기 — 특히 분산 시스템, 보안, 성능 최적화</li>
-      </ul>
-    </div>
-  </section>
-<section class="section" id="mindset">
-  <p class="section-heading reveal">자주 듣는 질문</p>
-
-  <div class="qa-list">
-    <article class="qa-item reveal" style="transition-delay:0.03s">
-      <button class="qa-question" type="button">
-        <span>왜 많은 분야 중에서 웹 풀스택 개발을 하고 있나요?</span>
-        <span class="qa-toggle">+</span>
-      </button>
-      <div class="qa-answer">
-        <p>
-          저는 게임 개발, 프로그램 개발, 자동화 도구 제작처럼 여러 분야를 두루 좋아합니다.
-          실제로 이것저것 직접 만들어보기도 했고요.
-        </p>
-        <p>
-          그런데 웹은 조금 다르게 느껴졌습니다. 제가 만든 결과물을 누군가가 확인하고 써보려면
-          보통은 특정 환경이나 기기가 필요할 때가 많습니다. 하지만 웹은 인터넷만 연결되어 있다면
-          장소나 환경에 크게 구애받지 않고, 누구나 바로 접속해서 제가 만든 결과물을 직접 보고
-          사용해볼 수 있습니다.
-        </p>
-        <p>
-          저는 그 점이 정말 특별하다고 느꼈습니다. 내가 만든 것이 가장 빠르고 넓게 사람들에게 닿을 수 있는
-          분야가 웹이라고 생각했고, 그래서 자연스럽게 웹 풀스택 개발을 가장 깊게 파고들게 됐습니다.
-        </p>
-      </div>
-    </article>
-
-    <article class="qa-item reveal" style="transition-delay:0.06s">
-      <button class="qa-question" type="button">
-        <span>왜 직접 서비스를 운영하는 개발자가 되고 싶나요?</span>
-        <span class="qa-toggle">+</span>
-      </button>
-      <div class="qa-answer">
-        <p>
-          저는 단순히 기능을 구현하는 것에서 끝나는 개발보다, 실제 사용자가 있는 환경에서
-          계속 개선해 나가는 개발을 더 좋아합니다.
-        </p>
-        <p>
-          혼자 만들 때는 괜찮아 보이던 기능도, 실제 서비스에 올리면 예상과 다르게 동작할 때가 많습니다.
-          사용자는 어디서 불편해하는지, 서버는 어떤 순간에 버거워지는지, 어떤 기능은 왜 전혀 쓰이지 않는지
-          직접 보게 됩니다.
-        </p>
-        <p>
-          그 과정을 겪으면서 개발은 단순히 코드를 작성하는 것만이 아니라,
-          문제를 계속 발견하고 고쳐 나가는 일이라는 걸 배웠습니다.
-          그래서 저는 결과물을 끝내는 개발자보다, 결과물을 운영하면서 성장시키는 개발자가 되고 싶습니다.
-        </p>
-      </div>
-    </article>
-
-    <article class="qa-item reveal" style="transition-delay:0.09s">
-      <button class="qa-question" type="button">
-        <span>혼자 개발하면서 가장 크게 늘어난 능력은 무엇인가요?</span>
-        <span class="qa-toggle">+</span>
-      </button>
-      <div class="qa-answer">
-        <p>
-          문제를 끝까지 추적하는 힘이라고 생각합니다.
-        </p>
-        <p>
-          혼자 개발하면 누군가 바로 답을 알려주지 않습니다. 오류가 나면 직접 원인을 찾고,
-          구조를 다시 보고, 로그를 확인하고, 여러 가설을 세워 하나씩 검증해야 합니다.
-          그 과정이 반복되면서 자연스럽게 문제를 겉으로만 보는 게 아니라,
-          왜 이런 문제가 생겼는지 깊게 파고드는 습관이 생겼습니다.
-        </p>
-        <p>
-          덕분에 지금은 단순히 기능을 만드는 것보다, 문제가 생겼을 때 구조적으로 해결하는 쪽에
-          더 자신감이 생겼습니다.
-        </p>
-      </div>
-    </article>
-
-    <article class="qa-item reveal" style="transition-delay:0.12s">
-      <button class="qa-question" type="button">
-        <span>기술을 고를 때 가장 중요하게 보는 기준은 무엇인가요?</span>
-        <span class="qa-toggle">+</span>
-      </button>
-      <div class="qa-answer">
-        <p>
-          저는 멋있어 보이는 기술보다, 지금 해결하려는 문제에 정말 맞는 기술인지를 먼저 봅니다.
-        </p>
-        <p>
-          프로젝트마다 필요한 구조와 속도가 다르기 때문에, 항상 같은 언어나 프레임워크만
-          고집하지는 않습니다. 빠르게 검증해야 하는 프로젝트와 오래 운영해야 하는 프로젝트는
-          접근 방식부터 달라야 한다고 생각합니다.
-        </p>
-        <p>
-          그래서 저는 무조건 최신 기술을 좇기보다, 유지보수와 확장성,
-          실제 운영 환경까지 고려해서 선택하려고 합니다.
-        </p>
-      </div>
-    </article>
-
-    <article class="qa-item reveal" style="transition-delay:0.15s">
-      <button class="qa-question" type="button">
-        <span>AI를 개발에 어느 정도 활용하나요?</span>
-        <span class="qa-toggle">+</span>
-      </button>
-      <div class="qa-answer">
-        <p>
-          AI를 전혀 쓰지 않는다고 말하고 싶지는 않습니다. 
-          실제로 디자인 피드백이나 아이디어 정리처럼 보조적인 용도로 활용할 때가 있습니다.
-        </p>
-        <p>
-          하지만 핵심 로직이나 서비스 구조, 실제 코드 작성은 대부분 직접 합니다.
-          저는 개발에서 가장 중요한 건 결과보다 이해라고 생각합니다. 내가 왜 이렇게 설계했는지, 
-          이 코드가 왜 돌아가는지 설명할 수 있어야 진짜 내 것이 된다고 생각합니다.
-        </p>
-        <p>
-          그래서 AI는 보조 도구로만 사용하고, 중심은 항상 제가 직접 잡으려고 합니다.
-        </p>
-      </div>
-    </article>
-
-    <article class="qa-item reveal" style="transition-delay:0.18s">
-      <button class="qa-question" type="button">
-        <span>앞으로 어떤 개발자가 되고 싶나요?</span>
-        <span class="qa-toggle">+</span>
-      </button>
-      <div class="qa-answer">
-        <p>
-          저는 단순히 코드를 잘 짜는 개발자보다, 실제로 사람들이 계속 찾는 서비스를 만드는 개발자가 되고 싶습니다.
-        </p>
-        <p>
-          한 번 보여주고 끝나는 결과물이 아니라, 오래 운영되고 점점 더 좋아지는 서비스를 만들고 싶습니다.
-          그리고 프론트엔드, 백엔드, 인프라를 모두 이해하는 강점을 살려서,
-          기능 하나를 만들더라도 전체 흐름을 볼 수 있는 개발자가 되고 싶습니다.
-        </p>
-        <p>
-          결국 제가 원하는 건 많이 아는 개발자보다는, 끝까지 만들어내는 개발자에 더 가깝습니다.
-        </p>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-  <section class="section" id="projects">
-    <p class="section-heading reveal">프로젝트</p>
-
-    <div class="project-list">
-
-      <article class="project reveal" style="transition-delay:0.05s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
-            <h2 class="project-name">상정인사이드</h2>
-            <p class="project-meta">2025.02 ~ 진행 중 · 1인 개발</p>
-          </div>
-          <a class="project-link" href="https://commu.world/?stpg=1" target="_blank" rel="noopener">commu.world ↗</a>
-          <a class="search-link" href="https://www.google.com/search?q=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C" target="_blank" rel="noopener">Search ↗</a>
-        </div>
-        <p class="project-desc">
-          익명 커뮤니티입니다. 로그인 없이 누구나 글을 올리고 토론할 수 있습니다. 실제 방문자가 꾸준히 늘어나고 있습니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>왜 만들었나</strong> — 익명으로 자유롭게 이야기할 수 있는 공간이 필요하다고 생각했습니다. 기존 플랫폼들은 너무 복잡하거나, 광고가 많거나, 특정 주제에 치우쳐 있거나 하는 문제가 있었어요. 그래서 직접 만들기로 했습니다.</p>
-          <p><strong>어떻게 만들었나</strong> — 서버사이드 렌더링 기반으로 처음부터 직접 설계했습니다. 익명 시스템이라 사용자 식별이나 도배 방지를 어떻게 처리할지 고민이 많았고, 결국 세션과 IP 기반의 조합으로 해결했습니다.</p>
-          <p><strong>지금은</strong> — 월간 수만 명이 방문하는 서비스가 됐습니다. 그 정도 트래픽을 직접 감당하면서 서버 성능이나 DB 쿼리 최적화에 대해 배운 게 많습니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">HTML/CSS/JS</span>
-          <span class="stack-tag">Node.js</span>
-          <span class="stack-tag">SQLite</span>
-          <span class="stack-tag">Cloudflare</span>
-        </div>
-      </article>
-
-      <article class="project reveal" style="transition-delay:0.08s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
-            <h2 class="project-name">Apice.kr</h2>
-            <p class="project-meta">2026.02 ~ 2026.03 · 1인 개발</p>
-          </div>
-          <a class="project-link" href="https://www.apice.kr" target="_blank" rel="noopener">apice.kr ↗</a>
-          <a class="search-link" href="https://www.google.com/search?q=%EC%9D%B8%EC%B2%9C%EC%83%81%EC%A0%95%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%20Apice%EB%8F%99%EC%95%84%EB%A6%AC" target="_blank" rel="noopener">Search ↗</a>
-        </div>
-        <p class="project-desc">
-          인천상정고등학교 Apice 동아리 사이트입니다. 동아리 소개와 함께 실험·프로젝트 관리 기능을 붙였습니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>왜 만들었나</strong> — 동아리 특성상 실험 데이터를 관리하는 기능이 필요했습니다. 단순 소개 페이지가 아니라 실제로 동아리 활동에 쓰이는 도구로 만들었습니다.</p>
-          <p><strong>지금은</strong> — 친구 요청으로 만든 외부 프로젝트입니다. 지금은 운영하지 않고, 보안 구조에 신경 쓴 프로젝트입니다. 인증, 세션 관리, SQL 인젝션 방어 등을 직접 구현했습니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">HTML/CSS/JS</span>
-          <span class="stack-tag">Flask</span>
-          <span class="stack-tag">SQLite</span>
-          <span class="stack-tag">Cloudflare</span>
-        </div>
-      </article>
-
-      <article class="project reveal" style="transition-delay:0.1s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;"> 
-            <h2 class="project-name">Rederx.com</h2>
-            <p class="project-meta">2026.03 ~ 진행 중 · 1인 개발</p>
-          </div>
-          <a class="project-link" href="https://www.rederx.com" target="_blank" rel="noopener">rederx.com ↗</a>
-          <a class="search-link" href="https://www.google.com/search?q=Rederx" target="_blank" rel=nopener">Search ↗</a>
-        </div>
-        <p class="project-desc">
-          개발 단계에서 놓치기 쉬운 보안 요소들을 단 한 줄로 적용하는 API 보호 레이어 서비스입니다. 현재 개발 중인 프로젝트입니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>왜 만들었나</strong> — 개발하다 보면 보안은 항상 나중으로 밀립니다. 귀찮고, 복잡하고, 시간이 걸리니까요. 그 문제를 해결하고 싶어서 만들기 시작했습니다. API 보안 설정을 코드 한 줄로 끝낼 수 있는 서비스를 목표로 지금도 개발 중입니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">React</span>
-          <span class="stack-tag">Node.js</span>
-          <span class="stack-tag">SQLite</span>
-          <span class="stack-tag">Cloudflare</span>
-        </div>
-      </article>
-
-      <article class="project reveal" style="transition-delay:0.08s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
-            <h2 class="project-name">한강.</h2>
-            <p class="project-meta">2024.11 ~ 2024.12 · 1인 개발</p>
-          </div>
-          <a class="project-link" href="https://anion15.github.io/hangang.html" target="_blank" rel="noopener">anion15.github.io ↗</a>
-        </div>
-        <p class="project-desc">
-          실시간 한강 물온도 측정기입니다. 자체 계산 알고리즘을 사용하여 실제로 한강에 들어갔을 때 느껴지는 온도에 더 가깝게 예측하는 것을 목표로 개발했습니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>왜 만들었나</strong> — 보통 한강물 온도는 직접 들어가보지 않고는 온도만을 보고 실제 느낌을 알기 어렵습니다. 이를 해결하기 위해 독자적인 계산 알고리즘을 사용하여 더 정확한 예측을 목표로 했습니다.</p>
-          <p><strong>지금은</strong> — 실제 한강물 온도 측정은 제가 하지 않고 있습니다. 대신 실제 측정을 위한 한강물 온도 측정기 모듈을 개발 중입니다. 한강물 온도 측정기 모듈 개발에 성공한다면 합법적인 과정에 따라 설치하여 더 신속하고 정확한 정보를 제공할 수 있을 것입니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">HTML/CSS/JS</span>
-          <span class="stack-tag">Serverless</span>
-          <span class="stack-tag">API</span>
-        </div>
-      </article>
-
-      <article class="project reveal" style="transition-delay:0.08s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
-            <h2 class="project-name">Noise Player</h2>
-            <p class="project-meta">2023.11 ~ 2024.12 · 1인 개발</p>
-          </div>
-          <a class="project-link" href="https://anion15.github.io/noise.html" target="_blank" rel="noopener">anion15.github.io ↗</a>
-        </div>
-        <p class="project-desc">
-          개발 독학을 시작한 지 얼마 안 됐을 때 만든 프로젝트입니다. 웹 오디오 API를 사용하여 특정 Hz 대역의 노이즈를 재생하는 Noise Player입니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>왜 만들었나</strong> — 스터디 카페의 특유의 소음을 좋아하는데, 그걸 재현해보고 싶어서 만들었습니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">HTML/CSS/JS</span>
-          <span class="stack-tag">Serverless</span>
-          <span class="stack-tag">API</span>
-        </div>
-      </article>
-
-      <article class="project reveal" style="transition-delay:0.12s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
-            <h2 class="project-name">News-RCNS</h2>
-            <p class="project-meta">2024.12 ~ 2025.05 · 1인 개발</p>
-          </div>
-          <div style="display:flex; gap:6px; flex-shrink:0; margin-top:2px;">
-            <a class="project-link" href="https://github.com/Anion15/News-RCNS" target="_blank" rel="noopener">GitHub ↗</a>
-            <a class="project-link" href="https://docs.google.com/document/d/1Dnp-4HpUMN5VKaPx2pmPN1HnLwejVsc7/edit?usp=sharing&ouid=109048308215348806547&rtpof=true&sd=true" target="_blank" rel="noopener">Docs ↗</a>
-          </div>
-        </div>
-        <p class="project-desc">
-          뉴스를 요약하고, 감정 태그를 달고, 반대 의견을 자동으로 생성하는 시스템입니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>왜 만들었나</strong> — 대회 출전용으로 만든 작품입니다. 뉴스는 항상 특정 방향으로 편향될 수 있다는 생각이 있었습니다. 같은 사건을 다른 시각에서 볼 수 있도록 반대 의견을 자동으로 붙여 주는 기능을 만들었습니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">NLP</span>
-        </div>
-      </article>
-
-      <article class="project reveal" style="transition-delay:0.12s">
-        <div class="project-header">
-          <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; flex:1;">
-            <h2 class="project-name">CRNN 기반 소리 분석을 활용한 버스 도착 알림 시스템 개발에 관한 연구</h2>
-            <p class="project-meta">2024.12 ~ 2025.04 · 1인 개발</p>
-          </div>
-          <a class="project-link" href="https://docs.google.com/document/d/1tRPg58dxpT0GrtvCXPFIjp_bR_I43BatjdE6OCvs0fo/edit?usp=sharing" target="_blank" rel="noopener">Docs ↗</a>
-        </div>
-        <p class="project-desc">
-          시각장애인이 가장 많이 쓰는 교통수단은 버스지만, 도착 여부를 스스로 인지하기가 어렵습니다. 아두이노와 소리 인식 모델로 버스 소리를 감지해 더 정확한 도착 정보를 전달하는 시스템을 개발했습니다.
-        </p>
-        <div class="project-detail">
-          <p><strong>어떻게 만들었나</strong> — 대회 출전용으로 만든 작품입니다. CRNN 기반 소리 분류 모델을 직접 학습시켜 버스 특유의 소리를 감지하도록 했습니다. 기존 버스정보시스템보다 더 정확한 도착 정보를 제공하는 것이 목표였습니다.</p>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">Machine Learning</span>
-          <span class="stack-tag">NLP</span>
-        </div>
-      </article>
-    <p class="project reveal" style="text-align:center; color:var(--muted); font-size:0.9rem; transition-delay:0.12s">여기 없는 프로젝트가 6건 더 있는데, 아직은 비밀이에요.</p>
-    </div>
   </section>
 
-  <section class="section" id="skills">
-    <p class="section-heading reveal">기술</p>
- 
-    <div class="skill-blocks reveal" style="transition-delay:0.05s">
-      <div class="skill-row">
-        <span class="skill-cat-label">프론트엔드</span>
-        <div>
-          <p class="skill-items">
-            HTML · CSS · JavaScript
-            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
-          </p>
-          <p class="skill-items" style="margin-top:4px;">
-            React · Next.js · TailwindCSS
-            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
-          </p>
-          <p class="skill-note">바닐라 JS로 먼저 익혔고, 복잡한 상태 관리가 필요할 때 React/Next.js를 쓰고 있어요.</p>
+  <section class="section section--white">
+    <div class="section-inner">
+      <h2 class="section-heading">타임라인</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-date">2025 ~ 현재</span>
+          <div class="timeline-content">
+            <h3>인천상정고등학교 재학</h3>
+            <p>Ai랩업 CodeNova 활동 중</p>
+          </div>
         </div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat-label">백엔드</span>
-        <div>
-          <p class="skill-items">
-            Node.js · Express
-            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
-          </p>
-          <p class="skill-items" style="margin-top:4px;">
-            Python · Flask
-            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
-          </p>
-          <p class="skill-items" style="margin-top:4px;">
-            Java · Spring · C++
-            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
-          </p>
-          <p class="skill-note">프로젝트 성격에 따라 언어와 프레임워크를 골라요. 주력은 Node.js와 Spring.</p>
+        <div class="timeline-item">
+          <span class="timeline-date">2024 ~ 현재</span>
+          <div class="timeline-content">
+            <h3>상정인사이드 운영</h3>
+            <p>1인 개발·운영 중인 익명 커뮤니티</p>
+          </div>
         </div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat-label">데이터베이스</span>
-        <div>
-          <p class="skill-items">MySQL · MongoDB · SQLite
-            <span class="skill-level"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
-          </p>
-          <p class="skill-note">쿼리 최적화, 인덱스 설계, 실제 트래픽 환경에서의 DB 튜닝 경험이 있어요.</p>
+        <div class="timeline-item">
+          <span class="timeline-date">2023 ~ 현재</span>
+          <div class="timeline-content">
+            <h3>외주 개발 진행</h3>
+            <p>실제 클라이언트 프로젝트 납품 경험</p>
+          </div>
         </div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat-label">인프라</span>
-        <div>
-          <p class="skill-items">Docker · Git · Cloudflare · Linux</p>
-          <p class="skill-note">서비스를 직접 운영하면서 자연스럽게 익혔어요. CDN 설정, 캐싱 전략, DDoS 방어 설정까지 실전에서 다뤄봤어요.</p>
-        </div>
-      </div>
-      <div class="skill-row">
-        <span class="skill-cat-label">AI / ML</span>
-        <div>
-          <p class="skill-items">Python · NLP · CRNN</p>
-          <p class="skill-note">대회 프로젝트를 통해 NLP 파이프라인과 딥러닝 모델 학습·경량화를 직접 경험했어요. 이론에 그치지 않고 운영 중인 서비스에도 모델을 직접 붙여 실제 트래픽 환경에서 검증하고 있어요. 지금도 가장 깊게 파고들고 있는 분야예요.</p>
+        <div class="timeline-item">
+          <span class="timeline-date">중학교</span>
+          <div class="timeline-content">
+            <h3>개발 독학 시작</h3>
+            <p>HTML/CSS/JS부터 시작해 서버, DB, 인프라로 범위 확장</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="contact">
-    <p class="section-heading reveal">연락</p>
-
-    <div class="contact-grid reveal" style="transition-delay:0.05s">
-      <div class="contact-row">
-        <span class="contact-label">이메일</span>
-        <a href="mailto:juwony27@gmail.com">juwony27@gmail.com</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">프로젝트 문의</span>
-        <a href="mailto:admin@commu.world">admin@commu.world</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">GitHub</span>
-        <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-label">Instagram</span>
-        <a href="https://instagram.com/yxbh.rh0" target="_blank" rel="noopener">@yxbh.rh0</a>
+  <section class="section section--dark">
+    <div class="section-inner">
+      <h2 class="section-heading">앞으로의 방향</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <p style="color: rgba(255, 255, 255, 0.8);">Rederx.com을 실제 개발자들이 쓰는 API 보안 서비스로 성장시키기</p>
+        </div>
+        <div class="faq-item">
+          <p style="color: rgba(255, 255, 255, 0.8);">운영 중인 서비스의 MAU를 지속적으로 늘리고 안정성 높이기</p>
+        </div>
+        <div class="faq-item">
+          <p style="color: rgba(255, 255, 255, 0.8);">팀 프로젝트·오픈소스를 통해 협업 경험 쌓기</p>
+        </div>
+        <div class="faq-item">
+          <p style="color: rgba(255, 255, 255, 0.8);">지금까지 혼자 익힌 기술들을 더 깊게 파고들기 — 특히 분산 시스템, 보안, 성능 최적화</p>
+        </div>
       </div>
     </div>
   </section>
 
-</div>
+  <section class="section section--light">
+    <div class="section-inner">
+      <h2 class="section-heading">자주 듣는 질문</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>왜 많은 분야 중에서 웹 풀스택 개발을 하고 있나요?</h3>
+          <p>저는 게임 개발, 프로그램 개발, 자동화 도구 제작처럼 여러 분야를 두루 좋아합니다. 실제로 이것저것 직접 만들어보기도 했고요.<br>
+<br>
+그런데 웹은 조금 다르게 느껴졌습니다. 제가 만든 결과물을 누군가가 확인하고 써보려면 보통은 특정 환경이나 기기가 필요할 때가 많습니다. 하지만 웹은 인터넷만 연결되어 있다면 장소나 환경에 크게 구애받지 않고, 누구나 바로 접속해서 제가 만든 결과물을 직접 보고 사용해볼 수 있습니다.<br>
+<br>
+저는 그 점이 정말 특별하다고 느꼈습니다. 내가 만든 것이 가장 빠르고 넓게 사람들에게 닿을 수 있는 분야가 웹이라고 생각했고, 그래서 자연스럽게 웹 풀스택 개발을 가장 깊게 파고들게 됐습니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3>왜 직접 서비스를 운영하는 개발자가 되고 싶나요?</h3>
+          <p>저는 단순히 기능을 구현하는 것에서 끝나는 개발보다, 실제 사용자가 있는 환경에서 계속 개선해 나가는 개발을 더 좋아합니다.<br>
+<br>
+혼자 만들 때는 괜찮아 보이던 기능도, 실제 서비스에 올리면 예상과 다르게 동작할 때가 많습니다. 사용자는 어디서 불편해하는지, 서버는 어떤 순간에 버거워지는지, 어떤 기능은 왜 전혀 쓰이지 않는지 직접 보게 됩니다.<br>
+<br>
+그 과정을 겪으면서 개발은 단순히 코드를 작성하는 것만이 아니라, 문제를 계속 발견하고 고쳐 나가는 일이라는 걸 배웠습니다. 그래서 저는 결과물을 끝내는 개발자보다, 결과물을 운영하면서 성장시키는 개발자가 되고 싶습니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3>혼자 개발하면서 가장 크게 늘어난 능력은 무엇인가요?</h3>
+          <p>문제를 끝까지 추적하는 힘이라고 생각합니다.<br>
+<br>
+혼자 개발하면 누군가 바로 답을 알려주지 않습니다. 오류가 나면 직접 원인을 찾고, 구조를 다시 보고, 로그를 확인하고, 여러 가설을 세워 하나씩 검증해야 합니다. 그 과정이 반복되면서 자연스럽게 문제를 겉으로만 보는 게 아니라, 왜 이런 문제가 생겼는지 깊게 파고드는 습관이 생겼습니다.<br>
+<br>
+덕분에 지금은 단순히 기능을 만드는 것보다, 문제가 생겼을 때 구조적으로 해결하는 쪽에 더 자신감이 생겼습니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3>기술을 고를 때 가장 중요하게 보는 기준은 무엇인가요?</h3>
+          <p>저는 멋있어 보이는 기술보다, 지금 해결하려는 문제에 정말 맞는 기술인지를 먼저 봅니다.<br>
+<br>
+프로젝트마다 필요한 구조와 속도가 다르기 때문에, 항상 같은 언어나 프레임워크만 고집하지는 않습니다. 빠르게 검증해야 하는 프로젝트와 오래 운영해야 하는 프로젝트는 접근 방식부터 달라야 한다고 생각합니다.<br>
+<br>
+그래서 저는 무조건 최신 기술을 좇기보다, 유지보수와 확장성, 실제 운영 환경까지 고려해서 선택하려고 합니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3>AI를 개발에 어느 정도 활용하나요?</h3>
+          <p>AI를 전혀 쓰지 않는다고 말하고 싶지는 않습니다. 실제로 디자인 피드백이나 아이디어 정리처럼 보조적인 용도로 활용할 때가 있습니다.<br>
+<br>
+하지만 핵심 로직이나 서비스 구조, 실제 코드 작성은 대부분 직접 합니다. 저는 개발에서 가장 중요한 건 결과보다 이해라고 생각합니다. 내가 왜 이렇게 설계했는지, 이 코드가 왜 돌아가는지 설명할 수 있어야 진짜 내 것이 된다고 생각합니다.<br>
+<br>
+그래서 AI는 보조 도구로만 사용하고, 중심은 항상 제가 직접 잡으려고 합니다.</p>
+        </div>
+        <div class="faq-item">
+          <h3>어떤 개발자가 되고 싶나요?</h3>
+          <p>저는 단순히 코드를 잘 짜는 개발자보다, 실제로 사람들이 계속 찾는 서비스를 만드는 개발자가 되고 싶습니다.<br>
+<br>
+한 번 보여주고 끝나는 결과물이 아니라, 오래 운영되고 점점 더 좋아지는 서비스를 만들고 싶습니다. 그리고 프론트엔드, 백엔드, 인프라를 모두 이해하는 강점을 살려서, 기능 하나를 만들더라도 전체 흐름을 볼 수 있는 개발자가 되고 싶습니다.<br>
+<br>
+결국 제가 원하는 건 많이 아는 개발자보다는, 끝까지 만들어내는 개발자에 더 가깝습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <div class="wrap">
-    <p class="footer-text">
-      윤주원 — <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15</a>
-      <br>↑↑↓↓←→←→BA
-    </p>
-  </div>
-</footer>
-<div class="konami-overlay" id="konamiOverlay">
-  <div class="konami-terminal">
-    <div class="lines"></div>
-    <span class="cursor"></span>
-    <div class="konami-close" id="konamiClose">[ ESC 또는 클릭하여 닫기 ]</div>
-  </div>
-</div>
+  <section class="section section--light projects-showcase" id="projects">
+    <div class="projects-inner">
+      <div class="projects-title-row">
+        <h2 class="projects-heading"><span>프로젝트.</span> 쓰임이 먼저 보이도록.</h2>
+      </div>
+
+      <div class="projects-carousel-wrap">
+        <div class="projects-track" data-project-track>
+
+          <article class="project-feature-card project-card--commu">
+            <div class="project-card-top">
+              <div class="project-title-line">
+                <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png" alt="상정인사이드 아이콘" class="project-app-icon">
+                <div class="project-title-block">
+                  <span class="project-kicker">2025.02 ~ 진행 중 · 1인 개발</span>
+                  <h3>상정인사이드</h3>
+                </div>
+              </div>
+              <p class="project-line">로그인 없이, 바로 익명.</p>
+              <p class="project-description">고정 닉네임 없이 글과 댓글을 남기는 익명 커뮤니티입니다. 매시간 바뀌는 익명 ID, 내 활동 확인, 검열 옵션, 실시간 반영처럼 운영 중 실제로 필요한 기능을 직접 설계했습니다.</p>
+              <div class="project-actions">
+                <a href="https://commu.world/?stpg=1" class="project-open" target="_blank" rel="noopener">열기</a>
+                <a href="https://www.google.com/search?q=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+              </div>
+            </div>
+            <div class="project-icon-stage" aria-hidden="true">
+              <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png" alt="" class="project-app-icon">
+            </div>
+            <div>
+              <div class="project-points" aria-label="상정인사이드 핵심 기능">
+                <span class="project-point">익명 커뮤니티</span>
+                <span class="project-point">매시간 ID 변경</span>
+                <span class="project-point">운영 정책</span>
+                <span class="project-point">Cloudflare</span>
+              </div>
+              <p class="project-footnote">커뮤니티가 아니라, “말하지 못했던 생각을 안전하게 꺼내는 공간”이라는 방향에 맞췄습니다.</p>
+            </div>
+            <div class="project-card-bottom">
+              <strong>기술</strong>
+              <span>HTML/CSS/JS · Node.js · SQLite · Cloudflare</span>
+            </div>
+          </article>
+
+          <article class="project-feature-card project-card--apice">
+            <div class="project-card-top">
+              <div class="project-title-line">
+                <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/icon-.png" alt="apice 동아리 아이콘" class="project-app-icon">
+                <div class="project-title-block">
+                  <span class="project-kicker">2026.02 ~ 2026.03 · 1인 개발</span>
+                  <h3>Apice.kr</h3>
+                </div>
+              </div>
+              <p class="project-line">실험을 제안하고, 참여하고, 관리하는 곳.</p>
+              <p class="project-description">인천상정고등학교 APICE 동아리 공식 홈페이지입니다. 단순 소개 페이지가 아니라 실험 제안, 실험 참여, 관리자 흐름을 갖춘 동아리 활동 관리용 사이트로 구성했습니다.</p>
+              <div class="project-actions">
+                <a href="https://www.apice.kr" class="project-open" target="_blank" rel="noopener">열기</a>
+                <a href="https://www.google.com/search?q=%EC%9D%B8%EC%B2%9C%EC%83%81%EC%A0%95%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%20Apice%EB%8F%99%EC%95%84%EB%A6%AC" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+              </div>
+            </div>
+            <div class="project-icon-stage" aria-hidden="true">
+              <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/icon-.png" alt="" class="project-app-icon">
+            </div>
+            <div>
+              <div class="project-points" aria-label="Apice 핵심 기능">
+                <span class="project-point">동아리 공식 홈페이지</span>
+                <span class="project-point">실험 제안</span>
+                <span class="project-point">실험 참여</span>
+                <span class="project-point">관리자</span>
+              </div>
+              <p class="project-footnote">학교 프로젝트처럼 보이기보다, 실제 조직이 쓰는 작은 운영 도구처럼 보이도록 정리했습니다.</p>
+            </div>
+            <div class="project-card-bottom">
+              <strong>기술</strong>
+              <span>HTML/CSS/JS · Flask · SQLite · Cloudflare</span>
+            </div>
+          </article>
+
+          <article class="project-feature-card project-card--rederx">
+            <div class="project-card-top">
+              <div class="project-title-line">
+                <img src="https://www.rederx.com/favicon.ico" alt="rederx 아이콘" class="project-app-icon">
+                <div class="project-title-block">
+                  <span class="project-kicker">2026.03 ~ 진행 중 · 1인 개발</span>
+                  <h3>Rederx</h3>
+                </div>
+              </div>
+              <p class="project-line">API 보안을 나중으로 미루지 않게.</p>
+              <p class="project-description">개발 단계에서 놓치기 쉬운 보안 요소를 한 줄로 붙일 수 있게 만드는 API 보호 레이어 서비스입니다. 현재는 초기 서비스 흐름과 로그인 구조를 다듬는 단계로 정리했습니다.</p>
+              <div class="project-actions">
+                <a href="https://www.rederx.com" class="project-open" target="_blank" rel="noopener">열기</a>
+                <a href="https://www.google.com/search?q=Rederx" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+              </div>
+            </div>
+            <div class="project-icon-stage" aria-hidden="true">
+              <img src="https://www.rederx.com/favicon.ico" alt="" class="project-app-icon">
+            </div>
+            <div>
+              <div class="project-points" aria-label="Rederx 핵심 기능">
+                <span class="project-point">API 보호 레이어</span>
+                <span class="project-point">보안 설정 단순화</span>
+                <span class="project-point">카카오 로그인</span>
+                <span class="project-point">개발 중</span>
+              </div>
+              <p class="project-footnote">보안 서비스답게 설명은 짧고, 화면은 조용하게. 신뢰감을 해치지 않는 방향으로 잡았습니다.</p>
+            </div>
+            <div class="project-card-bottom">
+              <strong>기술</strong>
+              <span>React · Node.js · SQLite · Cloudflare</span>
+            </div>
+          </article>
+
+          <article class="project-feature-card project-card--eunbyeol">
+            <div class="project-card-top">
+              <div class="project-title-line">
+                <img src="https://www.eunbyeol.kr/static/favicon.ico" alt="eunbyeol.kr 아이콘" class="project-app-icon">
+                <div class="project-title-block">
+                  <span class="project-kicker">2025 ~ 진행 중 · 비상업적 팬페이지</span>
+                  <h3>eunbyeol.kr</h3>
+                </div>
+              </div>
+              <p class="project-line">작가와 작품을 한눈에 읽는 페이지.</p>
+              <p class="project-description">백은별 작가의 프로필, 작품, 수상, 연대기를 정리한 소개형 팬페이지입니다. Byeolpedia로 더 깊은 문서 경험을 연결하고, 공개 자료 기반의 비상업적 소개 페이지임을 명확히 밝혔습니다.</p>
+              <div class="project-actions">
+                <a href="https://www.eunbyeol.kr" class="project-open" target="_blank" rel="noopener">열기</a>
+                <a href="https://www.google.com/search?q=eunbyeol.kr" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+              </div>
+            </div>
+            <div class="project-icon-stage" aria-hidden="true">
+              <img src="https://www.eunbyeol.kr/static/favicon.ico" alt="" class="project-app-icon">
+            </div>
+            <div>
+              <div class="project-points" aria-label="eunbyeol.kr 핵심 구성">
+                <span class="project-point">Writer Portfolio</span>
+                <span class="project-point">작품 소개</span>
+                <span class="project-point">연대기</span>
+                <span class="project-point">Byeolpedia 연결</span>
+              </div>
+              <p class="project-footnote">화려한 장식보다 자료를 차분히 읽게 하는 구조, 그리고 팬페이지의 고지를 분명히 하는 방향을 살렸습니다.</p>
+            </div>
+            <div class="project-card-bottom">
+              <strong>기술</strong>
+              <span>HTML/CSS/JS · 콘텐츠 구조 설계 · 문서형 UX</span>
+            </div>
+          </article>
+
+          <article class="project-feature-card project-card--news">
+            <div class="project-card-top">
+              <div class="project-title-line">
+                <span class="project-symbol project-symbol--small" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 8h14l6 6v26H15V8Z" stroke-width="2" stroke-linejoin="round"/><path d="M29 8v7h6" stroke-width="2" stroke-linejoin="round"/><path d="M20 22h10" stroke-width="2" stroke-linecap="round"/><path d="M20 28h14" stroke-width="2" stroke-linecap="round"/><path d="M20 34h8" stroke-width="2" stroke-linecap="round"/></svg></span>
+                <div class="project-title-block">
+                  <span class="project-kicker">2024.12 ~ 2025.05 · 1인 개발</span>
+                  <h3>News-RCNS</h3>
+                </div>
+              </div>
+              <p class="project-line">뉴스 한 줄 뒤에, 다른 시각까지.</p>
+              <p class="project-description">뉴스를 요약하고, 감정 태그를 붙이고, 기존 의견과 다른 관점의 의견을 생성하는 시스템입니다. 대회 일정에 맞춰 빠르게 구현한 프로젝트라 완성도보다 문제의식과 구현 경험을 중심에 두었습니다.</p>
+              <div class="project-actions">
+                <a href="https://github.com/Anion15/News-RCNS" class="project-open" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://docs.google.com/document/d/1Dnp-4HpUMN5VKaPx2pmPN1HnLwejVsc7/edit?usp=sharing&amp;ouid=109048308215348806547&amp;rtpof=true&amp;sd=true" class="project-more" target="_blank" rel="noopener">Docs &gt;</a>
+              </div>
+            </div>
+            <div class="project-icon-stage" aria-hidden="true"><span class="project-symbol"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 8h14l6 6v26H15V8Z" stroke-width="2" stroke-linejoin="round"/><path d="M29 8v7h6" stroke-width="2" stroke-linejoin="round"/><path d="M20 22h10" stroke-width="2" stroke-linecap="round"/><path d="M20 28h14" stroke-width="2" stroke-linecap="round"/><path d="M20 34h8" stroke-width="2" stroke-linecap="round"/></svg></span></div>
+            <div>
+              <div class="project-points" aria-label="News-RCNS 핵심 기능">
+                <span class="project-point">뉴스 요약</span>
+                <span class="project-point">감정 태그</span>
+                <span class="project-point">반대 의견</span>
+                <span class="project-point">Docker</span>
+              </div>
+              <p class="project-footnote">정보를 빨리 소비하는 데서 끝내지 않고, 같은 사건을 다른 관점으로 다시 보게 만드는 흐름에 초점을 맞췄습니다.</p>
+            </div>
+            <div class="project-card-bottom">
+              <strong>기술</strong>
+              <span>Python · NLP · Ollama · Docker</span>
+            </div>
+          </article>
+
+          <article class="project-feature-card project-card--bus">
+            <div class="project-card-top">
+              <div class="project-title-line">
+                <span class="project-symbol project-symbol--small" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14c0-3 2-5 5-5h10c3 0 5 2 5 5v18c0 2.2-1.8 4-4 4H18c-2.2 0-4-1.8-4-4V14Z" stroke-width="2" stroke-linejoin="round"/><path d="M18 17h12" stroke-width="2" stroke-linecap="round"/><path d="M17 24h14" stroke-width="2" stroke-linecap="round"/><path d="M19 36v3" stroke-width="2" stroke-linecap="round"/><path d="M29 36v3" stroke-width="2" stroke-linecap="round"/><path d="M18.5 30h.1" stroke-width="3" stroke-linecap="round"/><path d="M29.5 30h.1" stroke-width="3" stroke-linecap="round"/></svg></span>
+                <div class="project-title-block">
+                  <span class="project-kicker">2024.12 ~ 2025.04 · 1인 개발</span>
+                  <h3>버스 도착 알림</h3>
+                </div>
+              </div>
+              <p class="project-line">버스 소리로 도착을 인식하는 연구.</p>
+              <p class="project-description">버스 도착 여부를 소리로 더 정확하게 파악하기 위한 연구 프로젝트입니다. 아두이노와 CRNN 기반 소리 분류 모델을 활용해 버스 특유의 소리를 감지하고, 접근성 문제를 기술적으로 해결하는 방향을 실험했습니다.</p>
+              <div class="project-actions">
+                <a href="https://docs.google.com/document/d/1tRPg58dxpT0GrtvCXPFIjp_bR_I43BatjdE6OCvs0fo/edit?usp=sharing" class="project-open" target="_blank" rel="noopener">Docs</a>
+              </div>
+            </div>
+            <div class="project-icon-stage" aria-hidden="true"><span class="project-symbol"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 14c0-3 2-5 5-5h10c3 0 5 2 5 5v18c0 2.2-1.8 4-4 4H18c-2.2 0-4-1.8-4-4V14Z" stroke-width="2" stroke-linejoin="round"/><path d="M18 17h12" stroke-width="2" stroke-linecap="round"/><path d="M17 24h14" stroke-width="2" stroke-linecap="round"/><path d="M19 36v3" stroke-width="2" stroke-linecap="round"/><path d="M29 36v3" stroke-width="2" stroke-linecap="round"/><path d="M18.5 30h.1" stroke-width="3" stroke-linecap="round"/><path d="M29.5 30h.1" stroke-width="3" stroke-linecap="round"/></svg></span></div>
+            <div>
+              <div class="project-points" aria-label="버스 도착 알림 핵심 기능">
+                <span class="project-point">CRNN</span>
+                <span class="project-point">소리 분류</span>
+                <span class="project-point">Arduino</span>
+                <span class="project-point">접근성</span>
+              </div>
+              <p class="project-footnote">모델을 만드는 데서 끝내지 않고, 실제 정류장 환경에서 어떻게 전달될지까지 고민한 연구형 프로젝트입니다.</p>
+            </div>
+            <div class="project-card-bottom">
+              <strong>기술</strong>
+              <span>Python · Machine Learning · Arduino · CRNN</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="project-scroll-controls" aria-label="프로젝트 카드 이동">
+          <button class="project-scroll-btn" id="L" type="button" data-project-scroll="-1" aria-label="이전 프로젝트"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path></svg></button>
+          <button class="project-scroll-btn" type="button" data-project-scroll="1" aria-label="다음 프로젝트"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path></svg></button>
+        </div>
+
+        <p class="projects-secret-note">여기 없는 프로젝트가 6건 더 있는데, 아직은 비밀이에요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tech-showcase" id="skills">
+    <div class="section-inner tech-showcase-inner">
+      <h2 class="tech-heading">기술은 조용하게.<br> <span>결과는 선명하게.</span></h2>
+    </div>
+
+    <div class="tech-stage" aria-label="사용 가능한 플랫폼 및 언어 아이콘">
+      <div class="tech-row tech-row--top">
+              <span class="tech-chip" title="Azure"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Azure-Dark.svg" alt="Azure" loading="lazy"></span>
+              <span class="tech-chip" title="Bash"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Bash-Dark.svg" alt="Bash" loading="lazy"></span>
+              <span class="tech-chip" title="Bootstrap"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Bootstrap.svg" alt="Bootstrap" loading="lazy"></span>
+              <span class="tech-chip" title="C"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/C.svg" alt="C" loading="lazy"></span>
+              <span class="tech-chip" title="CS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CS.svg" alt="CS" loading="lazy"></span>
+              <span class="tech-chip" title="CPP"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CPP.svg" alt="CPP" loading="lazy"></span>
+              <span class="tech-chip" title="CLion"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CLion-Dark.svg" alt="CLion" loading="lazy"></span>
+              <span class="tech-chip" title="Cloudflare"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Cloudflare-Dark.svg" alt="Cloudflare" loading="lazy"></span>
+              <span class="tech-chip" title="CSS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CSS.svg" alt="CSS" loading="lazy"></span>
+              <span class="tech-chip" title="Debian"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Debian-Dark.svg" alt="Debian" loading="lazy"></span>
+              <span class="tech-chip" title="Discord"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Discord.svg" alt="Discord" loading="lazy"></span>
+              <span class="tech-chip" title="Django"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Django.svg" alt="Django" loading="lazy"></span>
+              <span class="tech-chip" title="Docker"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Docker.svg" alt="Docker" loading="lazy"></span>
+              <span class="tech-chip" title="Eclipse"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Eclipse-Dark.svg" alt="Eclipse" loading="lazy"></span>
+              <span class="tech-chip" title="Electron"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Electron.svg" alt="Electron" loading="lazy"></span>
+              <span class="tech-chip" title="ExpressJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/ExpressJS-Dark.svg" alt="ExpressJS" loading="lazy"></span>
+              <span class="tech-chip" title="Figma"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Figma-Dark.svg" alt="Figma" loading="lazy"></span>
+              <span class="tech-chip" title="Firebase"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Firebase-Dark.svg" alt="Firebase" loading="lazy"></span>
+              <span class="tech-chip" title="Flask"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Flask-Dark.svg" alt="Flask" loading="lazy"></span>
+              <span class="tech-chip" title="Flutter"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Flutter-Dark.svg" alt="Flutter" loading="lazy"></span>
+              <span class="tech-chip" title="Git"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Git.svg" alt="Git" loading="lazy"></span>
+              <span class="tech-chip" title="Github"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Github-Dark.svg" alt="Github" loading="lazy"></span>
+              <span class="tech-chip" title="HTML"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/HTML.svg" alt="HTML" loading="lazy"></span>
+              <span class="tech-chip" title="Htmx"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Htmx-Dark.svg" alt="Htmx" loading="lazy"></span>
+              <span class="tech-chip" title="Azure"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Azure-Dark.svg" alt="Azure" loading="lazy"></span>
+              <span class="tech-chip" title="Bash"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Bash-Dark.svg" alt="Bash" loading="lazy"></span>
+              <span class="tech-chip" title="Bootstrap"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Bootstrap.svg" alt="Bootstrap" loading="lazy"></span>
+              <span class="tech-chip" title="C"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/C.svg" alt="C" loading="lazy"></span>
+              <span class="tech-chip" title="CS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CS.svg" alt="CS" loading="lazy"></span>
+              <span class="tech-chip" title="CPP"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CPP.svg" alt="CPP" loading="lazy"></span>
+              <span class="tech-chip" title="CLion"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CLion-Dark.svg" alt="CLion" loading="lazy"></span>
+              <span class="tech-chip" title="Cloudflare"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Cloudflare-Dark.svg" alt="Cloudflare" loading="lazy"></span>
+              <span class="tech-chip" title="CSS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CSS.svg" alt="CSS" loading="lazy"></span>
+              <span class="tech-chip" title="Debian"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Debian-Dark.svg" alt="Debian" loading="lazy"></span>
+              <span class="tech-chip" title="Discord"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Discord.svg" alt="Discord" loading="lazy"></span>
+              <span class="tech-chip" title="Django"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Django.svg" alt="Django" loading="lazy"></span>
+              <span class="tech-chip" title="Docker"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Docker.svg" alt="Docker" loading="lazy"></span>
+              <span class="tech-chip" title="Eclipse"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Eclipse-Dark.svg" alt="Eclipse" loading="lazy"></span>
+              <span class="tech-chip" title="Electron"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Electron.svg" alt="Electron" loading="lazy"></span>
+              <span class="tech-chip" title="ExpressJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/ExpressJS-Dark.svg" alt="ExpressJS" loading="lazy"></span>
+              <span class="tech-chip" title="Figma"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Figma-Dark.svg" alt="Figma" loading="lazy"></span>
+              <span class="tech-chip" title="Firebase"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Firebase-Dark.svg" alt="Firebase" loading="lazy"></span>
+              <span class="tech-chip" title="Flask"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Flask-Dark.svg" alt="Flask" loading="lazy"></span>
+              <span class="tech-chip" title="Flutter"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Flutter-Dark.svg" alt="Flutter" loading="lazy"></span>
+              <span class="tech-chip" title="Git"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Git.svg" alt="Git" loading="lazy"></span>
+              <span class="tech-chip" title="Github"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Github-Dark.svg" alt="Github" loading="lazy"></span>
+              <span class="tech-chip" title="HTML"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/HTML.svg" alt="HTML" loading="lazy"></span>
+              <span class="tech-chip" title="Htmx"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Htmx-Dark.svg" alt="Htmx" loading="lazy"></span>
+      </div>
+      <div class="tech-row tech-row--middle">
+              <span class="tech-chip" title="Idea"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Idea-Dark.svg" alt="Idea" loading="lazy"></span>
+              <span class="tech-chip" title="Java"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Java-Dark.svg" alt="Java" loading="lazy"></span>
+              <span class="tech-chip" title="JavaScript"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/JavaScript.svg" alt="JavaScript" loading="lazy"></span>
+              <span class="tech-chip" title="Kali"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Kali-Dark.svg" alt="Kali" loading="lazy"></span>
+              <span class="tech-chip" title="Kotlin"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Kotlin-Dark.svg" alt="Kotlin" loading="lazy"></span>
+              <span class="tech-chip" title="LinkedIn"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/LinkedIn.svg" alt="LinkedIn" loading="lazy"></span>
+              <span class="tech-chip" title="Linux"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Linux-Dark.svg" alt="Linux" loading="lazy"></span>
+              <span class="tech-chip" title="Markdown"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Markdown-Dark.svg" alt="Markdown" loading="lazy"></span>
+              <span class="tech-chip" title="MySQL"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/MySQL-Dark.svg" alt="MySQL" loading="lazy"></span>
+              <span class="tech-chip" title="MongoDB"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/MongoDB.svg" alt="MongoDB" loading="lazy"></span>
+              <span class="tech-chip" title="NestJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NestJS-Dark.svg" alt="NestJS" loading="lazy"></span>
+              <span class="tech-chip" title="NextJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NextJS-Dark.svg" alt="NextJS" loading="lazy"></span>
+              <span class="tech-chip" title="Nginx"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Nginx.svg" alt="Nginx" loading="lazy"></span>
+              <span class="tech-chip" title="NodeJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NodeJS-Dark.svg" alt="NodeJS" loading="lazy"></span>
+              <span class="tech-chip" title="Npm"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Npm-Dark.svg" alt="Npm" loading="lazy"></span>
+              <span class="tech-chip" title="PHP"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/PHP-Dark.svg" alt="PHP" loading="lazy"></span>
+              <span class="tech-chip" title="PostgreSQL"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/PostgreSQL-Dark.svg" alt="PostgreSQL" loading="lazy"></span>
+              <span class="tech-chip" title="Powershell"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Powershell-Dark.svg" alt="Powershell" loading="lazy"></span>
+              <span class="tech-chip" title="Python"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Python-Dark.svg" alt="Python" loading="lazy"></span>
+              <span class="tech-chip" title="R"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/R-Dark.svg" alt="R" loading="lazy"></span>
+              <span class="tech-chip" title="RaspberryPi"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/RaspberryPi-Dark.svg" alt="RaspberryPi" loading="lazy"></span>
+              <span class="tech-chip" title="React"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/React-Dark.svg" alt="React" loading="lazy"></span>
+              <span class="tech-chip" title="Redis"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Redis-Dark.svg" alt="Redis" loading="lazy"></span>
+              <span class="tech-chip" title="Replit"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Replit-Dark.svg" alt="Replit" loading="lazy"></span>
+              <span class="tech-chip" title="Idea"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Idea-Dark.svg" alt="Idea" loading="lazy"></span>
+              <span class="tech-chip" title="Java"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Java-Dark.svg" alt="Java" loading="lazy"></span>
+              <span class="tech-chip" title="JavaScript"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/JavaScript.svg" alt="JavaScript" loading="lazy"></span>
+              <span class="tech-chip" title="Kali"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Kali-Dark.svg" alt="Kali" loading="lazy"></span>
+              <span class="tech-chip" title="Kotlin"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Kotlin-Dark.svg" alt="Kotlin" loading="lazy"></span>
+              <span class="tech-chip" title="LinkedIn"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/LinkedIn.svg" alt="LinkedIn" loading="lazy"></span>
+              <span class="tech-chip" title="Linux"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Linux-Dark.svg" alt="Linux" loading="lazy"></span>
+              <span class="tech-chip" title="Markdown"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Markdown-Dark.svg" alt="Markdown" loading="lazy"></span>
+              <span class="tech-chip" title="MySQL"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/MySQL-Dark.svg" alt="MySQL" loading="lazy"></span>
+              <span class="tech-chip" title="MongoDB"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/MongoDB.svg" alt="MongoDB" loading="lazy"></span>
+              <span class="tech-chip" title="NestJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NestJS-Dark.svg" alt="NestJS" loading="lazy"></span>
+              <span class="tech-chip" title="NextJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NextJS-Dark.svg" alt="NextJS" loading="lazy"></span>
+              <span class="tech-chip" title="Nginx"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Nginx.svg" alt="Nginx" loading="lazy"></span>
+              <span class="tech-chip" title="NodeJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NodeJS-Dark.svg" alt="NodeJS" loading="lazy"></span>
+              <span class="tech-chip" title="Npm"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Npm-Dark.svg" alt="Npm" loading="lazy"></span>
+              <span class="tech-chip" title="PHP"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/PHP-Dark.svg" alt="PHP" loading="lazy"></span>
+              <span class="tech-chip" title="PostgreSQL"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/PostgreSQL-Dark.svg" alt="PostgreSQL" loading="lazy"></span>
+              <span class="tech-chip" title="Powershell"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Powershell-Dark.svg" alt="Powershell" loading="lazy"></span>
+              <span class="tech-chip" title="Python"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Python-Dark.svg" alt="Python" loading="lazy"></span>
+              <span class="tech-chip" title="R"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/R-Dark.svg" alt="R" loading="lazy"></span>
+              <span class="tech-chip" title="RaspberryPi"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/RaspberryPi-Dark.svg" alt="RaspberryPi" loading="lazy"></span>
+              <span class="tech-chip" title="React"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/React-Dark.svg" alt="React" loading="lazy"></span>
+              <span class="tech-chip" title="Redis"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Redis-Dark.svg" alt="Redis" loading="lazy"></span>
+              <span class="tech-chip" title="Replit"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Replit-Dark.svg" alt="Replit" loading="lazy"></span>
+      </div>
+      <div class="tech-row tech-row--bottom">
+              <span class="tech-chip" title="Rust"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Rust.svg" alt="Rust" loading="lazy"></span>
+              <span class="tech-chip" title="Spring"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Spring-Dark.svg" alt="Spring" loading="lazy"></span>
+              <span class="tech-chip" title="SQLite"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/SQLite.svg" alt="SQLite" loading="lazy"></span>
+              <span class="tech-chip" title="StackOverflow"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/StackOverflow-Dark.svg" alt="StackOverflow" loading="lazy"></span>
+              <span class="tech-chip" title="Selenium"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Selenium.svg" alt="Selenium" loading="lazy"></span>
+              <span class="tech-chip" title="TailwindCSS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TailwindCSS-Dark.svg" alt="TailwindCSS" loading="lazy"></span>
+              <span class="tech-chip" title="TensorFlow"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TensorFlow-Dark.svg" alt="TensorFlow" loading="lazy"></span>
+              <span class="tech-chip" title="ThreeJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/ThreeJS-Dark.svg" alt="ThreeJS" loading="lazy"></span>
+              <span class="tech-chip" title="TypeScript"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TypeScript.svg" alt="TypeScript" loading="lazy"></span>
+              <span class="tech-chip" title="Ubuntu"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Ubuntu-Dark.svg" alt="Ubuntu" loading="lazy"></span>
+              <span class="tech-chip" title="Unity"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Unity-Dark.svg" alt="Unity" loading="lazy"></span>
+              <span class="tech-chip" title="Vercel"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Vercel-Dark.svg" alt="Vercel" loading="lazy"></span>
+              <span class="tech-chip" title="VisualStudio"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VisualStudio-Dark.svg" alt="VisualStudio" loading="lazy"></span>
+              <span class="tech-chip" title="Vite"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Vite-Dark.svg" alt="Vite" loading="lazy"></span>
+              <span class="tech-chip" title="VSCode"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VSCode-Dark.svg" alt="VSCode" loading="lazy"></span>
+              <span class="tech-chip" title="VueJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VueJS-Dark.svg" alt="VueJS" loading="lazy"></span>
+              <span class="tech-chip" title="Windows"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Windows-Dark.svg" alt="Windows" loading="lazy"></span>
+              <span class="tech-chip" title="Atom"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Atom.svg" alt="Atom" loading="lazy"></span>
+              <span class="tech-chip" title="AWS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/AWS-Dark.svg" alt="AWS" loading="lazy"></span>
+              <span class="tech-chip" title="Arduino"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Arduino.svg" alt="Arduino" loading="lazy"></span>
+              <span class="tech-chip" title="Anaconda"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Anaconda-Dark.svg" alt="Anaconda" loading="lazy"></span>
+              <span class="tech-chip" title="AndroidStudio"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/AndroidStudio-Dark.svg" alt="AndroidStudio" loading="lazy"></span>
+              <span class="tech-chip" title="Arch"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Arch-Dark.svg" alt="Arch" loading="lazy"></span>
+              <span class="tech-chip" title="Rust"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Rust.svg" alt="Rust" loading="lazy"></span>
+              <span class="tech-chip" title="Spring"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Spring-Dark.svg" alt="Spring" loading="lazy"></span>
+              <span class="tech-chip" title="SQLite"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/SQLite.svg" alt="SQLite" loading="lazy"></span>
+              <span class="tech-chip" title="StackOverflow"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/StackOverflow-Dark.svg" alt="StackOverflow" loading="lazy"></span>
+              <span class="tech-chip" title="Selenium"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Selenium.svg" alt="Selenium" loading="lazy"></span>
+              <span class="tech-chip" title="TailwindCSS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TailwindCSS-Dark.svg" alt="TailwindCSS" loading="lazy"></span>
+              <span class="tech-chip" title="TensorFlow"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TensorFlow-Dark.svg" alt="TensorFlow" loading="lazy"></span>
+              <span class="tech-chip" title="ThreeJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/ThreeJS-Dark.svg" alt="ThreeJS" loading="lazy"></span>
+              <span class="tech-chip" title="TypeScript"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TypeScript.svg" alt="TypeScript" loading="lazy"></span>
+              <span class="tech-chip" title="Ubuntu"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Ubuntu-Dark.svg" alt="Ubuntu" loading="lazy"></span>
+              <span class="tech-chip" title="Unity"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Unity-Dark.svg" alt="Unity" loading="lazy"></span>
+              <span class="tech-chip" title="Vercel"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Vercel-Dark.svg" alt="Vercel" loading="lazy"></span>
+              <span class="tech-chip" title="VisualStudio"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VisualStudio-Dark.svg" alt="VisualStudio" loading="lazy"></span>
+              <span class="tech-chip" title="Vite"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Vite-Dark.svg" alt="Vite" loading="lazy"></span>
+              <span class="tech-chip" title="VSCode"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VSCode-Dark.svg" alt="VSCode" loading="lazy"></span>
+              <span class="tech-chip" title="VueJS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VueJS-Dark.svg" alt="VueJS" loading="lazy"></span>
+              <span class="tech-chip" title="Windows"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Windows-Dark.svg" alt="Windows" loading="lazy"></span>
+              <span class="tech-chip" title="Atom"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Atom.svg" alt="Atom" loading="lazy"></span>
+              <span class="tech-chip" title="AWS"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/AWS-Dark.svg" alt="AWS" loading="lazy"></span>
+              <span class="tech-chip" title="Arduino"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Arduino.svg" alt="Arduino" loading="lazy"></span>
+              <span class="tech-chip" title="Anaconda"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Anaconda-Dark.svg" alt="Anaconda" loading="lazy"></span>
+              <span class="tech-chip" title="AndroidStudio"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/AndroidStudio-Dark.svg" alt="AndroidStudio" loading="lazy"></span>
+              <span class="tech-chip" title="Arch"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Arch-Dark.svg" alt="Arch" loading="lazy"></span>
+      </div>
+    </div>
+
+    <div class="tech-summary">
+      <p class="tech-summary-main">위의 플랫폼 및 언어들을 거의 완벽하게 사용할 수 있습니다.</p>
+      <p class="tech-summary-sub">웹, 서버, 데이터베이스, 인프라까지 프로젝트에 필요한 도구를 직접 선택하고 구현합니다.</p>
+    </div>
+  </section>
+<hr>
+  <section class="section section--dark" id="contact">
+    <div class="section-inner">
+      <h2 class="section-heading" style="text-align: center;">연락</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <p class="label">이메일</p>
+          <a href="mailto:juwony27@gmail.com">juwony27@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <p class="label">Discord</p>
+          <a href="https://discord.com/users/1126799229709451264" target="_blank" rel="noopener">coding_09</a>
+        </div>
+        <div class="contact-item">
+          <p class="label">GitHub</p>
+          <a href="https://github.com/anion15" target="_blank" rel="noopener">github.com/anion15</a>
+        </div>
+        <div class="contact-item">
+          <p class="label">Instagram</p>
+          <a href="https://instagram.com/yxbh.rh0" target="_blank" rel="noopener">@yxbh.rh0</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 윤주원. All rights reserved.</p>
+  </footer>
+
 <script>
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  const projectTrack = document.querySelector('[data-project-track]');
+  const projectScrollButtons = document.querySelectorAll('[data-project-scroll]');
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-<script>
-const tip = document.createElement('div');
-tip.style.cssText = `
-  position: fixed;
-  background: #292925;
-  color: #F7F5F2;
-  font-size: 0.78rem;
-  line-height: 1.6;
-  padding: 6px 10px;
-  border-radius: 10px;
-  white-space: pre-wrap;
-  font-sans: 'Noto Sans KR', sans-serif;
-  max-width: 280px;
-  word-break: keep-all;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.15s ease;
-  z-index: 1000;
-`;
-document.body.appendChild(tip);
-
-document.querySelectorAll('[data-tip]').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    tip.textContent = el.getAttribute('data-tip');
-    tip.style.opacity = '0';
-
-    const rect = el.getBoundingClientRect();
-    const maxW = Math.min(280, window.innerWidth - 32);
-    tip.style.maxWidth = maxW + 'px';
-
-    let left = rect.left;
-    if (left + maxW > window.innerWidth - 16) {
-      left = window.innerWidth - 16 - maxW;
-    }
-    if (left < 16) left = 16;
-    tip.style.left = left + 'px';
-    tip.style.top = '0px';
-
-    requestAnimationFrame(() => {
-      const tipH = tip.getBoundingClientRect().height;
-      let top = rect.top - tipH - 8;
-      if (top < 8) top = rect.bottom + 8;
-      tip.style.top = top + 'px';
-      tip.style.opacity = '1';
+  projectScrollButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (!projectTrack) return;
+      const direction = Number(button.dataset.projectScroll);
+      const cards = projectTrack.querySelectorAll('.project-feature-card');
+      const card = cards[0];
+      if (!card || cards.length === 0) return;
+      const trackStyle = getComputedStyle(projectTrack);
+      const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || 20);
+      const cardWidth = card.getBoundingClientRect().width + gap;
+      const currentIndex = Math.round(projectTrack.scrollLeft / cardWidth);
+      const maxIndex = Math.max(0, cards.length);
+      const nextIndex = Math.max(
+        0,
+        Math.min(currentIndex + direction, maxIndex)
+      );
+      projectTrack.scrollTo({
+        left: nextIndex * cardWidth,
+        behavior: 'smooth'
+      });
     });
   });
-
-  el.addEventListener('mouseleave', () => {
-    tip.style.opacity = '0';
-  });
-  window.addEventListener('scroll', () => { tip.style.opacity = '0'; }, { passive: true });
-});
 </script>
-<script>
-const toggleBtn = document.getElementById('darkToggle');
-const root = document.documentElement;
 
-function applyDark(on) {
-  on ? root.classList.add('dark') : root.classList.remove('dark');
-  toggleBtn.textContent = on ? '밝은' : '어두운';
-}
 
-applyDark(root.classList.contains('dark'));
-
-toggleBtn.addEventListener('click', () => {
-  const isDark = root.classList.toggle('dark');
-  toggleBtn.textContent = isDark ? '밝은' : '어두운';
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  localStorage.setItem('themeSource', 'manual');
-});
-
-function showToast(msg) {
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.textContent = msg;
-  document.body.appendChild(t);
-  requestAnimationFrame(() => t.classList.add('show'));
-  setTimeout(() => {
-    t.classList.remove('show');
-    setTimeout(() => t.remove(), 400);
-  }, 5000);
-}
-
-const h = new Date().getHours();
-const isNight = h >= 22 || h < 6;
-const themeSource = localStorage.getItem('themeSource');
-
-const wasAlreadyAuto = themeSource === 'auto';
-
-if (isNight && themeSource !== 'manual') {
-  applyDark(true);
-  localStorage.setItem('theme', 'dark');
-  localStorage.setItem('themeSource', 'auto');
-  if (!wasAlreadyAuto) {
-    setTimeout(() => showToast(
-      '이 야심한 밤 속에도 제 포트폴리오를\n찾아오셨네요. \n당신의 눈 보호를 위해 다크모드를 적용했어요.'
-    ), 1900);
-  }
-} else if (!isNight && themeSource === 'auto') {
-  applyDark(false);
-  localStorage.removeItem('theme');
-  localStorage.removeItem('themeSource');
-}
-
-const greetings = [
-  { range: [0, 1],   text: '한밤중의 버그 사냥 — Fullstack Developer · 2009' },
-  { range: [2, 3],   text: '새벽에도 코딩 중 — Fullstack Developer · 2009' },
-  { range: [4, 5],   text: '이 시간에 여길 보신다면 당신도 혹시... 개발자? — Fullstack Developer · 2009' },
-  { range: [6, 10],  text: '좋은 아침이에요 — Fullstack Developer · 2009' },
-  { range: [11, 12], text: '점심 메뉴 결정 알고리즘 작동 중 — Fullstack Developer · 2009' },
-  { range: [13, 17], text: '커피 한 잔과 함께 코딩 중 — Fullstack Developer · 2009'},
-  { range: [18, 21], text: '저녁에 포트폴리오 탐방 중이시군요 — Fullstack Developer · 2009' },
-  { range: [22, 23], text: '야행성이시군요 — Fullstack Developer · 2009' },
-];
-const greetHour = new Date().getHours();
-const greeting = greetings.find(g => greetHour >= g.range[0] && greetHour <= g.range[1]);
-if (greeting) document.getElementById('heroGreeting').textContent = greeting.text;
-
-console.log('%c\n  ___  _  _ ___ ___  _  _ \n / _ \\| \\| |_ _/ _ \\| \\| |\n| (_) | .` || | (_) | .` |\n \\__\\_\\_|\\_|___\\___/|_|\\_|\n', 'color:#4ECDA4; font-family:monospace');
-console.log('%c안녕하세요! 저는 윤주원입니다.', 'color:#4ECDA4; font-weight:bold; font-size:13px');
-console.log('%c콘솔까지 열어보셨군요. 역시 개발자시네요.', 'color:#888; font-size:12px');
-console.log('%c협업 문의: juwony27@gmail.com', 'color:#888; font-size:12px');
-console.log('%cgithub.com/anion15', 'color:#888; font-size:12px');
-
-function spawnParticles(x, y) {
-  for (let i = 0; i < 8; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const angle = (Math.PI * 2 * i) / 8;
-    const dist = 30 + Math.random() * 20;
-    p.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
-    p.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
-    p.style.left = x - 2.5 + 'px';
-    p.style.top  = y - 2.5 + 'px';
-    document.body.appendChild(p);
-    p.addEventListener('animationend', () => p.remove());
-  }
-}
-document.querySelectorAll('.badge, .project-link, .stack-tag').forEach(el => {
-  el.addEventListener('click', e => spawnParticles(e.clientX, e.clientY));
-});
-
-const KONAMI = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
-let konamiIdx = 0;
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.getElementById('konamiOverlay').classList.remove('show');
-    return;
-  }
-  if (e.key === KONAMI[konamiIdx]) {
-    konamiIdx++;
-    if (konamiIdx === KONAMI.length) { konamiIdx = 0; showKonami(); }
-  } else { konamiIdx = 0; }
-});
-
-function showKonami() {
-  const overlay = document.getElementById('konamiOverlay');
-  overlay.classList.add('show');
-  overlay.onclick = () => overlay.classList.remove('show');
-  typeLines([
-    '$ sudo unlock --mode developer',
-    '',
-    '인증 완료',
-    '포트폴리오 비밀 열람 권한 부여됨',
-    '',
-    '> 운영 중인 서비스: N개',
-    '> 지금까지 마신 커피: 측정 불가',
-    '> 디버깅에 쓴 시간: 전체의 약 60%',
-    '> 가장 오래 붙잡은 버그: 30일',
-    '> 가장 좋아하는 에러: Cannot read properties of undefined',
-    '',
-    '> 여기까지 찾아오셨다면, 같이 만들어봐요.',
-    '> juwony27@gmail.com',
-    '',
-  ]);
-}
-
-function typeLines(lines) {
-  const terminal = document.querySelector('.konami-terminal .lines');
-  terminal.innerHTML = '';
-  let i = 0;
-  function next() {
-    if (i >= lines.length) return;
-    const line = document.createElement('div');
-    line.textContent = lines[i];
-    terminal.appendChild(line);
-    i++;
-    setTimeout(next, lines[i-1] === '' ? 80 : 60);
-  }
-  next();
-}
-
-const originalTitle = document.title;
-let hasBeenVisible = false;
-
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    if (hasBeenVisible) document.title = '돌아와요...';
-  } else {
-    hasBeenVisible = true;
-    document.title = originalTitle;
-  }
-});
-</script>
-<script>
-(function() {
-  const heroName = document.querySelector('.hero-name');
-  const navName  = document.querySelector('.nav-name');
-
-  navName.style.transition = 'opacity 0.25s';
-  navName.style.opacity = '0';
-
-  window.addEventListener('scroll', () => {
-    const rect = heroName.getBoundingClientRect();
-    const navH = 56;
-
-    const start = rect.top + rect.height;
-    const end   = rect.bottom - navH;
-
-    const progress = Math.min(1, Math.max(0, 1 - (rect.top - navH) / rect.height));
-
-    heroName.style.opacity = 1 - progress;
-
-    navName.style.opacity = progress > 0.6 ? ((progress - 0.6) / 0.4) : 0;
-  }, { passive: true });
-})();
-</script>
-<script>
-document.querySelectorAll('.qa-item').forEach(item => {
-  const btn = item.querySelector('.qa-question');
-  const answer = item.querySelector('.qa-answer');
-
-  btn.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-
-    document.querySelectorAll('.qa-item').forEach(other => {
-      other.classList.remove('open');
-      other.querySelector('.qa-answer').style.maxHeight = null;
-    });
-
-    if (!isOpen) {
-      item.classList.add('open');
-      answer.style.maxHeight = answer.scrollHeight + 'px';
-    }
-  });
-});
-</script>
 </body>
 </html>
