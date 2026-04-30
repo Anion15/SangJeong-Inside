@@ -17,6 +17,20 @@
 
   <meta name="twitter:title" content="윤주원 — 개발자 포트폴리오">
   <meta name="twitter:description" content="웹 풀스택 개발자 윤주원의 포트폴리오와 프로젝트를 확인해보세요.">
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({
+      duration: 0.8,
+      smoothWheel: true,
+      smoothTouch: false
+    })
+  
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  </script>
   <style>
     @font-face {
       font-family: 'SF Pro Display';
@@ -668,19 +682,6 @@
 
       .tech-row {
         gap: 12px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .tech-row,
-      .tech-chip {
-        animation: none;
-      }
-
-      .tech-stage {
-        overflow-x: auto;
-        -webkit-mask-image: none;
-        mask-image: none;
       }
     }
 
