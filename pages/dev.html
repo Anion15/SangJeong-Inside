@@ -1089,19 +1089,31 @@
       background: #D2D2D7;
       line-height: 1;
       cursor: pointer;
-      transition: background 150ms ease, color 150ms ease;
+      transition: background 150ms ease, color 150ms ease, opacity 150ms ease;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 0;
+      color: #4A4A4B;
     }
 
-    #L {
-      transform: rotate(180deg);
+    .project-scroll-btn svg {
+      width: 18px;
+      height: 18px;
+      display: block;
+      flex: 0 0 auto;
     }
 
     .project-scroll-btn svg path {
-      fill: #4A4A4B !important;
+      fill: currentColor;
+    }
+
+    #L {
+      transform: none;
+    }
+
+    #L svg {
+      transform: rotate(180deg);
     }
 
     .project-scroll-btn:hover {
@@ -1117,9 +1129,11 @@
     }
 
     [data-project-scroll]:disabled {
-      opacity: 0.35;
       cursor: not-allowed;
       pointer-events: none;
+      background: #E5E5EA;
+      color: #8E8E93;
+      opacity: 1;
     }
 
     .project-symbol {
