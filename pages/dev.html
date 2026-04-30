@@ -17,6 +17,20 @@
 
   <meta name="twitter:title" content="윤주원 — 개발자 포트폴리오">
   <meta name="twitter:description" content="웹 풀스택 개발자 윤주원의 포트폴리오와 프로젝트를 확인해보세요.">
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+  <script>
+    const lenis = new Lenis({
+      duration: 0.8,
+      smoothWheel: true,
+      smoothTouch: false
+    })
+  
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+  </script>
   <style>
     @font-face {
       font-family: 'SF Pro Display';
@@ -82,6 +96,11 @@
       letter-spacing: -0.374px;
       color: var(--color-near-black);
       background-color: var(--color-white);
+      -ms-overflow-style: none;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
     }
 
     a {
@@ -671,19 +690,6 @@
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .tech-row,
-      .tech-chip {
-        animation: none;
-      }
-
-      .tech-stage {
-        overflow-x: auto;
-        -webkit-mask-image: none;
-        mask-image: none;
-      }
-    }
-
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -829,7 +835,7 @@
       flex: 0 0 min(404px, calc(100vw - 40px));
       min-height: 560px;
       scroll-snap-align: start;
-      border-radius: 12px;
+      border-radius: 27px;
       background: #ffffff;
       color: #1d1d1f;
       padding: 28px;
@@ -1110,6 +1116,11 @@
       outline-offset: 3px;
     }
 
+    [data-project-scroll]:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
 
     .project-symbol {
       width: 104px;
@@ -1383,7 +1394,7 @@
               <p class="project-description">고정 닉네임 없이 글과 댓글을 남기는 익명 커뮤니티입니다. 매시간 바뀌는 익명 ID, 내 활동 확인, 검열 옵션, 실시간 반영처럼 운영 중 실제로 필요한 기능을 직접 설계했습니다.</p>
               <div class="project-actions">
                 <a href="https://commu.world/?stpg=1" class="project-open" target="_blank" rel="noopener">열기</a>
-                <a href="https://www.google.com/search?q=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+                <a href="https://www.google.com/search?q=%EC%83%81%EC%A0%95%EC%9D%B8%EC%82%AC%EC%9D%B4%EB%93%9C" class="project-more" target="_blank" rel="noopener">검색하기 &#10095;</a>
               </div>
             </div>
             <div class="project-icon-stage" aria-hidden="true">
@@ -1417,7 +1428,7 @@
               <p class="project-description">인천상정고등학교 APICE 동아리 공식 홈페이지입니다. 단순 소개 페이지가 아니라 실험 제안, 실험 참여, 관리자 흐름을 갖춘 동아리 활동 관리용 사이트로 구성했습니다.</p>
               <div class="project-actions">
                 <a href="https://www.apice.kr" class="project-open" target="_blank" rel="noopener">열기</a>
-                <a href="https://www.google.com/search?q=%EC%9D%B8%EC%B2%9C%EC%83%81%EC%A0%95%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%20Apice%EB%8F%99%EC%95%84%EB%A6%AC" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+                <a href="https://www.google.com/search?q=%EC%9D%B8%EC%B2%9C%EC%83%81%EC%A0%95%EA%B3%A0%EB%93%B1%ED%95%99%EA%B5%90%20Apice%EB%8F%99%EC%95%84%EB%A6%AC" class="project-more" target="_blank" rel="noopener">검색하기 &#10095;</a>
               </div>
             </div>
             <div class="project-icon-stage" aria-hidden="true">
@@ -1451,7 +1462,7 @@
               <p class="project-description">개발 단계에서 놓치기 쉬운 보안 요소를 한 줄로 붙일 수 있게 만드는 API 보호 레이어 서비스입니다. 현재는 초기 서비스 흐름과 로그인 구조를 다듬는 단계로 정리했습니다.</p>
               <div class="project-actions">
                 <a href="https://www.rederx.com" class="project-open" target="_blank" rel="noopener">열기</a>
-                <a href="https://www.google.com/search?q=Rederx" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+                <a href="https://www.google.com/search?q=Rederx" class="project-more" target="_blank" rel="noopener">검색하기 &#10095;</a>
               </div>
             </div>
             <div class="project-icon-stage" aria-hidden="true">
@@ -1485,7 +1496,7 @@
               <p class="project-description">백은별 작가의 프로필, 작품, 수상, 연대기를 정리한 소개형 팬페이지입니다. Byeolpedia로 더 깊은 문서 경험을 연결하고, 공개 자료 기반의 비상업적 소개 페이지임을 명확히 밝혔습니다.</p>
               <div class="project-actions">
                 <a href="https://www.eunbyeol.kr" class="project-open" target="_blank" rel="noopener">열기</a>
-                <a href="https://www.google.com/search?q=eunbyeol.kr" class="project-more" target="_blank" rel="noopener">검색하기 &gt;</a>
+                <a href="https://www.google.com/search?q=eunbyeol.kr" class="project-more" target="_blank" rel="noopener">검색하기 &#10095;</a>
               </div>
             </div>
             <div class="project-icon-stage" aria-hidden="true">
@@ -1519,7 +1530,7 @@
               <p class="project-description">뉴스를 요약하고, 감정 태그를 붙이고, 기존 의견과 다른 관점의 의견을 생성하는 시스템입니다. 대회 일정에 맞춰 빠르게 구현한 프로젝트라 완성도보다 문제의식과 구현 경험을 중심에 두었습니다.</p>
               <div class="project-actions">
                 <a href="https://github.com/Anion15/News-RCNS" class="project-open" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://docs.google.com/document/d/1Dnp-4HpUMN5VKaPx2pmPN1HnLwejVsc7/edit?usp=sharing&amp;ouid=109048308215348806547&amp;rtpof=true&amp;sd=true" class="project-more" target="_blank" rel="noopener">Docs &gt;</a>
+                <a href="https://docs.google.com/document/d/1Dnp-4HpUMN5VKaPx2pmPN1HnLwejVsc7/edit?usp=sharing&amp;ouid=109048308215348806547&amp;rtpof=true&amp;sd=true" class="project-more" target="_blank" rel="noopener">Docs &#10095;</a>
               </div>
             </div>
             <div class="project-icon-stage" aria-hidden="true"><span class="project-symbol"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 8h14l6 6v26H15V8Z" stroke-width="2" stroke-linejoin="round"/><path d="M29 8v7h6" stroke-width="2" stroke-linejoin="round"/><path d="M20 22h10" stroke-width="2" stroke-linecap="round"/><path d="M20 28h14" stroke-width="2" stroke-linecap="round"/><path d="M20 34h8" stroke-width="2" stroke-linecap="round"/></svg></span></div>
@@ -1572,7 +1583,7 @@
 
         <div class="project-scroll-controls" aria-label="프로젝트 카드 이동">
           <button class="project-scroll-btn" id="L" type="button" data-project-scroll="-1" aria-label="이전 프로젝트"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path></svg></button>
-          <button class="project-scroll-btn" type="button" data-project-scroll="1" aria-label="다음 프로젝트"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path></svg></button>
+          <button class="project-scroll-btn" id="R" type="button" data-project-scroll="1" aria-label="다음 프로젝트"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M23.5587,16.916 C24.1447,17.4999987 24.1467,18.446 23.5647,19.034 L16.6077,26.056 C16.3147,26.352 15.9287,26.4999987 15.5427,26.4999987 C15.1607,26.4999987 14.7787,26.355 14.4867,26.065 C13.8977,25.482 13.8947,24.533 14.4777,23.944 L20.3818,17.984 L14.4408,12.062 C13.8548,11.478 13.8528,10.5279 14.4378,9.941 C15.0218,9.354 15.9738,9.353 16.5588,9.938 L23.5588,16.916 L23.5587,16.916 Z"></path></svg></button>
         </div>
 
         <p class="projects-secret-note">여기 없는 프로젝트가 6건 더 있는데, 아직은 비밀이에요.</p>
@@ -1772,31 +1783,46 @@
 <script>
   const projectTrack = document.querySelector('[data-project-track]');
   const projectScrollButtons = document.querySelectorAll('[data-project-scroll]');
+  function getCardWidth() {
+    if (!projectTrack) return 0;
+    const cards = projectTrack.querySelectorAll('.project-feature-card');
+    const card = cards[0];
+    if (!card) return 0;
+    const trackStyle = getComputedStyle(projectTrack);
+    const gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 20;
+    return card.getBoundingClientRect().width + gap;
+  }
+
+  function updateProjectScrollButtons() {
+    if (!projectTrack) return;
+    const maxScrollLeft = projectTrack.scrollWidth - projectTrack.clientWidth;
+    const currentScrollLeft = projectTrack.scrollLeft;
+    projectScrollButtons.forEach((button) => {
+      const direction = Number(button.dataset.projectScroll);
+      if (direction < 0) {
+        button.disabled = currentScrollLeft <= 1;
+      }
+      if (direction > 0) {
+        button.disabled = currentScrollLeft >= maxScrollLeft - 1;
+      }
+    });
+  }
 
   projectScrollButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      if (!projectTrack) return;
+      if (!projectTrack || button.disabled) return;
       const direction = Number(button.dataset.projectScroll);
-      const cards = projectTrack.querySelectorAll('.project-feature-card');
-      const card = cards[0];
-      if (!card || cards.length === 0) return;
-      const trackStyle = getComputedStyle(projectTrack);
-      const gap = parseFloat(trackStyle.columnGap || trackStyle.gap || 20);
-      const cardWidth = card.getBoundingClientRect().width + gap;
-      const currentIndex = Math.round(projectTrack.scrollLeft / cardWidth);
-      const maxIndex = Math.max(0, cards.length);
-      const nextIndex = Math.max(
-        0,
-        Math.min(currentIndex + direction, maxIndex)
-      );
-      projectTrack.scrollTo({
-        left: nextIndex * cardWidth,
+      const cardWidth = getCardWidth();
+      if (!cardWidth) return;
+      projectTrack.scrollBy({
+        left: direction * cardWidth,
         behavior: 'smooth'
       });
     });
   });
+  projectTrack?.addEventListener('scroll', updateProjectScrollButtons);
+  window.addEventListener('resize', updateProjectScrollButtons);
+  updateProjectScrollButtons();
 </script>
-
-
 </body>
 </html>
