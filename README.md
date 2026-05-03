@@ -87,3 +87,12 @@
 - **terms.html** — [개인정보처리방침](https://commu.world/terms)
 
 </details>
+
+<br>
+
+<p align="center">
+  <sub>
+    상정인사이드 · 익명 기반의 비로그인 커뮤니티 시스템
+  </sub>
+</p>
+
