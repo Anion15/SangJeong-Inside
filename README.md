@@ -3,7 +3,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-w.png">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png">
-      <img width="450" height="138.1640625" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="상정인사이드 로고">
+      <img width="450" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="상정인사이드 로고">
     </picture>
   </a>
 </p>
