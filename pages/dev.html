@@ -1378,22 +1378,85 @@
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      transform: translateY(-18px);
+
+      transform-origin: top center;
+      transform: translateY(-12px) scaleY(0.92);
+      clip-path: inset(0 0 100% 0);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 180ms ease, transform 180ms ease;
+
+      transition:
+        opacity 260ms ease,
+        transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+        clip-path 380ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-mobile-panel::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      opacity: 0;
+      transform: scaleX(0.94);
+      transform-origin: center;
+      pointer-events: none;
+      transition:
+        opacity 260ms ease,
+        transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .nav-mobile-panel.is-open {
-      transform: translateY(0);
+      transform: translateY(0) scaleY(1);
+      clip-path: inset(0 0 0 0);
       opacity: 1;
       pointer-events: auto;
+    }
+
+    .nav-mobile-panel.is-open::after {
+      opacity: 1;
+      transform: scaleX(1);
     }
 
     .nav-mobile-panel ul {
       list-style: none;
       display: grid;
       gap: 18px;
+    }
+
+    .nav-mobile-panel li {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition:
+        opacity 260ms ease,
+        transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .nav-mobile-panel.is-open li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-mobile-panel.is-open li:nth-child(1) {
+      transition-delay: 45ms;
+    }
+
+    .nav-mobile-panel.is-open li:nth-child(2) {
+      transition-delay: 80ms;
+    }
+
+    .nav-mobile-panel.is-open li:nth-child(3) {
+      transition-delay: 115ms;
+    }
+
+    .nav-mobile-panel.is-open li:nth-child(4) {
+      transition-delay: 150ms;
+    }
+
+    .nav-mobile-panel.is-open li:nth-child(5) {
+      transition-delay: 185ms;
     }
 
     .nav-mobile-panel a {
@@ -1789,10 +1852,18 @@
     }
 
     body main,
-    body footer,
-    body .nav-mobile-panel {
+    body footer {
       transition: filter 540ms cubic-bezier(0.22, 1, 0.36, 1);
       will-change: filter;
+    }
+
+    body .nav-mobile-panel {
+      transition: 
+          filter 540ms cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 260ms ease,
+          transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+          clip-path 380ms cubic-bezier(0.22, 1, 0.36, 1);
+       will-change: filter, opacity, transform, clip-path;
     }
 
     body.project-detail-open main,
@@ -2219,8 +2290,8 @@
       <ul class="nav-links">
         <li><a href="#about">소개</a></li>
         <li><a href="#projects">프로젝트</a></li>
-        <li><a href="#collaboration">협업</a></li>
         <li><a href="#skills">기술</a></li>
+        <li><a href="#collaboration">협업</a></li>
         <li><a href="#contact">연락</a></li>
       </ul>
       <button aria-controls="mobile-menu" aria-expanded="false" aria-label="메뉴 열기" class="nav-menu-toggle"
@@ -2231,8 +2302,8 @@
     <ul>
       <li><a href="#about">소개</a></li>
       <li><a href="#projects">프로젝트</a></li>
-      <li><a href="#collaboration">협업</a></li>
       <li><a href="#skills">기술</a></li>
+      <li><a href="#collaboration">협업</a></li>
       <li><a href="#contact">연락</a></li>
     </ul>
   </div>
