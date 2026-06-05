@@ -18,6 +18,9 @@
   <meta content="윤주원 — 개발자 포트폴리오" name="twitter:title" />
   <meta content="웹 풀스택 개발자 윤주원의 포트폴리오와 프로젝트를 확인해보세요." name="twitter:description" />
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script>
     const lenis = new Lenis({
       duration: 0.8,
@@ -239,6 +242,17 @@
       line-height: 1.10;
       letter-spacing: normal;
       margin-bottom: var(--space-xl);
+    }
+
+    
+    .section-heading-2 {
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.10;
+      letter-spacing: normal;
+      margin-bottom: var(--space-l);
+      word-break: keep-all;
     }
 
     .tile-heading {
@@ -2269,6 +2283,215 @@
       white-space: pre-line;
     }
 
+    .me-card-group, 
+    .me-card-group * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    }
+
+    .me-card-group{
+      display: flex;
+      justify-content: center;
+      gap: 21px;
+      width: 100%;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .large-card{
+      width:269px;
+      height:362px;
+    }
+
+    .right-column{
+      width:269px;
+      display:flex;
+      flex-direction:column;
+      gap:21px;
+    }
+
+    .small-card{
+      height:170px;
+      border-radius:27px;
+      background:#fff;
+      padding:28px;
+      box-shadow: rgba(0,0,0,.12) 3px 5px 30px 0px;
+    }
+
+    .me-card-half{
+      flex: 0 0 min(132px, calc(50vw - 40px));
+    }
+
+    .me-card {
+      flex: 0 0 min(269px, calc(100vw - 40px));
+      min-height: 362px;
+      scroll-snap-align: start;
+      border-radius: 27px;
+      background: #ffffff;
+      color: #1d1d1f;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: rgba(0, 0, 0, 0.12) 3px 5px 30px 0px;
+      transition: box-shadow 150ms ease;
+    }
+
+    .me-card:hover {
+      transform: none;
+      box-shadow: rgba(0, 0, 0, 0.12) 3px 5px 30px 0px;
+    }
+    
+    .me-note {
+      max-width: 980px;
+      padding: 0 clamp(20px, 6vw, 96px);
+      margin: -16px auto 0;
+      font-family: var(--font-text);
+      font-size: 12px;
+      line-height: 1.33;
+      letter-spacing: -0.12px;
+      color: rgba(0, 0, 0, 0.48);
+      text-align: center;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .me-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 179px;
+      border-radius: 12px;
+      background: #f5f5f7;
+      margin: -15px -15px 16px -15px; 
+    }
+
+    .me-stage-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 179px;
+      border-radius: 12px;
+      background: #f5f5f7;
+      margin: 16px -15px -15px -15px; 
+    }
+
+    .me-stage .me-app-icon,
+    .me-stage-2 .me-app-icon {
+      width: 104px;
+      height: 104px;
+      border-radius: 24px;
+      box-shadow: rgba(0, 0, 0, 0.18) 3px 5px 30px 0px;
+    }
+    
+    .me-app-icon-stack {
+      position: relative;
+      width: 104px;
+      height: 104px;
+      transform: translate(-10px, 0px);
+    }
+
+    .me-stage .me-app-icon,
+    .me-stage-2 .me-app-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 104px;
+      height: 104px;
+      border-radius: 24px;
+      box-shadow: rgba(0, 0, 0, 0.12) 3px 5px 20px 0px;
+      background: #ffffff;
+      
+      transform-origin: 100% 100%; 
+      transition: transform 0.3s ease;
+    }
+
+    .me-app-icon.--1 {
+      transform: rotate(0deg) translate(-10px, 10px);
+      z-index: 4;
+    }
+
+    .me-app-icon.--2 {
+      transform: rotate(15deg) translate(-13.5px, 15px);
+      z-index: 3;
+    }
+
+    .me-app-icon.--3 {
+      transform: rotate(30deg) translate(-12px, 25px);
+      z-index: 2;
+    }
+
+    .me-app-icon.--4 {
+      transform: rotate(45deg) translate(-8px, 35px);
+      z-index: 1;
+    }
+    @media (max-width: 900px) {
+      .me-card-group {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 320px));
+        justify-content: center;
+        gap: 21px;
+        width: 100%;
+      }
+      .me-card-group .me-card,
+      .me-card-group .small-card {
+        flex: none; 
+        width: 100%;
+        max-width: none;
+        box-sizing: border-box;
+      }
+      .large-card {
+        height: 362px;
+      }
+      .small-card {
+        height: 170px;
+      }
+      .right-column {
+        display: contents;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .section-heading-2{
+        font-size: 35px;
+        letter-spacing: -0.7px;
+      }
+      .me-card-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 21px;
+      }
+      .right-column {
+        display: contents;
+      }
+      .me-card-group .me-card,
+      .me-card-group .small-card {
+        width: min(404px, calc(100vw - 40px));
+        max-width: none;
+        min-height: 0;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .large-card {
+        height: auto;
+        min-height: 240px;
+      }
+      .small-card {
+        height: auto;
+        min-height: 140px;
+      }
+
+      .me-stage {
+        margin: -7px -7px 16px -7px; 
+      }
+      .me-stage-2 {
+        margin: 16px -7px -7px -7px; 
+      }
+    }
+
+    @media (max-width: 1024px) {
+      #mobile-bottom {
+        margin-bottom: var(--space-xl);  
+      }
+    }
   </style>
 
   <link href="https://dev.rederx.com/" rel="canonical" />
@@ -2317,7 +2540,52 @@
     </section>
     <section class="section section--light" id="about">
       <div class="section-inner">
-        <h2 class="section-heading">소개</h2>
+        <h2 class="section-heading-2" id="mobile-bottom">안녕하세요.<br>풀스택 개발자 윤주원입니다.</h2>
+        <h2 class="section-heading-2" id="mobile-size" style="text-align: right; margin-bottom: var(--space-xl);">단순히 개발하는 것을 넘어<br>서비스를 운영합니다.</h2>
+        <div class="me-card-group">
+          <div class="me-card large-card">
+            <div class="me-stage">
+              <div class="me-app-icon-stack">
+                <img alt="favicon4" class="me-app-icon --4" src="https://www.eunbyeol.kr/static/favicon.ico" />
+                <img alt="favicon3" class="me-app-icon --3" src="https://www.rederx.com/favicon.ico" />
+                <img alt="icon2" class="me-app-icon --2" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/icon-.png" />
+                <img alt="Preview1" class="me-app-icon --1" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/Preview.png" />
+              </div>
+            </div>
+            <div style="display: flex; align-items: baseline; margin-top: -15px;">
+              <span style="font-size: 96px; font-weight: bold;">4+</span>
+              <span style="font-size: 21px; text-align: right; font-weight: bold; line-height: 25px;">운영중인<br>서비스</span>
+            </div>
+          </div>
+          <div class="me-card large-card">
+            <p style="font-size: 96px; margin-top: -25px; text-align: left;"><b>20+</b></p>
+            <p style="font-size: 21px; margin-top: -40px; text-align: right;"><b>완료 프로젝트</b></p>
+            <div class="me-stage-2">
+                <div class="me-app-icon-stack">
+                  <img alt="favicon4" class="me-app-icon --4" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/4.png" style="object-fit: contain;" />
+                  <img alt="favicon3" class="me-app-icon --3" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/3.png" style="object-fit: contain;" />
+                  <img alt="icon2" class="me-app-icon --2" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/2.png" style="object-fit: contain;" />
+                  <img alt="Preview1" class="me-app-icon --1" src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/1.png" style="object-fit: contain;" />
+                </div>
+            </div>
+          </div>
+          <div class="right-column">
+            <div class="small-card" style="flex: 0 0 min(149px, calc(100vw - 40px));">
+              <div style="display: flex; align-items: baseline;">
+                <span style="font-size: 48px; font-weight: bold;">30,000+</span>
+                <span style="font-size: 10px; margin-left: 4px;">[1]</span>
+              </div>
+              <p style="font-size: 21px; text-align: right;"><b>월 방문자</b></p>
+            </div>
+            <div class="small-card" style="flex: 0 0 min(153px, calc(100vw - 40px));">
+              <p style="font-size: 48px; text-align: right;"><b>3년+</b></p>
+              <p style="font-size: 21px; margin-top: -10px;"><b>개발 경험</b></p>
+            </div>
+          </div>
+        </div>
+        <p class="me-note">
+            [1] 2025년 10월부터 2026년 5월까지의 모든 서비스 방문 데이터를 기반으로 선출한 월 평균 방문자 수입니다. 특정 시점의 일시적인 트래픽이 아닌, 장기간 누적된 실제 운영 데이터를 바탕으로 계산하였으며, 방문 규모를 직관적으로 전달하기 위해 반올림된 대략적인 수치를 표시했습니다. 해당 수치는 방문자 추이를 이해하기 위한 참고용 지표로 활용해 주시기 바랍니다.
+          </p>
         <p class="body-text" style="max-width: 720px; margin-bottom: var(--space-xl);">
           처음 개발을 접한 건 중학교 때입니다. 따로 배울 환경이 없어서 인터넷과 책을 뒤지며 혼자 익혔는데,<br> 그게 오히려 좋았던 것 같습니다. 무언가 안 되면 직접 원인을 찾아야 했으니까요.<br><br> 지금은 웹
           풀스택 개발을 주로 합니다. 프론트엔드부터 서버, 데이터베이스, 배포와 인프라까지 혼자 다룰 수 있고, 실제로 그렇게 운영하고 있습니다. AI는 디자인 피드백을 받을 때 가끔 씁니다.
