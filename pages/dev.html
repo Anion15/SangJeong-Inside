@@ -2388,6 +2388,70 @@
       transform: rotate(10deg) translate(-10px, 0px);
     }
 
+    .me-app-icon-stack:not(.animate) .me-app-icon {
+      opacity: 0;
+    }
+
+    .me-app-icon-stack.animate .me-app-icon.--1 {
+      animation: icon-slide-rotate-1 0.8s ease-out 0s both;
+    }
+
+    .me-app-icon-stack.animate .me-app-icon.--2 {
+      animation: icon-slide-rotate-2 0.8s ease-out 0.08s both;
+    }
+
+    .me-app-icon-stack.animate .me-app-icon.--3 {
+      animation: icon-slide-rotate-3 0.8s ease-out 0.16s both;
+    }
+
+    .me-app-icon-stack.animate .me-app-icon.--4 {
+      animation: icon-slide-rotate-4 0.8s ease-out 0.24s both;
+    }
+
+    @keyframes icon-slide-rotate-1 {
+      0% {
+        transform: translate(-8px, 16px) rotate(-20deg) scale(0.75);
+        opacity: 0.8;
+      }
+      100% {
+        transform: rotate(0deg) translate(-10px, 10px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes icon-slide-rotate-2 {
+      0% {
+        transform: translate(-8px, 16px) rotate(-20deg) scale(0.75);
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(15deg) translate(-13.5px, 15px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes icon-slide-rotate-3 {
+      0% {
+        transform: translate(-8px, 16px) rotate(-20deg) scale(0.75);
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(30deg) translate(-12px, 25px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes icon-slide-rotate-4 {
+      0% {
+        transform: translate(-8px, 16px) rotate(-20deg) scale(0.75);
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(45deg) translate(-8px, 35px);
+        opacity: 1;
+      }
+    }
+
     .me-stage .me-app-icon,
     .me-stage-2 .me-app-icon {
       position: absolute;
@@ -2493,6 +2557,49 @@
       }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stacks = document.querySelectorAll('.me-app-icon-stack');
+
+      const waitForImages = (images) => {
+        const promises = Array.from(images).map(img => {
+          if (img.complete) {
+            return Promise.resolve();
+          }
+          return new Promise(resolve => {
+            img.addEventListener('load', resolve, { once: true });
+            img.addEventListener('error', resolve, { once: true });
+          });
+        });
+        return Promise.all(promises);
+      };
+
+      const animateStack = (stack) => {
+        const images = stack.querySelectorAll('img');
+        if (images.length === 0) {
+          stack.classList.add('animate');
+          return;
+        }
+        waitForImages(images).then(() => stack.classList.add('animate'));
+      };
+
+      if (!('IntersectionObserver' in window) || stacks.length === 0) {
+        stacks.forEach(animateStack);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateStack(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      stacks.forEach(el => observer.observe(el));
+    });
+  </script>
 
   <link href="https://dev.rederx.com/" rel="canonical" />
   <meta content="https://dev.rederx.com/og-image.png" property="og:image" />
