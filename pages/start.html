@@ -63,7 +63,7 @@
 
 <script>
   const lenis = new Lenis({
-    duration: 1.6,
+    duration: 1.6,      // 스크롤 부드러움 정도
     smoothWheel: true,
     smoothTouch: false
   })
@@ -81,6 +81,7 @@ history.scrollRestoration = "manual";
 let sections = [];
 let currentSection = null;
 
+/* URL → 섹션 이동 */
 function goToSectionFromURL() {
     const params = new URLSearchParams(location.search);
     const sec = params.get("sec");
@@ -89,6 +90,7 @@ function goToSectionFromURL() {
     let targetEl = null;
     let offset = -50;
 
+    // sec=fvSection 이면 hahaha의 중앙으로 이동
     if (sec === "fvSection") {
         targetEl = document.getElementById("fvmainview");
         if (!targetEl) return;
@@ -97,6 +99,7 @@ function goToSectionFromURL() {
         const elementCenter = rect.height / 2;
         const viewportCenter = window.innerHeight / 2;
 
+        // 요소 중앙이 화면 중앙에 오도록 보정
         offset = -(viewportCenter - elementCenter);
     } else {
         targetEl = document.getElementById(sec);
@@ -118,6 +121,7 @@ function goToSectionFromURL() {
     });
 }
 
+/* 현재 섹션 감지 */
 function detectSection() {
 
     const center = window.innerHeight * 0.5;
@@ -145,10 +149,12 @@ function detectSection() {
 
 }
 
+/* DOM 준비 */
 document.addEventListener("DOMContentLoaded", () => {
     sections = document.querySelectorAll("section[id]");
 });
 
+/* 로더 제거 후 이동 */
 window.addEventListener("load", () => {
 
     const waitForLoader = setInterval(() => {
@@ -168,20 +174,24 @@ window.addEventListener("load", () => {
 
 });
 
+/* Lenis 스크롤 감지 */
 lenis.on("scroll", () => {
     detectSection();
 });
 
+/* 뒤로가기 대응 */
 window.addEventListener("popstate", goToSectionFromURL);
 </script>
-  <script>
+<!-- 로딩 화면에 버그가 발생해서 임시 주석처리함-->
+<!-- <script>
     (function () {
-      var bgColor = "rgba(10,11,15,0.96)";
-      var spinnerSize = 40;
-      var brandText = "Loading…";
-      var minShowMs = 300;
-      var safetyTimeoutMs = 10000;
+      var bgColor = "rgba(10,11,15,0.96)"; // 배경색
+      var spinnerSize = 40; // px
+      var brandText = "Loading…"; // 중앙 텍스트 (빈 문자열로 비활성화)
+      var minShowMs = 300; // 최소 표시 시간
+      var safetyTimeoutMs = 10000; // 안전 타임아웃
 
+      // ==== 스타일 주입 ====
       var css = `
         #__page_loader {
           position: fixed; inset: 0; z-index: 2147483647;
@@ -210,6 +220,7 @@ window.addEventListener("popstate", goToSectionFromURL);
       styleEl.textContent = css;
       document.head.appendChild(styleEl);
 
+      // ==== 오버레이 DOM 생성 ====
       var overlay = document.createElement("div");
       overlay.id = "__page_loader";
       overlay.setAttribute("role", "status");
@@ -220,6 +231,7 @@ window.addEventListener("popstate", goToSectionFromURL);
         (brandText ? '<div id="__brand">' + brandText + "</div>" : "") +
         "</div>";
 
+      // body가 아직 없을 수도 있으므로 안전하게 추가
       function mount() {
         if (!document.body) { requestAnimationFrame(mount); return; }
         document.documentElement.classList.add("__no_scroll");
@@ -241,21 +253,24 @@ window.addEventListener("popstate", goToSectionFromURL);
         }, { once: true });
       }
 
+      // 외부에서 수동으로 닫고 싶을 때: window.hidePageLoader()
       window.hidePageLoader = function () {
         var elapsed = Date.now() - shownAt;
         var delay = Math.max(0, minShowMs - elapsed);
         setTimeout(cleanup, delay);
       };
 
+      // 페이지 완전 로드 후 자동 종료
       window.addEventListener("load", function () {
         window.hidePageLoader();
       });
 
+      // 안전 타임아웃(예: load 이벤트가 영영 안 올 때)
       setTimeout(function () {
         if (document.getElementById("__page_loader")) window.hidePageLoader();
       }, safetyTimeoutMs);
     })();
-  </script>
+  </script> -->
   <style>
     body { font-family: 'Noto Sans KR', sans-serif; overflow-x: hidden; -ms-overflow-style: none; }
     ::-webkit-scrollbar { display: none;}
@@ -264,43 +279,46 @@ window.addEventListener("popstate", goToSectionFromURL);
 <style>
     body {
       font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif !important;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.02em; /* 자간을 살짝 좁게 고정하여 기기별 편차 최소화 */
       overflow-x: hidden;
       background-color: #171717 !important; 
     }
 
+    /* 1. 전체 화면에서 옆으로 튀어나오는 모든 것을 시각적으로 무시함 */
     html, body {
       overflow-x: hidden;
       position: relative;
       width: 100%;
     }
 
+    /* 2. 게시글 카드가 있는 섹션에서 자식 요소가 넘쳐도 스크롤을 만들지 않음 */
     #about {
-      overflow: clip;
+      overflow: clip; /* 최신 브라우저에서 넘치는 요소를 레이아웃에서 완전히 제외 */
     }
 
+    /* 3. 애니메이션 되는 요소가 부모 박스 크기를 키우지 않도록 설정 */
     #Anonymous {
-      contain: paint;
+      contain: paint; /* 이 안에서 벌어지는 일(확대 등)은 바깥 레이아웃에 영향을 주지 않음 */
     }
 
     #faq h2 {
-      color: #ffffff;
+      color: #ffffff; /* text-gray-800 */
     }
 
     #faq details summary {
-      color: #757575;
+      color: #757575; /* text-gray-800 */
     }
 
     #faq h3 {
-      color: #cbcbcb;
+      color: #cbcbcb; /* text-gray-800 */
     }
 
     #faq .space-y-4 details summary {
-      color: #949494;
+      color: #949494; /* text-gray-800 */
     }
 
     #faq .space-y-4 details .group summary span {
-      color: #ededed;
+      color: #ededed; /* text-gray-800 */
     }
 
     #faq details div p{
@@ -308,15 +326,15 @@ window.addEventListener("popstate", goToSectionFromURL);
     }
     
     #faq details div ul li {
-      color: #acacac;
+      color: #acacac; /* text-gray-700 */
     }
 
     #faq details {
-      border-color: #d1d5db;
+      border-color: #d1d5db; /* border-gray-300 */
     }
 
     #faq a {
-      color: #2563eb;
+      color: #2563eb; /* text-blue-600 */
     }
 
     
@@ -330,15 +348,18 @@ window.addEventListener("popstate", goToSectionFromURL);
 
 </style>
 <script>
+      // 기본 설정값
       const defaultSettings = {
         theme: 'system'
       };
 
+      // 설정 불러오기
       function loadSettings() {
         const saved = localStorage.getItem('sjinside_settings');
         return saved ? { ...defaultSettings, ...JSON.parse(saved) } : defaultSettings;
       }
 
+      // 테마 적용 함수
       function applyTheme(theme) {
         const body = document.body;
         body.classList.remove('dark-theme');
@@ -352,10 +373,12 @@ window.addEventListener("popstate", goToSectionFromURL);
         }
       }
 
+      // 페이지 로드 시 초기 설정
       document.addEventListener('DOMContentLoaded', function() {
         const settings = loadSettings();
         applyTheme(settings.theme);
         
+        // 시스템 테마 변경 감지
         if (window.matchMedia) {
           window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
             if (loadSettings().theme === 'system') {
@@ -368,6 +391,7 @@ window.addEventListener("popstate", goToSectionFromURL);
 
 
 <body class="bg-gray-100 min-h-screen">
+  <!--우클릭 이벤트 정의-->
   <style>
     @keyframes fadeInSlide {
       from { opacity: 0; transform: translateY(-10px); }
@@ -440,8 +464,12 @@ window.addEventListener("popstate", goToSectionFromURL);
       overflow-wrap: break-word;
     }
 
+/* -------------------------------
+   사이드/하단 네비게이션 스타일
+---------------------------------*/
 
 
+/* 기본: 오른쪽 사이드 네비게이션 */
 #scrollNav {
     position: fixed;
     right: 1.5rem;
@@ -454,18 +482,20 @@ window.addEventListener("popstate", goToSectionFromURL);
     transition: all 0.3s ease;
 }
 
+/* 기본 글자/동그라미 크기 */
 #scrollNav span {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* 데스크탑 기본 글자 */
     color: rgba(255, 255, 255, 0.8);
     transition: font-size 0.3s ease, color 0.3s ease;
 }
 
 #scrollNav .w-3.h-3 {
-    width: 0.9rem;
+    width: 0.9rem;  /* 데스크탑 기본 동그라미 */
     height: 0.9rem;
     transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
 }
 
+/* 활성화 상태 */
 #scrollNav .active div {
     background-color: white;
     transform: scale(1.6);
@@ -477,6 +507,9 @@ window.addEventListener("popstate", goToSectionFromURL);
     font-weight: 600;
 }
 
+/* -------------------------------
+   1180px 이하: 하단 네비게이션
+---------------------------------*/
 @media (max-width: 1180px) {
     #scrollNav {
         top: auto;
@@ -489,6 +522,7 @@ window.addEventListener("popstate", goToSectionFromURL);
         padding: 0.8rem 0;
         background: linear-gradient(to top, rgba(23,23,23,0.95), rgba(23,23,23,0));
         backdrop-filter: blur(12px);
+        /* border-top: 1px solid rgba(255,255,255,0.1); */
     }
 
     #scrollNav > div {
@@ -497,15 +531,18 @@ window.addEventListener("popstate", goToSectionFromURL);
         gap: 0.35rem;
     }
 
+    /* 글자 크기 확대 */
     #scrollNav span {
         font-size: 0.8rem;
     }
 
+    /* 동그라미 크기 확대 */
     #scrollNav .w-3.h-3 {
         width: 0.7rem;
         height: 0.7rem;
     }
 
+    /* 활성화 상태 크기 조정 */
     #scrollNav .active div {
         transform: scale(1.4);
     }
@@ -514,6 +551,9 @@ window.addEventListener("popstate", goToSectionFromURL);
         font-size: 1rem;
     }
 
+    /* -------------------------------
+       640px 이하: 모바일용
+    ---------------------------------*/
     @media (max-width: 640px) {
         #scrollNav span {
             font-size: 0.7rem;
@@ -548,11 +588,14 @@ window.addEventListener("popstate", goToSectionFromURL);
     const popMenu = document.getElementById('popMenu');
 
     document.addEventListener('contextmenu', e => {
+      // 우클릭 비활성화 설정 확인
       const settings = JSON.parse(localStorage.getItem('sjinside_settings') || '{}');
       if (settings.rightClickEnabled === false) {
+        // 기본 우클릭 메뉴 허용 (preventDefault 호출하지 않음)
         return;
       }
 
+      // 커스텀 우클릭 메뉴 표시
       e.preventDefault();
 
       popMenu.style.display = 'block';
@@ -611,6 +654,7 @@ window.addEventListener("popstate", goToSectionFromURL);
       popMenu.style.display = 'none';
     });
   </script>
+  <!--우클릭 이벤트 정의 끝-->
 
 
 <header id="mainHeader"
@@ -622,12 +666,14 @@ window.addEventListener("popstate", goToSectionFromURL);
          -translate-y-full opacity-0">
 
 
+    <!-- 왼쪽: 로고 -->
     <div class="flex items-center space-x-4">
       <a href="https://commu.world">
         <img src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/logo-.png" alt="logo" class="w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44" />
       </a>
     </div>
   </header>
+<!-- 사이드 네비게이션 -->
 <div id="scrollNav" class="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col gap-4 z-50">
   <div class="flex items-center gap-2 cursor-pointer" data-target="hero">
     <div class="w-3 h-3 rounded-full bg-gray-400 transition-all"></div>
@@ -655,6 +701,7 @@ window.addEventListener("popstate", goToSectionFromURL);
 document.addEventListener('DOMContentLoaded', () => {
   const navItems = document.querySelectorAll('#scrollNav > div');
 
+  // 클릭 시 중앙 정렬 + active 업데이트
   navItems.forEach(item => {
     item.addEventListener('click', () => {
       const targetEl = document.getElementById(item.dataset.target);
@@ -664,14 +711,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollTop = window.scrollY || window.pageYOffset;
       const targetY = rect.top + scrollTop - window.innerHeight / 2 + rect.height / 2;
 
+      // 부드럽게 중앙 스크롤
       window.scrollTo({ top: targetY, behavior: 'smooth' });
 
+      // 클릭한 항목 강제 active
       navItems.forEach(i => i.classList.remove('active'));
       item.classList.add('active');
     });
   });
 
-  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.25 };
+  // 섹션 스크롤 감지
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.25 }; // threshold 낮춤
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       const navItem = document.querySelector(`#scrollNav > div[data-target="${entry.target.id}"]`);
@@ -684,6 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
+  // 섹션 등록
   navItems.forEach(item => {
     const section = document.getElementById(item.dataset.target);
     if (section) observer.observe(section);
@@ -1131,6 +1182,7 @@ a:hover .shine-soft::after {
 
   <div class="grid grid-cols-12 gap-10 items-start">
 
+    <!-- Left: Question -->
     <div class="col-span-12 md:col-span-4">
 <h2 class="text-3xl md:text-4xl font-semibold leading-tight text-neutral-100">
   <span class="block md:inline">왜 우리는</span>
@@ -1139,6 +1191,7 @@ a:hover .shine-soft::after {
 
     </div>
 
+    <!-- Right: Reasons -->
     <div class="col-span-12 md:col-span-8 space-y-8">
 
       <div class="flex items-center gap-4">
@@ -1197,6 +1250,7 @@ a:hover .shine-soft::after {
 
 
 
+<!--About 섹션-->
 <section id="about" class="min-h-[250vh] flex flex-col items-center justify-center
          text-center bg-neutral-950 px-6 break-keep">
   <div class="max-w-4xl mx-auto text-center">
@@ -1298,6 +1352,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<!--기능 섹션-->
 <section id="features" class="py-40 bg-neutral-950 overflow-hidden">
   <div class="max-w-6xl mx-auto px-6">
     <div class="text-center mb-24">
@@ -2180,6 +2235,10 @@ new Swiper('.featureSwiper', {
   speed: 900,
   grabCursor: true,
 
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction:false
+  // },
 
   pagination: {
     el: ".swiper-pagination",
@@ -2313,6 +2372,7 @@ breakpoints: {
 })();
 </script>
 
+<!--폰트 설명 섹션-->
 <section id="font-identity" class="font-identity-section py-44 px-6 break-keep relative">
   <div class="max-w-4xl mx-auto text-center">
 
@@ -2350,6 +2410,7 @@ breakpoints: {
     <div class="desc-text mt-44 space-y-16">
 <div class="mt-44 grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-16 items-start">
 
+  <!-- LEFT : 정의 / 태도 -->
   <div class="space-y-16 text-right">
     <p class="reveal text-neutral-300 text-lg sm:text-xl">
       <span class="highlight-white">Sangjeong-SansKR</span>은<br />
@@ -2365,8 +2426,10 @@ breakpoints: {
     </p>
   </div>
 
+  <!-- CENTER LINE -->
   <div class="reveal delay-1 w-px h-80 bg-neutral-600 mx-auto"></div>
 
+  <!-- RIGHT : 감각 / 인상 -->
   <div class="space-y-16 text-left">
     <div class="reveal delay-1">
       <p class="text-2xl sm:text-3xl font-bold text-white leading-snug">
@@ -2385,6 +2448,7 @@ breakpoints: {
 
 </div>
 
+<!-- ENDING -->
 <p class="text-neutral-400 text-base mt-32 text-center reveal delay-3">
   이 폰트는 길게 설명하지 않습니다.<br />
   <span class="ending-line text-xl block mt-3">
@@ -2414,9 +2478,13 @@ breakpoints: {
     <br  />
   <br  />
   <br  />
+  <!--제가 왜 이런 무식한 짓을 했는지 모르겠네요;
+  지금 보니 제작 당시 whssk 힘들었나봐요.-->
 
 
 
+  <!--아! 그리고 왜 Sangjeong-SansKR은 왜 Google Fonts의 NotoSansKR과 비슷하냐고요?-->
+  <!--그냥 구글 폰트 라이선스가 좋아서 걍 갖고왔어요...-->
 </p>
 
 
@@ -2428,9 +2496,11 @@ breakpoints: {
       background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.04), transparent 60%), #0a0a0a;
     }
 
+    /* Zoom Animation Style */
     .zoom-title {
       display: inline-block;
       will-change: transform, opacity;
+      /* 초기 상태: 매우 크고 투명도가 낮음 */
       transform: scale(8); 
       opacity: 0;
       transition: transform 0.1s linear, opacity 0.1s linear;
@@ -2614,6 +2684,7 @@ breakpoints: {
 </style>
 </section>
 
+<!-- Maker 섹션 -->
 <section id="maker" class="py-56 px-6 bg-black break-keep relative overflow-hidden">
   <div class="max-w-4xl mx-auto space-y-28 text-left">
 
@@ -2672,6 +2743,21 @@ breakpoints: {
       </p>
     </div>
 
+    <!--좀 느끼한 멘트는 안어울려서 걍 지워버림,.-->
+    <!-- <div class="reveal delay-7">
+      <p class="text-neutral-500 text-base leading-relaxed">
+        완벽하지 않을 수 있습니다.<br />
+        느릴 수도 있습니다.<br />
+        아직 부족한 점도 많습니다.<br /><br />
+        하지만,
+      </p>
+    </div>
+
+    <div class="reveal delay-8">
+      <p class="text-3xl text-white font-bold">
+        진심만큼은 타협하지 않았습니다.
+      </p>
+    </div> -->
 
     <div class="reveal delay-9 pt-24 text-neutral-600 text-sm tracking-widest leading-relaxed">
       상정인사이드는 제 첫 번째 대형 프로젝트입니다.<br />
@@ -2739,6 +2825,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
 
+        // solo-line이면 순차 딜레이 적용
         if (entry.target.classList.contains('solo-line')) {
           const index = Array.from(
             document.querySelectorAll('.solo-line')
@@ -2764,6 +2851,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+<!--Guidelines 섹션-->
 <section id="guidelines" class="py-32 px-6 bg-neutral-900 break-keep">
   <div class="max-w-3xl mx-auto">
     <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-100 text-center mb-12">
@@ -2788,6 +2876,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 <hr class="my-8 border-gray-500">
 <div class="min-h-[15vh]"></div>
+<!--FAQ 섹션-->
 <section id="faq" class="mx-auto max-w-4xl px-6 py-12 sm:py-16 bg-neutral-850 break-keep">
     <h2 class="text-2xl sm:text-3xl font-semibold text-gray-100 mb-8">
         자주 묻는 질문 (FAQ)
@@ -2797,6 +2886,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </p>
 
 
+    <!-- 전체 -->
     <details id="nodrag" class="bbb group mb-6 border rounded-lg border-gray-800 dark:border-gray-800">
         <summary class="cursor-pointer px-5 py-5 text-lg font-medium text-gray-900 dark:text-gray-800 flex justify-between items-center">
         전체 보기
@@ -2807,6 +2897,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="faq-main-content-wrapper">
           <div class="faq-main-content px-6 pb-6 text-gray-700 dark:text-gray-300 space-y-8">
 
+        <!-- [카테고리] 사이트 이용 -->
         <div class="py-4">
             <h3 class="text-xl font-semibold mt-6 mb-4">사이트 이용</h3>
 
@@ -2896,6 +2987,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
 
+        <!-- [카테고리] 계정 · 개인정보 -->
         <div class="py-4">
             <h3 class="text-xl font-semibold mt-6 mb-4">계정 · 개인정보</h3>
 
@@ -2973,6 +3065,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
 
+        <!-- [카테고리] 버그 / 오류 -->
         <div class="py-4">
             <h3 class="text-xl font-semibold mt-6 mb-4">버그 · 오류</h3>
 
@@ -3170,6 +3263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 
 
+<!--FV 섹션-->
 <section id="fvSection"
     class="min-h-[250vh] flex flex-col items-center justify-center
          text-center bg-neutral-950 px-6 break-keep">
@@ -3180,6 +3274,8 @@ document.addEventListener('DOMContentLoaded', () => {
     </h2>
 
     <p class="text-gray-300 text-base sm:text-lg leading-relaxed mb-10">
+      <!-- 상정인사이드는 익명이라는 자유 속에서<br /> -->
+      <!-- 당신의 진정한 생각과 감정을 나누는 커뮤니티입니다.<br /><br /> -->
       <span id="fvmainview" class="text-gray-400">
         당신만의 '인사이드'가 세상과 만나는 곳<br />
         상정인사이드.
@@ -3210,9 +3306,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 }
 
+/* 초기 상태: 이미 좌우반전된 채로 보임 */
 .animate-flip {
   display: inline-block;
 
+  /* 시작 상태: 정체성 미확정 */
   opacity: 0;
   filter: blur(6px);
   letter-spacing: 0.5em;
@@ -3345,6 +3443,7 @@ const fvSection = document.getElementById('fvSection');
 
 const observer = new IntersectionObserver(
   (entries) => {
+    // hero 또는 fvSection 중 하나라도 보이면 true
     const shouldHide = entries.some(entry => entry.isIntersecting);
 
     if (shouldHide) {
@@ -3359,6 +3458,53 @@ const observer = new IntersectionObserver(
 observer.observe(hero);
 observer.observe(fvSection);
 </script>
+<!-- <script>
+const params = new URLSearchParams(window.location.search);
+const fvSection = document.getElementById('fvSection');
+
+if (params.has('fv')) {
+  //fv있으면 id가 hello-sajung인 span 내용을 변경한다.
+  const helloSajung = document.getElementById('hello-sajung');
+  helloSajung.textContent = '스크롤하여 시작하기';
+  fvSection.classList.remove('hidden');
+
+  const content = fvSection.firstElementChild;
+  requestAnimationFrame(() => {
+    content.classList.remove('opacity-0', 'translate-y-6');
+  });
+} else {
+  fvSection.remove(); // fv 없으면 아예 존재 삭제
+}
+</script> -->
+<!-- <script>
+let isMobileLayout = null;
+
+function updateHeroText() {
+  const line = document.getElementById('line-break-point');
+  const desktopBreak = document.querySelector('.desktop-break');
+  const hahaha = document.getElementById('hahaha');
+
+  if (!line || !desktopBreak) return;
+
+  const nowMobile = window.innerWidth <= 462;
+
+  if (nowMobile === isMobileLayout) return;
+  isMobileLayout = nowMobile;
+
+  if (nowMobile) {
+    line.innerHTML = ` 없이,<br />바로 익명.`;
+    desktopBreak.style.display = "none";
+    hahaha.innerHTML = `가면 뒤에 숨겨진<br />당신의 진심을 보여주세요.`;
+  } else {
+    line.innerHTML = ` 없이, 바로 익명.`;
+    desktopBreak.style.display = "block";
+    hahaha.innerHTML = `가면 뒤에 숨겨진 당신의 진심을 보여주세요.`;
+  }
+}
+
+updateHeroText();
+window.addEventListener('resize', updateHeroText);
+</script> -->
 
 
 
@@ -3477,10 +3623,13 @@ VPN/프록시 감지 안내 페이지를 제외한)
   <h1>&nbsp;</h1>
   <h1>&nbsp;</h1>
 
+  <!--새로운 footer-->
 <footer class="bg-white border-t border-gray-200 text-gray-800 font-sans" style="z-index: 999;">
 
+  <!-- 메인 정보 영역 -->
   <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-5">
 
+    <!-- 로고 / 기관명 -->
     <div>
       <div class="flex items-center space-x-4 mb-6">
         <a>
@@ -3497,8 +3646,10 @@ VPN/프록시 감지 안내 페이지를 제외한)
       </ul>
     </div>
 
+    <!-- 여백 -->
     <div></div>
 
+    <!-- 유틸리티 + SNS -->
     <div class="flex flex-col items-start md:items-end space-y-6">
 
       <div class="space-y-3 text-base">
@@ -3551,6 +3702,7 @@ VPN/프록시 감지 안내 페이지를 제외한)
     </div>
   </div>
 
+  <!-- 5. 정책 링크 -->
   <div class="border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap gap-5 text-base text-gray-600">
       <a href="/term" class="font-semibold text-blue-600">개인정보처리방침</a>
@@ -3560,16 +3712,19 @@ VPN/프록시 감지 안내 페이지를 제외한)
     </div>
   </div>
 
+  <!-- 🔹 개발자 고지 문구 -->
   <div class="max-w-7xl mx-auto px-6 py-3 text-sm text-gray-500 leading-relaxed">
     본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는
     전적으로 개발자에게 있음을 알립니다.
   </div>
 
+  <!-- 6. 저작권 -->
   <div class="max-w-7xl mx-auto px-6 py-4 text-base text-gray-500 flex flex-col md:flex-row justify-between gap-2">
     <span>© 2025-2026 상정인사이드. All rights reserved.</span>
     <span>Developed by anion15</span>
   </div>
 
+<!-- 하단 상태 바 -->
 <div
   id="site-status-bar"
   class="bg-gray-900 text-gray-200 text-base px-6 py-3 flex items-center gap-2"
@@ -3584,8 +3739,11 @@ VPN/프록시 감지 안내 페이지를 제외한)
 </div>
 </footer>
 <style>
+  /* =========================
+   Footer Dark Theme
+   ========================= */
 .dark-theme footer {
-  background-color: #2d2d2d;
+  background-color: #2d2d2d; /* gray-800 계열 */
   color: #e5e7eb;
   border-color: #374151;
 }
@@ -3594,9 +3752,10 @@ VPN/프록시 감지 안내 페이지를 제외한)
 }
 
 .dark-theme footer a:hover {
-  color: #60a5fa;
+  color: #60a5fa; /* blue-400 */
 }
 
+/* 메인 정보 영역 텍스트 */
 .dark-theme footer .text-gray-600 {
   color: #9ca3af !important;
 }
@@ -3605,6 +3764,7 @@ VPN/프록시 감지 안내 페이지를 제외한)
   color: #9ca3af !important;
 }
 
+/* 정책 링크 영역 */
 .dark-theme footer .border-t {
   border-color: #374151;
 }
@@ -3613,6 +3773,7 @@ VPN/프록시 감지 안내 페이지를 제외한)
   color: #60a5fa;
 }
 
+/* SNS 아이콘 버튼 */
 .dark-theme footer .border {
   border-color: #4b5563;
 }
@@ -3621,16 +3782,19 @@ VPN/프록시 감지 안내 페이지를 제외한)
   background-color: #374151;
 }
 
+/* 개발자 고지 문구 */
 .dark-theme footer .leading-relaxed {
   color: #9ca3af;
 }
 
+/* 저작권 영역 */
 .dark-theme footer .flex {
   color: #9ca3af;
 }
 
+/* KRDS 하단 바 */
 .dark-theme footer > div:last-child {
-  background-color: #020617;
+  background-color: #020617; /* 거의 블랙 */
   color: #e5e7eb;
 }
 
