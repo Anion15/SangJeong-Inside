@@ -155,10 +155,10 @@
       left: 0;
       right: 0;
       z-index: 1000;
-      height: 48px;
+      height: 52px;
       background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      backdrop-filter: saturate(180%) blur(40px);
+      -webkit-backdrop-filter: saturate(180%) blur(40px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -186,7 +186,7 @@
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--color-white);
       letter-spacing: -0.2px;
@@ -237,6 +237,7 @@
     .section-inner {
       max-width: var(--max-width);
       margin: 0 auto;
+      word-break: keep-all;
     }
 
     .display-hero {
@@ -633,8 +634,8 @@
 
     .tech-chip {
       flex: 0 0 auto;
-      width: clamp(58px, 6vw, 98px);
-      height: clamp(58px, 6vw, 98px);
+      width: clamp(78px, 6vw, 98px);
+      height: clamp(78px, 6vw, 98px);
       border-radius: 18px;
       display: inline-flex;
       align-items: center;
@@ -657,8 +658,8 @@
     }
 
     .tech-chip img {
-      width: 58%;
-      height: 58%;
+      width: 68%;
+      height: 68%;
       object-fit: contain;
       user-select: none;
       -webkit-user-drag: none;
@@ -678,6 +679,7 @@
       line-height: 1.12;
       letter-spacing: -0.6px;
       color: #ffffff;
+      word-break: keep-all;
     }
 
     .tech-summary-sub {
@@ -873,7 +875,7 @@
 
     .projects-heading {
       font-family: var(--font-display);
-      font-size: clamp(38px, 5vw, 64px);
+      font-size: clamp(48px, 6vw, 64px);
       font-weight: 600;
       line-height: 1.05;
       letter-spacing: -1.4px;
@@ -1041,6 +1043,7 @@
       font-weight: 400;
       line-height: 1.43;
       letter-spacing: -0.224px;
+      word-break: keep-all;
       color: rgba(0, 0, 0, 0.74);
     }
 
@@ -1420,6 +1423,9 @@
       opacity: 0;
       pointer-events: none;
 
+      backdrop-filter: saturate(180%) blur(40px);
+      -webkit-backdrop-filter: saturate(180%) blur(40px);
+
       transition:
         opacity 260ms ease,
         transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -1552,7 +1558,7 @@
 
     .collaboration-heading {
       font-family: var(--font-display);
-      font-size: clamp(38px, 5vw, 64px);
+      font-size: clamp(38px, 6vw, 64px);
       font-weight: 600;
       line-height: 1.05;
       letter-spacing: -1.4px;
@@ -2046,6 +2052,7 @@
     .project-expand-head {
       padding: 54px clamp(24px, 5vw, 52px) 30px;
       background: #f5f5f7;
+      padding-top: 38px;
     }
 
     .project-expand-head-line {
@@ -2569,6 +2576,114 @@
         margin-bottom: var(--space-xl);  
       }
     }
+
+    .project-expand-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+
+        width: 44px;
+        height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+
+        background: rgb(232,232,237);
+        color: rgba(0,0,0,.56);
+
+        cursor: pointer;
+        transition:
+            background .2s ease,
+            color .2s ease,
+            transform .15s ease;
+
+        z-index: 1000;
+    }
+
+    .project-expand-close:hover {
+        background: #ececf0;
+        color: rgba(0,0,0,.72);
+    }
+
+    .project-expand-close:active {
+        background: #dfdfe4;
+        transform: scale(.96);
+    }
+
+    .project-expand-close:focus-visible {
+        outline: 2px solid #0071e3;
+        outline-offset: 3px;
+    }
+
+    .project-expand-close-icon {
+        width: 36px;
+        height: 36px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .project-expand-close-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        display: block;
+    }
+
+    .project-expanded-copy p {
+        white-space: pre-line;
+    }
+
+    .projects-break {
+        display: none;
+    }
+
+    @media (max-width: 656px) {
+        .projects-break {
+            display: block;
+        }
+
+        .projects-title-row {
+          margin-bottom: 20px;
+        }
+    }
+
+    #grid-helper {
+      display: none !important;
+      visibility: hidden !important;
+    }
+
+    @media (min-width: 696px) and (max-width: 920px) {
+      #grid-helper {
+        display: block !important;
+      }
+    }
+
+    .mobile-break {
+        display: none;
+    }
+
+    @media (max-width: 541px) {
+        .mobile-break {
+            display: block;
+        }
+        
+        .collaboration-heading {
+            font-size: 45px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .tech-heading {
+            font-size: clamp(40px, 10vw, 60px);
+        }
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2842,7 +2957,10 @@
     <section class="section section--light projects-showcase" id="projects">
       <div class="projects-inner">
         <div class="projects-title-row">
-          <h2 class="projects-heading"><span>프로젝트.</span> 쓰임이 먼저 보이도록.</h2>
+          <h2 class="projects-heading">
+            <span>프로젝트.</span><br class="projects-break">
+            쓰임이 먼저 보이도록.
+          </h2>
           <!-- <p class="projects-subtitle">겉으로 보이는 결과물만 나열하지 않고, 각 카드의 자세히 보기에서 왜 만들었는지와 어떤 방식으로 구현했는지까지 확인할 수 있게 했습니다.</p> -->
         </div>
         <div class="projects-carousel-wrap">
@@ -3456,8 +3574,18 @@
     <section class="section collaboration-section" id="collaboration">
       <div class="section-inner">
         <div class="collaboration-header">
-          <h2 class="collaboration-heading"><span class="collaboration-heading-main">같이 만들 사람을 찾고
-              있습니다.</span><span>아이디어보다, 끝까지 가는 팀.</span></h2>
+          <h2 class="collaboration-heading">
+              <span class="collaboration-heading-main">
+                  같이 만들 사람을
+                  <br class="mobile-break">
+                  찾고 있습니다.
+              </span>
+              <span>
+                  아이디어보다,
+                  <br class="mobile-break">
+                  끝까지 가는 팀.
+              </span>
+          </h2>
           <p class="collaboration-description">해커톤, 공모전, 협업 프로젝트를 함께할 팀원을 찾고 있습니다.<br>
             아이디어를 이야기하는 것에서 끝나지 않고, 실제 서비스와 결과물까지 함께 만들어갈 분을 찾습니다.</p>
         </div>
@@ -3508,6 +3636,7 @@
             <p class="label">GitHub</p>
             <a href="https://github.com/anion15" rel="noopener" target="_blank">github.com/anion15</a>
           </div>
+          <div class="contact-item" id="grid-helper"></div>
           <div class="contact-item">
             <p class="label">Instagram</p>
             <a href="https://instagram.com/yxbh.rh0" rel="noopener" target="_blank">@yxbh.rh0</a>
@@ -3521,7 +3650,17 @@
     <div class="project-expand-scrim" data-close-project-dialog=""></div>
     <article aria-labelledby="project-dialog-title" aria-modal="true" class="project-expand-panel" role="dialog"
       tabindex="-1">
-      <button aria-label="닫기" class="project-expand-close" data-close-project-dialog="" type="button">×</button>
+      <button
+          aria-label="닫기"
+          class="project-expand-close"
+          data-close-project-dialog
+          type="button">
+          <span class="project-expand-close-icon">
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M12.12,10l4.07-4.06a1.5,1.5,0,1,0-2.11-2.12L10,7.88,5.94,3.81A1.5,1.5,0,1,0,3.82,5.93L7.88,10,3.81,14.06a1.5,1.5,0,0,0,0,2.12,1.51,1.51,0,0,0,2.13,0L10,12.12l4.06,4.07a1.45,1.45,0,0,0,1.06.44,1.5,1.5,0,0,0,1.06-2.56Z"/>
+              </svg>
+          </span>
+      </button>
       <div class="project-expand-scroll">
         <header class="project-expand-head">
           <span class="detail-eyebrow" id="project-dialog-kicker"></span>
@@ -3534,7 +3673,7 @@
     </article>
   </div>
   <footer class="footer">
-    <p>본 서비스는 고등학생 개발자 1인이 개발한 프로젝트이며, 사용된 모든 이미지 및 관련 파일과 소스 코드의 출처는 전적으로 개발자에게 있음을 알립니다.<br />© 2026 윤주원. All rights
+    <p>본 서비스는 고등학생 개발자 1인이 직접 개발 및 운영하는 포트폴리오입니다.<br />본 서비스에 사용된 모든 이미지, 디자인, 관련 파일 및 소스 코드는 개발자가 직접 제작하였으며, 이에 대한 저작권은 개발자에게 있습니다.<br /><br />© 2026 윤주원. All rights
       reserved.</p>
   </footer>
   <script>
@@ -3638,7 +3777,7 @@
             "sections": [
                 {
                     "heading": "문제 정의",
-                    "body": "동아리에서 실험 활동을 진행하기 위해서는 보고서 작성, 팀원 모집, 선생님 승인, 일정 조율, 실험실 위치 및 준비물 공유 등 여러 절차가 필요합니다. 하지만 기존 방식은 이러한 과정이 개별적으로 이루어져 불편하고, 실험 제안이 실제 활동으로 이어지기까지 많은 시간이 소요된다는 문제가 있었습니다. 이를 해결하기 위해 실험 제안부터 팀원 모집, 승인, 일정 및 준비물 공유까지 한 번에 관리할 수 있는 동아리 홈페이지를 구현하고자 했습니다."
+                    "body": "동아리에서 실험 활동을 진행하기 위해서는 보고서 작성, 팀원 모집, 선생님 승인, 일정 조율, 실험실 위치 및 준비물 공유 등 여러 절차가 필요합니다.\n 하지만 기존 방식은 이러한 과정이 개별적으로 이루어져 불편하고, 실험 제안이 실제 활동으로 이어지기까지 많은 시간이 소요된다는 문제가 있었습니다.\n 이를 해결하기 위해 실험 제안부터 팀원 모집, 승인, 일정 및 준비물 공유까지 한 번에 관리할 수 있는 동아리 홈페이지를 구현하고자 했습니다."
                 },
                 {
                     "heading": "제작 과정",
@@ -3680,7 +3819,7 @@
             "sections": [
                 {
                     "heading": "문제 정의",
-                    "body": "개발 과정에서 API 보안은 중요하지만, 초기 구현 단계에서는 기능 개발에 밀려 나중으로 미뤄지는 경우가 많습니다. Rederx는 복잡한 보안 설정을 서비스 구조 안에 자연스럽게 붙일 수 있게 만드는 것을 목표로 시작했습니다."
+                    "body": "개발 과정에서 API 보안은 중요하지만, 초기 구현 단계에서는 기능 개발에 밀려 나중으로 미뤄지는 경우가 많습니다.\n Rederx는 복잡한 보안 설정을 서비스 구조 안에 자연스럽게 붙일 수 있게 만드는 것을 목표로 시작했습니다."
                 },
                 {
                     "heading": "제작 과정",
@@ -3692,7 +3831,7 @@
                 },
                 {
                     "heading": "보여주고 싶은 점",
-                    "body": "Rederx는 개발자가 서비스 개발 과정에서 보안을 쉽고 간편하게 설정할 수 있도록 돕는 API 보호 레이어를 목표로 한 프로젝트 입니다. 현재는 초기 서비스 흐름과 로그인 구조를 다듬는 단계이지만, 장기적으로는 인증, 접근 제어, 요청 제한, 로그 확인 등 보안 요소를 쉽게 적용할 수 있는 제품 형태로 발전시키고자 합니다."
+                    "body": "Rederx는 개발자가 서비스 개발 과정에서 보안을 쉽고 간편하게 설정할 수 있도록 돕는 API 보호 레이어를 목표로 한 프로젝트 입니다.\n 현재는 초기 서비스 흐름과 로그인 구조를 다듬는 단계이지만, 장기적으로는 인증, 접근 제어, 요청 제한, 로그 확인 등 보안 요소를 쉽게 적용할 수 있는 제품 형태로 발전시키고자 합니다."
                 }
             ],
             "links": [
@@ -3772,7 +3911,7 @@
                 },
                 {
                     "heading": "보여주고 싶은 점",
-                    "body": "SafePath AI는 단순히 아이디어를 제안하는 데 그치지 않고, 사회 문제를 직접 정의한 뒤 데이터를 분석하고 알고리즘을 활용해 실제 서비스로 구현한 프로젝트입니다. 기획부터 알고리즘 설계, 지도 시각화, 프론트엔드·백엔드 개발, 발표 자료 및 소개 영상 제작까지 전 과정을 직접 수행하며 문제 해결 능력과 개발 역량을 보여주고자 했습니다. 또한 24시간이라는 제한된 개발 기간 동안 우선순위를 설정하고 효율적으로 시간을 분배하여, 기획부터 구현, 발표 준비까지 모든 과정을 완성도 있게 마무리하는 경험을 쌓았습니다."
+                    "body": "SafePath AI는 단순히 아이디어를 제안하는 데 그치지 않고, 사회 문제를 직접 정의한 뒤 데이터를 분석하고 알고리즘을 활용해 실제 서비스로 구현한 프로젝트입니다.\n 기획부터 알고리즘 설계, 지도 시각화, 프론트엔드·백엔드 개발, 발표 자료 및 소개 영상 제작까지 전 과정을 직접 수행하며 문제 해결 능력과 개발 역량을 보여주고자 했습니다.\n 또한 24시간이라는 제한된 개발 기간 동안 우선순위를 설정하고 효율적으로 시간을 분배하여, 기획부터 구현, 발표 준비까지 모든 과정을 완성도 있게 마무리하는 경험을 쌓았습니다."
                 }
             ],
             "links": [
@@ -3806,7 +3945,7 @@
             "sections": [
                 {
                     "heading": "문제 정의",
-                    "body": "뉴스는 빠르게 소비되지만, 사용자가 같은 사건을 여러 관점에서 비교하는 경험은 약합니다. 그래서 요약 결과만 보여주는 데서 끝내지 않고, 감정 태그와 다른 시각의 의견을 함께 생성하는 흐름을 목표로 했습니다."
+                    "body": "뉴스는 빠르게 소비되지만, 사용자가 같은 사건을 여러 관점에서 비교하는 경험은 약합니다.\n 그래서 요약 결과만 보여주는 데서 끝내지 않고, 감정 태그와 다른 시각의 의견을 함께 생성하는 흐름을 목표로 했습니다."
                 },
                 {
                     "heading": "제작 과정",
@@ -3818,7 +3957,7 @@
                 },
                 {
                     "heading": "보여주고 싶은 점",
-                    "body": "대회형 프로젝트에서 중요한 것은 ‘많은 기능’보다 문제의식이 잘 보이는 핵심 기능을 끝까지 만드는 것이라고 생각했습니다. 이 프로젝트는 그 우선순위 판단을 보여주는 사례입니다."
+                    "body": "대회형 프로젝트에서 중요한 것은 ‘많은 기능’보다 문제의식이 잘 보이는 핵심 기능을 끝까지 만드는 것이라고 생각했습니다.\n 이 프로젝트는 그 우선순위 판단을 보여주는 사례입니다."
                 }
             ],
             "links": [
@@ -3844,7 +3983,7 @@
             "sections": [
                 {
                     "heading": "문제 정의",
-                    "body": "버스 도착 정보는 시각 정보에 크게 의존합니다. 소리의 특징을 활용하면 정류장에서 버스 접근을 더 직관적으로 알릴 수 있지 않을까라는 문제의식에서 출발했습니다."
+                    "body": "버스 도착 정보는 시각 정보에 크게 의존합니다.\n 소리의 특징을 활용하면 정류장에서 버스 접근을 더 직관적으로 알릴 수 있지 않을까라는 문제의식에서 출발했습니다."
                 },
                 {
                     "heading": "제작 과정",
