@@ -53,6 +53,11 @@
           y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "wjmk3uidai");
   </script>
+  <script>
+    document.querySelectorAll(".tech-row").forEach(row => {
+        row.innerHTML += row.innerHTML;
+    });
+  </script>
   <style>
     @font-face {
       font-family: 'SF Pro Display';
@@ -610,26 +615,24 @@
       flex-direction: column;
       gap: 22px;
       transform: translateZ(0);
+
+      mask-image: none;
+      -webkti-mask-image: none;
+
       -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000000 10%, #000000 90%, transparent 100%);
       mask-image: linear-gradient(90deg, transparent 0%, #000000 10%, #000000 90%, transparent 100%);
     }
 
-    .tech-row {
-      display: flex;
-      width: max-content;
-      gap: 18px;
-      will-change: transform;
-      animation: tech-marquee-left 44s linear infinite;
-    }
+    .tech-row{
+        display:flex;
+        flex-wrap:nowrap;
+        width:max-content;
+        gap:18px;
 
-    .tech-row--middle {
-      animation-name: tech-marquee-right;
-      animation-duration: 52s;
-      transform: translateX(-50%);
-    }
+        will-change:transform;
+        transform:translate3d(0,0,0);
 
-    .tech-row--bottom {
-      animation-duration: 48s;
+        animation:none;
     }
 
     .tech-chip {
@@ -642,7 +645,8 @@
       justify-content: center;
       background: #1d1d1f;
       box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
-      animation: tech-float 5.8s ease-in-out infinite;
+      transform: translate3d(0,0,0);
+      will-change: transform;
     }
 
     .tech-chip:nth-child(3n) {
@@ -693,37 +697,6 @@
       color: rgba(255, 255, 255, 0.64);
     }
 
-    @keyframes tech-marquee-left {
-      from {
-        transform: translateX(0);
-      }
-
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    @keyframes tech-marquee-right {
-      from {
-        transform: translateX(-50%);
-      }
-
-      to {
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes tech-float {
-
-      0%,
-      100% {
-        transform: translateY(0) scale(1);
-      }
-
-      50% {
-        transform: translateY(-3px) scale(1.035);
-      }
-    }
 
     @media (max-width: 834px) {
 
@@ -995,10 +968,6 @@
       object-fit: cover;
       background: #f5f5f7;
       box-shadow: rgba(0, 0, 0, 0.25) 0 6px 18px 0;
-    }
-
-    .project-card--apice .project-app-icon {
-      object-position: calc(50% + 0.4px) center;
     }
 
     .project-title-block {
@@ -3006,7 +2975,7 @@
               <div class="project-card-top">
                 <div class="project-title-line">
                   <img alt="apice 동아리 아이콘" class="project-app-icon"
-                    src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/icon-.png" />
+                    src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/apice.png" />
                   <div class="project-title-block">
                     <span class="project-kicker">2026.02 ~ 2026.03 · 1인 개발</span>
                     <h3>Apice.kr</h3>
@@ -3023,7 +2992,7 @@
               </div>
               <div aria-hidden="true" class="project-icon-stage">
                 <img alt="" class="project-app-icon"
-                  src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/icon-.png" />
+                  src="https://raw.githubusercontent.com/Anion15/anion15.github.io/refs/heads/main/apice.png" />
               </div>
               <div>
                 <div aria-label="Apice 핵심 기능" class="project-points">
@@ -3324,54 +3293,6 @@
               src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/HTML.svg" /></span>
           <span class="tech-chip" title="Htmx"><img alt="Htmx" loading="lazy"
               src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Htmx-Dark.svg" /></span>
-          <span class="tech-chip" title="Azure"><img alt="Azure" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Azure-Dark.svg" /></span>
-          <span class="tech-chip" title="Bash"><img alt="Bash" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Bash-Dark.svg" /></span>
-          <span class="tech-chip" title="Bootstrap"><img alt="Bootstrap" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Bootstrap.svg" /></span>
-          <span class="tech-chip" title="C"><img alt="C" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/C.svg" /></span>
-          <span class="tech-chip" title="CS"><img alt="CS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CS.svg" /></span>
-          <span class="tech-chip" title="CPP"><img alt="CPP" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CPP.svg" /></span>
-          <span class="tech-chip" title="CLion"><img alt="CLion" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CLion-Dark.svg" /></span>
-          <span class="tech-chip" title="Cloudflare"><img alt="Cloudflare" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Cloudflare-Dark.svg" /></span>
-          <span class="tech-chip" title="CSS"><img alt="CSS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/CSS.svg" /></span>
-          <span class="tech-chip" title="Debian"><img alt="Debian" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Debian-Dark.svg" /></span>
-          <span class="tech-chip" title="Discord"><img alt="Discord" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Discord.svg" /></span>
-          <span class="tech-chip" title="Django"><img alt="Django" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Django.svg" /></span>
-          <span class="tech-chip" title="Docker"><img alt="Docker" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Docker.svg" /></span>
-          <span class="tech-chip" title="Eclipse"><img alt="Eclipse" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Eclipse-Dark.svg" /></span>
-          <span class="tech-chip" title="Electron"><img alt="Electron" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Electron.svg" /></span>
-          <span class="tech-chip" title="ExpressJS"><img alt="ExpressJS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/ExpressJS-Dark.svg" /></span>
-          <span class="tech-chip" title="Figma"><img alt="Figma" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Figma-Dark.svg" /></span>
-          <span class="tech-chip" title="Firebase"><img alt="Firebase" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Firebase-Dark.svg" /></span>
-          <span class="tech-chip" title="Flask"><img alt="Flask" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Flask-Dark.svg" /></span>
-          <span class="tech-chip" title="Flutter"><img alt="Flutter" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Flutter-Dark.svg" /></span>
-          <span class="tech-chip" title="Git"><img alt="Git" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Git.svg" /></span>
-          <span class="tech-chip" title="Github"><img alt="Github" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Github-Dark.svg" /></span>
-          <span class="tech-chip" title="HTML"><img alt="HTML" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/HTML.svg" /></span>
-          <span class="tech-chip" title="Htmx"><img alt="Htmx" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Htmx-Dark.svg" /></span>
         </div>
         <div class="tech-row tech-row--middle">
           <span class="tech-chip" title="Idea"><img alt="Idea" loading="lazy"
@@ -3422,102 +3343,8 @@
               src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Redis-Dark.svg" /></span>
           <span class="tech-chip" title="Replit"><img alt="Replit" loading="lazy"
               src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Replit-Dark.svg" /></span>
-          <span class="tech-chip" title="Idea"><img alt="Idea" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Idea-Dark.svg" /></span>
-          <span class="tech-chip" title="Java"><img alt="Java" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Java-Dark.svg" /></span>
-          <span class="tech-chip" title="JavaScript"><img alt="JavaScript" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/JavaScript.svg" /></span>
-          <span class="tech-chip" title="Kali"><img alt="Kali" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Kali-Dark.svg" /></span>
-          <span class="tech-chip" title="Kotlin"><img alt="Kotlin" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Kotlin-Dark.svg" /></span>
-          <span class="tech-chip" title="LinkedIn"><img alt="LinkedIn" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/LinkedIn.svg" /></span>
-          <span class="tech-chip" title="Linux"><img alt="Linux" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Linux-Dark.svg" /></span>
-          <span class="tech-chip" title="Markdown"><img alt="Markdown" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Markdown-Dark.svg" /></span>
-          <span class="tech-chip" title="MySQL"><img alt="MySQL" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/MySQL-Dark.svg" /></span>
-          <span class="tech-chip" title="MongoDB"><img alt="MongoDB" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/MongoDB.svg" /></span>
-          <span class="tech-chip" title="NestJS"><img alt="NestJS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NestJS-Dark.svg" /></span>
-          <span class="tech-chip" title="NextJS"><img alt="NextJS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NextJS-Dark.svg" /></span>
-          <span class="tech-chip" title="Nginx"><img alt="Nginx" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Nginx.svg" /></span>
-          <span class="tech-chip" title="NodeJS"><img alt="NodeJS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/NodeJS-Dark.svg" /></span>
-          <span class="tech-chip" title="Npm"><img alt="Npm" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Npm-Dark.svg" /></span>
-          <span class="tech-chip" title="PHP"><img alt="PHP" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/PHP-Dark.svg" /></span>
-          <span class="tech-chip" title="PostgreSQL"><img alt="PostgreSQL" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/PostgreSQL-Dark.svg" /></span>
-          <span class="tech-chip" title="Powershell"><img alt="Powershell" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Powershell-Dark.svg" /></span>
-          <span class="tech-chip" title="Python"><img alt="Python" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Python-Dark.svg" /></span>
-          <span class="tech-chip" title="R"><img alt="R" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/R-Dark.svg" /></span>
-          <span class="tech-chip" title="RaspberryPi"><img alt="RaspberryPi" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/RaspberryPi-Dark.svg" /></span>
-          <span class="tech-chip" title="React"><img alt="React" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/React-Dark.svg" /></span>
-          <span class="tech-chip" title="Redis"><img alt="Redis" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Redis-Dark.svg" /></span>
-          <span class="tech-chip" title="Replit"><img alt="Replit" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Replit-Dark.svg" /></span>
         </div>
         <div class="tech-row tech-row--bottom">
-          <span class="tech-chip" title="Rust"><img alt="Rust" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Rust.svg" /></span>
-          <span class="tech-chip" title="Spring"><img alt="Spring" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Spring-Dark.svg" /></span>
-          <span class="tech-chip" title="SQLite"><img alt="SQLite" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/SQLite.svg" /></span>
-          <span class="tech-chip" title="StackOverflow"><img alt="StackOverflow" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/StackOverflow-Dark.svg" /></span>
-          <span class="tech-chip" title="Selenium"><img alt="Selenium" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Selenium.svg" /></span>
-          <span class="tech-chip" title="TailwindCSS"><img alt="TailwindCSS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TailwindCSS-Dark.svg" /></span>
-          <span class="tech-chip" title="TensorFlow"><img alt="TensorFlow" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TensorFlow-Dark.svg" /></span>
-          <span class="tech-chip" title="ThreeJS"><img alt="ThreeJS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/ThreeJS-Dark.svg" /></span>
-          <span class="tech-chip" title="TypeScript"><img alt="TypeScript" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/TypeScript.svg" /></span>
-          <span class="tech-chip" title="Ubuntu"><img alt="Ubuntu" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Ubuntu-Dark.svg" /></span>
-          <span class="tech-chip" title="Unity"><img alt="Unity" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Unity-Dark.svg" /></span>
-          <span class="tech-chip" title="Vercel"><img alt="Vercel" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Vercel-Dark.svg" /></span>
-          <span class="tech-chip" title="VisualStudio"><img alt="VisualStudio" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VisualStudio-Dark.svg" /></span>
-          <span class="tech-chip" title="Vite"><img alt="Vite" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Vite-Dark.svg" /></span>
-          <span class="tech-chip" title="VSCode"><img alt="VSCode" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VSCode-Dark.svg" /></span>
-          <span class="tech-chip" title="VueJS"><img alt="VueJS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/VueJS-Dark.svg" /></span>
-          <span class="tech-chip" title="Windows"><img alt="Windows" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Windows-Dark.svg" /></span>
-          <span class="tech-chip" title="Atom"><img alt="Atom" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Atom.svg" /></span>
-          <span class="tech-chip" title="AWS"><img alt="AWS" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/AWS-Dark.svg" /></span>
-          <span class="tech-chip" title="Arduino"><img alt="Arduino" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Arduino.svg" /></span>
-          <span class="tech-chip" title="Anaconda"><img alt="Anaconda" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Anaconda-Dark.svg" /></span>
-          <span class="tech-chip" title="AndroidStudio"><img alt="AndroidStudio" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/AndroidStudio-Dark.svg" /></span>
-          <span class="tech-chip" title="Arch"><img alt="Arch" loading="lazy"
-              src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Arch-Dark.svg" /></span>
           <span class="tech-chip" title="Rust"><img alt="Rust" loading="lazy"
               src="https://raw.githubusercontent.com/tandpfun/skill-icons/refs/heads/main/icons/Rust.svg" /></span>
           <span class="tech-chip" title="Spring"><img alt="Spring" loading="lazy"
@@ -4410,6 +4237,52 @@
       if (isProjectDetailOpen) setPanelRect(getFinalPanelRect(), window.innerWidth <= 480 ? 24 : 30);
     });
   </script>
+  <script>
+    const rows = document.querySelectorAll(".tech-row");
+    const SPEEDS = [0.45, -0.35, 0.40];
+    const FLOAT_AMPLITUDE = 0.5;
+    const FLOAT_SPEED = 0.0015;
+    rows.forEach((row, rowIndex) => {
+        const originals = [...row.children];
+        let originalWidth = 0;
+        let offset = 0;
+        function rebuild() {
+            row.innerHTML = "";
+            originals.forEach(el => row.appendChild(el.cloneNode(true)));
+            while (row.scrollWidth < window.innerWidth * 2.5) {
+                originals.forEach(el => row.appendChild(el.cloneNode(true)));
+            }
+            originalWidth = row.scrollWidth / 2;
+            offset = rowIndex === 1 ? -originalWidth : 0;
+            [...row.children].forEach(chip => {
+                chip.dataset.phase = Math.random() * Math.PI * 2;
+            });
+        }
+        rebuild();
+        function animate(time) {
+            offset -= SPEEDS[rowIndex];
+            if (offset <= -originalWidth)
+                offset += originalWidth;
+            if (offset > 0)
+                offset -= originalWidth;
+            row.style.transform = `translate3d(${offset}px,0,0)`;
+            row.childNodes.forEach(chip => {
+                const phase = Number(chip.dataset.phase);
+                const t = time * FLOAT_SPEED + phase;
+                chip.style.transform =
+                    `translate3d(0,${Math.sin(t) * FLOAT_AMPLITUDE}px,0)
+                    scale(${1 + Math.sin(t) * 0.035})`;
+            });
+            requestAnimationFrame(animate);
+        }
+        requestAnimationFrame(animate);
+        const observer = new ResizeObserver(() => {
+            const ratio = (-offset) / originalWidth;
+            rebuild();
+            offset = -ratio * originalWidth;
+        });
+        observer.observe(document.body);
+    });
+  </script>
 </body>
-
 </html>
