@@ -3500,9 +3500,19 @@
     </article>
   </div>
   <footer class="footer">
-    <p>본 서비스는 고등학생 개발자 1인이 직접 개발 및 운영하는 포트폴리오입니다.<br />본 서비스에 사용된 모든 이미지, 디자인, 관련 파일 및 소스 코드는 개발자가 직접 제작하였으며, 이에 대한 저작권은 개발자에게 있습니다.<br /><br />© 2026 윤주원. All rights
-      reserved.</p>
+    <p>
+      본 서비스는 고등학생 개발자 1인이 직접 개발 및 운영하는 개인 포트폴리오입니다.<br />
+      사용된 모든 이미지, 디자인, 관련 파일 및 소스 코드는 개발자가 직접 제작하였으며, 이에 대한 저작권은 개발자에게 있습니다.<br />
+      사용자 경험 개선 및 서비스 품질 향상을 위해 Microsoft Clarity가 사용되고 있습니다.<br /><br />
+      © <span id="copyright-year"></span> 윤주원. All rights reserved.
+    </p>
   </footer>
+
+  <script>
+    const currentYear = new Date().getFullYear();
+    document.getElementById("copyright-year").textContent =
+      currentYear === 2026 ? "2026" : `2026~${currentYear}`;
+  </script>
   <script>
     const projectTrack = document.querySelector('[data-project-track]');
     const projectScrollButtons = document.querySelectorAll('[data-project-scroll]');
@@ -4237,6 +4247,7 @@
       if (isProjectDetailOpen) setPanelRect(getFinalPanelRect(), window.innerWidth <= 480 ? 24 : 30);
     });
   </script>
+  <!-- 기존의 CSS로 움직이던 tech 애니메이션을 JS로 이동 -->
   <script>
     const rows = document.querySelectorAll(".tech-row");
     const SPEEDS = [0.45, -0.35, 0.40];
