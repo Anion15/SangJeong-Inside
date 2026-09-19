@@ -43,8 +43,10 @@
 > 사용, 복사, 수정, 배포, 서브라이선스 관련 문의는 `juwony27@gmail.com`으로 부탁드립니다.
 <br>
 
-## Release-notes
-상정인사이드의 업데이트 소식은 [commu.world/release-notes](https://commu.world/release-notes)에서 확인할 수 있습니다.
+## Notes
+상정인사이드의 업데이트 소식은 [commu.world/release-notes](https://commu.world/release-notes)에서 확인할 수 있습니다.  
+상정인사이드에 적용된 기술 스택과 UI/UX는 [dev.rederx.com/blog/11](https://dev.rederx.com/blog/11)에 정리되어 있습니다. 
+<br>
 
 ## Documentation
 
